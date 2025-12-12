@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="18.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <None Include="..\..\.clang-format" />
+    <None Include="..\..\.vsconfig" />
+    <Filter Include="Config">
+      <UniqueIdentifier>{FA535FFB-25E1-3D20-B416-52F9BE21E06E}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Config\DefaultEditor.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultEngine.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultGame.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultInput.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\LMN.uproject" />
+    <Filter Include="Source">
+      <UniqueIdentifier>{F31BBDD1-B3E8-3BCC-9652-680E16935819}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\LMN.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <None Include="..\..\Source\LMNEditor.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <Filter Include="Source\LMN">
+      <UniqueIdentifier>{F8694180-2ADC-38E9-AF82-9A356DF44456}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\LMN\BFL.cpp">
+      <Filter>Source\LMN</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\LMN\BFL.h">
+      <Filter>Source\LMN</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\LMN\CameraPawn.cpp">
+      <Filter>Source\LMN</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\LMN\CameraPawn.h">
+      <Filter>Source\LMN</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\LMN\CharacterLogic.cpp">
+      <Filter>Source\LMN</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\LMN\CharacterLogic.h">
+      <Filter>Source\LMN</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\LMN\EquipmentLogic.cpp">
+      <Filter>Source\LMN</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\LMN\EquipmentLogic.h">
+      <Filter>Source\LMN</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\LMN\GI_Main.cpp">
+      <Filter>Source\LMN</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\LMN\GI_Main.h">
+      <Filter>Source\LMN</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\LMN\GM_Main.cpp">
+      <Filter>Source\LMN</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\LMN\GM_Main.h">
+      <Filter>Source\LMN</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\LMN\HUD_Main.cpp">
+      <Filter>Source\LMN</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\LMN\HUD_Main.h">
+      <Filter>Source\LMN</Filter>
+    </ClInclude>
+    <None Include="..\..\Source\LMN\LMN.Build.cs">
+      <Filter>Source\LMN</Filter>
+    </None>
+    <ClCompile Include="..\..\Source\LMN\LMN.cpp">
+      <Filter>Source\LMN</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\LMN\LMN.h">
+      <Filter>Source\LMN</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\LMN\Logic.cpp">
+      <Filter>Source\LMN</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\LMN\Logic.h">
+      <Filter>Source\LMN</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\LMN\LogicBase.cpp">
+      <Filter>Source\LMN</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\LMN\LogicBase.h">
+      <Filter>Source\LMN</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\LMN\LogicInterface.cpp">
+      <Filter>Source\LMN</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\LMN\LogicInterface.h">
+      <Filter>Source\LMN</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\LMN\Macros.h">
+      <Filter>Source\LMN</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\LMN\PC_Main.cpp">
+      <Filter>Source\LMN</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\LMN\PC_Main.h">
+      <Filter>Source\LMN</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\LMN\RepresentationActor.cpp">
+      <Filter>Source\LMN</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\LMN\RepresentationActor.h">
+      <Filter>Source\LMN</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\LMN\RepresentationCharacter.cpp">
+      <Filter>Source\LMN</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\LMN\RepresentationCharacter.h">
+      <Filter>Source\LMN</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\LMN\RepresentationPawn.cpp">
+      <Filter>Source\LMN</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\LMN\RepresentationPawn.h">
+      <Filter>Source\LMN</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\LMN\WeaponLogic.cpp">
+      <Filter>Source\LMN</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\LMN\WeaponLogic.h">
+      <Filter>Source\LMN</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

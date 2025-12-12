@@ -1,0 +1,14 @@
+{
+	"Targets": [
+		{
+			"Name": "LMN",
+			"Path": "..\\Source\\LMN.Target.cs",
+			"Type": "Game"
+		},
+		{
+			"Name": "LMNEditor",
+			"Path": "..\\Source\\LMNEditor.Target.cs",
+			"Type": "Editor"
+		}
+	]
+}
