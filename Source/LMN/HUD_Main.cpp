@@ -6,12 +6,19 @@
 #include "PC_Main.h"
 #include "BFL.h"
 #include "RepresentationCharacter.h"
+#include "UW_HUD.h"
 
 void AHUD_Main::BeginPlay()
 {
     Super::BeginPlay();
 
     PlayerControllerRef = Cast<APC_Main>(GetOwningPlayerController());
+
+    CHECK_FIELD(UW_HUD_Class);
+
+    if (UW_HUD_Class)
+        if (auto UW_HUD = CreateWidget(PlayerControllerRef, UW_HUD_Class))
+            UW_HUD->AddToViewport();
 }
 
 void AHUD_Main::StartSelection()

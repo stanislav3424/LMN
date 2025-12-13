@@ -6,12 +6,11 @@
 #include "UW_ProgressBar.h"
 #include "UW_HealthProgressBar.generated.h"
 
-/**
- * 
- */
-UCLASS()
+UCLASS(Blueprintable, Abstract)
 class LMN_API UUW_HealthProgressBar : public UUW_ProgressBar
 {
-	GENERATED_BODY()
-	
+    GENERATED_BODY()
+
+protected:
+    virtual void NativeConstruct() override;
 };

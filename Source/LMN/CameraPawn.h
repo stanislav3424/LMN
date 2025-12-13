@@ -14,7 +14,7 @@ class UFloatingPawnMovement;
 
 struct FInputActionValue;
 
-UCLASS()
+UCLASS(Abstract)
 class LMN_API ACameraPawn : public APawn
 {
     GENERATED_BODY()

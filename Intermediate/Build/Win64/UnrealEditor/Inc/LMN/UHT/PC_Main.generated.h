@@ -34,7 +34,7 @@ private: \
 	static UClass* GetPrivateStaticClass(); \
 	friend LMN_API UClass* ::Z_Construct_UClass_APC_Main_NoRegister(); \
 public: \
-	DECLARE_CLASS2(APC_Main, APlayerController, COMPILED_IN_FLAGS(0 | CLASS_Config), CASTCLASS_None, TEXT("/Script/LMN"), Z_Construct_UClass_APC_Main_NoRegister) \
+	DECLARE_CLASS2(APC_Main, APlayerController, COMPILED_IN_FLAGS(CLASS_Abstract | CLASS_Config), CASTCLASS_None, TEXT("/Script/LMN"), Z_Construct_UClass_APC_Main_NoRegister) \
 	DECLARE_SERIALIZER(APC_Main)
 
 
@@ -44,7 +44,7 @@ public: \
 	APC_Main(const APC_Main&) = delete; \
 	DECLARE_VTABLE_PTR_HELPER_CTOR(NO_API, APC_Main); \
 	DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(APC_Main); \
-	DEFINE_DEFAULT_CONSTRUCTOR_CALL(APC_Main) \
+	DEFINE_ABSTRACT_DEFAULT_CONSTRUCTOR_CALL(APC_Main) \
 	NO_API virtual ~APC_Main();
 
 

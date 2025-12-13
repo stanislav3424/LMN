@@ -14,7 +14,7 @@ class AHUD_Main;
 
 struct FInputActionValue;
 
-UCLASS()
+UCLASS(Abstract)
 class LMN_API APC_Main : public APlayerController
 {
     GENERATED_BODY()
@@ -70,6 +70,6 @@ private:
     bool      bLeftDown            = false;
     bool      bRightDown           = false;
     bool      bIsDraggingSelection = false;
-    FVector2D MouseDownPosition         = FVector2D::ZeroVector;
+    FVector2D MouseDownPosition    = FVector2D::ZeroVector;
     float     DragThreshold        = 3.0f;
 };

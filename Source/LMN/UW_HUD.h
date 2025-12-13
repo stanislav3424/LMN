@@ -3,15 +3,29 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Blueprint/UserWidget.h"
+#include "UW_Base.h"
 #include "UW_HUD.generated.h"
 
-/**
- * 
- */
-UCLASS()
-class LMN_API UUW_HUD : public UUserWidget
+class UListView;
+class APC_Main;
+
+UCLASS(Blueprintable, Abstract)
+class LMN_API UUW_HUD : public UUW_Base
 {
-	GENERATED_BODY()
-	
+    GENERATED_BODY()
+
+protected:
+    virtual void NativeOnInitialized() override;
+    virtual void NativeConstruct() override;
+
+    UPROPERTY()
+    APC_Main* PC_Main;
+
+public:
+    UFUNCTION()
+    void UpdateListView();
+
+protected:
+    UPROPERTY(meta = (BindWidget))
+    UListView* SelectedListView;
 };

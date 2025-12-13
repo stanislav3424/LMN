@@ -7,8 +7,9 @@
 #include "HUD_Main.generated.h"
 
 class APC_Main;
+class UUW_HUD;
 
-UCLASS()
+UCLASS(Abstract)
 class LMN_API AHUD_Main : public AHUD
 {
     GENERATED_BODY()
@@ -37,4 +38,8 @@ protected:
 
     UPROPERTY(EditAnywhere, Category = "Border")
     float LineThickness = 1.f;
+
+    UPROPERTY(EditDefaultsOnly, Category = "UMG")
+    TSubclassOf<UUW_HUD> UW_HUD_Class;
+
 };

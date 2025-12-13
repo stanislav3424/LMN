@@ -27,7 +27,7 @@ private: \
 	static UClass* GetPrivateStaticClass(); \
 	friend LMN_API UClass* ::Z_Construct_UClass_ACameraPawn_NoRegister(); \
 public: \
-	DECLARE_CLASS2(ACameraPawn, APawn, COMPILED_IN_FLAGS(0 | CLASS_Config), CASTCLASS_None, TEXT("/Script/LMN"), Z_Construct_UClass_ACameraPawn_NoRegister) \
+	DECLARE_CLASS2(ACameraPawn, APawn, COMPILED_IN_FLAGS(CLASS_Abstract | CLASS_Config), CASTCLASS_None, TEXT("/Script/LMN"), Z_Construct_UClass_ACameraPawn_NoRegister) \
 	DECLARE_SERIALIZER(ACameraPawn)
 
 
@@ -37,7 +37,7 @@ public: \
 	ACameraPawn(const ACameraPawn&) = delete; \
 	DECLARE_VTABLE_PTR_HELPER_CTOR(NO_API, ACameraPawn); \
 	DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(ACameraPawn); \
-	DEFINE_DEFAULT_CONSTRUCTOR_CALL(ACameraPawn) \
+	DEFINE_ABSTRACT_DEFAULT_CONSTRUCTOR_CALL(ACameraPawn) \
 	NO_API virtual ~ACameraPawn();
 
 

@@ -220,7 +220,7 @@ const UECodeGen_Private::FClassParams Z_Construct_UClass_ACameraPawn_Statics::Cl
 	0,
 	UE_ARRAY_COUNT(Z_Construct_UClass_ACameraPawn_Statics::PropPointers),
 	0,
-	0x009000A4u,
+	0x009000A5u,
 	METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_ACameraPawn_Statics::Class_MetaDataParams), Z_Construct_UClass_ACameraPawn_Statics::Class_MetaDataParams)
 };
 void ACameraPawn::StaticRegisterNativesACameraPawn()
@@ -242,10 +242,10 @@ ACameraPawn::~ACameraPawn() {}
 struct Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_CameraPawn_h__Script_LMN_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_ACameraPawn, ACameraPawn::StaticClass, TEXT("ACameraPawn"), &Z_Registration_Info_UClass_ACameraPawn, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ACameraPawn), 3627974370U) },
+		{ Z_Construct_UClass_ACameraPawn, ACameraPawn::StaticClass, TEXT("ACameraPawn"), &Z_Registration_Info_UClass_ACameraPawn, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ACameraPawn), 1068206719U) },
 	};
 }; // Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_CameraPawn_h__Script_LMN_Statics 
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_CameraPawn_h__Script_LMN_3276613507{
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_CameraPawn_h__Script_LMN_1607274127{
 	TEXT("/Script/LMN"),
 	Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_CameraPawn_h__Script_LMN_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_CameraPawn_h__Script_LMN_Statics::ClassInfo),
 	nullptr, 0,
