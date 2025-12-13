@@ -82,12 +82,12 @@ protected:
     float   TargetArmLength;
     float   TargetYaw;
 
-    void OnMove(const struct FInputActionValue& Value);
-    void OnMoveEnd(const struct FInputActionValue& Value);
-    void OnRotate(const struct FInputActionValue& Value);
-    void OnRotateEnd(const struct FInputActionValue& Value);
-    void OnZoom(const struct FInputActionValue& Value);
-    void OnZoomEnd(const struct FInputActionValue& Value);
+    void OnMove(const FInputActionValue& Value);
+    void OnMoveEnd(const FInputActionValue& Value);
+    void OnRotate(const FInputActionValue& Value);
+    void OnRotateEnd(const FInputActionValue& Value);
+    void OnZoom(const FInputActionValue& Value);
+    void OnZoomEnd(const FInputActionValue& Value);
 
     FVector2D PendingMoveInput   = FVector2D::ZeroVector;
     float     PendingRotateInput = 0.f;

@@ -9,7 +9,6 @@
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnHealthChange, float, MaxHealth, float, Current);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnDied);
 
-
 UENUM(BlueprintType)
 enum class ETeam : uint8
 {
@@ -17,7 +16,6 @@ enum class ETeam : uint8
     Player  UMETA(DisplayName = "Player"),
     Enemy   UMETA(DisplayName = "Enemy"),
 };
-
 
 UCLASS()
 class LMN_API ULogic : public ULogicBase

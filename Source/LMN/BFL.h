@@ -17,6 +17,7 @@ DECLARE_LOG_CATEGORY_EXTERN(LMN, Log, All);
     }
 
 class ULogicBase;
+enum class ETeam : uint8;
 
 template <typename TypeLogic>
 concept LogicDerived = std::derived_from<TypeLogic, ULogicBase>;
@@ -52,4 +53,27 @@ public:
     };
 
     static ULogicBase* HandleCreateLogicByRowHandle(UWorld* World, FDataTableRowHandle RowHandle);
+
+    UFUNCTION(BlueprintCallable, Category = "Logic")
+    static bool GetTeam(ETeam& TargetTeam, ULogicBase* LogicBase);
+
+    UFUNCTION(BlueprintCallable, Category = "Logic")
+    static bool GetTeamActor(ETeam& TargetTeam, AActor* Actor);
+
+    UFUNCTION(BlueprintCallable, Category = "Logic")
+    static bool IsTeamsEqual(ULogicBase* LogicA, ULogicBase* LogicB);
+
+    UFUNCTION(BlueprintCallable, Category = "Logic")
+    static bool IsTeamsEqualActor(AActor* ActorA, AActor* ActorB);
+
+    template <typename ElementType>
+    static bool AreSetsEqual(const TSet<ElementType>& SetA, const TSet<ElementType>& SetB)
+    {
+        if (SetA.Num() != SetB.Num())
+            return false;
+        for (auto const& Elem : SetA)
+            if (!SetB.Contains(Elem))
+                return false;
+        return true;
+    }
 };

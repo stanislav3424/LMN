@@ -3,6 +3,7 @@
 #include "BFL.h"
 #include "LogicInterface.h"
 #include "GI_Main.h"
+#include "Logic.h"
 
 DEFINE_LOG_CATEGORY(LMN)
 
@@ -51,4 +52,35 @@ ULogicBase* UBFL::HandleCreateLogicByRowHandle(UWorld* World, FDataTableRowHandl
             if (auto Logic = GameInstance->CreateLogicByRowHandle(RowHandle))
                 return Logic;
     return nullptr;
+}
+
+bool UBFL::GetTeam(ETeam& TargetTeam, ULogicBase* LogicBase)
+{
+    if (LogicBase)
+        if (auto Logic = Cast<ULogic>(LogicBase))
+        {
+            TargetTeam = Logic->GetTeam();
+            return true;
+        }
+    return false;
+}
+
+bool UBFL::GetTeamActor(ETeam& TargetTeam, AActor* Actor)
+{
+    return GetTeam(TargetTeam, UBFL::GetLogic(Actor));
+}
+
+bool UBFL::IsTeamsEqual(ULogicBase* LogicA, ULogicBase* LogicB)
+{
+    ETeam TeamA;
+    ETeam TeamB;
+    if (GetTeam(TeamA, LogicA) && GetTeam(TeamB, LogicB))
+        if (TeamA == TeamB)
+            return true;
+    return false;
+}
+
+bool UBFL::IsTeamsEqualActor(AActor* ActorA, AActor* ActorB)
+{
+    return IsTeamsEqual(UBFL::GetLogic(ActorA), UBFL::GetLogic(ActorB));
 };
