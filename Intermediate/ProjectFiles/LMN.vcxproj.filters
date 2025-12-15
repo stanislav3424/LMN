@@ -75,6 +75,12 @@
     <ClInclude Include="..\..\Source\LMN\HUD_Main.h">
       <Filter>Source\LMN</Filter>
     </ClInclude>
+    <ClCompile Include="..\..\Source\LMN\IconRendering.cpp">
+      <Filter>Source\LMN</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\LMN\IconRendering.h">
+      <Filter>Source\LMN</Filter>
+    </ClInclude>
     <None Include="..\..\Source\LMN\LMN.Build.cs">
       <Filter>Source\LMN</Filter>
     </None>

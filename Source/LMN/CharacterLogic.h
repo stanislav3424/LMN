@@ -92,6 +92,8 @@ public:
     FOnTypeActionChanged        OnTypeActionChanged;
     FOnEquipmentChanged         OnEquipmentChanged;
 
+    void BroadcastOnStaminaChanged() const;
+
     // Stamina
 protected:
     float MaxStamina       = INDEX_NONE;

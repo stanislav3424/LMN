@@ -22,7 +22,7 @@ enum class ETeam : uint8;
 struct FDataTableRowHandle;
 
 // ********** Begin Class UBFL *********************************************************************
-#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_BFL_h_28_RPC_WRAPPERS_NO_PURE_DECLS \
+#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_BFL_h_29_RPC_WRAPPERS_NO_PURE_DECLS \
 	DECLARE_FUNCTION(execIsTeamsEqualActor); \
 	DECLARE_FUNCTION(execIsTeamsEqual); \
 	DECLARE_FUNCTION(execGetTeamActor); \
@@ -35,7 +35,7 @@ struct FDataTableRowHandle;
 struct Z_Construct_UClass_UBFL_Statics;
 LMN_API UClass* Z_Construct_UClass_UBFL_NoRegister();
 
-#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_BFL_h_28_INCLASS_NO_PURE_DECLS \
+#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_BFL_h_29_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesUBFL(); \
 	friend struct ::Z_Construct_UClass_UBFL_Statics; \
@@ -46,7 +46,7 @@ public: \
 	DECLARE_SERIALIZER(UBFL)
 
 
-#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_BFL_h_28_ENHANCED_CONSTRUCTORS \
+#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_BFL_h_29_ENHANCED_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API UBFL(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()); \
 	/** Deleted move- and copy-constructors, should never be used */ \
@@ -58,13 +58,13 @@ public: \
 	NO_API virtual ~UBFL();
 
 
-#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_BFL_h_25_PROLOG
-#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_BFL_h_28_GENERATED_BODY \
+#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_BFL_h_26_PROLOG
+#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_BFL_h_29_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_BFL_h_28_RPC_WRAPPERS_NO_PURE_DECLS \
-	FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_BFL_h_28_INCLASS_NO_PURE_DECLS \
-	FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_BFL_h_28_ENHANCED_CONSTRUCTORS \
+	FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_BFL_h_29_RPC_WRAPPERS_NO_PURE_DECLS \
+	FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_BFL_h_29_INCLASS_NO_PURE_DECLS \
+	FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_BFL_h_29_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 

@@ -44,6 +44,8 @@ public:
     FOnHealthChange OnHealthChange;
     FOnDied         OnDied;
 
+    void BroadcastOnHealthChange() const;
+
     // Team
 protected:
     ETeam Team = ETeam::Neutral;

@@ -56,7 +56,7 @@ struct FCharacterLogicRow : public FLogicRow
     float MaxRunSpeed = 25.f;
 };
 
-UCLASS()
+UCLASS(Blueprintable, Abstract)
 class LMN_API UGI_Main : public UGameInstance
 {
     GENERATED_BODY()
@@ -79,8 +79,10 @@ public:
     FDataTableRowHandle GetRowHandleByRowName(FName RowName);
     // TSubclassOf<ULogicBase> GetLogicClassByActorClass(AActor* Actor);
     FDataTableRowHandle GetRowHandleByActorClass(AActor* Actor);
-    ULogicBase*         CreateLogicByRowHandle(FDataTableRowHandle RowHandle);
+    ULogicBase*         CreateLogicByRowHandle(FDataTableRowHandle const& RowHandle);
+    TSubclassOf<AActor> GetRepresentationActorClassByRowHandle(FDataTableRowHandle const& RowHandle);
 
 public:
     void ActorActivation(AActor* Actor);
+
 };

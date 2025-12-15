@@ -7,7 +7,7 @@
 #include "LogicInterface.h"
 #include "RepresentationActor.generated.h"
 
-UCLASS()
+UCLASS(Blueprintable, Abstract)
 class LMN_API ARepresentationActor : public AActor, public ILogicInterface
 {
     GENERATED_BODY()

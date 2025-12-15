@@ -22,9 +22,10 @@ protected:
     ULogicBase* OwnerLogic;
 
 public:
-    void        SetOwnerLogic(ULogicBase* NewOwnerLogic) { OwnerLogic = NewOwnerLogic; };
-    ULogicBase* GetOwnerLogic() { return OwnerLogic; };
-    void        RemoveOwnerLogic() { OwnerLogic = nullptr; };
+    void                SetOwnerLogic(ULogicBase* NewOwnerLogic) { OwnerLogic = NewOwnerLogic; };
+    ULogicBase*         GetOwnerLogic() { return OwnerLogic; };
+    void                RemoveOwnerLogic() { OwnerLogic = nullptr; };
+    FDataTableRowHandle GetLogicRowHandle() { return LogicRowHandle; };
 
 protected:
     virtual void LoadingDataTable();
@@ -49,6 +50,7 @@ protected:
 public:
     void HardSetRepresentationActor(AActor* Actor);
     AActor* GetRepresentationActor() const;
+    TSubclassOf<AActor> GetRepresentationActorClass() const { return RepresentationActorClass; };
     void DestroyRepresentationActor();
 
 };

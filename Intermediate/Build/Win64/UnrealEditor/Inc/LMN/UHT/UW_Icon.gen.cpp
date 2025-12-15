@@ -54,7 +54,9 @@ struct Z_Construct_UClass_UUW_Icon_Statics
 {
 #if WITH_METADATA
 	static constexpr UECodeGen_Private::FMetaDataPairParam Class_MetaDataParams[] = {
+		{ "BlueprintType", "true" },
 		{ "IncludePath", "UW_Icon.h" },
+		{ "IsBlueprintBase", "true" },
 		{ "ModuleRelativePath", "UW_Icon.h" },
 	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_IconImage_MetaData[] = {
@@ -105,7 +107,7 @@ const UECodeGen_Private::FClassParams Z_Construct_UClass_UUW_Icon_Statics::Class
 	0,
 	UE_ARRAY_COUNT(Z_Construct_UClass_UUW_Icon_Statics::PropPointers),
 	0,
-	0x00B010A0u,
+	0x00B010A1u,
 	METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_UUW_Icon_Statics::Class_MetaDataParams), Z_Construct_UClass_UUW_Icon_Statics::Class_MetaDataParams)
 };
 void UUW_Icon::StaticRegisterNativesUUW_Icon()
@@ -128,10 +130,10 @@ UUW_Icon::~UUW_Icon() {}
 struct Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_UW_Icon_h__Script_LMN_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_UUW_Icon, UUW_Icon::StaticClass, TEXT("UUW_Icon"), &Z_Registration_Info_UClass_UUW_Icon, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UUW_Icon), 1713290111U) },
+		{ Z_Construct_UClass_UUW_Icon, UUW_Icon::StaticClass, TEXT("UUW_Icon"), &Z_Registration_Info_UClass_UUW_Icon, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UUW_Icon), 3852700948U) },
 	};
 }; // Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_UW_Icon_h__Script_LMN_Statics 
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_UW_Icon_h__Script_LMN_100437865{
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_UW_Icon_h__Script_LMN_1148587894{
 	TEXT("/Script/LMN"),
 	Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_UW_Icon_h__Script_LMN_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_UW_Icon_h__Script_LMN_Statics::ClassInfo),
 	nullptr, 0,

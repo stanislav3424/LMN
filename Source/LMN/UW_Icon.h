@@ -8,7 +8,7 @@
 
 class UImage;
 
-UCLASS()
+UCLASS(Blueprintable, Abstract)
 class LMN_API UUW_Icon : public UUW_Base
 {
     GENERATED_BODY()
@@ -16,6 +16,7 @@ class LMN_API UUW_Icon : public UUW_Base
 protected:
     virtual void NativeConstruct() override;
     virtual void NativeTick(const FGeometry& MyGeometry, float InDeltaTime) override;
+    virtual void ObjectUpdated() override;
 
     UPROPERTY(meta = (BindWidget))
     UImage* IconImage;
@@ -25,5 +26,5 @@ protected:
     UPROPERTY(Transient)
     UMaterialInstanceDynamic* IconMID;
 
-    virtual void WidgetSizeChanged(const FVector2D& NewSize);
+    void WidgetSizeChanged(const FVector2D& NewSize);
 };

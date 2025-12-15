@@ -27,7 +27,7 @@ private: \
 	static UClass* GetPrivateStaticClass(); \
 	friend LMN_API UClass* ::Z_Construct_UClass_ARepresentationPawn_NoRegister(); \
 public: \
-	DECLARE_CLASS2(ARepresentationPawn, APawn, COMPILED_IN_FLAGS(0 | CLASS_Config), CASTCLASS_None, TEXT("/Script/LMN"), Z_Construct_UClass_ARepresentationPawn_NoRegister) \
+	DECLARE_CLASS2(ARepresentationPawn, APawn, COMPILED_IN_FLAGS(CLASS_Abstract | CLASS_Config), CASTCLASS_None, TEXT("/Script/LMN"), Z_Construct_UClass_ARepresentationPawn_NoRegister) \
 	DECLARE_SERIALIZER(ARepresentationPawn) \
 	virtual UObject* _getUObject() const override { return const_cast<ARepresentationPawn*>(this); }
 
@@ -40,7 +40,7 @@ public: \
 	ARepresentationPawn(const ARepresentationPawn&) = delete; \
 	DECLARE_VTABLE_PTR_HELPER_CTOR(NO_API, ARepresentationPawn); \
 	DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(ARepresentationPawn); \
-	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(ARepresentationPawn) \
+	DEFINE_ABSTRACT_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(ARepresentationPawn) \
 	NO_API virtual ~ARepresentationPawn();
 
 

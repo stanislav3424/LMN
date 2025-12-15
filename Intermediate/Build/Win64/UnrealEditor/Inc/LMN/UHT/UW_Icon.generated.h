@@ -27,7 +27,7 @@ private: \
 	static UClass* GetPrivateStaticClass(); \
 	friend LMN_API UClass* ::Z_Construct_UClass_UUW_Icon_NoRegister(); \
 public: \
-	DECLARE_CLASS2(UUW_Icon, UUW_Base, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/LMN"), Z_Construct_UClass_UUW_Icon_NoRegister) \
+	DECLARE_CLASS2(UUW_Icon, UUW_Base, COMPILED_IN_FLAGS(CLASS_Abstract), CASTCLASS_None, TEXT("/Script/LMN"), Z_Construct_UClass_UUW_Icon_NoRegister) \
 	DECLARE_SERIALIZER(UUW_Icon)
 
 
@@ -39,7 +39,7 @@ public: \
 	UUW_Icon(const UUW_Icon&) = delete; \
 	DECLARE_VTABLE_PTR_HELPER_CTOR(NO_API, UUW_Icon); \
 	DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(UUW_Icon); \
-	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(UUW_Icon) \
+	DEFINE_ABSTRACT_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(UUW_Icon) \
 	NO_API virtual ~UUW_Icon();
 
 

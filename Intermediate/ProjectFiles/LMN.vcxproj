@@ -288,6 +288,10 @@
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <ClInclude Include="..\..\Source\LMN\HUD_Main.h"/>
+    <ClCompile Include="..\..\Source\LMN\IconRendering.cpp">
+      <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\LMN\IconRendering.h"/>
     <None Include="..\..\Source\LMN\LMN.Build.cs"/>
     <ClCompile Include="..\..\Source\LMN\LMN.cpp">
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>

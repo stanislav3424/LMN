@@ -12,11 +12,7 @@ void UUW_ProgressBar::NativeConstruct()
 
 void UUW_ProgressBar::SetPercent(float Current, float Max)
 {
-    SetPercent(Current / Max);
+    if (ProgressBar)
+        ProgressBar->SetPercent(FMath::Clamp(Current / Max, 0.0f, 1.0f));
 }
 
-void UUW_ProgressBar::SetPercent(float InPercent)
-{
-    if (ProgressBar)
-        ProgressBar->SetPercent(FMath::Clamp(InPercent, 0.0f, 1.0f));
-}

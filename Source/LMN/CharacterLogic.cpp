@@ -141,8 +141,14 @@ void UCharacterLogic::ReloadCompleted()
     SetTypeAction(ETypeAction::Idle);
 }
 
+void UCharacterLogic::BroadcastOnStaminaChanged() const
+{
+    OnStaminaChanged.Broadcast(CurrentStamina, MaxStamina);
+}
+
 void UCharacterLogic::StaminaTick(float DeltaTime)
 {
+    auto OldStamina = CurrentStamina;
     if (MovementState != EMovementState::Run)
     {
         CurrentStamina += StaminaRegenRate;
@@ -156,6 +162,8 @@ void UCharacterLogic::StaminaTick(float DeltaTime)
         if (CurrentStamina <= 0.f)
             SetMovementState(EMovementState::Walk);
     }
+    if (OldStamina != CurrentStamina)
+        BroadcastOnStaminaChanged();
 }
 
 bool UCharacterLogic::EquipItem(ULogicBase* Logic, EEquipmentSlot TargetEquipmentSlot)

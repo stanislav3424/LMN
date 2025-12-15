@@ -2,6 +2,7 @@
 
 #include "UW_Icon.h"
 #include "Components/Image.h"
+#include "BFL.h"
 
 void UUW_Icon::NativeConstruct()
 {
@@ -25,6 +26,10 @@ void UUW_Icon::NativeTick(const FGeometry& MyGeometry, float InDeltaTime)
         LastWidgetSize = CurrentSize;
         WidgetSizeChanged(CurrentSize);
     }
+}
+
+void UUW_Icon::ObjectUpdated()
+{
 }
 
 void UUW_Icon::WidgetSizeChanged(const FVector2D& NewSize)

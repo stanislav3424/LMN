@@ -60,7 +60,7 @@ private: \
 	static UClass* GetPrivateStaticClass(); \
 	friend LMN_API UClass* ::Z_Construct_UClass_UGI_Main_NoRegister(); \
 public: \
-	DECLARE_CLASS2(UGI_Main, UGameInstance, COMPILED_IN_FLAGS(0 | CLASS_Transient), CASTCLASS_None, TEXT("/Script/LMN"), Z_Construct_UClass_UGI_Main_NoRegister) \
+	DECLARE_CLASS2(UGI_Main, UGameInstance, COMPILED_IN_FLAGS(CLASS_Abstract | CLASS_Transient), CASTCLASS_None, TEXT("/Script/LMN"), Z_Construct_UClass_UGI_Main_NoRegister) \
 	DECLARE_SERIALIZER(UGI_Main)
 
 
@@ -72,7 +72,7 @@ public: \
 	UGI_Main(const UGI_Main&) = delete; \
 	DECLARE_VTABLE_PTR_HELPER_CTOR(NO_API, UGI_Main); \
 	DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(UGI_Main); \
-	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(UGI_Main) \
+	DEFINE_ABSTRACT_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(UGI_Main) \
 	NO_API virtual ~UGI_Main();
 
 

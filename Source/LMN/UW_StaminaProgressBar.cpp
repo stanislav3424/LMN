@@ -4,13 +4,14 @@
 #include "CharacterLogic.h"
 #include "BFL.h"
 
-void UUW_StaminaProgressBar::NativeConstruct()
+void UUW_StaminaProgressBar::ObjectUpdated()
 {
-    Super::NativeConstruct();
-
     if (Object)
         if (auto Logic = Cast<UCharacterLogic>(Object))
-            Logic->OnStaminaChanged.AddDynamic(this, &UUW_StaminaProgressBar::SetPercent);
+        {
+            Logic->OnStaminaChanged.AddUniqueDynamic(this, &UUW_StaminaProgressBar::SetPercent);
+            Logic->BroadcastOnStaminaChanged();
+        }
         else
             CHECK_FIELD(Logic);
 }

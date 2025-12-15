@@ -54,7 +54,9 @@ struct Z_Construct_UClass_ARepresentationActor_Statics
 {
 #if WITH_METADATA
 	static constexpr UECodeGen_Private::FMetaDataPairParam Class_MetaDataParams[] = {
+		{ "BlueprintType", "true" },
 		{ "IncludePath", "RepresentationActor.h" },
+		{ "IsBlueprintBase", "true" },
 		{ "ModuleRelativePath", "RepresentationActor.h" },
 	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_Logic_MetaData[] = {
@@ -101,7 +103,7 @@ const UECodeGen_Private::FClassParams Z_Construct_UClass_ARepresentationActor_St
 	0,
 	UE_ARRAY_COUNT(Z_Construct_UClass_ARepresentationActor_Statics::PropPointers),
 	UE_ARRAY_COUNT(InterfaceParams),
-	0x009000A4u,
+	0x009000A5u,
 	METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_ARepresentationActor_Statics::Class_MetaDataParams), Z_Construct_UClass_ARepresentationActor_Statics::Class_MetaDataParams)
 };
 void ARepresentationActor::StaticRegisterNativesARepresentationActor()
@@ -124,10 +126,10 @@ ARepresentationActor::~ARepresentationActor() {}
 struct Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_RepresentationActor_h__Script_LMN_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_ARepresentationActor, ARepresentationActor::StaticClass, TEXT("ARepresentationActor"), &Z_Registration_Info_UClass_ARepresentationActor, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ARepresentationActor), 2032522174U) },
+		{ Z_Construct_UClass_ARepresentationActor, ARepresentationActor::StaticClass, TEXT("ARepresentationActor"), &Z_Registration_Info_UClass_ARepresentationActor, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ARepresentationActor), 1245256099U) },
 	};
 }; // Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_RepresentationActor_h__Script_LMN_Statics 
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_RepresentationActor_h__Script_LMN_1665431079{
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_RepresentationActor_h__Script_LMN_2040502157{
 	TEXT("/Script/LMN"),
 	Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_RepresentationActor_h__Script_LMN_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_RepresentationActor_h__Script_LMN_Statics::ClassInfo),
 	nullptr, 0,

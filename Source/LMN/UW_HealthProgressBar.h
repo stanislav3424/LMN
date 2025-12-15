@@ -12,5 +12,5 @@ class LMN_API UUW_HealthProgressBar : public UUW_ProgressBar
     GENERATED_BODY()
 
 protected:
-    virtual void NativeConstruct() override;
+    virtual void ObjectUpdated() override;
 };

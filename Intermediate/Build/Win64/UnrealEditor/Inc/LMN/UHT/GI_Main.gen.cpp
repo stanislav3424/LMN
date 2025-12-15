@@ -317,7 +317,9 @@ struct Z_Construct_UClass_UGI_Main_Statics
 {
 #if WITH_METADATA
 	static constexpr UECodeGen_Private::FMetaDataPairParam Class_MetaDataParams[] = {
+		{ "BlueprintType", "true" },
 		{ "IncludePath", "GI_Main.h" },
+		{ "IsBlueprintBase", "true" },
 		{ "ModuleRelativePath", "GI_Main.h" },
 	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_DataTables_MetaData[] = {
@@ -388,7 +390,7 @@ const UECodeGen_Private::FClassParams Z_Construct_UClass_UGI_Main_Statics::Class
 	0,
 	UE_ARRAY_COUNT(Z_Construct_UClass_UGI_Main_Statics::PropPointers),
 	0,
-	0x009000A8u,
+	0x009000A9u,
 	METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_UGI_Main_Statics::Class_MetaDataParams), Z_Construct_UClass_UGI_Main_Statics::Class_MetaDataParams)
 };
 void UGI_Main::StaticRegisterNativesUGI_Main()
@@ -416,10 +418,10 @@ struct Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_S
 		{ FCharacterLogicRow::StaticStruct, Z_Construct_UScriptStruct_FCharacterLogicRow_Statics::NewStructOps, TEXT("CharacterLogicRow"),&Z_Registration_Info_UScriptStruct_FCharacterLogicRow, CONSTRUCT_RELOAD_VERSION_INFO(FStructReloadVersionInfo, sizeof(FCharacterLogicRow), 1225468095U) },
 	};
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_UGI_Main, UGI_Main::StaticClass, TEXT("UGI_Main"), &Z_Registration_Info_UClass_UGI_Main, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UGI_Main), 376260851U) },
+		{ Z_Construct_UClass_UGI_Main, UGI_Main::StaticClass, TEXT("UGI_Main"), &Z_Registration_Info_UClass_UGI_Main, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UGI_Main), 1311615001U) },
 	};
 }; // Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_GI_Main_h__Script_LMN_Statics 
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_GI_Main_h__Script_LMN_1614250171{
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_GI_Main_h__Script_LMN_3959587749{
 	TEXT("/Script/LMN"),
 	Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_GI_Main_h__Script_LMN_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_GI_Main_h__Script_LMN_Statics::ClassInfo),
 	Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_GI_Main_h__Script_LMN_Statics::ScriptStructInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_GI_Main_h__Script_LMN_Statics::ScriptStructInfo),

@@ -20,6 +20,9 @@ public:
     virtual void NativeOnListItemObjectSet(UObject* ListItemObject) override;
 
 protected:
+    virtual void ObjectUpdated() override;
+
+protected:
     UPROPERTY(meta = (BindWidget))
     UUW_StaminaProgressBar* StaminaProgressBar;
 

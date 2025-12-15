@@ -14,7 +14,7 @@ class AHUD_Main;
 
 struct FInputActionValue;
 
-UCLASS(Abstract)
+UCLASS(Blueprintable, Abstract)
 class LMN_API APC_Main : public APlayerController
 {
     GENERATED_BODY()

@@ -7,7 +7,7 @@
 #include "LogicInterface.h"
 #include "RepresentationPawn.generated.h"
 
-UCLASS()
+UCLASS(Blueprintable, Abstract)
 class LMN_API ARepresentationPawn : public APawn, public ILogicInterface
 {
 	GENERATED_BODY()

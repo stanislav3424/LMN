@@ -4,13 +4,14 @@
 #include "Logic.h"
 #include "BFL.h"
 
-void UUW_HealthProgressBar::NativeConstruct()
+void UUW_HealthProgressBar::ObjectUpdated()
 {
-    Super::NativeConstruct();
-
     if (Object)
         if (auto Logic = Cast<ULogic>(Object))
-            Logic->OnHealthChange.AddDynamic(this, &UUW_HealthProgressBar::SetPercent);
+        {
+            Logic->OnHealthChange.AddUniqueDynamic(this, &UUW_HealthProgressBar::SetPercent);
+            Logic->BroadcastOnHealthChange();
+        }
         else
             CHECK_FIELD(Logic);
 }

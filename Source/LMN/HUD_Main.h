@@ -9,7 +9,7 @@
 class APC_Main;
 class UUW_HUD;
 
-UCLASS(Abstract)
+UCLASS(Blueprintable, Abstract)
 class LMN_API AHUD_Main : public AHUD
 {
     GENERATED_BODY()

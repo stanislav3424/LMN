@@ -54,8 +54,10 @@ struct Z_Construct_UClass_ARepresentationPawn_Statics
 {
 #if WITH_METADATA
 	static constexpr UECodeGen_Private::FMetaDataPairParam Class_MetaDataParams[] = {
+		{ "BlueprintType", "true" },
 		{ "HideCategories", "Navigation" },
 		{ "IncludePath", "RepresentationPawn.h" },
+		{ "IsBlueprintBase", "true" },
 		{ "ModuleRelativePath", "RepresentationPawn.h" },
 	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_Logic_MetaData[] = {
@@ -102,7 +104,7 @@ const UECodeGen_Private::FClassParams Z_Construct_UClass_ARepresentationPawn_Sta
 	0,
 	UE_ARRAY_COUNT(Z_Construct_UClass_ARepresentationPawn_Statics::PropPointers),
 	UE_ARRAY_COUNT(InterfaceParams),
-	0x009000A4u,
+	0x009000A5u,
 	METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_ARepresentationPawn_Statics::Class_MetaDataParams), Z_Construct_UClass_ARepresentationPawn_Statics::Class_MetaDataParams)
 };
 void ARepresentationPawn::StaticRegisterNativesARepresentationPawn()
@@ -125,10 +127,10 @@ ARepresentationPawn::~ARepresentationPawn() {}
 struct Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_RepresentationPawn_h__Script_LMN_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_ARepresentationPawn, ARepresentationPawn::StaticClass, TEXT("ARepresentationPawn"), &Z_Registration_Info_UClass_ARepresentationPawn, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ARepresentationPawn), 3505332984U) },
+		{ Z_Construct_UClass_ARepresentationPawn, ARepresentationPawn::StaticClass, TEXT("ARepresentationPawn"), &Z_Registration_Info_UClass_ARepresentationPawn, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ARepresentationPawn), 621350076U) },
 	};
 }; // Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_RepresentationPawn_h__Script_LMN_Statics 
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_RepresentationPawn_h__Script_LMN_706126967{
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_RepresentationPawn_h__Script_LMN_3840718626{
 	TEXT("/Script/LMN"),
 	Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_RepresentationPawn_h__Script_LMN_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_RepresentationPawn_h__Script_LMN_Statics::ClassInfo),
 	nullptr, 0,

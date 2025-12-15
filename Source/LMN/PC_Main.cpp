@@ -112,5 +112,9 @@ void APC_Main::UpdateActorsSelected(const TArray<AActor*>& NewActorsSelected)
     AddActorsSelected    = NewSet.Difference(ActorsSelected);
     RemoveActorsSelected = ActorsSelected.Difference(NewSet);
     ActorsSelected       = MoveTemp(NewSet);
+
+     /*UE_LOG(LogTemp, Error, TEXT("ActorsSelected size: %d; Added: %d; Removed: %d"), ActorsSelected.Num(),
+        AddActorsSelected.Num(), RemoveActorsSelected.Num());*/
+
     OnActorsSelectedChange.Broadcast();
 }

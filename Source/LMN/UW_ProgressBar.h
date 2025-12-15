@@ -22,5 +22,4 @@ protected:
     UFUNCTION()
     void SetPercent(float Current, float Max);
 
-    void SetPercent(float InPercent);
 };

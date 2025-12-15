@@ -8,4 +8,6 @@ void UUW_Base::SetObject(UObject* NewObject)
     if (NewObject)
         Object = NewObject;
     CHECK_FIELD(Object);
+
+    ObjectUpdated();
 }

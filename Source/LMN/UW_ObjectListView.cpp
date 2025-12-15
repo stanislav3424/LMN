@@ -8,9 +8,11 @@
 
 void UUW_ObjectListView::NativeOnListItemObjectSet(UObject* ListItemObject)
 {
-    if (!ListItemObject)
-        return;
-    Object         = ListItemObject;
+    SetObject(ListItemObject);
+}
+
+void UUW_ObjectListView::ObjectUpdated()
+{
     auto CharacterLogic = Cast<UCharacterLogic>(Object);
 
     CHECK_FIELD(CharacterLogic);

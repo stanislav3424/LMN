@@ -52,7 +52,7 @@ void ULogic::DamageProcess(float Damage)
     CurrentHealth = FMath::Clamp(CurrentHealth, 0.f, MaxHealth);
 
     if (CheckCurrentHealth != CurrentHealth)
-        OnHealthChange.Broadcast(MaxHealth, CurrentHealth);
+        BroadcastOnHealthChange();
 
     if (CurrentHealth <= 0.f)
         Died();
@@ -61,4 +61,9 @@ void ULogic::DamageProcess(float Damage)
 void ULogic::Died()
 {
     OnDied.Broadcast();
+}
+
+void ULogic::BroadcastOnHealthChange() const
+{
+    OnHealthChange.Broadcast(MaxHealth, CurrentHealth);
 }

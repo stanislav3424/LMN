@@ -100,17 +100,28 @@ FDataTableRowHandle UGI_Main::GetRowHandleByActorClass(AActor* Actor)
     return FDataTableRowHandle();
 }
 
-ULogicBase* UGI_Main::CreateLogicByRowHandle(FDataTableRowHandle RowHandle)
+ULogicBase* UGI_Main::CreateLogicByRowHandle(FDataTableRowHandle const& RowHandle)
 {
     if (!RowHandle.IsNull())
         if (auto const* Row = RowHandle.DataTable->FindRow<FLogicBaseRow>(RowHandle.RowName, TEXT("")))
-            if (auto Logic = NewObject<ULogicBase>(GetWorld(), Row->RepresentationActorClass, RowHandle.RowName))
+        {
+            if (auto Logic = NewObject<ULogicBase>(GetWorld(), Row->LogicClass))
             {
                 Logic->Initialization(RowHandle);
                 return Logic;
             }
+        }
 
     return nullptr;
+}
+
+TSubclassOf<AActor> UGI_Main::GetRepresentationActorClassByRowHandle(FDataTableRowHandle const& RowHandle)
+{
+    if (!RowHandle.IsNull())
+        if (auto const* Row = RowHandle.DataTable->FindRow<FLogicBaseRow>(RowHandle.RowName, TEXT("")))
+            return Row->RepresentationActorClass;
+
+    return TSubclassOf<AActor>();
 }
 
 void UGI_Main::ActorActivation(AActor* Actor)

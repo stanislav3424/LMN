@@ -44,6 +44,8 @@ class LMN_API UUW_Base : public UUserWidget
         UPROPERTY()
         UObject* Object;
 
+        virtual void ObjectUpdated() {};
+
     public:
         void SetObject(UObject* NewObject);
 };
