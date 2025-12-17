@@ -10,6 +10,7 @@
 class UCharacterLogic;
 class UUW_StaminaProgressBar;
 class UUW_HealthProgressBar;
+class UUW_Icon;
 
 UCLASS(Blueprintable, Abstract)
 class LMN_API UUW_ObjectListView : public UUW_Base, public IUserObjectListEntry
@@ -28,4 +29,7 @@ protected:
 
     UPROPERTY(meta = (BindWidget))
     UUW_HealthProgressBar* HealthProgressBar;
+
+    UPROPERTY(meta = (BindWidget))
+    UUW_Icon* UW_Icon;
 };

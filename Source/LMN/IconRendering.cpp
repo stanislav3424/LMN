@@ -5,10 +5,11 @@
 #include "Engine/TextureRenderTarget2D.h"
 #include "LogicBase.h"
 #include "GI_Main.h"
+#include "BFL.h"
 
 AIconRendering::AIconRendering()
 {
-    PrimaryActorTick.bCanEverTick = false;
+    PrimaryActorTick.bCanEverTick = true;
     PrimaryActorTick.TickInterval = 0.1f;
 
     auto Root = CreateDefaultSubobject<USceneComponent>(TEXT("Root"));
@@ -89,12 +90,11 @@ void AIconRendering::Render(TPair<FDataTableRowHandle, UTextureRenderTarget2D*>&
             const bool bChannel2 = false;
 
             auto Components = Actor->GetComponents().Array();
-            for (auto Comp : Components)
+            for (auto Component : Components)
             {
-                if (auto Prim = Cast<UPrimitiveComponent>(Comp))
+                if (auto Prim = Cast<UPrimitiveComponent>(Component))
                 {
                     Prim->SetLightingChannels(bChannel0, bChannel1, bChannel2);
-                    Prim->MarkRenderStateDirty();
                 }
             }
 
@@ -107,6 +107,7 @@ void AIconRendering::RenderObjectToMID(UObject* Object, UMaterialInstanceDynamic
 {
     if (!Object || !MID)
         return;
+
 
     if (auto Logic = Cast<ULogicBase>(Object))
     {
@@ -130,6 +131,8 @@ void AIconRendering::RenderObjectToMID(UObject* Object, UMaterialInstanceDynamic
             return;
         }
 
+
+
         if (auto NewRenderTarget = NewObject<UTextureRenderTarget2D>(this))
         {
 
@@ -139,6 +142,7 @@ void AIconRendering::RenderObjectToMID(UObject* Object, UMaterialInstanceDynamic
             NewRenderTarget->UpdateResourceImmediate(true);
 
             Textures.Add(RowHandle.RowName, TPair<UTextureRenderTarget2D*, bool>(NewRenderTarget, false));
+            Queue.Enqueue(TPair<FDataTableRowHandle, UTextureRenderTarget2D*>(RowHandle, NewRenderTarget));
 
             MID->SetTextureParameterValue(MIDTextureParameterName, NewRenderTarget);
             MIDs.FindOrAdd(NewRenderTarget).Add(MID);

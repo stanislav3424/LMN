@@ -4,6 +4,8 @@
 #include "LogicInterface.h"
 #include "GI_Main.h"
 #include "Logic.h"
+#include "GM_Main.h"
+#include "IconRendering.h"
 
 DEFINE_LOG_CATEGORY(LMN)
 
@@ -83,4 +85,13 @@ bool UBFL::IsTeamsEqual(ULogicBase* LogicA, ULogicBase* LogicB)
 bool UBFL::IsTeamsEqualActor(AActor* ActorA, AActor* ActorB)
 {
     return IsTeamsEqual(UBFL::GetLogic(ActorA), UBFL::GetLogic(ActorB));
+}
+
+void UBFL::GetIcon(UObject* Object, UMaterialInstanceDynamic* MID)
+{
+    if (Object && MID)
+        if (auto World = Object->GetWorld())
+            if (auto GM = World->GetAuthGameMode<AGM_Main>())
+                if (auto IconRendering = GM->GetIconRendering())
+                    IconRendering->RenderObjectToMID(Object, MID);
 };

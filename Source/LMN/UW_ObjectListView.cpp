@@ -5,10 +5,13 @@
 #include "UW_StaminaProgressBar.h"
 #include "UW_HealthProgressBar.h"
 #include "BFL.h"
+#include "UW_Icon.h"
 
 void UUW_ObjectListView::NativeOnListItemObjectSet(UObject* ListItemObject)
 {
     SetObject(ListItemObject);
+    if (UW_Icon)
+        UW_Icon->SetObject(ListItemObject);
 }
 
 void UUW_ObjectListView::ObjectUpdated()

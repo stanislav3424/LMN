@@ -14,6 +14,7 @@ void EmptyLinkFunctionForGeneratedCodeUW_ObjectListView() {}
 // ********** Begin Cross Module References ********************************************************
 LMN_API UClass* Z_Construct_UClass_UUW_Base();
 LMN_API UClass* Z_Construct_UClass_UUW_HealthProgressBar_NoRegister();
+LMN_API UClass* Z_Construct_UClass_UUW_Icon_NoRegister();
 LMN_API UClass* Z_Construct_UClass_UUW_ObjectListView();
 LMN_API UClass* Z_Construct_UClass_UUW_ObjectListView_NoRegister();
 LMN_API UClass* Z_Construct_UClass_UUW_StaminaProgressBar_NoRegister();
@@ -70,11 +71,17 @@ struct Z_Construct_UClass_UUW_ObjectListView_Statics
 		{ "EditInline", "true" },
 		{ "ModuleRelativePath", "UW_ObjectListView.h" },
 	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_UW_Icon_MetaData[] = {
+		{ "BindWidget", "" },
+		{ "EditInline", "true" },
+		{ "ModuleRelativePath", "UW_ObjectListView.h" },
+	};
 #endif // WITH_METADATA
 
 // ********** Begin Class UUW_ObjectListView constinit property declarations ***********************
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_StaminaProgressBar;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_HealthProgressBar;
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_UW_Icon;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 // ********** End Class UUW_ObjectListView constinit property declarations *************************
 	static UObject* (*const DependentSingletons[])();
@@ -88,9 +95,11 @@ struct Z_Construct_UClass_UUW_ObjectListView_Statics
 // ********** Begin Class UUW_ObjectListView Property Definitions **********************************
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UUW_ObjectListView_Statics::NewProp_StaminaProgressBar = { "StaminaProgressBar", nullptr, (EPropertyFlags)0x0020080000080008, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UUW_ObjectListView, StaminaProgressBar), Z_Construct_UClass_UUW_StaminaProgressBar_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_StaminaProgressBar_MetaData), NewProp_StaminaProgressBar_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UUW_ObjectListView_Statics::NewProp_HealthProgressBar = { "HealthProgressBar", nullptr, (EPropertyFlags)0x0020080000080008, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UUW_ObjectListView, HealthProgressBar), Z_Construct_UClass_UUW_HealthProgressBar_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_HealthProgressBar_MetaData), NewProp_HealthProgressBar_MetaData) };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UUW_ObjectListView_Statics::NewProp_UW_Icon = { "UW_Icon", nullptr, (EPropertyFlags)0x0020080000080008, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UUW_ObjectListView, UW_Icon), Z_Construct_UClass_UUW_Icon_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_UW_Icon_MetaData), NewProp_UW_Icon_MetaData) };
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_UUW_ObjectListView_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UUW_ObjectListView_Statics::NewProp_StaminaProgressBar,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UUW_ObjectListView_Statics::NewProp_HealthProgressBar,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UUW_ObjectListView_Statics::NewProp_UW_Icon,
 };
 static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_UUW_ObjectListView_Statics::PropPointers) < 2048);
 // ********** End Class UUW_ObjectListView Property Definitions ************************************
@@ -137,10 +146,10 @@ UUW_ObjectListView::~UUW_ObjectListView() {}
 struct Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_UW_ObjectListView_h__Script_LMN_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_UUW_ObjectListView, UUW_ObjectListView::StaticClass, TEXT("UUW_ObjectListView"), &Z_Registration_Info_UClass_UUW_ObjectListView, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UUW_ObjectListView), 3779987683U) },
+		{ Z_Construct_UClass_UUW_ObjectListView, UUW_ObjectListView::StaticClass, TEXT("UUW_ObjectListView"), &Z_Registration_Info_UClass_UUW_ObjectListView, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UUW_ObjectListView), 1858710977U) },
 	};
 }; // Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_UW_ObjectListView_h__Script_LMN_Statics 
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_UW_ObjectListView_h__Script_LMN_1903975032{
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_UW_ObjectListView_h__Script_LMN_1110860751{
 	TEXT("/Script/LMN"),
 	Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_UW_ObjectListView_h__Script_LMN_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_UW_ObjectListView_h__Script_LMN_Statics::ClassInfo),
 	nullptr, 0,

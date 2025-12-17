@@ -8,6 +8,7 @@ void UUW_Icon::NativeConstruct()
 {
     Super::NativeConstruct();
 
+    
     if (IconImage)
         IconMID = IconImage->GetDynamicMaterial();
 
@@ -30,6 +31,11 @@ void UUW_Icon::NativeTick(const FGeometry& MyGeometry, float InDeltaTime)
 
 void UUW_Icon::ObjectUpdated()
 {
+    if (Object && IconMID)
+    {
+        UBFL::GetIcon(Object, IconMID);
+
+    }
 }
 
 void UUW_Icon::WidgetSizeChanged(const FVector2D& NewSize)

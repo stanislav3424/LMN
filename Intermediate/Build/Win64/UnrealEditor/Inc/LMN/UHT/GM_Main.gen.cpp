@@ -12,9 +12,11 @@ static_assert(!UE_WITH_CONSTINIT_UOBJECT, "This generated code can only be compi
 void EmptyLinkFunctionForGeneratedCodeGM_Main() {}
 
 // ********** Begin Cross Module References ********************************************************
+COREUOBJECT_API UClass* Z_Construct_UClass_UClass_NoRegister();
 ENGINE_API UClass* Z_Construct_UClass_AGameModeBase();
 LMN_API UClass* Z_Construct_UClass_AGM_Main();
 LMN_API UClass* Z_Construct_UClass_AGM_Main_NoRegister();
+LMN_API UClass* Z_Construct_UClass_AIconRendering_NoRegister();
 UPackage* Z_Construct_UPackage__Script_LMN();
 // ********** End Cross Module References **********************************************************
 
@@ -52,17 +54,24 @@ struct Z_Construct_UClass_AGM_Main_Statics
 {
 #if WITH_METADATA
 	static constexpr UECodeGen_Private::FMetaDataPairParam Class_MetaDataParams[] = {
-#if !UE_BUILD_SHIPPING
-		{ "Comment", "/**\n * \n */" },
-#endif
 		{ "HideCategories", "Info Rendering MovementReplication Replication Actor Input Movement Collision Rendering HLOD WorldPartition DataLayers Transformation" },
 		{ "IncludePath", "GM_Main.h" },
 		{ "ModuleRelativePath", "GM_Main.h" },
 		{ "ShowCategories", "Input|MouseInput Input|TouchInput" },
 	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_IconRendering_MetaData[] = {
+		{ "ModuleRelativePath", "GM_Main.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_IconRenderingClass_MetaData[] = {
+		{ "Category", "IconRendering" },
+		{ "ModuleRelativePath", "GM_Main.h" },
+	};
 #endif // WITH_METADATA
 
 // ********** Begin Class AGM_Main constinit property declarations *********************************
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_IconRendering;
+	static const UECodeGen_Private::FClassPropertyParams NewProp_IconRenderingClass;
+	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 // ********** End Class AGM_Main constinit property declarations ***********************************
 	static UObject* (*const DependentSingletons[])();
 	static constexpr FCppClassTypeInfoStatic StaticCppClassTypeInfo = {
@@ -70,6 +79,16 @@ struct Z_Construct_UClass_AGM_Main_Statics
 	};
 	static const UECodeGen_Private::FClassParams ClassParams;
 }; // struct Z_Construct_UClass_AGM_Main_Statics
+
+// ********** Begin Class AGM_Main Property Definitions ********************************************
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AGM_Main_Statics::NewProp_IconRendering = { "IconRendering", nullptr, (EPropertyFlags)0x0020080000002000, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AGM_Main, IconRendering), Z_Construct_UClass_AIconRendering_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_IconRendering_MetaData), NewProp_IconRendering_MetaData) };
+const UECodeGen_Private::FClassPropertyParams Z_Construct_UClass_AGM_Main_Statics::NewProp_IconRenderingClass = { "IconRenderingClass", nullptr, (EPropertyFlags)0x0024080000010001, UECodeGen_Private::EPropertyGenFlags::Class, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AGM_Main, IconRenderingClass), Z_Construct_UClass_UClass_NoRegister, Z_Construct_UClass_AIconRendering_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_IconRenderingClass_MetaData), NewProp_IconRenderingClass_MetaData) };
+const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_AGM_Main_Statics::PropPointers[] = {
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AGM_Main_Statics::NewProp_IconRendering,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AGM_Main_Statics::NewProp_IconRenderingClass,
+};
+static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_AGM_Main_Statics::PropPointers) < 2048);
+// ********** End Class AGM_Main Property Definitions **********************************************
 UObject* (*const Z_Construct_UClass_AGM_Main_Statics::DependentSingletons[])() = {
 	(UObject* (*)())Z_Construct_UClass_AGameModeBase,
 	(UObject* (*)())Z_Construct_UPackage__Script_LMN,
@@ -81,11 +100,11 @@ const UECodeGen_Private::FClassParams Z_Construct_UClass_AGM_Main_Statics::Class
 	&StaticCppClassTypeInfo,
 	DependentSingletons,
 	nullptr,
-	nullptr,
+	Z_Construct_UClass_AGM_Main_Statics::PropPointers,
 	nullptr,
 	UE_ARRAY_COUNT(DependentSingletons),
 	0,
-	0,
+	UE_ARRAY_COUNT(Z_Construct_UClass_AGM_Main_Statics::PropPointers),
 	0,
 	0x009002ACu,
 	METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_AGM_Main_Statics::Class_MetaDataParams), Z_Construct_UClass_AGM_Main_Statics::Class_MetaDataParams)
@@ -110,10 +129,10 @@ AGM_Main::~AGM_Main() {}
 struct Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_GM_Main_h__Script_LMN_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_AGM_Main, AGM_Main::StaticClass, TEXT("AGM_Main"), &Z_Registration_Info_UClass_AGM_Main, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AGM_Main), 2488474083U) },
+		{ Z_Construct_UClass_AGM_Main, AGM_Main::StaticClass, TEXT("AGM_Main"), &Z_Registration_Info_UClass_AGM_Main, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AGM_Main), 1530037685U) },
 	};
 }; // Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_GM_Main_h__Script_LMN_Statics 
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_GM_Main_h__Script_LMN_717806913{
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_GM_Main_h__Script_LMN_3543922680{
 	TEXT("/Script/LMN"),
 	Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_GM_Main_h__Script_LMN_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_GM_Main_h__Script_LMN_Statics::ClassInfo),
 	nullptr, 0,

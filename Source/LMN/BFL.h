@@ -23,6 +23,8 @@ enum class ETeam : uint8;
 template <typename TypeLogic>
 concept LogicDerived = std::derived_from<TypeLogic, ULogicBase>;
 
+
+
 UCLASS()
 class LMN_API UBFL : public UBlueprintFunctionLibrary
 {
@@ -77,4 +79,7 @@ public:
                 return false;
         return true;
     }
+
+    UFUNCTION(BlueprintCallable, Category = "Icon")
+    static void GetIcon(UObject* Object, UMaterialInstanceDynamic* MID);
 };

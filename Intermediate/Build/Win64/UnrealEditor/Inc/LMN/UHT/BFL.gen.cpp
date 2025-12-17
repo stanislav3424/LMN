@@ -13,8 +13,10 @@ static_assert(!UE_WITH_CONSTINIT_UOBJECT, "This generated code can only be compi
 void EmptyLinkFunctionForGeneratedCodeBFL() {}
 
 // ********** Begin Cross Module References ********************************************************
+COREUOBJECT_API UClass* Z_Construct_UClass_UObject_NoRegister();
 ENGINE_API UClass* Z_Construct_UClass_AActor_NoRegister();
 ENGINE_API UClass* Z_Construct_UClass_UBlueprintFunctionLibrary();
+ENGINE_API UClass* Z_Construct_UClass_UMaterialInstanceDynamic_NoRegister();
 ENGINE_API UClass* Z_Construct_UClass_UWorld_NoRegister();
 ENGINE_API UScriptStruct* Z_Construct_UScriptStruct_FDataTableRowHandle();
 LMN_API UClass* Z_Construct_UClass_UBFL();
@@ -145,6 +147,63 @@ DEFINE_FUNCTION(UBFL::execCreateLogicByRowName)
 	P_NATIVE_END;
 }
 // ********** End Class UBFL Function CreateLogicByRowName *****************************************
+
+// ********** Begin Class UBFL Function GetIcon ****************************************************
+struct Z_Construct_UFunction_UBFL_GetIcon_Statics
+{
+	struct BFL_eventGetIcon_Parms
+	{
+		UObject* Object;
+		UMaterialInstanceDynamic* MID;
+	};
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "Category", "Icon" },
+		{ "ModuleRelativePath", "BFL.h" },
+	};
+#endif // WITH_METADATA
+
+// ********** Begin Function GetIcon constinit property declarations *******************************
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_Object;
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_MID;
+	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+// ********** End Function GetIcon constinit property declarations *********************************
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+
+// ********** Begin Function GetIcon Property Definitions ******************************************
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_UBFL_GetIcon_Statics::NewProp_Object = { "Object", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(BFL_eventGetIcon_Parms, Object), Z_Construct_UClass_UObject_NoRegister, METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_UBFL_GetIcon_Statics::NewProp_MID = { "MID", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(BFL_eventGetIcon_Parms, MID), Z_Construct_UClass_UMaterialInstanceDynamic_NoRegister, METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UBFL_GetIcon_Statics::PropPointers[] = {
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UBFL_GetIcon_Statics::NewProp_Object,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UBFL_GetIcon_Statics::NewProp_MID,
+};
+static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_UBFL_GetIcon_Statics::PropPointers) < 2048);
+// ********** End Function GetIcon Property Definitions ********************************************
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UBFL_GetIcon_Statics::FuncParams = { { (UObject*(*)())Z_Construct_UClass_UBFL, nullptr, "GetIcon", 	Z_Construct_UFunction_UBFL_GetIcon_Statics::PropPointers, 
+	UE_ARRAY_COUNT(Z_Construct_UFunction_UBFL_GetIcon_Statics::PropPointers), 
+sizeof(Z_Construct_UFunction_UBFL_GetIcon_Statics::BFL_eventGetIcon_Parms),
+RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04022401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UBFL_GetIcon_Statics::Function_MetaDataParams), Z_Construct_UFunction_UBFL_GetIcon_Statics::Function_MetaDataParams)},  };
+static_assert(sizeof(Z_Construct_UFunction_UBFL_GetIcon_Statics::BFL_eventGetIcon_Parms) < MAX_uint16);
+UFunction* Z_Construct_UFunction_UBFL_GetIcon()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_UBFL_GetIcon_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(UBFL::execGetIcon)
+{
+	P_GET_OBJECT(UObject,Z_Param_Object);
+	P_GET_OBJECT(UMaterialInstanceDynamic,Z_Param_MID);
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	UBFL::GetIcon(Z_Param_Object,Z_Param_MID);
+	P_NATIVE_END;
+}
+// ********** End Class UBFL Function GetIcon ******************************************************
 
 // ********** Begin Class UBFL Function GetLogic ***************************************************
 struct Z_Construct_UFunction_UBFL_GetLogic_Statics
@@ -516,6 +575,7 @@ struct Z_Construct_UClass_UBFL_Statics
 	static constexpr UE::CodeGen::FClassNativeFunction Funcs[] = {
 		{ .NameUTF8 = UTF8TEXT("CreateLogicByRowHandle"), .Pointer = &UBFL::execCreateLogicByRowHandle },
 		{ .NameUTF8 = UTF8TEXT("CreateLogicByRowName"), .Pointer = &UBFL::execCreateLogicByRowName },
+		{ .NameUTF8 = UTF8TEXT("GetIcon"), .Pointer = &UBFL::execGetIcon },
 		{ .NameUTF8 = UTF8TEXT("GetLogic"), .Pointer = &UBFL::execGetLogic },
 		{ .NameUTF8 = UTF8TEXT("GetTeam"), .Pointer = &UBFL::execGetTeam },
 		{ .NameUTF8 = UTF8TEXT("GetTeamActor"), .Pointer = &UBFL::execGetTeamActor },
@@ -526,6 +586,7 @@ struct Z_Construct_UClass_UBFL_Statics
 	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
 		{ &Z_Construct_UFunction_UBFL_CreateLogicByRowHandle, "CreateLogicByRowHandle" }, // 1569377341
 		{ &Z_Construct_UFunction_UBFL_CreateLogicByRowName, "CreateLogicByRowName" }, // 1995861202
+		{ &Z_Construct_UFunction_UBFL_GetIcon, "GetIcon" }, // 3868335089
 		{ &Z_Construct_UFunction_UBFL_GetLogic, "GetLogic" }, // 2218677534
 		{ &Z_Construct_UFunction_UBFL_GetTeam, "GetTeam" }, // 296717931
 		{ &Z_Construct_UFunction_UBFL_GetTeamActor, "GetTeamActor" }, // 995336964
@@ -580,10 +641,10 @@ UBFL::~UBFL() {}
 struct Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_BFL_h__Script_LMN_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_UBFL, UBFL::StaticClass, TEXT("UBFL"), &Z_Registration_Info_UClass_UBFL, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UBFL), 1525672255U) },
+		{ Z_Construct_UClass_UBFL, UBFL::StaticClass, TEXT("UBFL"), &Z_Registration_Info_UClass_UBFL, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UBFL), 2397465223U) },
 	};
 }; // Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_BFL_h__Script_LMN_Statics 
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_BFL_h__Script_LMN_2235759514{
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_BFL_h__Script_LMN_1846629130{
 	TEXT("/Script/LMN"),
 	Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_BFL_h__Script_LMN_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_BFL_h__Script_LMN_Statics::ClassInfo),
 	nullptr, 0,
