@@ -3,6 +3,16 @@
 #include "UW_Base.h"
 #include "BFL.h"
 
+void UUW_Base::ObjectUpdated()
+{
+    TArray<UWidget*> DirectChildren;
+    UBFL::GetDirectChildWidgets(this, DirectChildren);
+
+    for (auto Children : DirectChildren)
+        if (Children)
+            UBFL::SetLogic(Children, LogicBase);
+}
+
 ULogicBase* UUW_Base::GetLogic_Implementation()
 {
     return LogicBase;

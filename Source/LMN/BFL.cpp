@@ -6,8 +6,44 @@
 #include "Logic.h"
 #include "GM_Main.h"
 #include "IconRendering.h"
+#include "Blueprint/UserWidget.h"
+#include "Components/PanelWidget.h"
+#include "Blueprint/WidgetTree.h"
+#include "Components/ContentWidget.h"
 
 DEFINE_LOG_CATEGORY(LMN)
+
+void UBFL::GetDirectChildWidgets(UWidget* Root, TArray<UWidget*>& OutWidgets)
+{
+    OutWidgets.Reset();
+    if (!Root)
+        return;
+
+    if (UUserWidget* UserWidget = Cast<UUserWidget>(Root))
+    {
+        Root = UserWidget->GetRootWidget();
+        if (!Root && UserWidget->WidgetTree)
+        {
+            Root = UserWidget->WidgetTree->RootWidget;
+        }
+        if (!Root)
+            return;
+    }
+
+    if (UPanelWidget* Panel = Cast<UPanelWidget>(Root))
+    {
+        const int32 Count = Panel->GetChildrenCount();
+        OutWidgets.Reserve(Count);
+        for (int32 i = 0; i < Count; ++i)
+        {
+            if (UWidget* Child = Panel->GetChildAt(i))
+            {
+                OutWidgets.Add(Child);
+            }
+        }
+    }
+
+}
 
 void UBFL::SetLogic(UObject* Object, UObject* Logic)
 {

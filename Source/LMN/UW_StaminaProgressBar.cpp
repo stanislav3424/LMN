@@ -6,6 +6,8 @@
 
 void UUW_StaminaProgressBar::ObjectUpdated()
 {
+    Super::ObjectUpdated();
+
     if (LogicBase)
         if (auto Logic = Cast<UCharacterLogic>(LogicBase))
         {

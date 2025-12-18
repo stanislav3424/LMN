@@ -23,7 +23,7 @@ enum class ETeam : uint8;
 template <typename TypeLogic>
 concept LogicDerived = std::derived_from<TypeLogic, ULogicBase>;
 
-
+class UWidget;
 
 UCLASS()
 class LMN_API UBFL : public UBlueprintFunctionLibrary
@@ -31,6 +31,8 @@ class LMN_API UBFL : public UBlueprintFunctionLibrary
     GENERATED_BODY()
 
 public:
+    static void GetDirectChildWidgets(UWidget* Root, TArray<UWidget*>& OutWidgets);
+
     UFUNCTION(BlueprintCallable, Category = "Logic")
     static void SetLogic(UObject* Object, UObject* Logic);
 

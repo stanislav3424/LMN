@@ -33,3 +33,4 @@ protected:
     UPROPERTY(meta = (BindWidget))
     UUW_Icon* UW_Icon;
 };
+

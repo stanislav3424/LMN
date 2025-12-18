@@ -45,7 +45,7 @@ class LMN_API UUW_Base : public UUserWidget, public ILogicInterface
         UPROPERTY()
         ULogicBase* LogicBase;
 
-        virtual void ObjectUpdated() {};
+        virtual void ObjectUpdated() ;
 
         // LogicInterface
     public:

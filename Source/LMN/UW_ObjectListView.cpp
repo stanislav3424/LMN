@@ -14,6 +14,9 @@ void UUW_ObjectListView::NativeOnListItemObjectSet(UObject* ListItemObject)
 
 void UUW_ObjectListView::ObjectUpdated()
 {
+    Super::ObjectUpdated();
+
+
     if (LogicBase && StaminaProgressBar && HealthProgressBar && UW_Icon)
     {
         UBFL::SetLogic(StaminaProgressBar, LogicBase);

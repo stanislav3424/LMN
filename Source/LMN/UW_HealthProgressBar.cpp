@@ -6,6 +6,8 @@
 
 void UUW_HealthProgressBar::ObjectUpdated()
 {
+    Super::ObjectUpdated();
+
     if (LogicBase)
         if (auto Logic = Cast<ULogic>(LogicBase))
         {

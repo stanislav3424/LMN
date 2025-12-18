@@ -27,6 +27,8 @@ void UUW_Icon::NativeTick(const FGeometry& MyGeometry, float InDeltaTime)
 
 void UUW_Icon::ObjectUpdated()
 {
+    Super::ObjectUpdated();
+
     if (IconImage && !IconMID)
         IconMID = IconImage->GetDynamicMaterial();
     if (LogicBase && IconMID)

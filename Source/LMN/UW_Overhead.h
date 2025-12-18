@@ -6,12 +6,11 @@
 #include "UW_Base.h"
 #include "UW_Overhead.generated.h"
 
-/**
- * 
- */
-UCLASS()
+UCLASS(Blueprintable, Abstract)
 class LMN_API UUW_Overhead : public UUW_Base
 {
-	GENERATED_BODY()
-	
+    GENERATED_BODY()
+
+protected:
+    virtual void ObjectUpdated() override;
 };

@@ -117,12 +117,6 @@
     <ClInclude Include="..\..\Source\LMN\PC_Main.h">
       <Filter>Source\LMN</Filter>
     </ClInclude>
-    <ClCompile Include="..\..\Source\LMN\ProgressBarWidgetComponent.cpp">
-      <Filter>Source\LMN</Filter>
-    </ClCompile>
-    <ClInclude Include="..\..\Source\LMN\ProgressBarWidgetComponent.h">
-      <Filter>Source\LMN</Filter>
-    </ClInclude>
     <ClCompile Include="..\..\Source\LMN\RepresentationActor.cpp">
       <Filter>Source\LMN</Filter>
     </ClCompile>
@@ -181,6 +175,12 @@
       <Filter>Source\LMN</Filter>
     </ClCompile>
     <ClInclude Include="..\..\Source\LMN\UW_ObjectListView.h">
+      <Filter>Source\LMN</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\LMN\UW_Overhead.cpp">
+      <Filter>Source\LMN</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\LMN\UW_Overhead.h">
       <Filter>Source\LMN</Filter>
     </ClInclude>
     <ClCompile Include="..\..\Source\LMN\UW_ProgressBar.cpp">

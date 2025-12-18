@@ -3,3 +3,9 @@
 
 #include "UW_Overhead.h"
 
+void UUW_Overhead::ObjectUpdated()
+{
+    Super::ObjectUpdated();
+
+
+}
