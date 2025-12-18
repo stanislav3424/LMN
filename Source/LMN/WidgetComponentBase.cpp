@@ -1,7 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-
 #include "WidgetComponentBase.h"
+#include "BFL.h"
 
 ULogicBase* UWidgetComponentBase::GetLogic_Implementation()
 {
@@ -15,4 +15,13 @@ void UWidgetComponentBase::SetLogic_Implementation(ULogicBase* NewLogic)
         LogicBase = NewLogic;
         LogicUpdated();
     }
+}
+
+void UWidgetComponentBase::LogicUpdated()
+{
+    if (LogicBase)
+        if (auto WidgetLocal = GetWidget())
+        {
+            UBFL::SetLogic(WidgetLocal, LogicBase);
+        }
 }

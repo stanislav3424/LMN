@@ -7,7 +7,7 @@
 #include "LogicInterface.h"
 #include "WidgetComponentBase.generated.h"
 
-UCLASS(NotBlueprintable, Abstract)
+UCLASS(Blueprintable, ClassGroup = (Custom), meta = (BlueprintSpawnableComponent))
 class LMN_API UWidgetComponentBase : public UWidgetComponent, public ILogicInterface
 {
     GENERATED_BODY()
@@ -21,5 +21,5 @@ protected:
     UPROPERTY()
     ULogicBase* LogicBase;
 
-    virtual void LogicUpdated() {};
+    virtual void LogicUpdated();
 };

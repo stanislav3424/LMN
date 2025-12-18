@@ -54,9 +54,12 @@ struct Z_Construct_UClass_UWidgetComponentBase_Statics
 {
 #if WITH_METADATA
 	static constexpr UECodeGen_Private::FMetaDataPairParam Class_MetaDataParams[] = {
+		{ "BlueprintSpawnableComponent", "" },
+		{ "BlueprintType", "true" },
+		{ "ClassGroupNames", "Custom" },
 		{ "HideCategories", "Object Activation Components|Activation Sockets Base Lighting LOD Mesh Mobility Trigger" },
 		{ "IncludePath", "WidgetComponentBase.h" },
-		{ "IsBlueprintBase", "false" },
+		{ "IsBlueprintBase", "true" },
 		{ "ModuleRelativePath", "WidgetComponentBase.h" },
 	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_LogicBase_MetaData[] = {
@@ -103,7 +106,7 @@ const UECodeGen_Private::FClassParams Z_Construct_UClass_UWidgetComponentBase_St
 	0,
 	UE_ARRAY_COUNT(Z_Construct_UClass_UWidgetComponentBase_Statics::PropPointers),
 	UE_ARRAY_COUNT(InterfaceParams),
-	0x00B010A5u,
+	0x00B010A4u,
 	METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_UWidgetComponentBase_Statics::Class_MetaDataParams), Z_Construct_UClass_UWidgetComponentBase_Statics::Class_MetaDataParams)
 };
 void UWidgetComponentBase::StaticRegisterNativesUWidgetComponentBase()
@@ -126,10 +129,10 @@ UWidgetComponentBase::~UWidgetComponentBase() {}
 struct Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_WidgetComponentBase_h__Script_LMN_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_UWidgetComponentBase, UWidgetComponentBase::StaticClass, TEXT("UWidgetComponentBase"), &Z_Registration_Info_UClass_UWidgetComponentBase, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UWidgetComponentBase), 2684006499U) },
+		{ Z_Construct_UClass_UWidgetComponentBase, UWidgetComponentBase::StaticClass, TEXT("UWidgetComponentBase"), &Z_Registration_Info_UClass_UWidgetComponentBase, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UWidgetComponentBase), 4056528558U) },
 	};
 }; // Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_WidgetComponentBase_h__Script_LMN_Statics 
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_WidgetComponentBase_h__Script_LMN_2788126340{
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_WidgetComponentBase_h__Script_LMN_327273523{
 	TEXT("/Script/LMN"),
 	Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_WidgetComponentBase_h__Script_LMN_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_WidgetComponentBase_h__Script_LMN_Statics::ClassInfo),
 	nullptr, 0,
