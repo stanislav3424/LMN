@@ -43,10 +43,10 @@ void USC_Selected::OnUnregister()
     Super::OnUnregister();
 }
 
-void USC_Selected::ObjectUpdated()
+void USC_Selected::LogicUpdated()
 {
-    if (Object)
-        if (auto Logic = Cast<ULogic>(Object))
+    if (LogicBase)
+        if (auto Logic = Cast<ULogic>(LogicBase))
         {
             Logic->OnSelectedChange.AddUniqueDynamic(this, &USC_Selected::SelectedChange);
             Logic->BroadcastOnSelectedChange();

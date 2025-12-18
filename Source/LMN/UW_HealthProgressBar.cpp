@@ -6,8 +6,8 @@
 
 void UUW_HealthProgressBar::ObjectUpdated()
 {
-    if (Object)
-        if (auto Logic = Cast<ULogic>(Object))
+    if (LogicBase)
+        if (auto Logic = Cast<ULogic>(LogicBase))
         {
             Logic->OnHealthChange.AddUniqueDynamic(this, &UUW_HealthProgressBar::SetPercent);
             Logic->BroadcastOnHealthChange();

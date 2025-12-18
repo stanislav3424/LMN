@@ -15,7 +15,7 @@ protected:
     virtual void BeginPlay() override;
     virtual void OnRegister() override;
     virtual void OnUnregister() override;
-    virtual void ObjectUpdated() override;
+    virtual void LogicUpdated() override;
 
     UFUNCTION()
     void SelectedChange(bool Selected);

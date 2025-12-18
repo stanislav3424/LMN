@@ -9,20 +9,15 @@
 
 void UUW_ObjectListView::NativeOnListItemObjectSet(UObject* ListItemObject)
 {
-    SetObject(ListItemObject);
-    if (UW_Icon)
-        UW_Icon->SetObject(ListItemObject);
+    UBFL::SetLogic(this, ListItemObject);
 }
 
 void UUW_ObjectListView::ObjectUpdated()
 {
-    auto CharacterLogic = Cast<UCharacterLogic>(Object);
-
-    CHECK_FIELD(CharacterLogic);
-
-    if (CharacterLogic && StaminaProgressBar && HealthProgressBar)
+    if (LogicBase && StaminaProgressBar && HealthProgressBar && UW_Icon)
     {
-        StaminaProgressBar->SetObject(CharacterLogic);
-        HealthProgressBar->SetObject(CharacterLogic);
+        UBFL::SetLogic(StaminaProgressBar, LogicBase);
+        UBFL::SetLogic(HealthProgressBar, LogicBase);
+        UBFL::SetLogic(UW_Icon, LogicBase);
     }
 }

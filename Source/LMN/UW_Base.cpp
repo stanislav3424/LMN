@@ -3,11 +3,16 @@
 #include "UW_Base.h"
 #include "BFL.h"
 
-void UUW_Base::SetObject(UObject* NewObject)
+ULogicBase* UUW_Base::GetLogic_Implementation()
 {
-    if (NewObject)
-        Object = NewObject;
-    CHECK_FIELD(Object);
+    return LogicBase;
+}
+
+void UUW_Base::SetLogic_Implementation(ULogicBase* NewLogic)
+{
+    if (NewLogic)
+        LogicBase = NewLogic;
+    CHECK_FIELD(LogicBase);
 
     ObjectUpdated();
 }

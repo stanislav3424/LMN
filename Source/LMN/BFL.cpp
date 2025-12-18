@@ -9,25 +9,33 @@
 
 DEFINE_LOG_CATEGORY(LMN)
 
-ULogicBase* UBFL::GetLogic(AActor* AActor)
+void UBFL::SetLogic(UObject* Object, UObject* Logic)
 {
-    return HandleGetLogic(AActor);
+    if (Object && Logic)
+        if (auto LogicBase = Cast<ULogicBase>(Logic))
+            if (Object->Implements<ULogicInterface>())
+                ILogicInterface::Execute_SetLogic(Object, LogicBase);
 }
 
-ULogicBase* UBFL::HandleGetLogic(AActor* AActor)
+ULogicBase* UBFL::GetLogic(AActor* Actor)
 {
-    if (AActor)
-        if (AActor->Implements<ULogicInterface>())
-            if (auto Logic = ILogicInterface::Execute_GetLogic(AActor))
+    return HandleGetLogic(Actor);
+}
+
+ULogicBase* UBFL::HandleGetLogic(AActor* Actor)
+{
+    if (Actor)
+        if (Actor->Implements<ULogicInterface>())
+            if (auto Logic = ILogicInterface::Execute_GetLogic(Actor))
                 return Logic;
     return nullptr;
 }
 
-void UBFL::ActorActivation(AActor* AActor)
+void UBFL::ActorActivation(AActor* Actor)
 {
-    if (IsValid(AActor))
-        if (auto GameInstance = AActor->GetGameInstance<UGI_Main>())
-            GameInstance->ActorActivation(AActor);
+    if (IsValid(Actor))
+        if (auto GameInstance = Actor->GetGameInstance<UGI_Main>())
+            GameInstance->ActorActivation(Actor);
 }
 
 ULogicBase* UBFL::CreateLogicByRowName(UWorld* World, FName RowName)

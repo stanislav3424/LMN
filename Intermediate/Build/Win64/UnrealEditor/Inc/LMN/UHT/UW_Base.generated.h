@@ -20,7 +20,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 struct Z_Construct_UClass_UUW_Base_Statics;
 LMN_API UClass* Z_Construct_UClass_UUW_Base_NoRegister();
 
-#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_UW_Base_h_12_INCLASS_NO_PURE_DECLS \
+#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_UW_Base_h_13_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesUUW_Base(); \
 	friend struct ::Z_Construct_UClass_UUW_Base_Statics; \
@@ -28,10 +28,11 @@ private: \
 	friend LMN_API UClass* ::Z_Construct_UClass_UUW_Base_NoRegister(); \
 public: \
 	DECLARE_CLASS2(UUW_Base, UUserWidget, COMPILED_IN_FLAGS(CLASS_Abstract), CASTCLASS_None, TEXT("/Script/LMN"), Z_Construct_UClass_UUW_Base_NoRegister) \
-	DECLARE_SERIALIZER(UUW_Base)
+	DECLARE_SERIALIZER(UUW_Base) \
+	virtual UObject* _getUObject() const override { return const_cast<UUW_Base*>(this); }
 
 
-#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_UW_Base_h_12_ENHANCED_CONSTRUCTORS \
+#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_UW_Base_h_13_ENHANCED_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API UUW_Base(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()); \
 	/** Deleted move- and copy-constructors, should never be used */ \
@@ -43,12 +44,12 @@ public: \
 	NO_API virtual ~UUW_Base();
 
 
-#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_UW_Base_h_9_PROLOG
-#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_UW_Base_h_12_GENERATED_BODY \
+#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_UW_Base_h_10_PROLOG
+#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_UW_Base_h_13_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_UW_Base_h_12_INCLASS_NO_PURE_DECLS \
-	FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_UW_Base_h_12_ENHANCED_CONSTRUCTORS \
+	FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_UW_Base_h_13_INCLASS_NO_PURE_DECLS \
+	FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_UW_Base_h_13_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 

@@ -18,11 +18,16 @@ void USceneComponentBase::TickComponent(float DeltaTime, ELevelTick TickType, FA
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 }
 
-void USceneComponentBase::SetObject(UObject* NewObject)
+ULogicBase* USceneComponentBase::GetLogic_Implementation()
 {
-    if (NewObject)
-        Object = NewObject;
-    CHECK_FIELD(Object);
+    return LogicBase;
+}
 
-    ObjectUpdated();
+void USceneComponentBase::SetLogic_Implementation(ULogicBase* NewLogic)
+{
+    if (NewLogic)
+        LogicBase = NewLogic;
+    CHECK_FIELD(LogicBase);
+
+    LogicUpdated();
 }

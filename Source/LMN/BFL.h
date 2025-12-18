@@ -32,16 +32,19 @@ class LMN_API UBFL : public UBlueprintFunctionLibrary
 
 public:
     UFUNCTION(BlueprintCallable, Category = "Logic")
-    static ULogicBase* GetLogic(AActor* AActor);
+    static void SetLogic(UObject* Object, UObject* Logic);
 
-    template <LogicDerived TypeLogic> static TypeLogic* GetLogic(AActor* AActor)
+    UFUNCTION(BlueprintCallable, Category = "Logic")
+    static ULogicBase* GetLogic(AActor* Actor);
+
+    template <LogicDerived TypeLogic> static TypeLogic* GetLogic(AActor* Actor)
     {
-        return Cast<TypeLogic>(HandleGetLogic(AActor));
+        return Cast<TypeLogic>(HandleGetLogic(Actor));
     };
 
-    static ULogicBase* HandleGetLogic(AActor* AActor);
+    static ULogicBase* HandleGetLogic(AActor* Actor);
 
-    static void ActorActivation(AActor* AActor);
+    static void ActorActivation(AActor* Actor);
 
     UFUNCTION(BlueprintCallable, Category = "Logic")
     static ULogicBase* CreateLogicByRowName(UWorld* World, FName RowName);

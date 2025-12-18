@@ -210,7 +210,7 @@ struct Z_Construct_UFunction_UBFL_GetLogic_Statics
 {
 	struct BFL_eventGetLogic_Parms
 	{
-		AActor* AActor;
+		AActor* Actor;
 		ULogicBase* ReturnValue;
 	};
 #if WITH_METADATA
@@ -221,7 +221,7 @@ struct Z_Construct_UFunction_UBFL_GetLogic_Statics
 #endif // WITH_METADATA
 
 // ********** Begin Function GetLogic constinit property declarations ******************************
-	static const UECodeGen_Private::FObjectPropertyParams NewProp_AActor;
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_Actor;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_ReturnValue;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 // ********** End Function GetLogic constinit property declarations ********************************
@@ -229,10 +229,10 @@ struct Z_Construct_UFunction_UBFL_GetLogic_Statics
 };
 
 // ********** Begin Function GetLogic Property Definitions *****************************************
-const UECodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_UBFL_GetLogic_Statics::NewProp_AActor = { "AActor", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(BFL_eventGetLogic_Parms, AActor), Z_Construct_UClass_AActor_NoRegister, METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_UBFL_GetLogic_Statics::NewProp_Actor = { "Actor", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(BFL_eventGetLogic_Parms, Actor), Z_Construct_UClass_AActor_NoRegister, METADATA_PARAMS(0, nullptr) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_UBFL_GetLogic_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(BFL_eventGetLogic_Parms, ReturnValue), Z_Construct_UClass_ULogicBase_NoRegister, METADATA_PARAMS(0, nullptr) };
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UBFL_GetLogic_Statics::PropPointers[] = {
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UBFL_GetLogic_Statics::NewProp_AActor,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UBFL_GetLogic_Statics::NewProp_Actor,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UBFL_GetLogic_Statics::NewProp_ReturnValue,
 };
 static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_UBFL_GetLogic_Statics::PropPointers) < 2048);
@@ -253,10 +253,10 @@ UFunction* Z_Construct_UFunction_UBFL_GetLogic()
 }
 DEFINE_FUNCTION(UBFL::execGetLogic)
 {
-	P_GET_OBJECT(AActor,Z_Param_AActor);
+	P_GET_OBJECT(AActor,Z_Param_Actor);
 	P_FINISH;
 	P_NATIVE_BEGIN;
-	*(ULogicBase**)Z_Param__Result=UBFL::GetLogic(Z_Param_AActor);
+	*(ULogicBase**)Z_Param__Result=UBFL::GetLogic(Z_Param_Actor);
 	P_NATIVE_END;
 }
 // ********** End Class UBFL Function GetLogic *****************************************************
@@ -531,6 +531,63 @@ DEFINE_FUNCTION(UBFL::execIsTeamsEqualActor)
 }
 // ********** End Class UBFL Function IsTeamsEqualActor ********************************************
 
+// ********** Begin Class UBFL Function SetLogic ***************************************************
+struct Z_Construct_UFunction_UBFL_SetLogic_Statics
+{
+	struct BFL_eventSetLogic_Parms
+	{
+		UObject* Object;
+		UObject* Logic;
+	};
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "Category", "Logic" },
+		{ "ModuleRelativePath", "BFL.h" },
+	};
+#endif // WITH_METADATA
+
+// ********** Begin Function SetLogic constinit property declarations ******************************
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_Object;
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_Logic;
+	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+// ********** End Function SetLogic constinit property declarations ********************************
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+
+// ********** Begin Function SetLogic Property Definitions *****************************************
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_UBFL_SetLogic_Statics::NewProp_Object = { "Object", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(BFL_eventSetLogic_Parms, Object), Z_Construct_UClass_UObject_NoRegister, METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_UBFL_SetLogic_Statics::NewProp_Logic = { "Logic", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(BFL_eventSetLogic_Parms, Logic), Z_Construct_UClass_UObject_NoRegister, METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UBFL_SetLogic_Statics::PropPointers[] = {
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UBFL_SetLogic_Statics::NewProp_Object,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UBFL_SetLogic_Statics::NewProp_Logic,
+};
+static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_UBFL_SetLogic_Statics::PropPointers) < 2048);
+// ********** End Function SetLogic Property Definitions *******************************************
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UBFL_SetLogic_Statics::FuncParams = { { (UObject*(*)())Z_Construct_UClass_UBFL, nullptr, "SetLogic", 	Z_Construct_UFunction_UBFL_SetLogic_Statics::PropPointers, 
+	UE_ARRAY_COUNT(Z_Construct_UFunction_UBFL_SetLogic_Statics::PropPointers), 
+sizeof(Z_Construct_UFunction_UBFL_SetLogic_Statics::BFL_eventSetLogic_Parms),
+RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04022401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UBFL_SetLogic_Statics::Function_MetaDataParams), Z_Construct_UFunction_UBFL_SetLogic_Statics::Function_MetaDataParams)},  };
+static_assert(sizeof(Z_Construct_UFunction_UBFL_SetLogic_Statics::BFL_eventSetLogic_Parms) < MAX_uint16);
+UFunction* Z_Construct_UFunction_UBFL_SetLogic()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_UBFL_SetLogic_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(UBFL::execSetLogic)
+{
+	P_GET_OBJECT(UObject,Z_Param_Object);
+	P_GET_OBJECT(UObject,Z_Param_Logic);
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	UBFL::SetLogic(Z_Param_Object,Z_Param_Logic);
+	P_NATIVE_END;
+}
+// ********** End Class UBFL Function SetLogic *****************************************************
+
 // ********** Begin Class UBFL *********************************************************************
 FClassRegistrationInfo Z_Registration_Info_UClass_UBFL;
 UClass* UBFL::GetPrivateStaticClass()
@@ -581,17 +638,19 @@ struct Z_Construct_UClass_UBFL_Statics
 		{ .NameUTF8 = UTF8TEXT("GetTeamActor"), .Pointer = &UBFL::execGetTeamActor },
 		{ .NameUTF8 = UTF8TEXT("IsTeamsEqual"), .Pointer = &UBFL::execIsTeamsEqual },
 		{ .NameUTF8 = UTF8TEXT("IsTeamsEqualActor"), .Pointer = &UBFL::execIsTeamsEqualActor },
+		{ .NameUTF8 = UTF8TEXT("SetLogic"), .Pointer = &UBFL::execSetLogic },
 	};
 	static UObject* (*const DependentSingletons[])();
 	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
 		{ &Z_Construct_UFunction_UBFL_CreateLogicByRowHandle, "CreateLogicByRowHandle" }, // 1569377341
 		{ &Z_Construct_UFunction_UBFL_CreateLogicByRowName, "CreateLogicByRowName" }, // 1995861202
 		{ &Z_Construct_UFunction_UBFL_GetIcon, "GetIcon" }, // 3868335089
-		{ &Z_Construct_UFunction_UBFL_GetLogic, "GetLogic" }, // 2218677534
+		{ &Z_Construct_UFunction_UBFL_GetLogic, "GetLogic" }, // 1259971436
 		{ &Z_Construct_UFunction_UBFL_GetTeam, "GetTeam" }, // 296717931
 		{ &Z_Construct_UFunction_UBFL_GetTeamActor, "GetTeamActor" }, // 995336964
 		{ &Z_Construct_UFunction_UBFL_IsTeamsEqual, "IsTeamsEqual" }, // 2548859586
 		{ &Z_Construct_UFunction_UBFL_IsTeamsEqualActor, "IsTeamsEqualActor" }, // 982986444
+		{ &Z_Construct_UFunction_UBFL_SetLogic, "SetLogic" }, // 3900758601
 	};
 	static_assert(UE_ARRAY_COUNT(FuncInfo) < 2048);
 	static constexpr FCppClassTypeInfoStatic StaticCppClassTypeInfo = {
@@ -641,10 +700,10 @@ UBFL::~UBFL() {}
 struct Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_BFL_h__Script_LMN_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_UBFL, UBFL::StaticClass, TEXT("UBFL"), &Z_Registration_Info_UClass_UBFL, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UBFL), 2397465223U) },
+		{ Z_Construct_UClass_UBFL, UBFL::StaticClass, TEXT("UBFL"), &Z_Registration_Info_UClass_UBFL, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UBFL), 2133628953U) },
 	};
 }; // Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_BFL_h__Script_LMN_Statics 
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_BFL_h__Script_LMN_1846629130{
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_BFL_h__Script_LMN_1857961212{
 	TEXT("/Script/LMN"),
 	Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_BFL_h__Script_LMN_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_BFL_h__Script_LMN_Statics::ClassInfo),
 	nullptr, 0,

@@ -6,12 +6,11 @@
 #include "WidgetComponentBase.h"
 #include "ProgressBarWidgetComponent.generated.h"
 
-/**
- * 
- */
-UCLASS()
+UCLASS(Blueprintable, ClassGroup = (Custom), meta = (BlueprintSpawnableComponent))
 class LMN_API UProgressBarWidgetComponent : public UWidgetComponentBase
 {
-	GENERATED_BODY()
-	
+    GENERATED_BODY()
+
+protected:
+    virtual void LogicUpdated() override;
 };

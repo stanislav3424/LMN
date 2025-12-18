@@ -3,3 +3,16 @@
 
 #include "WidgetComponentBase.h"
 
+ULogicBase* UWidgetComponentBase::GetLogic_Implementation()
+{
+    return LogicBase;
+}
+
+void UWidgetComponentBase::SetLogic_Implementation(ULogicBase* NewLogic)
+{
+    if (NewLogic)
+    {
+        LogicBase = NewLogic;
+        LogicUpdated();
+    }
+}

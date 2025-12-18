@@ -13,11 +13,11 @@ void ARepresentationActor::BeginPlay()
 
     if (Logic)
     {
-        TArray<USceneComponentBase*> Components;
-        GetComponents<USceneComponentBase>(Components);
+        TArray<UActorComponent*> Components;
+        GetComponents(Components);
         for (auto Component : Components)
             if (Component)
-                Component->SetObject(Logic);
+                UBFL::SetLogic(Component, Logic);
     }
 }
 

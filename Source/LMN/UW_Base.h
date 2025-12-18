@@ -4,10 +4,11 @@
 
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
+#include "LogicInterface.h"
 #include "UW_Base.generated.h"
 
 UCLASS(NotBlueprintable, Abstract)
-class LMN_API UUW_Base : public UUserWidget
+class LMN_API UUW_Base : public UUserWidget, public ILogicInterface
 {
 	GENERATED_BODY()
 	
@@ -42,10 +43,13 @@ class LMN_API UUW_Base : public UUserWidget
 
     protected:
         UPROPERTY()
-        UObject* Object;
+        ULogicBase* LogicBase;
 
         virtual void ObjectUpdated() {};
 
+        // LogicInterface
     public:
-        void SetObject(UObject* NewObject);
+        virtual ULogicBase* GetLogic_Implementation() override;
+        virtual void        SetLogic_Implementation(ULogicBase* NewLogic) override;
+
 };

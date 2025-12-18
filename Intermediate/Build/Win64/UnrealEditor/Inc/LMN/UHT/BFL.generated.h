@@ -32,7 +32,8 @@ struct FDataTableRowHandle;
 	DECLARE_FUNCTION(execGetTeam); \
 	DECLARE_FUNCTION(execCreateLogicByRowHandle); \
 	DECLARE_FUNCTION(execCreateLogicByRowName); \
-	DECLARE_FUNCTION(execGetLogic);
+	DECLARE_FUNCTION(execGetLogic); \
+	DECLARE_FUNCTION(execSetLogic);
 
 
 struct Z_Construct_UClass_UBFL_Statics;

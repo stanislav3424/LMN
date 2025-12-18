@@ -20,7 +20,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 struct Z_Construct_UClass_USceneComponentBase_Statics;
 LMN_API UClass* Z_Construct_UClass_USceneComponentBase_NoRegister();
 
-#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_SceneComponentBase_h_13_INCLASS_NO_PURE_DECLS \
+#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_SceneComponentBase_h_15_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesUSceneComponentBase(); \
 	friend struct ::Z_Construct_UClass_USceneComponentBase_Statics; \
@@ -28,10 +28,11 @@ private: \
 	friend LMN_API UClass* ::Z_Construct_UClass_USceneComponentBase_NoRegister(); \
 public: \
 	DECLARE_CLASS2(USceneComponentBase, USceneComponent, COMPILED_IN_FLAGS(CLASS_Abstract | CLASS_Config), CASTCLASS_None, TEXT("/Script/LMN"), Z_Construct_UClass_USceneComponentBase_NoRegister) \
-	DECLARE_SERIALIZER(USceneComponentBase)
+	DECLARE_SERIALIZER(USceneComponentBase) \
+	virtual UObject* _getUObject() const override { return const_cast<USceneComponentBase*>(this); }
 
 
-#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_SceneComponentBase_h_13_ENHANCED_CONSTRUCTORS \
+#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_SceneComponentBase_h_15_ENHANCED_CONSTRUCTORS \
 	/** Deleted move- and copy-constructors, should never be used */ \
 	USceneComponentBase(USceneComponentBase&&) = delete; \
 	USceneComponentBase(const USceneComponentBase&) = delete; \
@@ -41,12 +42,12 @@ public: \
 	NO_API virtual ~USceneComponentBase();
 
 
-#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_SceneComponentBase_h_10_PROLOG
-#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_SceneComponentBase_h_13_GENERATED_BODY \
+#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_SceneComponentBase_h_12_PROLOG
+#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_SceneComponentBase_h_15_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_SceneComponentBase_h_13_INCLASS_NO_PURE_DECLS \
-	FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_SceneComponentBase_h_13_ENHANCED_CONSTRUCTORS \
+	FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_SceneComponentBase_h_15_INCLASS_NO_PURE_DECLS \
+	FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_SceneComponentBase_h_15_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 

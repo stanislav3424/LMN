@@ -6,8 +6,8 @@
 
 void UUW_StaminaProgressBar::ObjectUpdated()
 {
-    if (Object)
-        if (auto Logic = Cast<UCharacterLogic>(Object))
+    if (LogicBase)
+        if (auto Logic = Cast<UCharacterLogic>(LogicBase))
         {
             Logic->OnStaminaChanged.AddUniqueDynamic(this, &UUW_StaminaProgressBar::SetPercent);
             Logic->BroadcastOnStaminaChanged();

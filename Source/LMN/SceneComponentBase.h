@@ -4,11 +4,13 @@
 
 #include "CoreMinimal.h"
 #include "Components/SceneComponent.h"
+#include "LogicInterface.h"
 #include "SceneComponentBase.generated.h"
 
+class ULogicBase;
 
-UCLASS(ClassGroup = (Custom), meta = (BlueprintSpawnableComponent), NotBlueprintable, Abstract)
-class LMN_API USceneComponentBase : public USceneComponent
+UCLASS(NotBlueprintable, Abstract)
+class LMN_API USceneComponentBase : public USceneComponent, public ILogicInterface
 {
 	GENERATED_BODY()
 
@@ -24,10 +26,12 @@ public:
 
 protected:
     UPROPERTY()
-    UObject* Object;
+    ULogicBase* LogicBase;
 
-    virtual void ObjectUpdated() {};
+    virtual void LogicUpdated() {};
 
+    // LogicInterface
 public:
-    void SetObject(UObject* NewObject);
+    virtual ULogicBase* GetLogic_Implementation() override;
+    virtual void        SetLogic_Implementation(ULogicBase* NewLogic) override;
 };

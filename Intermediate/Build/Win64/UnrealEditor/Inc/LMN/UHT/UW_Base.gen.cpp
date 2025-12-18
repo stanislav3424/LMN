@@ -12,7 +12,8 @@ static_assert(!UE_WITH_CONSTINIT_UOBJECT, "This generated code can only be compi
 void EmptyLinkFunctionForGeneratedCodeUW_Base() {}
 
 // ********** Begin Cross Module References ********************************************************
-COREUOBJECT_API UClass* Z_Construct_UClass_UObject_NoRegister();
+LMN_API UClass* Z_Construct_UClass_ULogicBase_NoRegister();
+LMN_API UClass* Z_Construct_UClass_ULogicInterface_NoRegister();
 LMN_API UClass* Z_Construct_UClass_UUW_Base();
 LMN_API UClass* Z_Construct_UClass_UUW_Base_NoRegister();
 UMG_API UClass* Z_Construct_UClass_UUserWidget();
@@ -57,16 +58,17 @@ struct Z_Construct_UClass_UUW_Base_Statics
 		{ "IsBlueprintBase", "false" },
 		{ "ModuleRelativePath", "UW_Base.h" },
 	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_Object_MetaData[] = {
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_LogicBase_MetaData[] = {
 		{ "ModuleRelativePath", "UW_Base.h" },
 	};
 #endif // WITH_METADATA
 
 // ********** Begin Class UUW_Base constinit property declarations *********************************
-	static const UECodeGen_Private::FObjectPropertyParams NewProp_Object;
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_LogicBase;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 // ********** End Class UUW_Base constinit property declarations ***********************************
 	static UObject* (*const DependentSingletons[])();
+	static const UECodeGen_Private::FImplementedInterfaceParams InterfaceParams[];
 	static constexpr FCppClassTypeInfoStatic StaticCppClassTypeInfo = {
 		TCppClassTypeTraits<UUW_Base>::IsAbstract,
 	};
@@ -74,9 +76,9 @@ struct Z_Construct_UClass_UUW_Base_Statics
 }; // struct Z_Construct_UClass_UUW_Base_Statics
 
 // ********** Begin Class UUW_Base Property Definitions ********************************************
-const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UUW_Base_Statics::NewProp_Object = { "Object", nullptr, (EPropertyFlags)0x0020080000000000, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UUW_Base, Object), Z_Construct_UClass_UObject_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Object_MetaData), NewProp_Object_MetaData) };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UUW_Base_Statics::NewProp_LogicBase = { "LogicBase", nullptr, (EPropertyFlags)0x0020080000000000, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UUW_Base, LogicBase), Z_Construct_UClass_ULogicBase_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_LogicBase_MetaData), NewProp_LogicBase_MetaData) };
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_UUW_Base_Statics::PropPointers[] = {
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UUW_Base_Statics::NewProp_Object,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UUW_Base_Statics::NewProp_LogicBase,
 };
 static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_UUW_Base_Statics::PropPointers) < 2048);
 // ********** End Class UUW_Base Property Definitions **********************************************
@@ -85,6 +87,9 @@ UObject* (*const Z_Construct_UClass_UUW_Base_Statics::DependentSingletons[])() =
 	(UObject* (*)())Z_Construct_UPackage__Script_LMN,
 };
 static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_UUW_Base_Statics::DependentSingletons) < 16);
+const UECodeGen_Private::FImplementedInterfaceParams Z_Construct_UClass_UUW_Base_Statics::InterfaceParams[] = {
+	{ Z_Construct_UClass_ULogicInterface_NoRegister, (int32)VTABLE_OFFSET(UUW_Base, ILogicInterface), false },  // 949278339
+};
 const UECodeGen_Private::FClassParams Z_Construct_UClass_UUW_Base_Statics::ClassParams = {
 	&UUW_Base::StaticClass,
 	nullptr,
@@ -92,11 +97,11 @@ const UECodeGen_Private::FClassParams Z_Construct_UClass_UUW_Base_Statics::Class
 	DependentSingletons,
 	nullptr,
 	Z_Construct_UClass_UUW_Base_Statics::PropPointers,
-	nullptr,
+	InterfaceParams,
 	UE_ARRAY_COUNT(DependentSingletons),
 	0,
 	UE_ARRAY_COUNT(Z_Construct_UClass_UUW_Base_Statics::PropPointers),
-	0,
+	UE_ARRAY_COUNT(InterfaceParams),
 	0x00B010A1u,
 	METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_UUW_Base_Statics::Class_MetaDataParams), Z_Construct_UClass_UUW_Base_Statics::Class_MetaDataParams)
 };
@@ -120,10 +125,10 @@ UUW_Base::~UUW_Base() {}
 struct Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_UW_Base_h__Script_LMN_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_UUW_Base, UUW_Base::StaticClass, TEXT("UUW_Base"), &Z_Registration_Info_UClass_UUW_Base, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UUW_Base), 1189979456U) },
+		{ Z_Construct_UClass_UUW_Base, UUW_Base::StaticClass, TEXT("UUW_Base"), &Z_Registration_Info_UClass_UUW_Base, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UUW_Base), 2448387001U) },
 	};
 }; // Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_UW_Base_h__Script_LMN_Statics 
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_UW_Base_h__Script_LMN_868466522{
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_UW_Base_h__Script_LMN_4109470696{
 	TEXT("/Script/LMN"),
 	Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_UW_Base_h__Script_LMN_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_UW_Base_h__Script_LMN_Statics::ClassInfo),
 	nullptr, 0,

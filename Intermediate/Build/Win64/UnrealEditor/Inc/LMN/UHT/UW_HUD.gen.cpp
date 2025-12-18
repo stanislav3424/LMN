@@ -174,10 +174,10 @@ UUW_HUD::~UUW_HUD() {}
 struct Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_UW_HUD_h__Script_LMN_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_UUW_HUD, UUW_HUD::StaticClass, TEXT("UUW_HUD"), &Z_Registration_Info_UClass_UUW_HUD, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UUW_HUD), 1357322195U) },
+		{ Z_Construct_UClass_UUW_HUD, UUW_HUD::StaticClass, TEXT("UUW_HUD"), &Z_Registration_Info_UClass_UUW_HUD, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UUW_HUD), 603577725U) },
 	};
 }; // Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_UW_HUD_h__Script_LMN_Statics 
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_UW_HUD_h__Script_LMN_94477412{
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_UW_HUD_h__Script_LMN_109101077{
 	TEXT("/Script/LMN"),
 	Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_UW_HUD_h__Script_LMN_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_UW_HUD_h__Script_LMN_Statics::ClassInfo),
 	nullptr, 0,

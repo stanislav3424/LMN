@@ -4,14 +4,22 @@
 
 #include "CoreMinimal.h"
 #include "Components/WidgetComponent.h"
+#include "LogicInterface.h"
 #include "WidgetComponentBase.generated.h"
 
-/**
- * 
- */
-UCLASS()
-class LMN_API UWidgetComponentBase : public UWidgetComponent
+UCLASS(NotBlueprintable, Abstract)
+class LMN_API UWidgetComponentBase : public UWidgetComponent, public ILogicInterface
 {
-	GENERATED_BODY()
-	
+    GENERATED_BODY()
+
+    // LogicInterface
+public:
+    virtual ULogicBase* GetLogic_Implementation() override;
+    virtual void        SetLogic_Implementation(ULogicBase* NewLogic) override;
+
+protected:
+    UPROPERTY()
+    ULogicBase* LogicBase;
+
+    virtual void LogicUpdated() {};
 };
