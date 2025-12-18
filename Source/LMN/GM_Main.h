@@ -8,7 +8,7 @@
 
 class AIconRendering;
 
-UCLASS()
+UCLASS(Blueprintable, Abstract)
 class LMN_API AGM_Main : public AGameModeBase
 {
     GENERATED_BODY()

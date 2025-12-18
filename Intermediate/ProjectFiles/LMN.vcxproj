@@ -326,6 +326,14 @@
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <ClInclude Include="..\..\Source\LMN\RepresentationPawn.h"/>
+    <ClCompile Include="..\..\Source\LMN\SceneComponentBase.cpp">
+      <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\LMN\SceneComponentBase.h"/>
+    <ClCompile Include="..\..\Source\LMN\SC_Selected.cpp">
+      <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\LMN\SC_Selected.h"/>
     <ClCompile Include="..\..\Source\LMN\UW_Base.cpp">
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>

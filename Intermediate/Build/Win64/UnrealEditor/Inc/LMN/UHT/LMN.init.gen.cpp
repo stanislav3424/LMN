@@ -12,7 +12,9 @@ static_assert(!UE_WITH_CONSTINIT_UOBJECT, "This generated code can only be compi
 	LMN_API UFunction* Z_Construct_UDelegateFunction_LMN_OnEquipmentChanged__DelegateSignature();
 	LMN_API UFunction* Z_Construct_UDelegateFunction_LMN_OnHealthChange__DelegateSignature();
 	LMN_API UFunction* Z_Construct_UDelegateFunction_LMN_OnMovementStateChanged__DelegateSignature();
+	LMN_API UFunction* Z_Construct_UDelegateFunction_LMN_OnSelectedChange__DelegateSignature();
 	LMN_API UFunction* Z_Construct_UDelegateFunction_LMN_OnStaminaChanged__DelegateSignature();
+	LMN_API UFunction* Z_Construct_UDelegateFunction_LMN_OnTeamChange__DelegateSignature();
 	LMN_API UFunction* Z_Construct_UDelegateFunction_LMN_OnTypeActionChanged__DelegateSignature();
 	LMN_API UFunction* Z_Construct_UDelegateFunction_LMN_OnTypeMovementStateChanged__DelegateSignature();
 	static FPackageRegistrationInfo Z_Registration_Info_UPackage__Script_LMN;
@@ -26,7 +28,9 @@ static_assert(!UE_WITH_CONSTINIT_UOBJECT, "This generated code can only be compi
 			(UObject* (*)())Z_Construct_UDelegateFunction_LMN_OnEquipmentChanged__DelegateSignature,
 			(UObject* (*)())Z_Construct_UDelegateFunction_LMN_OnHealthChange__DelegateSignature,
 			(UObject* (*)())Z_Construct_UDelegateFunction_LMN_OnMovementStateChanged__DelegateSignature,
+			(UObject* (*)())Z_Construct_UDelegateFunction_LMN_OnSelectedChange__DelegateSignature,
 			(UObject* (*)())Z_Construct_UDelegateFunction_LMN_OnStaminaChanged__DelegateSignature,
+			(UObject* (*)())Z_Construct_UDelegateFunction_LMN_OnTeamChange__DelegateSignature,
 			(UObject* (*)())Z_Construct_UDelegateFunction_LMN_OnTypeActionChanged__DelegateSignature,
 			(UObject* (*)())Z_Construct_UDelegateFunction_LMN_OnTypeMovementStateChanged__DelegateSignature,
 		};
@@ -35,13 +39,13 @@ static_assert(!UE_WITH_CONSTINIT_UOBJECT, "This generated code can only be compi
 			SingletonFuncArray,
 			UE_ARRAY_COUNT(SingletonFuncArray),
 			PKG_CompiledIn | 0x00000000,
-			0x1541D32B,
-			0x1CE20DDF,
+			0xE4EC56E0,
+			0x38628692,
 			METADATA_PARAMS(0, nullptr)
 		};
 		UECodeGen_Private::ConstructUPackage(Z_Registration_Info_UPackage__Script_LMN.OuterSingleton, PackageParams);
 	}
 	return Z_Registration_Info_UPackage__Script_LMN.OuterSingleton;
 }
-static FRegisterCompiledInInfo Z_CompiledInDeferPackage_UPackage__Script_LMN(Z_Construct_UPackage__Script_LMN, TEXT("/Script/LMN"), Z_Registration_Info_UPackage__Script_LMN, CONSTRUCT_RELOAD_VERSION_INFO(FPackageReloadVersionInfo, 0x1541D32B, 0x1CE20DDF));
+static FRegisterCompiledInInfo Z_CompiledInDeferPackage_UPackage__Script_LMN(Z_Construct_UPackage__Script_LMN, TEXT("/Script/LMN"), Z_Registration_Info_UPackage__Script_LMN, CONSTRUCT_RELOAD_VERSION_INFO(FPackageReloadVersionInfo, 0xE4EC56E0, 0x38628692));
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

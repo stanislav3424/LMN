@@ -1,6 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "RepresentationActor.h"
+#include "SceneComponentBase.h"
 #include "LogicBase.h"
 #include "BFL.h"
 
@@ -9,6 +10,15 @@ void ARepresentationActor::BeginPlay()
     Super::BeginPlay();
 
     UBFL::ActorActivation(this);
+
+    if (Logic)
+    {
+        TArray<USceneComponentBase*> Components;
+        GetComponents<USceneComponentBase>(Components);
+        for (auto Component : Components)
+            if (Component)
+                Component->SetObject(Logic);
+    }
 }
 
 void ARepresentationActor::Tick(float DeltaSeconds)

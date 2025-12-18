@@ -7,22 +7,27 @@
 #include "SceneComponentBase.generated.h"
 
 
-UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
+UCLASS(ClassGroup = (Custom), meta = (BlueprintSpawnableComponent), NotBlueprintable, Abstract)
 class LMN_API USceneComponentBase : public USceneComponent
 {
 	GENERATED_BODY()
 
 public:	
-	// Sets default values for this component's properties
 	USceneComponentBase();
 
 protected:
-	// Called when the game starts
 	virtual void BeginPlay() override;
 
-public:	
-	// Called every frame
-	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
+public:
+    virtual void TickComponent(
+        float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
-		
+protected:
+    UPROPERTY()
+    UObject* Object;
+
+    virtual void ObjectUpdated() {};
+
+public:
+    void SetObject(UObject* NewObject);
 };

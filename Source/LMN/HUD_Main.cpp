@@ -65,6 +65,6 @@ void AHUD_Main::DrawHUD()
     DrawLine(BottomRight.X, BottomRight.Y, BottomRight.X, TopLeft.Y, BorderColor, LineThickness);
 
     TArray<AActor*> Actors;
-    GetActorsInSelectionRectangle(ARepresentationCharacter::StaticClass(), TopLeft, BottomRight, Actors);
+    GetActorsInSelectionRectangle(ARepresentationCharacter::StaticClass(), TopLeft, BottomRight, Actors, false, false);
     PlayerControllerRef->UpdateActorsSelected(Actors);
 }

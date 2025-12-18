@@ -7,6 +7,7 @@
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
 #include "HUD_Main.h"
+#include "Logic.h"
 
 APC_Main::APC_Main()
 {
@@ -117,4 +118,12 @@ void APC_Main::UpdateActorsSelected(const TArray<AActor*>& NewActorsSelected)
         AddActorsSelected.Num(), RemoveActorsSelected.Num());*/
 
     OnActorsSelectedChange.Broadcast();
+
+    for (auto Actor : GetAddActorsSelected())
+        if (auto Logic = Cast<ULogic>(UBFL::GetLogic(Actor)))
+            Logic->SetSelected(true);
+
+    for (auto Actor : GetRemoveActorsSelected())
+        if (auto Logic = Cast<ULogic>(UBFL::GetLogic(Actor)))
+            Logic->SetSelected(false);
 }

@@ -6,9 +6,6 @@
 #include "LogicBase.h"
 #include "Logic.generated.h"
 
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnHealthChange, float, MaxHealth, float, Current);
-DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnDied);
-
 UENUM(BlueprintType)
 enum class ETeam : uint8
 {
@@ -16,6 +13,11 @@ enum class ETeam : uint8
     Player  UMETA(DisplayName = "Player"),
     Enemy   UMETA(DisplayName = "Enemy"),
 };
+
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnHealthChange, float, MaxHealth, float, Current);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnDied);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnTeamChange, ETeam, Team);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnSelectedChange, bool, bIsSelected);
 
 UCLASS()
 class LMN_API ULogic : public ULogicBase
@@ -28,6 +30,8 @@ protected:
     virtual void BindEvents() override;
     virtual void UnbindEvents() override;
 
+    // Health
+protected:
     UFUNCTION()
     void HandleOwnerDamage(AActor* DamagedActor, float Damage, const UDamageType* DamageType,
         AController* InstigatedBy, AActor* DamageCauser);
@@ -51,6 +55,20 @@ protected:
     ETeam Team = ETeam::Neutral;
 
 public:
+    FOnTeamChange OnTeamChange;
+
+    void  BroadcastOnTeamChange() const;
     ETeam GetTeam() const { return Team; };
-    void  SetTeam(ETeam NewTeam) { Team = NewTeam; };
+    void  SetTeam(ETeam NewTeam);
+
+    // Selected
+protected:
+    bool bIsSelected;
+
+public:
+    FOnSelectedChange OnSelectedChange;
+
+    void BroadcastOnSelectedChange() const;
+    bool IsSelected() const { return bIsSelected; };
+    void SetSelected(bool bNewSelected);
 };

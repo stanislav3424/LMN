@@ -13,6 +13,6 @@ void AGM_Main::BeginPlay()
             FActorSpawnParameters ActorSpawnParameters;
             ActorSpawnParameters.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
             IconRendering                                       = World->SpawnActor<AIconRendering>(
-                IconRenderingClass, FVector(0.f, 0.f, -10000.f), FRotator(), ActorSpawnParameters);
+                IconRenderingClass, FVector(0.f, 0.f, 0.f), FRotator(), ActorSpawnParameters);
         }
 }

@@ -30,16 +30,16 @@ public:
     virtual void Tick(float DeltaSeconds) override;
 
 protected:
-    UPROPERTY()
+    UPROPERTY(Transient)
     AHUD_Main* HUD_Main;
 
-    UPROPERTY()
+    UPROPERTY(Transient)
     TSet<AActor*> ActorsSelected;
 
-    UPROPERTY()
+    UPROPERTY(Transient)
     TSet<AActor*> AddActorsSelected;
 
-    UPROPERTY()
+    UPROPERTY(Transient)
     TSet<AActor*> RemoveActorsSelected;
 
 public:

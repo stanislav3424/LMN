@@ -135,6 +135,18 @@
     <ClInclude Include="..\..\Source\LMN\RepresentationPawn.h">
       <Filter>Source\LMN</Filter>
     </ClInclude>
+    <ClCompile Include="..\..\Source\LMN\SceneComponentBase.cpp">
+      <Filter>Source\LMN</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\LMN\SceneComponentBase.h">
+      <Filter>Source\LMN</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\LMN\SC_Selected.cpp">
+      <Filter>Source\LMN</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\LMN\SC_Selected.h">
+      <Filter>Source\LMN</Filter>
+    </ClInclude>
     <ClCompile Include="..\..\Source\LMN\UW_Base.cpp">
       <Filter>Source\LMN</Filter>
     </ClCompile>

@@ -21,8 +21,67 @@ LMN_API UClass* Z_Construct_UClass_ULogicBase();
 LMN_API UEnum* Z_Construct_UEnum_LMN_ETeam();
 LMN_API UFunction* Z_Construct_UDelegateFunction_LMN_OnDied__DelegateSignature();
 LMN_API UFunction* Z_Construct_UDelegateFunction_LMN_OnHealthChange__DelegateSignature();
+LMN_API UFunction* Z_Construct_UDelegateFunction_LMN_OnSelectedChange__DelegateSignature();
+LMN_API UFunction* Z_Construct_UDelegateFunction_LMN_OnTeamChange__DelegateSignature();
 UPackage* Z_Construct_UPackage__Script_LMN();
 // ********** End Cross Module References **********************************************************
+
+// ********** Begin Enum ETeam *********************************************************************
+static FEnumRegistrationInfo Z_Registration_Info_UEnum_ETeam;
+static UEnum* ETeam_StaticEnum()
+{
+	if (!Z_Registration_Info_UEnum_ETeam.OuterSingleton)
+	{
+		Z_Registration_Info_UEnum_ETeam.OuterSingleton = GetStaticEnum(Z_Construct_UEnum_LMN_ETeam, (UObject*)Z_Construct_UPackage__Script_LMN(), TEXT("ETeam"));
+	}
+	return Z_Registration_Info_UEnum_ETeam.OuterSingleton;
+}
+template<> LMN_NON_ATTRIBUTED_API UEnum* StaticEnum<ETeam>()
+{
+	return ETeam_StaticEnum();
+}
+struct Z_Construct_UEnum_LMN_ETeam_Statics
+{
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Enum_MetaDataParams[] = {
+		{ "BlueprintType", "true" },
+		{ "Enemy.DisplayName", "Enemy" },
+		{ "Enemy.Name", "ETeam::Enemy" },
+		{ "ModuleRelativePath", "Logic.h" },
+		{ "Neutral.DisplayName", "Neutral" },
+		{ "Neutral.Name", "ETeam::Neutral" },
+		{ "Player.DisplayName", "Player" },
+		{ "Player.Name", "ETeam::Player" },
+	};
+#endif // WITH_METADATA
+	static constexpr UECodeGen_Private::FEnumeratorParam Enumerators[] = {
+		{ "ETeam::Neutral", (int64)ETeam::Neutral },
+		{ "ETeam::Player", (int64)ETeam::Player },
+		{ "ETeam::Enemy", (int64)ETeam::Enemy },
+	};
+	static const UECodeGen_Private::FEnumParams EnumParams;
+}; // struct Z_Construct_UEnum_LMN_ETeam_Statics 
+const UECodeGen_Private::FEnumParams Z_Construct_UEnum_LMN_ETeam_Statics::EnumParams = {
+	(UObject*(*)())Z_Construct_UPackage__Script_LMN,
+	nullptr,
+	"ETeam",
+	"ETeam",
+	Z_Construct_UEnum_LMN_ETeam_Statics::Enumerators,
+	RF_Public|RF_Transient|RF_MarkAsNative,
+	UE_ARRAY_COUNT(Z_Construct_UEnum_LMN_ETeam_Statics::Enumerators),
+	EEnumFlags::None,
+	(uint8)UEnum::ECppForm::EnumClass,
+	METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UEnum_LMN_ETeam_Statics::Enum_MetaDataParams), Z_Construct_UEnum_LMN_ETeam_Statics::Enum_MetaDataParams)
+};
+UEnum* Z_Construct_UEnum_LMN_ETeam()
+{
+	if (!Z_Registration_Info_UEnum_ETeam.InnerSingleton)
+	{
+		UECodeGen_Private::ConstructUEnum(Z_Registration_Info_UEnum_ETeam.InnerSingleton, Z_Construct_UEnum_LMN_ETeam_Statics::EnumParams);
+	}
+	return Z_Registration_Info_UEnum_ETeam.InnerSingleton;
+}
+// ********** End Enum ETeam ***********************************************************************
 
 // ********** Begin Delegate FOnHealthChange *******************************************************
 struct Z_Construct_UDelegateFunction_LMN_OnHealthChange__DelegateSignature_Statics
@@ -115,62 +174,119 @@ void FOnDied_DelegateWrapper(const FMulticastScriptDelegate& OnDied)
 }
 // ********** End Delegate FOnDied *****************************************************************
 
-// ********** Begin Enum ETeam *********************************************************************
-static FEnumRegistrationInfo Z_Registration_Info_UEnum_ETeam;
-static UEnum* ETeam_StaticEnum()
+// ********** Begin Delegate FOnTeamChange *********************************************************
+struct Z_Construct_UDelegateFunction_LMN_OnTeamChange__DelegateSignature_Statics
 {
-	if (!Z_Registration_Info_UEnum_ETeam.OuterSingleton)
+	struct _Script_LMN_eventOnTeamChange_Parms
 	{
-		Z_Registration_Info_UEnum_ETeam.OuterSingleton = GetStaticEnum(Z_Construct_UEnum_LMN_ETeam, (UObject*)Z_Construct_UPackage__Script_LMN(), TEXT("ETeam"));
-	}
-	return Z_Registration_Info_UEnum_ETeam.OuterSingleton;
-}
-template<> LMN_NON_ATTRIBUTED_API UEnum* StaticEnum<ETeam>()
-{
-	return ETeam_StaticEnum();
-}
-struct Z_Construct_UEnum_LMN_ETeam_Statics
-{
+		ETeam Team;
+	};
 #if WITH_METADATA
-	static constexpr UECodeGen_Private::FMetaDataPairParam Enum_MetaDataParams[] = {
-		{ "BlueprintType", "true" },
-		{ "Enemy.DisplayName", "Enemy" },
-		{ "Enemy.Name", "ETeam::Enemy" },
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
 		{ "ModuleRelativePath", "Logic.h" },
-		{ "Neutral.DisplayName", "Neutral" },
-		{ "Neutral.Name", "ETeam::Neutral" },
-		{ "Player.DisplayName", "Player" },
-		{ "Player.Name", "ETeam::Player" },
 	};
 #endif // WITH_METADATA
-	static constexpr UECodeGen_Private::FEnumeratorParam Enumerators[] = {
-		{ "ETeam::Neutral", (int64)ETeam::Neutral },
-		{ "ETeam::Player", (int64)ETeam::Player },
-		{ "ETeam::Enemy", (int64)ETeam::Enemy },
-	};
-	static const UECodeGen_Private::FEnumParams EnumParams;
-}; // struct Z_Construct_UEnum_LMN_ETeam_Statics 
-const UECodeGen_Private::FEnumParams Z_Construct_UEnum_LMN_ETeam_Statics::EnumParams = {
-	(UObject*(*)())Z_Construct_UPackage__Script_LMN,
-	nullptr,
-	"ETeam",
-	"ETeam",
-	Z_Construct_UEnum_LMN_ETeam_Statics::Enumerators,
-	RF_Public|RF_Transient|RF_MarkAsNative,
-	UE_ARRAY_COUNT(Z_Construct_UEnum_LMN_ETeam_Statics::Enumerators),
-	EEnumFlags::None,
-	(uint8)UEnum::ECppForm::EnumClass,
-	METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UEnum_LMN_ETeam_Statics::Enum_MetaDataParams), Z_Construct_UEnum_LMN_ETeam_Statics::Enum_MetaDataParams)
+
+// ********** Begin Delegate FOnTeamChange constinit property declarations *************************
+	static const UECodeGen_Private::FBytePropertyParams NewProp_Team_Underlying;
+	static const UECodeGen_Private::FEnumPropertyParams NewProp_Team;
+	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+// ********** End Delegate FOnTeamChange constinit property declarations ***************************
+	static const UECodeGen_Private::FDelegateFunctionParams FuncParams;
 };
-UEnum* Z_Construct_UEnum_LMN_ETeam()
+
+// ********** Begin Delegate FOnTeamChange Property Definitions ************************************
+const UECodeGen_Private::FBytePropertyParams Z_Construct_UDelegateFunction_LMN_OnTeamChange__DelegateSignature_Statics::NewProp_Team_Underlying = { "UnderlyingType", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Byte, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, nullptr, METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FEnumPropertyParams Z_Construct_UDelegateFunction_LMN_OnTeamChange__DelegateSignature_Statics::NewProp_Team = { "Team", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Enum, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(_Script_LMN_eventOnTeamChange_Parms, Team), Z_Construct_UEnum_LMN_ETeam, METADATA_PARAMS(0, nullptr) }; // 4252509417
+const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UDelegateFunction_LMN_OnTeamChange__DelegateSignature_Statics::PropPointers[] = {
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UDelegateFunction_LMN_OnTeamChange__DelegateSignature_Statics::NewProp_Team_Underlying,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UDelegateFunction_LMN_OnTeamChange__DelegateSignature_Statics::NewProp_Team,
+};
+static_assert(UE_ARRAY_COUNT(Z_Construct_UDelegateFunction_LMN_OnTeamChange__DelegateSignature_Statics::PropPointers) < 2048);
+// ********** End Delegate FOnTeamChange Property Definitions **************************************
+const UECodeGen_Private::FDelegateFunctionParams Z_Construct_UDelegateFunction_LMN_OnTeamChange__DelegateSignature_Statics::FuncParams = { { (UObject*(*)())Z_Construct_UPackage__Script_LMN, nullptr, "OnTeamChange__DelegateSignature", 	Z_Construct_UDelegateFunction_LMN_OnTeamChange__DelegateSignature_Statics::PropPointers, 
+	UE_ARRAY_COUNT(Z_Construct_UDelegateFunction_LMN_OnTeamChange__DelegateSignature_Statics::PropPointers), 
+sizeof(Z_Construct_UDelegateFunction_LMN_OnTeamChange__DelegateSignature_Statics::_Script_LMN_eventOnTeamChange_Parms),
+RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00130000, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UDelegateFunction_LMN_OnTeamChange__DelegateSignature_Statics::Function_MetaDataParams), Z_Construct_UDelegateFunction_LMN_OnTeamChange__DelegateSignature_Statics::Function_MetaDataParams)},  };
+static_assert(sizeof(Z_Construct_UDelegateFunction_LMN_OnTeamChange__DelegateSignature_Statics::_Script_LMN_eventOnTeamChange_Parms) < MAX_uint16);
+UFunction* Z_Construct_UDelegateFunction_LMN_OnTeamChange__DelegateSignature()
 {
-	if (!Z_Registration_Info_UEnum_ETeam.InnerSingleton)
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
 	{
-		UECodeGen_Private::ConstructUEnum(Z_Registration_Info_UEnum_ETeam.InnerSingleton, Z_Construct_UEnum_LMN_ETeam_Statics::EnumParams);
+		UECodeGen_Private::ConstructUDelegateFunction(&ReturnFunction, Z_Construct_UDelegateFunction_LMN_OnTeamChange__DelegateSignature_Statics::FuncParams);
 	}
-	return Z_Registration_Info_UEnum_ETeam.InnerSingleton;
+	return ReturnFunction;
 }
-// ********** End Enum ETeam ***********************************************************************
+void FOnTeamChange_DelegateWrapper(const FMulticastScriptDelegate& OnTeamChange, ETeam Team)
+{
+	struct _Script_LMN_eventOnTeamChange_Parms
+	{
+		ETeam Team;
+	};
+	_Script_LMN_eventOnTeamChange_Parms Parms;
+	Parms.Team=Team;
+	OnTeamChange.ProcessMulticastDelegate<UObject>(&Parms);
+}
+// ********** End Delegate FOnTeamChange ***********************************************************
+
+// ********** Begin Delegate FOnSelectedChange *****************************************************
+struct Z_Construct_UDelegateFunction_LMN_OnSelectedChange__DelegateSignature_Statics
+{
+	struct _Script_LMN_eventOnSelectedChange_Parms
+	{
+		bool bIsSelected;
+	};
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "Logic.h" },
+	};
+#endif // WITH_METADATA
+
+// ********** Begin Delegate FOnSelectedChange constinit property declarations *********************
+	static void NewProp_bIsSelected_SetBit(void* Obj);
+	static const UECodeGen_Private::FBoolPropertyParams NewProp_bIsSelected;
+	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+// ********** End Delegate FOnSelectedChange constinit property declarations ***********************
+	static const UECodeGen_Private::FDelegateFunctionParams FuncParams;
+};
+
+// ********** Begin Delegate FOnSelectedChange Property Definitions ********************************
+void Z_Construct_UDelegateFunction_LMN_OnSelectedChange__DelegateSignature_Statics::NewProp_bIsSelected_SetBit(void* Obj)
+{
+	((_Script_LMN_eventOnSelectedChange_Parms*)Obj)->bIsSelected = 1;
+}
+const UECodeGen_Private::FBoolPropertyParams Z_Construct_UDelegateFunction_LMN_OnSelectedChange__DelegateSignature_Statics::NewProp_bIsSelected = { "bIsSelected", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, sizeof(bool), sizeof(_Script_LMN_eventOnSelectedChange_Parms), &Z_Construct_UDelegateFunction_LMN_OnSelectedChange__DelegateSignature_Statics::NewProp_bIsSelected_SetBit, METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UDelegateFunction_LMN_OnSelectedChange__DelegateSignature_Statics::PropPointers[] = {
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UDelegateFunction_LMN_OnSelectedChange__DelegateSignature_Statics::NewProp_bIsSelected,
+};
+static_assert(UE_ARRAY_COUNT(Z_Construct_UDelegateFunction_LMN_OnSelectedChange__DelegateSignature_Statics::PropPointers) < 2048);
+// ********** End Delegate FOnSelectedChange Property Definitions **********************************
+const UECodeGen_Private::FDelegateFunctionParams Z_Construct_UDelegateFunction_LMN_OnSelectedChange__DelegateSignature_Statics::FuncParams = { { (UObject*(*)())Z_Construct_UPackage__Script_LMN, nullptr, "OnSelectedChange__DelegateSignature", 	Z_Construct_UDelegateFunction_LMN_OnSelectedChange__DelegateSignature_Statics::PropPointers, 
+	UE_ARRAY_COUNT(Z_Construct_UDelegateFunction_LMN_OnSelectedChange__DelegateSignature_Statics::PropPointers), 
+sizeof(Z_Construct_UDelegateFunction_LMN_OnSelectedChange__DelegateSignature_Statics::_Script_LMN_eventOnSelectedChange_Parms),
+RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00130000, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UDelegateFunction_LMN_OnSelectedChange__DelegateSignature_Statics::Function_MetaDataParams), Z_Construct_UDelegateFunction_LMN_OnSelectedChange__DelegateSignature_Statics::Function_MetaDataParams)},  };
+static_assert(sizeof(Z_Construct_UDelegateFunction_LMN_OnSelectedChange__DelegateSignature_Statics::_Script_LMN_eventOnSelectedChange_Parms) < MAX_uint16);
+UFunction* Z_Construct_UDelegateFunction_LMN_OnSelectedChange__DelegateSignature()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUDelegateFunction(&ReturnFunction, Z_Construct_UDelegateFunction_LMN_OnSelectedChange__DelegateSignature_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+void FOnSelectedChange_DelegateWrapper(const FMulticastScriptDelegate& OnSelectedChange, bool bIsSelected)
+{
+	struct _Script_LMN_eventOnSelectedChange_Parms
+	{
+		bool bIsSelected;
+	};
+	_Script_LMN_eventOnSelectedChange_Parms Parms;
+	Parms.bIsSelected=bIsSelected ? true : false;
+	OnSelectedChange.ProcessMulticastDelegate<UObject>(&Parms);
+}
+// ********** End Delegate FOnSelectedChange *******************************************************
 
 // ********** Begin Class ULogic Function HandleOwnerDamage ****************************************
 struct Z_Construct_UFunction_ULogic_HandleOwnerDamage_Statics

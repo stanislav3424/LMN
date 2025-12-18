@@ -54,8 +54,10 @@ struct Z_Construct_UClass_AGM_Main_Statics
 {
 #if WITH_METADATA
 	static constexpr UECodeGen_Private::FMetaDataPairParam Class_MetaDataParams[] = {
+		{ "BlueprintType", "true" },
 		{ "HideCategories", "Info Rendering MovementReplication Replication Actor Input Movement Collision Rendering HLOD WorldPartition DataLayers Transformation" },
 		{ "IncludePath", "GM_Main.h" },
+		{ "IsBlueprintBase", "true" },
 		{ "ModuleRelativePath", "GM_Main.h" },
 		{ "ShowCategories", "Input|MouseInput Input|TouchInput" },
 	};
@@ -106,7 +108,7 @@ const UECodeGen_Private::FClassParams Z_Construct_UClass_AGM_Main_Statics::Class
 	0,
 	UE_ARRAY_COUNT(Z_Construct_UClass_AGM_Main_Statics::PropPointers),
 	0,
-	0x009002ACu,
+	0x009002ADu,
 	METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_AGM_Main_Statics::Class_MetaDataParams), Z_Construct_UClass_AGM_Main_Statics::Class_MetaDataParams)
 };
 void AGM_Main::StaticRegisterNativesAGM_Main()
@@ -129,10 +131,10 @@ AGM_Main::~AGM_Main() {}
 struct Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_GM_Main_h__Script_LMN_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_AGM_Main, AGM_Main::StaticClass, TEXT("AGM_Main"), &Z_Registration_Info_UClass_AGM_Main, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AGM_Main), 1530037685U) },
+		{ Z_Construct_UClass_AGM_Main, AGM_Main::StaticClass, TEXT("AGM_Main"), &Z_Registration_Info_UClass_AGM_Main, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AGM_Main), 2806019104U) },
 	};
 }; // Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_GM_Main_h__Script_LMN_Statics 
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_GM_Main_h__Script_LMN_3543922680{
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_GM_Main_h__Script_LMN_1486193551{
 	TEXT("/Script/LMN"),
 	Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_GM_Main_h__Script_LMN_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_GM_Main_h__Script_LMN_Statics::ClassInfo),
 	nullptr, 0,

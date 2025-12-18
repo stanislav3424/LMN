@@ -6,12 +6,29 @@
 #include "SceneComponentBase.h"
 #include "SC_Selected.generated.h"
 
-/**
- * 
- */
-UCLASS()
+UCLASS(Blueprintable, ClassGroup = (Custom), meta = (BlueprintSpawnableComponent))
 class LMN_API USC_Selected : public USceneComponentBase
 {
-	GENERATED_BODY()
-	
+    GENERATED_BODY()
+
+protected:
+    virtual void BeginPlay() override;
+    virtual void OnRegister() override;
+    virtual void OnUnregister() override;
+    virtual void ObjectUpdated() override;
+
+    UFUNCTION()
+    void SelectedChange(bool Selected);
+
+    UPROPERTY()
+    UStaticMeshComponent* SelectionMesh;
+
+    UPROPERTY(EditDefaultsOnly, Category = "Visual")
+    UStaticMesh* DefaultMesh;
+
+    UPROPERTY(Transient)
+    UMaterialInstanceDynamic* MID;
+
+    UPROPERTY(EditDefaultsOnly, Category = "Visual")
+    FName SelectedParameter = FName(TEXT("IsSelected"));
 };

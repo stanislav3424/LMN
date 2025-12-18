@@ -67,3 +67,32 @@ void ULogic::BroadcastOnHealthChange() const
 {
     OnHealthChange.Broadcast(MaxHealth, CurrentHealth);
 }
+
+void ULogic::BroadcastOnTeamChange() const
+{
+    OnTeamChange.Broadcast(Team);
+}
+
+void ULogic::SetTeam(ETeam NewTeam)
+{
+    if (Team != NewTeam)
+    {
+        Team = NewTeam;
+        BroadcastOnTeamChange();
+    }
+}
+
+void ULogic::BroadcastOnSelectedChange() const
+{
+    OnSelectedChange.Broadcast(bIsSelected);
+}
+
+void ULogic::SetSelected(bool bNewSelected)
+{
+    if (bIsSelected != bNewSelected)
+    {
+        bIsSelected = bNewSelected;
+        BroadcastOnSelectedChange();
+    }
+
+}
