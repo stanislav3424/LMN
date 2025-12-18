@@ -2,15 +2,11 @@
 
 #include "UW_Base.h"
 #include "BFL.h"
+#include "Blueprint/WidgetTree.h"
 
 void UUW_Base::ObjectUpdated()
 {
-    TArray<UWidget*> DirectChildren;
-    UBFL::GetDirectChildWidgets(this, DirectChildren);
-
-    for (auto Children : DirectChildren)
-        if (Children)
-            UBFL::SetLogic(Children, LogicBase);
+    
 }
 
 ULogicBase* UUW_Base::GetLogic_Implementation()
@@ -25,4 +21,16 @@ void UUW_Base::SetLogic_Implementation(ULogicBase* NewLogic)
     CHECK_FIELD(LogicBase);
 
     ObjectUpdated();
+}
+
+void UUW_Base::ObjectUpdatedAllWidgets()
+{
+    if (!WidgetTree)
+        return;
+    TArray<UWidget*> DirectChildren;
+    WidgetTree->GetAllWidgets(DirectChildren);
+
+    for (auto Children : DirectChildren)
+        if (Children)
+            UBFL::SetLogic(Children, LogicBase);
 }

@@ -52,4 +52,6 @@ class LMN_API UUW_Base : public UUserWidget, public ILogicInterface
         virtual ULogicBase* GetLogic_Implementation() override;
         virtual void        SetLogic_Implementation(ULogicBase* NewLogic) override;
 
+        void ObjectUpdatedAllWidgets();
+
 };

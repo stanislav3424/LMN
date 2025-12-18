@@ -16,11 +16,5 @@ void UUW_ObjectListView::ObjectUpdated()
 {
     Super::ObjectUpdated();
 
-
-    if (LogicBase && StaminaProgressBar && HealthProgressBar && UW_Icon)
-    {
-        UBFL::SetLogic(StaminaProgressBar, LogicBase);
-        UBFL::SetLogic(HealthProgressBar, LogicBase);
-        UBFL::SetLogic(UW_Icon, LogicBase);
-    }
+    ObjectUpdatedAllWidgets();
 }

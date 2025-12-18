@@ -19,12 +19,16 @@ void UBFL::GetDirectChildWidgets(UWidget* Root, TArray<UWidget*>& OutWidgets)
     if (!Root)
         return;
 
+    
+
     if (UUserWidget* UserWidget = Cast<UUserWidget>(Root))
     {
         Root = UserWidget->GetRootWidget();
         if (!Root && UserWidget->WidgetTree)
         {
             Root = UserWidget->WidgetTree->RootWidget;
+
+
         }
         if (!Root)
             return;

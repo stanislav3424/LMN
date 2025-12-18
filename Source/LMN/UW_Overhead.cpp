@@ -7,5 +7,5 @@ void UUW_Overhead::ObjectUpdated()
 {
     Super::ObjectUpdated();
 
-
+    ObjectUpdatedAllWidgets();
 }
