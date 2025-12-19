@@ -13,42 +13,6 @@
 
 DEFINE_LOG_CATEGORY(LMN)
 
-void UBFL::GetDirectChildWidgets(UWidget* Root, TArray<UWidget*>& OutWidgets)
-{
-    OutWidgets.Reset();
-    if (!Root)
-        return;
-
-    
-
-    if (UUserWidget* UserWidget = Cast<UUserWidget>(Root))
-    {
-        Root = UserWidget->GetRootWidget();
-        if (!Root && UserWidget->WidgetTree)
-        {
-            Root = UserWidget->WidgetTree->RootWidget;
-
-
-        }
-        if (!Root)
-            return;
-    }
-
-    if (UPanelWidget* Panel = Cast<UPanelWidget>(Root))
-    {
-        const int32 Count = Panel->GetChildrenCount();
-        OutWidgets.Reserve(Count);
-        for (int32 i = 0; i < Count; ++i)
-        {
-            if (UWidget* Child = Panel->GetChildAt(i))
-            {
-                OutWidgets.Add(Child);
-            }
-        }
-    }
-
-}
-
 void UBFL::SetLogic(UObject* Object, UObject* Logic)
 {
     if (Object && Logic)
@@ -143,3 +107,15 @@ void UBFL::GetIcon(UObject* Object, UMaterialInstanceDynamic* MID)
                 if (auto IconRendering = GM->GetIconRendering())
                     IconRendering->RenderObjectToMID(Object, MID);
 };
+
+template <typename TypeComponent> TypeComponent* UBFL::GetActorComponentByName(AActor* Actor, const FName& ComponentName)
+{
+    if (!Actor)
+        return nullptr;
+    TArray<TypeComponent*> Components;
+    Actor->GetComponents<TypeComponent>(Components);
+    for (auto Component : Components)
+        if (Component && Component->GetFName() == ComponentName)
+            return Component;
+    return nullptr;
+}

@@ -19,18 +19,27 @@ ACameraPawn::ACameraPawn()
     SetRootComponent(Root);
 
     SpringArm = CreateDefaultSubobject<USpringArmComponent>(TEXT("SpringArm"));
-    SpringArm->SetupAttachment(Root);
-    SpringArm->bDoCollisionTest         = false;
-    SpringArm->bEnableCameraLag         = false;
-    SpringArm->bEnableCameraRotationLag = false;
-    SpringArm->TargetArmLength          = 1200.f;
-    SpringArm->SetRelativeRotation(FRotator(-60.f, 0.f, 0.f));
+    if (SpringArm)
+    {
+        SpringArm->SetupAttachment(Root);
+        SpringArm->bDoCollisionTest         = false;
+        SpringArm->bEnableCameraLag         = false;
+        SpringArm->bEnableCameraRotationLag = false;
+        SpringArm->TargetArmLength          = 1200.f;
+        SpringArm->SetRelativeRotation(FRotator(-60.f, 0.f, 0.f));
+    }
 
     Camera = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera"));
-    Camera->SetupAttachment(SpringArm, USpringArmComponent::SocketName);
+    if (Camera)
+    {
+        Camera->SetupAttachment(SpringArm, USpringArmComponent::SocketName);
+    }
 
-    MovementComponent                   = CreateDefaultSubobject<UFloatingPawnMovement>(TEXT("MovementComponent"));
-    MovementComponent->UpdatedComponent = Root;
+    MovementComponent = CreateDefaultSubobject<UFloatingPawnMovement>(TEXT("MovementComponent"));
+    if (MovementComponent)
+    {
+        MovementComponent->UpdatedComponent = Root;
+    }
 
     AutoPossessPlayer = EAutoReceiveInput::Player0;
 }

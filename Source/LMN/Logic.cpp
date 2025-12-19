@@ -22,8 +22,7 @@ void ULogic::BindEvents()
 
     if (IsValid(RepresentationActor))
     {
-        if (!RepresentationActor->OnTakeAnyDamage.IsAlreadyBound(this, &ULogic::HandleOwnerDamage))
-            RepresentationActor->OnTakeAnyDamage.AddDynamic(this, &ULogic::HandleOwnerDamage);
+            RepresentationActor->OnTakeAnyDamage.AddUniqueDynamic(this, &ULogic::HandleOwnerDamage);
     }
 }
 

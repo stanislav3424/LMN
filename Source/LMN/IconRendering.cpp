@@ -58,7 +58,6 @@ void AIconRendering::Tick(float DeltaSeconds)
 
 void AIconRendering::Render(TPair<FDataTableRowHandle, UTextureRenderTarget2D*>& Pair)
 {
-    //UE_LOG(LMN, Error, TEXT("Render"))
     if (!SceneCapture)
         return;
 
@@ -86,7 +85,6 @@ void AIconRendering::Render(TPair<FDataTableRowHandle, UTextureRenderTarget2D*>&
             SceneCapture->ShowOnlyActors.Empty();
             SceneCapture->ShowOnlyComponents.Empty();
             SceneCapture->ShowOnlyActorComponents(Actor, true);
-            //SceneCapture->ShowOnlyActors.Add(Actor);
 
             const bool bChannel0 = false;
             const bool bChannel1 = true;
@@ -94,13 +92,8 @@ void AIconRendering::Render(TPair<FDataTableRowHandle, UTextureRenderTarget2D*>&
 
             auto Components = Actor->GetComponents().Array();
             for (auto Component : Components)
-            {
                 if (auto Prim = Cast<UPrimitiveComponent>(Component))
-                {
                     Prim->SetLightingChannels(bChannel0, bChannel1, bChannel2);
-                    //SceneCapture->ShowOnlyComponents.Add(Prim);
-                }
-            }
 
             SceneCapture->CaptureScene();
             Actor->Destroy();
@@ -110,7 +103,6 @@ void AIconRendering::Render(TPair<FDataTableRowHandle, UTextureRenderTarget2D*>&
 
 void AIconRendering::RenderObjectToMID(UObject* Object, UMaterialInstanceDynamic* MID)
 {
-    //UE_LOG(LMN, Error, TEXT("RenderObjectToMID"))
     if (!Object || !MID)
         return;
 

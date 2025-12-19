@@ -108,7 +108,19 @@
     <ClInclude Include="..\..\Source\LMN\LogicInterface.h">
       <Filter>Source\LMN</Filter>
     </ClInclude>
+    <ClCompile Include="..\..\Source\LMN\LogicMine.cpp">
+      <Filter>Source\LMN</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\LMN\LogicMine.h">
+      <Filter>Source\LMN</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\LMN\Macros.h">
+      <Filter>Source\LMN</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\LMN\MineActor.cpp">
+      <Filter>Source\LMN</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\LMN\MineActor.h">
       <Filter>Source\LMN</Filter>
     </ClInclude>
     <ClCompile Include="..\..\Source\LMN\PC_Main.cpp">

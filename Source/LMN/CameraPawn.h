@@ -73,10 +73,10 @@ protected:
     float ZoomSmooth = 10.f;
 
     UPROPERTY(EditDefaultsOnly, Category = "Camera")
-    FVector2D WorldBoundsMin = FVector2D(-10000.f, -10000.f);
+    FVector2D WorldBoundsMin = FVector2D(-100000.f, -100000.f);
 
     UPROPERTY(EditDefaultsOnly, Category = "Camera")
-    FVector2D WorldBoundsMax = FVector2D(10000.f, 10000.f);
+    FVector2D WorldBoundsMax = FVector2D(100000.f, 100000.f);
 
     FVector TargetLocation;
     float   TargetArmLength;

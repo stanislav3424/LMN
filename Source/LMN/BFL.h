@@ -31,7 +31,6 @@ class LMN_API UBFL : public UBlueprintFunctionLibrary
     GENERATED_BODY()
 
 public:
-    static void GetDirectChildWidgets(UWidget* Root, TArray<UWidget*>& OutWidgets);
 
     UFUNCTION(BlueprintCallable, Category = "Logic")
     static void SetLogic(UObject* Object, UObject* Logic);
@@ -87,4 +86,7 @@ public:
 
     UFUNCTION(BlueprintCallable, Category = "Icon")
     static void GetIcon(UObject* Object, UMaterialInstanceDynamic* MID);
+
+    template <typename TypeComponent>
+    static TypeComponent* GetActorComponentByName(AActor* Actor, const FName& ComponentName);
 };
