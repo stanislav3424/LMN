@@ -17,8 +17,74 @@ ENGINE_API UClass* Z_Construct_UClass_AGameModeBase();
 LMN_API UClass* Z_Construct_UClass_AGM_Main();
 LMN_API UClass* Z_Construct_UClass_AGM_Main_NoRegister();
 LMN_API UClass* Z_Construct_UClass_AIconRendering_NoRegister();
+LMN_API UFunction* Z_Construct_UDelegateFunction_LMN_OnEndGame__DelegateSignature();
+LMN_API UFunction* Z_Construct_UDelegateFunction_LMN_OnStartGame__DelegateSignature();
 UPackage* Z_Construct_UPackage__Script_LMN();
 // ********** End Cross Module References **********************************************************
+
+// ********** Begin Delegate FOnStartGame **********************************************************
+struct Z_Construct_UDelegateFunction_LMN_OnStartGame__DelegateSignature_Statics
+{
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "GM_Main.h" },
+	};
+#endif // WITH_METADATA
+
+// ********** Begin Delegate FOnStartGame constinit property declarations **************************
+// ********** End Delegate FOnStartGame constinit property declarations ****************************
+	static const UECodeGen_Private::FDelegateFunctionParams FuncParams;
+};
+const UECodeGen_Private::FDelegateFunctionParams Z_Construct_UDelegateFunction_LMN_OnStartGame__DelegateSignature_Statics::FuncParams = { { (UObject*(*)())Z_Construct_UPackage__Script_LMN, nullptr, "OnStartGame__DelegateSignature", 	nullptr, 
+	0, 
+0,
+RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00130000, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UDelegateFunction_LMN_OnStartGame__DelegateSignature_Statics::Function_MetaDataParams), Z_Construct_UDelegateFunction_LMN_OnStartGame__DelegateSignature_Statics::Function_MetaDataParams)},  };
+UFunction* Z_Construct_UDelegateFunction_LMN_OnStartGame__DelegateSignature()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUDelegateFunction(&ReturnFunction, Z_Construct_UDelegateFunction_LMN_OnStartGame__DelegateSignature_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+void FOnStartGame_DelegateWrapper(const FMulticastScriptDelegate& OnStartGame)
+{
+	OnStartGame.ProcessMulticastDelegate<UObject>(NULL);
+}
+// ********** End Delegate FOnStartGame ************************************************************
+
+// ********** Begin Delegate FOnEndGame ************************************************************
+struct Z_Construct_UDelegateFunction_LMN_OnEndGame__DelegateSignature_Statics
+{
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "GM_Main.h" },
+	};
+#endif // WITH_METADATA
+
+// ********** Begin Delegate FOnEndGame constinit property declarations ****************************
+// ********** End Delegate FOnEndGame constinit property declarations ******************************
+	static const UECodeGen_Private::FDelegateFunctionParams FuncParams;
+};
+const UECodeGen_Private::FDelegateFunctionParams Z_Construct_UDelegateFunction_LMN_OnEndGame__DelegateSignature_Statics::FuncParams = { { (UObject*(*)())Z_Construct_UPackage__Script_LMN, nullptr, "OnEndGame__DelegateSignature", 	nullptr, 
+	0, 
+0,
+RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00130000, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UDelegateFunction_LMN_OnEndGame__DelegateSignature_Statics::Function_MetaDataParams), Z_Construct_UDelegateFunction_LMN_OnEndGame__DelegateSignature_Statics::Function_MetaDataParams)},  };
+UFunction* Z_Construct_UDelegateFunction_LMN_OnEndGame__DelegateSignature()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUDelegateFunction(&ReturnFunction, Z_Construct_UDelegateFunction_LMN_OnEndGame__DelegateSignature_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+void FOnEndGame_DelegateWrapper(const FMulticastScriptDelegate& OnEndGame)
+{
+	OnEndGame.ProcessMulticastDelegate<UObject>(NULL);
+}
+// ********** End Delegate FOnEndGame **************************************************************
 
 // ********** Begin Class AGM_Main *****************************************************************
 FClassRegistrationInfo Z_Registration_Info_UClass_AGM_Main;

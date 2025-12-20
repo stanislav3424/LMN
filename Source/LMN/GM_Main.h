@@ -6,6 +6,9 @@
 #include "GameFramework/GameModeBase.h"
 #include "GM_Main.generated.h"
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnStartGame);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnEndGame);
+
 class AIconRendering;
 
 UCLASS(Blueprintable, Abstract)
@@ -24,4 +27,11 @@ protected:
 
 public:
     AIconRendering* GetIconRendering() { return IconRendering; };
+
+    void StartGame();
+    void EndGame();
+
+protected:
+    FOnStartGame OnStartGame;
+    FOnEndGame   OnEndGame;
 };

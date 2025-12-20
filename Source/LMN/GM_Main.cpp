@@ -16,3 +16,15 @@ void AGM_Main::BeginPlay()
                 IconRenderingClass, FVector(0.f, 0.f, 0.f), FRotator(), ActorSpawnParameters);
         }
 }
+
+void AGM_Main::StartGame()
+{
+
+    OnStartGame.Broadcast();
+}
+
+void AGM_Main::EndGame()
+{
+
+    OnEndGame.Broadcast();
+}

@@ -33,6 +33,12 @@
     <Filter Include="Source\LMN">
       <UniqueIdentifier>{F8694180-2ADC-38E9-AF82-9A356DF44456}</UniqueIdentifier>
     </Filter>
+    <ClCompile Include="..\..\Source\LMN\AIControllerBase.cpp">
+      <Filter>Source\LMN</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\LMN\AIControllerBase.h">
+      <Filter>Source\LMN</Filter>
+    </ClInclude>
     <ClCompile Include="..\..\Source\LMN\BFL.cpp">
       <Filter>Source\LMN</Filter>
     </ClCompile>
