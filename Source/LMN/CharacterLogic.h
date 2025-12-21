@@ -19,6 +19,7 @@ enum class ETypeMovementState : uint8
 {
     Unarmed UMETA(DisplayName = "Unarmed"),
     Rifle   UMETA(DisplayName = "Rifle"),
+    Pistol  UMETA(DisplayName = "Pistol"),
 };
 
 UENUM(BlueprintType)
@@ -68,19 +69,13 @@ protected:
 
 
     void SetMovementState(EMovementState NewMovementState);
-    //void SetTypeMovementState(ETypeMovementState NewTypeMovementState);
     void SetTypeAction(ETypeAction NewTypeAction);
 
 public:
     void CommandShootStarted();
     void CommandShootCompleted();
     void CommandReloadWeapon();
-    void CommandReloadWeaponCompleted();
-    void CommandTurnTarget(FRotator const& Rotator);
-    void CommandMove();
-    void CommandMoveCompleted();
-    void CommandRun();
-    void CommandRunCompleted();
+    void CommandAbortReloadWeapon();
 
     void ShootCompleted();
     void ReloadCompleted();
@@ -104,9 +99,17 @@ protected:
     float MaxWalkSpeed     = INDEX_NONE;
     float MaxRunSpeed      = INDEX_NONE;
 
+    UPROPERTY(Transient)
     UCharacterMovementComponent* CharacterMovementComponentRef;
 
     void StaminaTick(float DeltaTime);
+    void UpdateMovementState();
+
+    bool  bIsMove = false;
+    bool  bCanRan = false;
+    float Speed   = INDEX_NONE;
+
+    void SetCanRan(bool bNewCanRan);
 
     // Equipment
 protected:

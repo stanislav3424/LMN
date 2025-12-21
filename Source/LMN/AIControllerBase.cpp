@@ -20,6 +20,7 @@ void AAIControllerBase::OnPossess(APawn* InPawn)
 void AAIControllerBase::OnUnPossess()
 {
     Super::OnUnPossess();
+    //MoveToLocation();
 }
 
 void AAIControllerBase::Command(ETypeAIAction TypeAIAction, FVector TargetLocation)

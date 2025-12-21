@@ -28,37 +28,29 @@ void UCharacterLogic::Tick(float DeltaTime)
     Super::Tick(DeltaTime);
 
     StaminaTick(DeltaTime);
+    UpdateMovementState();
 }
 
 void UCharacterLogic::RepresentationChanged()
 {
+    Super::RepresentationChanged();
+
     SetMovementState(EMovementState::Idle);
-    //SetTypeMovementState(ETypeMovementState::Unarmed);
     SetTypeAction(ETypeAction::Idle);
 
     if (RepresentationActor)
         if (auto Character = Cast<ACharacter>(RepresentationActor))
             CharacterMovementComponentRef = Character->GetCharacterMovement();
+    SetCanRan(false);
 }
 
 void UCharacterLogic::SetMovementState(EMovementState NewMovementState)
 {
     if (!IsValid(RepresentationActor))
         return;
-
     MovementState = NewMovementState;
-    
-    if (CharacterMovementComponentRef)
-        CharacterMovementComponentRef->MaxWalkSpeed = MovementState == EMovementState::Run ? MaxRunSpeed : MaxWalkSpeed;
-
     OnMovementStateChanged.Broadcast(MovementState);
 }
-
-//void UCharacterLogic::SetTypeMovementState(ETypeMovementState NewTypeMovementState)
-//{
-//    TypeMovementState = NewTypeMovementState;
-//    OnTypeMovementStateChanged.Broadcast(TypeMovementState);
-//}
 
 void UCharacterLogic::SetTypeAction(ETypeAction MewTypeAction)
 {
@@ -90,45 +82,8 @@ void UCharacterLogic::CommandReloadWeapon()
         SetTypeAction(ETypeAction::Reloading);
 }
 
-void UCharacterLogic::CommandReloadWeaponCompleted()
+void UCharacterLogic::CommandAbortReloadWeapon()
 {
-}
-
-void UCharacterLogic::CommandTurnTarget(FRotator const& Rotator)
-{
-}
-
-void UCharacterLogic::CommandMove()
-{
-    if (MovementState == EMovementState::Idle && TypeAction != ETypeAction::Equipment &&
-        TypeAction != ETypeAction::Interaction)
-        SetMovementState(EMovementState::Walk);
-}
-
-void UCharacterLogic::CommandMoveCompleted()
-{
-    if (MovementState == EMovementState::Walk || MovementState == EMovementState::Run)
-        SetMovementState(EMovementState::Idle);
-}
-
-void UCharacterLogic::CommandRun()
-{
-    if (CurrentStamina >= MinStaminaToRun)
-        if (MovementState == EMovementState::Walk)
-        {
-            if (TypeAction == ETypeAction::Reloading)
-                CommandReloadWeaponCompleted();
-            else if (TypeAction == ETypeAction::Shooting)
-                CommandShootCompleted();
-
-            SetMovementState(EMovementState::Run);
-        }
-}
-
-void UCharacterLogic::CommandRunCompleted()
-{
-    if (MovementState == EMovementState::Run)
-        SetMovementState(EMovementState::Walk);
 }
 
 void UCharacterLogic::ShootCompleted()
@@ -160,10 +115,48 @@ void UCharacterLogic::StaminaTick(float DeltaTime)
         CurrentStamina -= StaminaDrainRate;
         CurrentStamina = FMath::Clamp(CurrentStamina, 0.f, MaxStamina);
         if (CurrentStamina <= 0.f)
-            SetMovementState(EMovementState::Walk);
+            SetCanRan(false);
     }
     if (OldStamina != CurrentStamina)
         BroadcastOnStaminaChanged();
+}
+
+void UCharacterLogic::UpdateMovementState()
+{
+    if (!IsValid(RepresentationActor))
+        return;
+
+    FVector CurrentVelocity = RepresentationActor->GetVelocity();
+    float NewSpeed = CurrentVelocity.Size();
+
+    if (Speed == NewSpeed)
+        return;
+    Speed = NewSpeed;
+
+    const float MinMovementThreshold = 1.0f;
+
+    bIsMove = Speed > MinMovementThreshold;
+
+    if (!bIsMove)
+        SetMovementState(EMovementState::Idle);
+    else
+    {
+        if (bCanRan)
+            SetMovementState(EMovementState::Run);
+        else
+            SetMovementState(EMovementState::Walk);
+    }
+}
+
+void UCharacterLogic::SetCanRan(bool bNewCanRan)
+{
+    if (bNewCanRan == false)
+        bCanRan = false;
+    else
+        bCanRan = CurrentStamina > MinStaminaToRun ? true : false;
+
+    if (CharacterMovementComponentRef)
+        CharacterMovementComponentRef->MaxWalkSpeed = bCanRan ? MaxRunSpeed : MaxWalkSpeed;
 }
 
 bool UCharacterLogic::EquipItem(ULogicBase* Logic, EEquipmentSlot TargetEquipmentSlot)

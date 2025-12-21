@@ -20,35 +20,35 @@ enum class ETypeAction : uint8;
 enum class ETypeMovementState : uint8;
 
 // ********** Begin Delegate FOnStaminaChanged *****************************************************
-#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_CharacterLogic_h_41_DELEGATE \
+#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_CharacterLogic_h_42_DELEGATE \
 LMN_API void FOnStaminaChanged_DelegateWrapper(const FMulticastScriptDelegate& OnStaminaChanged, float CurrentStamina, float MaxStamina);
 
 
 // ********** End Delegate FOnStaminaChanged *******************************************************
 
 // ********** Begin Delegate FOnMovementStateChanged ***********************************************
-#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_CharacterLogic_h_42_DELEGATE \
+#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_CharacterLogic_h_43_DELEGATE \
 LMN_API void FOnMovementStateChanged_DelegateWrapper(const FMulticastScriptDelegate& OnMovementStateChanged, EMovementState MovementState);
 
 
 // ********** End Delegate FOnMovementStateChanged *************************************************
 
 // ********** Begin Delegate FOnTypeMovementStateChanged *******************************************
-#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_CharacterLogic_h_43_DELEGATE \
+#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_CharacterLogic_h_44_DELEGATE \
 LMN_API void FOnTypeMovementStateChanged_DelegateWrapper(const FMulticastScriptDelegate& OnTypeMovementStateChanged, ETypeMovementState TypeMovementState);
 
 
 // ********** End Delegate FOnTypeMovementStateChanged *********************************************
 
 // ********** Begin Delegate FOnTypeActionChanged **************************************************
-#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_CharacterLogic_h_44_DELEGATE \
+#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_CharacterLogic_h_45_DELEGATE \
 LMN_API void FOnTypeActionChanged_DelegateWrapper(const FMulticastScriptDelegate& OnTypeActionChanged, ETypeAction TypeAction);
 
 
 // ********** End Delegate FOnTypeActionChanged ****************************************************
 
 // ********** Begin Delegate FOnEquipmentChanged ***************************************************
-#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_CharacterLogic_h_45_DELEGATE \
+#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_CharacterLogic_h_46_DELEGATE \
 LMN_API void FOnEquipmentChanged_DelegateWrapper(const FMulticastScriptDelegate& OnEquipmentChanged);
 
 
@@ -58,7 +58,7 @@ LMN_API void FOnEquipmentChanged_DelegateWrapper(const FMulticastScriptDelegate&
 struct Z_Construct_UClass_UCharacterLogic_Statics;
 LMN_API UClass* Z_Construct_UClass_UCharacterLogic_NoRegister();
 
-#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_CharacterLogic_h_53_INCLASS_NO_PURE_DECLS \
+#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_CharacterLogic_h_54_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesUCharacterLogic(); \
 	friend struct ::Z_Construct_UClass_UCharacterLogic_Statics; \
@@ -69,7 +69,7 @@ public: \
 	DECLARE_SERIALIZER(UCharacterLogic)
 
 
-#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_CharacterLogic_h_53_ENHANCED_CONSTRUCTORS \
+#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_CharacterLogic_h_54_ENHANCED_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API UCharacterLogic(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()); \
 	/** Deleted move- and copy-constructors, should never be used */ \
@@ -81,12 +81,12 @@ public: \
 	NO_API virtual ~UCharacterLogic();
 
 
-#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_CharacterLogic_h_50_PROLOG
-#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_CharacterLogic_h_53_GENERATED_BODY \
+#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_CharacterLogic_h_51_PROLOG
+#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_CharacterLogic_h_54_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_CharacterLogic_h_53_INCLASS_NO_PURE_DECLS \
-	FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_CharacterLogic_h_53_ENHANCED_CONSTRUCTORS \
+	FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_CharacterLogic_h_54_INCLASS_NO_PURE_DECLS \
+	FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_CharacterLogic_h_54_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
@@ -112,7 +112,8 @@ template<> LMN_NON_ATTRIBUTED_API UEnum* StaticEnum<EMovementState>();
 // ********** Begin Enum ETypeMovementState ********************************************************
 #define FOREACH_ENUM_ETYPEMOVEMENTSTATE(op) \
 	op(ETypeMovementState::Unarmed) \
-	op(ETypeMovementState::Rifle) 
+	op(ETypeMovementState::Rifle) \
+	op(ETypeMovementState::Pistol) 
 
 enum class ETypeMovementState : uint8;
 template<> struct TIsUEnumClass<ETypeMovementState> { enum { Value = true }; };
