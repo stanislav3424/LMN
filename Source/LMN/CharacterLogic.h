@@ -109,6 +109,7 @@ protected:
     bool  bCanRan = false;
     float Speed   = INDEX_NONE;
 
+public:
     void SetCanRan(bool bNewCanRan);
 
     // Equipment

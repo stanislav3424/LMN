@@ -48,18 +48,18 @@ public:
     static void ActorActivation(AActor* Actor);
 
     UFUNCTION(BlueprintCallable, Category = "Logic")
-    static ULogicBase* CreateLogicByRowName(UWorld* World, FName RowName);
+    static ULogicBase* CreateLogicByRowName(UWorld* World, FName const& RowName);
 
     UFUNCTION(BlueprintCallable, Category = "Logic")
-    static ULogicBase* CreateLogicByRowHandle(UWorld* World, FDataTableRowHandle RowHandle);
+    static ULogicBase* CreateLogicByRowHandle(UWorld* World, FDataTableRowHandle const& RowHandle);
 
     template <LogicDerived TypeLogic>
-    static TypeLogic* CreateLogicByRowHandle(UWorld* World, FDataTableRowHandle RowHandle)
+    static TypeLogic* CreateLogicByRowHandle(UWorld* World, FDataTableRowHandle const& RowHandle)
     {
         return Cast<TypeLogic>(HandleCreateLogicByRowHandle(World, RowHandle));
     };
 
-    static ULogicBase* HandleCreateLogicByRowHandle(UWorld* World, FDataTableRowHandle RowHandle);
+    static ULogicBase* HandleCreateLogicByRowHandle(UWorld* World, FDataTableRowHandle const& RowHandle);
 
     UFUNCTION(BlueprintCallable, Category = "Logic")
     static bool GetTeam(ETeam& TargetTeam, ULogicBase* LogicBase);
@@ -73,8 +73,14 @@ public:
     UFUNCTION(BlueprintCallable, Category = "Logic")
     static bool IsTeamsEqualActor(AActor* ActorA, AActor* ActorB);
 
+    UFUNCTION(BlueprintCallable, Category = "Logic")
+    static bool EqualTeam(ULogicBase* Logic, ETeam const& Team);
+
+     UFUNCTION(BlueprintCallable, Category = "Logic")
+    static bool EqualTeamActor(AActor* Actoc, ETeam const& Team);
+
     template <typename ElementType>
-    static bool AreSetsEqual(const TSet<ElementType>& SetA, const TSet<ElementType>& SetB)
+    static bool AreSetsEqual(TSet<ElementType> const& SetA, TSet<ElementType> const& SetB)
     {
         if (SetA.Num() != SetB.Num())
             return false;
@@ -88,5 +94,15 @@ public:
     static void GetIcon(UObject* Object, UMaterialInstanceDynamic* MID);
 
     template <typename TypeComponent>
-    static TypeComponent* GetActorComponentByName(AActor* Actor, const FName& ComponentName);
+    static TypeComponent* GetActorComponentByName(AActor* Actor, const FName& ComponentName)
+    {
+        if (!Actor)
+            return nullptr;
+        TArray<TypeComponent*> Components;
+        Actor->GetComponents<TypeComponent>(Components);
+        for (auto Component : Components)
+            if (Component && Component->GetFName() == ComponentName)
+                return Component;
+        return nullptr;
+    }
 };

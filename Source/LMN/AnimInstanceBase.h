@@ -33,4 +33,13 @@ protected:
 
     UPROPERTY(Transient)
     UCharacterLogic* Logic;
+
+    UPROPERTY(Transient)
+    APawn* Pawn;
+
+    UPROPERTY(BlueprintReadOnly, Category = "State")
+    float Speed;
+
+    UPROPERTY(BlueprintReadOnly, Category = "State")
+    float Rotation;
 };

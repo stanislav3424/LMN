@@ -52,14 +52,14 @@ public:
 
     // Team
 protected:
-    ETeam Team = ETeam::Neutral;
+    ETeam Team = ETeam::Player;
 
 public:
     FOnTeamChange OnTeamChange;
 
     void  BroadcastOnTeamChange() const;
-    ETeam GetTeam() const { return Team; };
-    void  SetTeam(ETeam NewTeam);
+    const ETeam GetTeam() const { return Team; };
+    void  SetTeam(ETeam const& NewTeam);
 
     // Selected
 protected:

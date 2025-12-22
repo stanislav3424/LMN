@@ -26,6 +26,8 @@ struct FDataTableRowHandle;
 // ********** Begin Class UBFL *********************************************************************
 #define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_BFL_h_31_RPC_WRAPPERS_NO_PURE_DECLS \
 	DECLARE_FUNCTION(execGetIcon); \
+	DECLARE_FUNCTION(execEqualTeamActor); \
+	DECLARE_FUNCTION(execEqualTeam); \
 	DECLARE_FUNCTION(execIsTeamsEqualActor); \
 	DECLARE_FUNCTION(execIsTeamsEqual); \
 	DECLARE_FUNCTION(execGetTeamActor); \

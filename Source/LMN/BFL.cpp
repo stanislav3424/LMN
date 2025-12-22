@@ -42,7 +42,7 @@ void UBFL::ActorActivation(AActor* Actor)
             GameInstance->ActorActivation(Actor);
 }
 
-ULogicBase* UBFL::CreateLogicByRowName(UWorld* World, FName RowName)
+ULogicBase* UBFL::CreateLogicByRowName(UWorld* World, FName const& RowName)
 {
     if (World)
         if (auto GameInstance = World->GetGameInstance<UGI_Main>())
@@ -54,12 +54,12 @@ ULogicBase* UBFL::CreateLogicByRowName(UWorld* World, FName RowName)
     return nullptr;
 }
 
-ULogicBase* UBFL::CreateLogicByRowHandle(UWorld* World, FDataTableRowHandle RowHandle)
+ULogicBase* UBFL::CreateLogicByRowHandle(UWorld* World, FDataTableRowHandle const& RowHandle)
 {
     return HandleCreateLogicByRowHandle(World, RowHandle);
 }
 
-ULogicBase* UBFL::HandleCreateLogicByRowHandle(UWorld* World, FDataTableRowHandle RowHandle)
+ULogicBase* UBFL::HandleCreateLogicByRowHandle(UWorld* World, FDataTableRowHandle const& RowHandle)
 {
     if (!RowHandle.IsNull() && World)
         if (auto GameInstance = World->GetGameInstance<UGI_Main>())
@@ -99,6 +99,22 @@ bool UBFL::IsTeamsEqualActor(AActor* ActorA, AActor* ActorB)
     return IsTeamsEqual(UBFL::GetLogic(ActorA), UBFL::GetLogic(ActorB));
 }
 
+bool UBFL::EqualTeam(ULogicBase* Logic, ETeam const& Team)
+{
+    if (Logic)
+    {
+        ETeam LoaclTeam;
+        if (UBFL::GetTeam(LoaclTeam, Logic))
+            return LoaclTeam == Team ? true : false;
+    }
+    return false;
+}
+
+bool UBFL::EqualTeamActor(AActor* Actoc, ETeam const& Team)
+{
+    return EqualTeam(UBFL::GetLogic(Actoc), Team);
+}
+
 void UBFL::GetIcon(UObject* Object, UMaterialInstanceDynamic* MID)
 {
     if (Object && MID)
@@ -108,14 +124,3 @@ void UBFL::GetIcon(UObject* Object, UMaterialInstanceDynamic* MID)
                     IconRendering->RenderObjectToMID(Object, MID);
 };
 
-template <typename TypeComponent> TypeComponent* UBFL::GetActorComponentByName(AActor* Actor, const FName& ComponentName)
-{
-    if (!Actor)
-        return nullptr;
-    TArray<TypeComponent*> Components;
-    Actor->GetComponents<TypeComponent>(Components);
-    for (auto Component : Components)
-        if (Component && Component->GetFName() == ComponentName)
-            return Component;
-    return nullptr;
-}

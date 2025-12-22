@@ -106,13 +106,13 @@ void UCharacterLogic::StaminaTick(float DeltaTime)
     auto OldStamina = CurrentStamina;
     if (MovementState != EMovementState::Run)
     {
-        CurrentStamina += StaminaRegenRate;
+        CurrentStamina += StaminaRegenRate * DeltaTime;
         CurrentStamina = FMath::Clamp(CurrentStamina, 0.f , MaxStamina);
 
     }
     else
     {
-        CurrentStamina -= StaminaDrainRate;
+        CurrentStamina -= StaminaDrainRate * DeltaTime;
         CurrentStamina = FMath::Clamp(CurrentStamina, 0.f, MaxStamina);
         if (CurrentStamina <= 0.f)
             SetCanRan(false);

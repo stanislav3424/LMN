@@ -8,6 +8,8 @@
 #include "EnhancedInputSubsystems.h"
 #include "HUD_Main.h"
 #include "Logic.h"
+#include "AIControllerBase.h"
+#include "GameFramework/Pawn.h"
 
 APC_Main::APC_Main()
 {
@@ -88,7 +90,7 @@ void APC_Main::OnLeftReleased(const FInputActionValue& Value)
     else
     {
         FHitResult HitResult;
-        GetHitResultUnderCursorByChannel(ETraceTypeQuery::TraceTypeQuery1, true, HitResult);
+        GetHitResultUnderCursor(ECollisionChannel::ECC_Visibility, false, HitResult);
         TArray<AActor*> NewSelection;
         if (HitResult.bBlockingHit && HitResult.GetActor())
             NewSelection.Add(HitResult.GetActor());
@@ -98,6 +100,15 @@ void APC_Main::OnLeftReleased(const FInputActionValue& Value)
 
 void APC_Main::OnRightPressed(const FInputActionValue& Value)
 {
+    FHitResult HitResult;
+    GetHitResultUnderCursor(ECollisionChannel::ECC_Visibility, false, HitResult);
+    if (HitResult.bBlockingHit)
+        for (auto Actor : ActorsSelected)
+            if (UBFL::EqualTeamActor(Actor, ETeam::Player))
+                if (auto LocalPawn = Cast<APawn>(Actor))
+                    if (auto AIController = LocalPawn->GetController<AAIControllerBase>())
+                        AIController->Command(ETypeAIAction::MoveTo, HitResult.Location);
+                
 }
 
 void APC_Main::OnRightReleased(const FInputActionValue& Value)

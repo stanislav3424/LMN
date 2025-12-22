@@ -7,6 +7,8 @@
 void UAnimInstanceBase::NativeBeginPlay()
 {
     Super::NativeBeginPlay(); 
+
+    Pawn = TryGetPawnOwner();
 }
 
 void UAnimInstanceBase::NativeUpdateAnimation(float DeltaSeconds)
@@ -14,12 +16,18 @@ void UAnimInstanceBase::NativeUpdateAnimation(float DeltaSeconds)
     Super::NativeUpdateAnimation(DeltaSeconds);
     if (!Logic)
     {
-        Logic = Cast<UCharacterLogic>(UBFL::GetLogic(TryGetPawnOwner()));
+        Logic = UBFL::GetLogic<UCharacterLogic>(TryGetPawnOwner());
         if (Logic)
         {
             Logic->OnMovementStateChanged.AddUniqueDynamic(this, &UAnimInstanceBase::MovementStateChanged);
             Logic->OnTypeMovementStateChanged.AddUniqueDynamic(this, &UAnimInstanceBase::TypeMovementStateChanged);
         }
+    }
+
+    if (Pawn)
+    {
+        Speed    = Pawn->GetVelocity().Size();
+        Rotation = Pawn->GetActorRotation().Roll;
     }
 }
 

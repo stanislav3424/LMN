@@ -72,7 +72,7 @@ void ULogic::BroadcastOnTeamChange() const
     OnTeamChange.Broadcast(Team);
 }
 
-void ULogic::SetTeam(ETeam NewTeam)
+void ULogic::SetTeam(ETeam const& NewTeam)
 {
     if (Team != NewTeam)
     {
