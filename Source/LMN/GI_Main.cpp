@@ -80,23 +80,17 @@ FDataTableRowHandle UGI_Main::GetRowHandleByRowName(FName RowName)
     return RowHandle;
 }
 
-//TSubclassOf<ULogicBase> UGI_Main::GetLogicClassByActorClass(AActor* Actor)
-//{
-//    if (Actor)
-//    {
-//        auto RowHandle = GetRowHandleByActorClass(Actor);
-//        if (!RowHandle.IsNull())
-//            if (auto const* Row = RowHandle.DataTable->FindRow<FBaseItemRow>(RowHandle.RowName, TEXT("")))
-//                return Row->LogicClass;
-//    }
-//    return TSubclassOf<ULogicBase>();
-//}
-
-FDataTableRowHandle UGI_Main::GetRowHandleByActorClass(AActor* Actor)
+FDataTableRowHandle UGI_Main::GetRowHandleByActor(AActor* Actor)
 {
     if (IsValid(Actor))
-        if (auto Valid = RowHandlesCacheByActorClass.Find(Actor->GetClass()))
-            return *Valid;
+        return GetRowHandleByActorClass(Actor->GetClass());
+    return FDataTableRowHandle();
+}
+
+FDataTableRowHandle UGI_Main::GetRowHandleByActorClass(TSubclassOf<AActor> Class)
+{
+    if (auto Valid = RowHandlesCacheByActorClass.Find(Class))
+        return *Valid;
     return FDataTableRowHandle();
 }
 
@@ -127,6 +121,7 @@ TSubclassOf<AActor> UGI_Main::GetRepresentationActorClassByRowHandle(FDataTableR
 void UGI_Main::ActorActivation(AActor* Actor)
 {
     if (IsValid(Actor))
-        if (auto LogicClass = CreateLogicByRowHandle(GetRowHandleByActorClass(Actor)))
-            LogicClass->HardSetRepresentationActor(Actor);
+        if (!UBFL::GetLogic(Actor))
+            if (auto LogicClass = CreateLogicByRowHandle(GetRowHandleByActor(Actor)))
+                LogicClass->HardSetRepresentationActor(Actor);
 }

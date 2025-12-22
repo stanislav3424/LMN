@@ -300,6 +300,10 @@
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <ClInclude Include="..\..\Source\LMN\IconRendering.h"/>
+    <ClCompile Include="..\..\Source\LMN\InventoryLogic.cpp">
+      <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\LMN\InventoryLogic.h"/>
     <None Include="..\..\Source\LMN\LMN.Build.cs"/>
     <ClCompile Include="..\..\Source\LMN\LMN.cpp">
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>

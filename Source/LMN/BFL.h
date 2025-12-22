@@ -47,10 +47,8 @@ public:
 
     static void ActorActivation(AActor* Actor);
 
-    UFUNCTION(BlueprintCallable, Category = "Logic")
     static ULogicBase* CreateLogicByRowName(UWorld* World, FName const& RowName);
 
-    UFUNCTION(BlueprintCallable, Category = "Logic")
     static ULogicBase* CreateLogicByRowHandle(UWorld* World, FDataTableRowHandle const& RowHandle);
 
     template <LogicDerived TypeLogic>
@@ -76,7 +74,7 @@ public:
     UFUNCTION(BlueprintCallable, Category = "Logic")
     static bool EqualTeam(ULogicBase* Logic, ETeam const& Team);
 
-     UFUNCTION(BlueprintCallable, Category = "Logic")
+    UFUNCTION(BlueprintCallable, Category = "Logic")
     static bool EqualTeamActor(AActor* Actoc, ETeam const& Team);
 
     template <typename ElementType>
@@ -105,4 +103,23 @@ public:
                 return Component;
         return nullptr;
     }
+
+    static AActor* SpawnTemplateCharacter(
+        UWorld* World, FDataTableRowHandle const& RowHandle, FVector SpawnLocation, FRotator SpawRotator, ETeam Team);
+
+    UFUNCTION(BlueprintCallable, Category = "Spawn", meta = (WorldContext = "WorldContextObject"),
+        DisplayName = "Spawn Actor Team By RowHandle")
+    static AActor* SpawnActorTeamByRowHandle_WorldContext(UObject* WorldContextObject,
+        FDataTableRowHandle const& RowHandle, FVector SpawnnLocation, FRotator SpawRotator, ETeam Team);
+
+    static AActor* SpawnActorTeamByRowHandle(
+        UWorld* World, FDataTableRowHandle const& RowHandle, FVector SpawnLocation, FRotator SpawnRotator, ETeam Team);
+
+    UFUNCTION(BlueprintCallable, Category = "Spawn", meta = (WorldContext = "WorldContextObject"),
+        DisplayName = "Spawn Actor Team By Class")
+    static AActor* SpawnActorTeamByClass_WorldContext(UObject* WorldContextObject, TSubclassOf<AActor> Class,
+        FVector SpawnLocation, FRotator SpawnRotator, ETeam Team);
+
+    static AActor* SpawnActorTeamByClass(
+        UWorld* World, TSubclassOf<AActor> Class, FVector SpawnLocation, FRotator SpawRotator, ETeam Team);
 };

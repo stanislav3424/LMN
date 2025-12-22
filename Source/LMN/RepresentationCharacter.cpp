@@ -11,14 +11,7 @@ void ARepresentationCharacter::BeginPlay()
 
     UBFL::ActorActivation(this);
 
-    if (Logic)
-    {
-        TArray<UActorComponent*> Components;
-        GetComponents(Components);
-        for (auto Component : Components)
-            if (Component)
-                UBFL::SetLogic(Component, Logic);
-    }
+    
 }
 
 void ARepresentationCharacter::Tick(float DeltaSeconds)
@@ -37,4 +30,13 @@ ULogicBase* ARepresentationCharacter::GetLogic_Implementation()
 void ARepresentationCharacter::SetLogic_Implementation(ULogicBase* NewLogic)
 {
     Logic = NewLogic;
+
+    if (Logic)
+    {
+        TArray<UActorComponent*> Components;
+        GetComponents(Components);
+        for (auto Component : Components)
+            if (Component)
+                UBFL::SetLogic(Component, Logic);
+    }
 }

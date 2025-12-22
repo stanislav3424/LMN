@@ -18,7 +18,7 @@ public:
 protected:
     FDataTableRowHandle LogicRowHandle;
 
-    UPROPERTY()
+    UPROPERTY(Transient)
     ULogicBase* OwnerLogic;
 
 public:
@@ -39,18 +39,18 @@ protected:
     virtual void BindEvents();
     virtual void UnbindEvents();
     virtual void RepresentationChanged();
-    void SetRepresentationActor(AActor* Actor);
+    void         SetRepresentationActor(AActor* Actor);
 
     //
 protected:
-    UPROPERTY()
+    UPROPERTY(Transient)
     AActor*             RepresentationActor;
     TSubclassOf<AActor> RepresentationActorClass;
 
 public:
-    void HardSetRepresentationActor(AActor* Actor);
-    AActor* GetRepresentationActor() const;
+    void                HardSetRepresentationActor(AActor* Actor);
+    AActor*             GetRepresentationActor() const;
     TSubclassOf<AActor> GetRepresentationActorClass() const { return RepresentationActorClass; };
-    void DestroyRepresentationActor();
-
+    void                DestroyRepresentationActor();
+    AActor*             SpawnRepresentationActor(FVector SpawnLocation, FRotator SpawRotator);
 };

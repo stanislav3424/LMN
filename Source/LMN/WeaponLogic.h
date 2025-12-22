@@ -6,9 +6,6 @@
 #include "EquipmentLogic.h"
 #include "WeaponLogic.generated.h"
 
-/**
- * 
- */
 UCLASS()
 class LMN_API UWeaponLogic : public UEquipmentLogic
 {

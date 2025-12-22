@@ -16,15 +16,17 @@
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 class AActor;
+class UClass;
 class ULogicBase;
 class UMaterialInstanceDynamic;
 class UObject;
-class UWorld;
 enum class ETeam : uint8;
 struct FDataTableRowHandle;
 
 // ********** Begin Class UBFL *********************************************************************
 #define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_BFL_h_31_RPC_WRAPPERS_NO_PURE_DECLS \
+	DECLARE_FUNCTION(execSpawnActorTeamByClass_WorldContext); \
+	DECLARE_FUNCTION(execSpawnActorTeamByRowHandle_WorldContext); \
 	DECLARE_FUNCTION(execGetIcon); \
 	DECLARE_FUNCTION(execEqualTeamActor); \
 	DECLARE_FUNCTION(execEqualTeam); \
@@ -32,8 +34,6 @@ struct FDataTableRowHandle;
 	DECLARE_FUNCTION(execIsTeamsEqual); \
 	DECLARE_FUNCTION(execGetTeamActor); \
 	DECLARE_FUNCTION(execGetTeam); \
-	DECLARE_FUNCTION(execCreateLogicByRowHandle); \
-	DECLARE_FUNCTION(execCreateLogicByRowName); \
 	DECLARE_FUNCTION(execGetLogic); \
 	DECLARE_FUNCTION(execSetLogic);
 

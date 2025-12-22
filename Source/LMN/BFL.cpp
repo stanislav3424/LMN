@@ -10,6 +10,7 @@
 #include "Components/PanelWidget.h"
 #include "Blueprint/WidgetTree.h"
 #include "Components/ContentWidget.h"
+#include "Kismet/GameplayStatics.h"
 
 DEFINE_LOG_CATEGORY(LMN)
 
@@ -122,5 +123,54 @@ void UBFL::GetIcon(UObject* Object, UMaterialInstanceDynamic* MID)
             if (auto GM = World->GetAuthGameMode<AGM_Main>())
                 if (auto IconRendering = GM->GetIconRendering())
                     IconRendering->RenderObjectToMID(Object, MID);
-};
+}
 
+AActor* UBFL::SpawnTemplateCharacter(
+    UWorld* World, FDataTableRowHandle const& RowHandle, FVector SpawnLocation, FRotator SpawRotator, ETeam Team)
+{
+    return nullptr;
+}
+
+AActor* UBFL::SpawnActorTeamByRowHandle_WorldContext(UObject* WorldContextObject, FDataTableRowHandle const& RowHandle,
+    FVector SpawnLocation, FRotator SpawnRotator, ETeam Team)
+{
+    if (GEngine)
+        if (auto World = GEngine->GetWorldFromContextObject(WorldContextObject, EGetWorldErrorMode::LogAndReturnNull))
+            return SpawnActorTeamByRowHandle(World, RowHandle, SpawnLocation, SpawnRotator, Team);
+    return nullptr;
+}
+
+AActor* UBFL::SpawnActorTeamByRowHandle(
+    UWorld* World, FDataTableRowHandle const& RowHandle, FVector SpawnLocation, FRotator SpawnRotator, ETeam Team)
+{
+    if (World)
+        if (auto GameInstance = World->GetGameInstance<UGI_Main>())
+            if (auto Logic = Cast<ULogic>(GameInstance->CreateLogicByRowHandle(RowHandle)))
+            {
+                Logic->SetTeam(Team);
+                return Logic->SpawnRepresentationActor(SpawnLocation, SpawnRotator);
+            }
+
+    return nullptr;
+}
+
+AActor* UBFL::SpawnActorTeamByClass_WorldContext(
+    UObject* WorldContextObject, TSubclassOf<AActor> Class, FVector SpawnLocation, FRotator SpawnRotator, ETeam Team)
+{
+    if (GEngine)
+        if (auto World = GEngine->GetWorldFromContextObject(WorldContextObject, EGetWorldErrorMode::LogAndReturnNull))
+            return SpawnActorTeamByClass(World, Class, SpawnLocation, SpawnRotator, Team);
+    return nullptr;
+}
+
+AActor* UBFL::SpawnActorTeamByClass(
+    UWorld* World, TSubclassOf<AActor> Class, FVector SpawnLocation, FRotator SpawRotator, ETeam Team)
+{
+    if (World)
+        if (auto GameInstance = World->GetGameInstance<UGI_Main>())
+        {
+            auto RowHandle = GameInstance->GetRowHandleByActorClass(Class);
+            return SpawnActorTeamByRowHandle(World, RowHandle, SpawnLocation, SpawRotator, Team);
+        }
+    return nullptr;
+};

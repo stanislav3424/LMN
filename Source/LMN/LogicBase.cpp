@@ -84,3 +84,17 @@ void ULogicBase::DestroyRepresentationActor()
         RepresentationActor->Destroy();
     RepresentationActor = nullptr;
 }
+
+AActor* ULogicBase::SpawnRepresentationActor(FVector SpawnLocation, FRotator SpawRotator)
+{
+    FActorSpawnParameters ActorSpawnParameters; 
+    ActorSpawnParameters.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
+    if(auto World = GetWorld())
+        if (auto Actor =
+                World->SpawnActor<AActor>(RepresentationActorClass, SpawnLocation, SpawRotator, ActorSpawnParameters))
+        {
+            SetRepresentationActor(Actor);
+            return Actor;
+        }
+    return nullptr;
+}

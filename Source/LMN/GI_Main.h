@@ -77,8 +77,8 @@ protected:
 
 public:
     FDataTableRowHandle GetRowHandleByRowName(FName RowName);
-    // TSubclassOf<ULogicBase> GetLogicClassByActorClass(AActor* Actor);
-    FDataTableRowHandle GetRowHandleByActorClass(AActor* Actor);
+    FDataTableRowHandle GetRowHandleByActor(AActor* Actor);
+    FDataTableRowHandle GetRowHandleByActorClass(TSubclassOf<AActor> Class);
     ULogicBase*         CreateLogicByRowHandle(FDataTableRowHandle const& RowHandle);
     TSubclassOf<AActor> GetRepresentationActorClassByRowHandle(FDataTableRowHandle const& RowHandle);
 

@@ -7,17 +7,20 @@
 #include "UObject/GeneratedCppIncludes.h"
 #include "LMN/BFL.h"
 #include "Engine/DataTable.h"
+#include "UObject/Class.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 static_assert(!UE_WITH_CONSTINIT_UOBJECT, "This generated code can only be compiled with !UE_WITH_CONSTINIT_OBJECT");
 void EmptyLinkFunctionForGeneratedCodeBFL() {}
 
 // ********** Begin Cross Module References ********************************************************
+COREUOBJECT_API UClass* Z_Construct_UClass_UClass_NoRegister();
 COREUOBJECT_API UClass* Z_Construct_UClass_UObject_NoRegister();
+COREUOBJECT_API UScriptStruct* Z_Construct_UScriptStruct_FRotator();
+COREUOBJECT_API UScriptStruct* Z_Construct_UScriptStruct_FVector();
 ENGINE_API UClass* Z_Construct_UClass_AActor_NoRegister();
 ENGINE_API UClass* Z_Construct_UClass_UBlueprintFunctionLibrary();
 ENGINE_API UClass* Z_Construct_UClass_UMaterialInstanceDynamic_NoRegister();
-ENGINE_API UClass* Z_Construct_UClass_UWorld_NoRegister();
 ENGINE_API UScriptStruct* Z_Construct_UScriptStruct_FDataTableRowHandle();
 LMN_API UClass* Z_Construct_UClass_UBFL();
 LMN_API UClass* Z_Construct_UClass_UBFL_NoRegister();
@@ -25,134 +28,6 @@ LMN_API UClass* Z_Construct_UClass_ULogicBase_NoRegister();
 LMN_API UEnum* Z_Construct_UEnum_LMN_ETeam();
 UPackage* Z_Construct_UPackage__Script_LMN();
 // ********** End Cross Module References **********************************************************
-
-// ********** Begin Class UBFL Function CreateLogicByRowHandle *************************************
-struct Z_Construct_UFunction_UBFL_CreateLogicByRowHandle_Statics
-{
-	struct BFL_eventCreateLogicByRowHandle_Parms
-	{
-		UWorld* World;
-		FDataTableRowHandle RowHandle;
-		ULogicBase* ReturnValue;
-	};
-#if WITH_METADATA
-	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
-		{ "Category", "Logic" },
-		{ "ModuleRelativePath", "BFL.h" },
-	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_RowHandle_MetaData[] = {
-		{ "NativeConst", "" },
-	};
-#endif // WITH_METADATA
-
-// ********** Begin Function CreateLogicByRowHandle constinit property declarations ****************
-	static const UECodeGen_Private::FObjectPropertyParams NewProp_World;
-	static const UECodeGen_Private::FStructPropertyParams NewProp_RowHandle;
-	static const UECodeGen_Private::FObjectPropertyParams NewProp_ReturnValue;
-	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
-// ********** End Function CreateLogicByRowHandle constinit property declarations ******************
-	static const UECodeGen_Private::FFunctionParams FuncParams;
-};
-
-// ********** Begin Function CreateLogicByRowHandle Property Definitions ***************************
-const UECodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_UBFL_CreateLogicByRowHandle_Statics::NewProp_World = { "World", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(BFL_eventCreateLogicByRowHandle_Parms, World), Z_Construct_UClass_UWorld_NoRegister, METADATA_PARAMS(0, nullptr) };
-const UECodeGen_Private::FStructPropertyParams Z_Construct_UFunction_UBFL_CreateLogicByRowHandle_Statics::NewProp_RowHandle = { "RowHandle", nullptr, (EPropertyFlags)0x0010000008000182, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(BFL_eventCreateLogicByRowHandle_Parms, RowHandle), Z_Construct_UScriptStruct_FDataTableRowHandle, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_RowHandle_MetaData), NewProp_RowHandle_MetaData) }; // 395055942
-const UECodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_UBFL_CreateLogicByRowHandle_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(BFL_eventCreateLogicByRowHandle_Parms, ReturnValue), Z_Construct_UClass_ULogicBase_NoRegister, METADATA_PARAMS(0, nullptr) };
-const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UBFL_CreateLogicByRowHandle_Statics::PropPointers[] = {
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UBFL_CreateLogicByRowHandle_Statics::NewProp_World,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UBFL_CreateLogicByRowHandle_Statics::NewProp_RowHandle,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UBFL_CreateLogicByRowHandle_Statics::NewProp_ReturnValue,
-};
-static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_UBFL_CreateLogicByRowHandle_Statics::PropPointers) < 2048);
-// ********** End Function CreateLogicByRowHandle Property Definitions *****************************
-const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UBFL_CreateLogicByRowHandle_Statics::FuncParams = { { (UObject*(*)())Z_Construct_UClass_UBFL, nullptr, "CreateLogicByRowHandle", 	Z_Construct_UFunction_UBFL_CreateLogicByRowHandle_Statics::PropPointers, 
-	UE_ARRAY_COUNT(Z_Construct_UFunction_UBFL_CreateLogicByRowHandle_Statics::PropPointers), 
-sizeof(Z_Construct_UFunction_UBFL_CreateLogicByRowHandle_Statics::BFL_eventCreateLogicByRowHandle_Parms),
-RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04422401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UBFL_CreateLogicByRowHandle_Statics::Function_MetaDataParams), Z_Construct_UFunction_UBFL_CreateLogicByRowHandle_Statics::Function_MetaDataParams)},  };
-static_assert(sizeof(Z_Construct_UFunction_UBFL_CreateLogicByRowHandle_Statics::BFL_eventCreateLogicByRowHandle_Parms) < MAX_uint16);
-UFunction* Z_Construct_UFunction_UBFL_CreateLogicByRowHandle()
-{
-	static UFunction* ReturnFunction = nullptr;
-	if (!ReturnFunction)
-	{
-		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_UBFL_CreateLogicByRowHandle_Statics::FuncParams);
-	}
-	return ReturnFunction;
-}
-DEFINE_FUNCTION(UBFL::execCreateLogicByRowHandle)
-{
-	P_GET_OBJECT(UWorld,Z_Param_World);
-	P_GET_STRUCT_REF(FDataTableRowHandle,Z_Param_Out_RowHandle);
-	P_FINISH;
-	P_NATIVE_BEGIN;
-	*(ULogicBase**)Z_Param__Result=UBFL::CreateLogicByRowHandle(Z_Param_World,Z_Param_Out_RowHandle);
-	P_NATIVE_END;
-}
-// ********** End Class UBFL Function CreateLogicByRowHandle ***************************************
-
-// ********** Begin Class UBFL Function CreateLogicByRowName ***************************************
-struct Z_Construct_UFunction_UBFL_CreateLogicByRowName_Statics
-{
-	struct BFL_eventCreateLogicByRowName_Parms
-	{
-		UWorld* World;
-		FName RowName;
-		ULogicBase* ReturnValue;
-	};
-#if WITH_METADATA
-	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
-		{ "Category", "Logic" },
-		{ "ModuleRelativePath", "BFL.h" },
-	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_RowName_MetaData[] = {
-		{ "NativeConst", "" },
-	};
-#endif // WITH_METADATA
-
-// ********** Begin Function CreateLogicByRowName constinit property declarations ******************
-	static const UECodeGen_Private::FObjectPropertyParams NewProp_World;
-	static const UECodeGen_Private::FNamePropertyParams NewProp_RowName;
-	static const UECodeGen_Private::FObjectPropertyParams NewProp_ReturnValue;
-	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
-// ********** End Function CreateLogicByRowName constinit property declarations ********************
-	static const UECodeGen_Private::FFunctionParams FuncParams;
-};
-
-// ********** Begin Function CreateLogicByRowName Property Definitions *****************************
-const UECodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_UBFL_CreateLogicByRowName_Statics::NewProp_World = { "World", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(BFL_eventCreateLogicByRowName_Parms, World), Z_Construct_UClass_UWorld_NoRegister, METADATA_PARAMS(0, nullptr) };
-const UECodeGen_Private::FNamePropertyParams Z_Construct_UFunction_UBFL_CreateLogicByRowName_Statics::NewProp_RowName = { "RowName", nullptr, (EPropertyFlags)0x0010000008000182, UECodeGen_Private::EPropertyGenFlags::Name, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(BFL_eventCreateLogicByRowName_Parms, RowName), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_RowName_MetaData), NewProp_RowName_MetaData) };
-const UECodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_UBFL_CreateLogicByRowName_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(BFL_eventCreateLogicByRowName_Parms, ReturnValue), Z_Construct_UClass_ULogicBase_NoRegister, METADATA_PARAMS(0, nullptr) };
-const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UBFL_CreateLogicByRowName_Statics::PropPointers[] = {
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UBFL_CreateLogicByRowName_Statics::NewProp_World,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UBFL_CreateLogicByRowName_Statics::NewProp_RowName,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UBFL_CreateLogicByRowName_Statics::NewProp_ReturnValue,
-};
-static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_UBFL_CreateLogicByRowName_Statics::PropPointers) < 2048);
-// ********** End Function CreateLogicByRowName Property Definitions *******************************
-const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UBFL_CreateLogicByRowName_Statics::FuncParams = { { (UObject*(*)())Z_Construct_UClass_UBFL, nullptr, "CreateLogicByRowName", 	Z_Construct_UFunction_UBFL_CreateLogicByRowName_Statics::PropPointers, 
-	UE_ARRAY_COUNT(Z_Construct_UFunction_UBFL_CreateLogicByRowName_Statics::PropPointers), 
-sizeof(Z_Construct_UFunction_UBFL_CreateLogicByRowName_Statics::BFL_eventCreateLogicByRowName_Parms),
-RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04422401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UBFL_CreateLogicByRowName_Statics::Function_MetaDataParams), Z_Construct_UFunction_UBFL_CreateLogicByRowName_Statics::Function_MetaDataParams)},  };
-static_assert(sizeof(Z_Construct_UFunction_UBFL_CreateLogicByRowName_Statics::BFL_eventCreateLogicByRowName_Parms) < MAX_uint16);
-UFunction* Z_Construct_UFunction_UBFL_CreateLogicByRowName()
-{
-	static UFunction* ReturnFunction = nullptr;
-	if (!ReturnFunction)
-	{
-		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_UBFL_CreateLogicByRowName_Statics::FuncParams);
-	}
-	return ReturnFunction;
-}
-DEFINE_FUNCTION(UBFL::execCreateLogicByRowName)
-{
-	P_GET_OBJECT(UWorld,Z_Param_World);
-	P_GET_PROPERTY_REF(FNameProperty,Z_Param_Out_RowName);
-	P_FINISH;
-	P_NATIVE_BEGIN;
-	*(ULogicBase**)Z_Param__Result=UBFL::CreateLogicByRowName(Z_Param_World,Z_Param_Out_RowName);
-	P_NATIVE_END;
-}
-// ********** End Class UBFL Function CreateLogicByRowName *****************************************
 
 // ********** Begin Class UBFL Function EqualTeam **************************************************
 struct Z_Construct_UFunction_UBFL_EqualTeam_Statics
@@ -738,6 +613,171 @@ DEFINE_FUNCTION(UBFL::execSetLogic)
 }
 // ********** End Class UBFL Function SetLogic *****************************************************
 
+// ********** Begin Class UBFL Function SpawnActorTeamByClass_WorldContext *************************
+struct Z_Construct_UFunction_UBFL_SpawnActorTeamByClass_WorldContext_Statics
+{
+	struct BFL_eventSpawnActorTeamByClass_WorldContext_Parms
+	{
+		UObject* WorldContextObject;
+		TSubclassOf<AActor> Class;
+		FVector SpawnLocation;
+		FRotator SpawnRotator;
+		ETeam Team;
+		AActor* ReturnValue;
+	};
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "Category", "Spawn" },
+		{ "DisplayName", "Spawn Actor Team By Class" },
+		{ "ModuleRelativePath", "BFL.h" },
+		{ "WorldContext", "WorldContextObject" },
+	};
+#endif // WITH_METADATA
+
+// ********** Begin Function SpawnActorTeamByClass_WorldContext constinit property declarations ****
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_WorldContextObject;
+	static const UECodeGen_Private::FClassPropertyParams NewProp_Class;
+	static const UECodeGen_Private::FStructPropertyParams NewProp_SpawnLocation;
+	static const UECodeGen_Private::FStructPropertyParams NewProp_SpawnRotator;
+	static const UECodeGen_Private::FBytePropertyParams NewProp_Team_Underlying;
+	static const UECodeGen_Private::FEnumPropertyParams NewProp_Team;
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_ReturnValue;
+	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+// ********** End Function SpawnActorTeamByClass_WorldContext constinit property declarations ******
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+
+// ********** Begin Function SpawnActorTeamByClass_WorldContext Property Definitions ***************
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_UBFL_SpawnActorTeamByClass_WorldContext_Statics::NewProp_WorldContextObject = { "WorldContextObject", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(BFL_eventSpawnActorTeamByClass_WorldContext_Parms, WorldContextObject), Z_Construct_UClass_UObject_NoRegister, METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FClassPropertyParams Z_Construct_UFunction_UBFL_SpawnActorTeamByClass_WorldContext_Statics::NewProp_Class = { "Class", nullptr, (EPropertyFlags)0x0014000000000080, UECodeGen_Private::EPropertyGenFlags::Class, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(BFL_eventSpawnActorTeamByClass_WorldContext_Parms, Class), Z_Construct_UClass_UClass_NoRegister, Z_Construct_UClass_AActor_NoRegister, METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FStructPropertyParams Z_Construct_UFunction_UBFL_SpawnActorTeamByClass_WorldContext_Statics::NewProp_SpawnLocation = { "SpawnLocation", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(BFL_eventSpawnActorTeamByClass_WorldContext_Parms, SpawnLocation), Z_Construct_UScriptStruct_FVector, METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FStructPropertyParams Z_Construct_UFunction_UBFL_SpawnActorTeamByClass_WorldContext_Statics::NewProp_SpawnRotator = { "SpawnRotator", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(BFL_eventSpawnActorTeamByClass_WorldContext_Parms, SpawnRotator), Z_Construct_UScriptStruct_FRotator, METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FBytePropertyParams Z_Construct_UFunction_UBFL_SpawnActorTeamByClass_WorldContext_Statics::NewProp_Team_Underlying = { "UnderlyingType", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Byte, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, nullptr, METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FEnumPropertyParams Z_Construct_UFunction_UBFL_SpawnActorTeamByClass_WorldContext_Statics::NewProp_Team = { "Team", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Enum, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(BFL_eventSpawnActorTeamByClass_WorldContext_Parms, Team), Z_Construct_UEnum_LMN_ETeam, METADATA_PARAMS(0, nullptr) }; // 4252509417
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_UBFL_SpawnActorTeamByClass_WorldContext_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(BFL_eventSpawnActorTeamByClass_WorldContext_Parms, ReturnValue), Z_Construct_UClass_AActor_NoRegister, METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UBFL_SpawnActorTeamByClass_WorldContext_Statics::PropPointers[] = {
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UBFL_SpawnActorTeamByClass_WorldContext_Statics::NewProp_WorldContextObject,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UBFL_SpawnActorTeamByClass_WorldContext_Statics::NewProp_Class,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UBFL_SpawnActorTeamByClass_WorldContext_Statics::NewProp_SpawnLocation,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UBFL_SpawnActorTeamByClass_WorldContext_Statics::NewProp_SpawnRotator,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UBFL_SpawnActorTeamByClass_WorldContext_Statics::NewProp_Team_Underlying,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UBFL_SpawnActorTeamByClass_WorldContext_Statics::NewProp_Team,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UBFL_SpawnActorTeamByClass_WorldContext_Statics::NewProp_ReturnValue,
+};
+static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_UBFL_SpawnActorTeamByClass_WorldContext_Statics::PropPointers) < 2048);
+// ********** End Function SpawnActorTeamByClass_WorldContext Property Definitions *****************
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UBFL_SpawnActorTeamByClass_WorldContext_Statics::FuncParams = { { (UObject*(*)())Z_Construct_UClass_UBFL, nullptr, "SpawnActorTeamByClass_WorldContext", 	Z_Construct_UFunction_UBFL_SpawnActorTeamByClass_WorldContext_Statics::PropPointers, 
+	UE_ARRAY_COUNT(Z_Construct_UFunction_UBFL_SpawnActorTeamByClass_WorldContext_Statics::PropPointers), 
+sizeof(Z_Construct_UFunction_UBFL_SpawnActorTeamByClass_WorldContext_Statics::BFL_eventSpawnActorTeamByClass_WorldContext_Parms),
+RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04822401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UBFL_SpawnActorTeamByClass_WorldContext_Statics::Function_MetaDataParams), Z_Construct_UFunction_UBFL_SpawnActorTeamByClass_WorldContext_Statics::Function_MetaDataParams)},  };
+static_assert(sizeof(Z_Construct_UFunction_UBFL_SpawnActorTeamByClass_WorldContext_Statics::BFL_eventSpawnActorTeamByClass_WorldContext_Parms) < MAX_uint16);
+UFunction* Z_Construct_UFunction_UBFL_SpawnActorTeamByClass_WorldContext()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_UBFL_SpawnActorTeamByClass_WorldContext_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(UBFL::execSpawnActorTeamByClass_WorldContext)
+{
+	P_GET_OBJECT(UObject,Z_Param_WorldContextObject);
+	P_GET_OBJECT(UClass,Z_Param_Class);
+	P_GET_STRUCT(FVector,Z_Param_SpawnLocation);
+	P_GET_STRUCT(FRotator,Z_Param_SpawnRotator);
+	P_GET_ENUM(ETeam,Z_Param_Team);
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	*(AActor**)Z_Param__Result=UBFL::SpawnActorTeamByClass_WorldContext(Z_Param_WorldContextObject,Z_Param_Class,Z_Param_SpawnLocation,Z_Param_SpawnRotator,ETeam(Z_Param_Team));
+	P_NATIVE_END;
+}
+// ********** End Class UBFL Function SpawnActorTeamByClass_WorldContext ***************************
+
+// ********** Begin Class UBFL Function SpawnActorTeamByRowHandle_WorldContext *********************
+struct Z_Construct_UFunction_UBFL_SpawnActorTeamByRowHandle_WorldContext_Statics
+{
+	struct BFL_eventSpawnActorTeamByRowHandle_WorldContext_Parms
+	{
+		UObject* WorldContextObject;
+		FDataTableRowHandle RowHandle;
+		FVector SpawnnLocation;
+		FRotator SpawRotator;
+		ETeam Team;
+		AActor* ReturnValue;
+	};
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "Category", "Spawn" },
+		{ "DisplayName", "Spawn Actor Team By RowHandle" },
+		{ "ModuleRelativePath", "BFL.h" },
+		{ "WorldContext", "WorldContextObject" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_RowHandle_MetaData[] = {
+		{ "NativeConst", "" },
+	};
+#endif // WITH_METADATA
+
+// ********** Begin Function SpawnActorTeamByRowHandle_WorldContext constinit property declarations 
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_WorldContextObject;
+	static const UECodeGen_Private::FStructPropertyParams NewProp_RowHandle;
+	static const UECodeGen_Private::FStructPropertyParams NewProp_SpawnnLocation;
+	static const UECodeGen_Private::FStructPropertyParams NewProp_SpawRotator;
+	static const UECodeGen_Private::FBytePropertyParams NewProp_Team_Underlying;
+	static const UECodeGen_Private::FEnumPropertyParams NewProp_Team;
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_ReturnValue;
+	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+// ********** End Function SpawnActorTeamByRowHandle_WorldContext constinit property declarations **
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+
+// ********** Begin Function SpawnActorTeamByRowHandle_WorldContext Property Definitions ***********
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_UBFL_SpawnActorTeamByRowHandle_WorldContext_Statics::NewProp_WorldContextObject = { "WorldContextObject", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(BFL_eventSpawnActorTeamByRowHandle_WorldContext_Parms, WorldContextObject), Z_Construct_UClass_UObject_NoRegister, METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FStructPropertyParams Z_Construct_UFunction_UBFL_SpawnActorTeamByRowHandle_WorldContext_Statics::NewProp_RowHandle = { "RowHandle", nullptr, (EPropertyFlags)0x0010000008000182, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(BFL_eventSpawnActorTeamByRowHandle_WorldContext_Parms, RowHandle), Z_Construct_UScriptStruct_FDataTableRowHandle, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_RowHandle_MetaData), NewProp_RowHandle_MetaData) }; // 395055942
+const UECodeGen_Private::FStructPropertyParams Z_Construct_UFunction_UBFL_SpawnActorTeamByRowHandle_WorldContext_Statics::NewProp_SpawnnLocation = { "SpawnnLocation", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(BFL_eventSpawnActorTeamByRowHandle_WorldContext_Parms, SpawnnLocation), Z_Construct_UScriptStruct_FVector, METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FStructPropertyParams Z_Construct_UFunction_UBFL_SpawnActorTeamByRowHandle_WorldContext_Statics::NewProp_SpawRotator = { "SpawRotator", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(BFL_eventSpawnActorTeamByRowHandle_WorldContext_Parms, SpawRotator), Z_Construct_UScriptStruct_FRotator, METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FBytePropertyParams Z_Construct_UFunction_UBFL_SpawnActorTeamByRowHandle_WorldContext_Statics::NewProp_Team_Underlying = { "UnderlyingType", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Byte, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, nullptr, METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FEnumPropertyParams Z_Construct_UFunction_UBFL_SpawnActorTeamByRowHandle_WorldContext_Statics::NewProp_Team = { "Team", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Enum, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(BFL_eventSpawnActorTeamByRowHandle_WorldContext_Parms, Team), Z_Construct_UEnum_LMN_ETeam, METADATA_PARAMS(0, nullptr) }; // 4252509417
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_UBFL_SpawnActorTeamByRowHandle_WorldContext_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(BFL_eventSpawnActorTeamByRowHandle_WorldContext_Parms, ReturnValue), Z_Construct_UClass_AActor_NoRegister, METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UBFL_SpawnActorTeamByRowHandle_WorldContext_Statics::PropPointers[] = {
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UBFL_SpawnActorTeamByRowHandle_WorldContext_Statics::NewProp_WorldContextObject,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UBFL_SpawnActorTeamByRowHandle_WorldContext_Statics::NewProp_RowHandle,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UBFL_SpawnActorTeamByRowHandle_WorldContext_Statics::NewProp_SpawnnLocation,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UBFL_SpawnActorTeamByRowHandle_WorldContext_Statics::NewProp_SpawRotator,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UBFL_SpawnActorTeamByRowHandle_WorldContext_Statics::NewProp_Team_Underlying,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UBFL_SpawnActorTeamByRowHandle_WorldContext_Statics::NewProp_Team,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UBFL_SpawnActorTeamByRowHandle_WorldContext_Statics::NewProp_ReturnValue,
+};
+static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_UBFL_SpawnActorTeamByRowHandle_WorldContext_Statics::PropPointers) < 2048);
+// ********** End Function SpawnActorTeamByRowHandle_WorldContext Property Definitions *************
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UBFL_SpawnActorTeamByRowHandle_WorldContext_Statics::FuncParams = { { (UObject*(*)())Z_Construct_UClass_UBFL, nullptr, "SpawnActorTeamByRowHandle_WorldContext", 	Z_Construct_UFunction_UBFL_SpawnActorTeamByRowHandle_WorldContext_Statics::PropPointers, 
+	UE_ARRAY_COUNT(Z_Construct_UFunction_UBFL_SpawnActorTeamByRowHandle_WorldContext_Statics::PropPointers), 
+sizeof(Z_Construct_UFunction_UBFL_SpawnActorTeamByRowHandle_WorldContext_Statics::BFL_eventSpawnActorTeamByRowHandle_WorldContext_Parms),
+RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04C22401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UBFL_SpawnActorTeamByRowHandle_WorldContext_Statics::Function_MetaDataParams), Z_Construct_UFunction_UBFL_SpawnActorTeamByRowHandle_WorldContext_Statics::Function_MetaDataParams)},  };
+static_assert(sizeof(Z_Construct_UFunction_UBFL_SpawnActorTeamByRowHandle_WorldContext_Statics::BFL_eventSpawnActorTeamByRowHandle_WorldContext_Parms) < MAX_uint16);
+UFunction* Z_Construct_UFunction_UBFL_SpawnActorTeamByRowHandle_WorldContext()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_UBFL_SpawnActorTeamByRowHandle_WorldContext_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(UBFL::execSpawnActorTeamByRowHandle_WorldContext)
+{
+	P_GET_OBJECT(UObject,Z_Param_WorldContextObject);
+	P_GET_STRUCT_REF(FDataTableRowHandle,Z_Param_Out_RowHandle);
+	P_GET_STRUCT(FVector,Z_Param_SpawnnLocation);
+	P_GET_STRUCT(FRotator,Z_Param_SpawRotator);
+	P_GET_ENUM(ETeam,Z_Param_Team);
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	*(AActor**)Z_Param__Result=UBFL::SpawnActorTeamByRowHandle_WorldContext(Z_Param_WorldContextObject,Z_Param_Out_RowHandle,Z_Param_SpawnnLocation,Z_Param_SpawRotator,ETeam(Z_Param_Team));
+	P_NATIVE_END;
+}
+// ********** End Class UBFL Function SpawnActorTeamByRowHandle_WorldContext ***********************
+
 // ********** Begin Class UBFL *********************************************************************
 FClassRegistrationInfo Z_Registration_Info_UClass_UBFL;
 UClass* UBFL::GetPrivateStaticClass()
@@ -780,8 +820,6 @@ struct Z_Construct_UClass_UBFL_Statics
 // ********** Begin Class UBFL constinit property declarations *************************************
 // ********** End Class UBFL constinit property declarations ***************************************
 	static constexpr UE::CodeGen::FClassNativeFunction Funcs[] = {
-		{ .NameUTF8 = UTF8TEXT("CreateLogicByRowHandle"), .Pointer = &UBFL::execCreateLogicByRowHandle },
-		{ .NameUTF8 = UTF8TEXT("CreateLogicByRowName"), .Pointer = &UBFL::execCreateLogicByRowName },
 		{ .NameUTF8 = UTF8TEXT("EqualTeam"), .Pointer = &UBFL::execEqualTeam },
 		{ .NameUTF8 = UTF8TEXT("EqualTeamActor"), .Pointer = &UBFL::execEqualTeamActor },
 		{ .NameUTF8 = UTF8TEXT("GetIcon"), .Pointer = &UBFL::execGetIcon },
@@ -791,11 +829,11 @@ struct Z_Construct_UClass_UBFL_Statics
 		{ .NameUTF8 = UTF8TEXT("IsTeamsEqual"), .Pointer = &UBFL::execIsTeamsEqual },
 		{ .NameUTF8 = UTF8TEXT("IsTeamsEqualActor"), .Pointer = &UBFL::execIsTeamsEqualActor },
 		{ .NameUTF8 = UTF8TEXT("SetLogic"), .Pointer = &UBFL::execSetLogic },
+		{ .NameUTF8 = UTF8TEXT("SpawnActorTeamByClass_WorldContext"), .Pointer = &UBFL::execSpawnActorTeamByClass_WorldContext },
+		{ .NameUTF8 = UTF8TEXT("SpawnActorTeamByRowHandle_WorldContext"), .Pointer = &UBFL::execSpawnActorTeamByRowHandle_WorldContext },
 	};
 	static UObject* (*const DependentSingletons[])();
 	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
-		{ &Z_Construct_UFunction_UBFL_CreateLogicByRowHandle, "CreateLogicByRowHandle" }, // 40372627
-		{ &Z_Construct_UFunction_UBFL_CreateLogicByRowName, "CreateLogicByRowName" }, // 3864095418
 		{ &Z_Construct_UFunction_UBFL_EqualTeam, "EqualTeam" }, // 3962356145
 		{ &Z_Construct_UFunction_UBFL_EqualTeamActor, "EqualTeamActor" }, // 4070349583
 		{ &Z_Construct_UFunction_UBFL_GetIcon, "GetIcon" }, // 3868335089
@@ -805,6 +843,8 @@ struct Z_Construct_UClass_UBFL_Statics
 		{ &Z_Construct_UFunction_UBFL_IsTeamsEqual, "IsTeamsEqual" }, // 2548859586
 		{ &Z_Construct_UFunction_UBFL_IsTeamsEqualActor, "IsTeamsEqualActor" }, // 982986444
 		{ &Z_Construct_UFunction_UBFL_SetLogic, "SetLogic" }, // 3900758601
+		{ &Z_Construct_UFunction_UBFL_SpawnActorTeamByClass_WorldContext, "SpawnActorTeamByClass_WorldContext" }, // 3192189176
+		{ &Z_Construct_UFunction_UBFL_SpawnActorTeamByRowHandle_WorldContext, "SpawnActorTeamByRowHandle_WorldContext" }, // 1509665251
 	};
 	static_assert(UE_ARRAY_COUNT(FuncInfo) < 2048);
 	static constexpr FCppClassTypeInfoStatic StaticCppClassTypeInfo = {
@@ -854,10 +894,10 @@ UBFL::~UBFL() {}
 struct Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_BFL_h__Script_LMN_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_UBFL, UBFL::StaticClass, TEXT("UBFL"), &Z_Registration_Info_UClass_UBFL, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UBFL), 1078849046U) },
+		{ Z_Construct_UClass_UBFL, UBFL::StaticClass, TEXT("UBFL"), &Z_Registration_Info_UClass_UBFL, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UBFL), 1795757180U) },
 	};
 }; // Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_BFL_h__Script_LMN_Statics 
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_BFL_h__Script_LMN_2194077951{
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_BFL_h__Script_LMN_1039600994{
 	TEXT("/Script/LMN"),
 	Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_BFL_h__Script_LMN_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_BFL_h__Script_LMN_Statics::ClassInfo),
 	nullptr, 0,

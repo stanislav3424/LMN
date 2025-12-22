@@ -6,9 +6,6 @@
 #include "EquipmentLogic.h"
 #include "InventoryLogic.generated.h"
 
-/**
- * 
- */
 UCLASS()
 class LMN_API UInventoryLogic : public UEquipmentLogic
 {
