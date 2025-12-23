@@ -11,7 +11,6 @@ class LMN_API ULogicBase : public UObject
 {
     GENERATED_BODY()
 
-    // Logic
 public:
     void Initialization(FDataTableRowHandle RowHandle);
 
@@ -22,15 +21,19 @@ protected:
     ULogicBase* OwnerLogic;
 
 public:
-    void                SetOwnerLogic(ULogicBase* NewOwnerLogic) { OwnerLogic = NewOwnerLogic; };
-    ULogicBase*         GetOwnerLogic() { return OwnerLogic; };
-    void                RemoveOwnerLogic() { OwnerLogic = nullptr; };
-    FDataTableRowHandle GetLogicRowHandle() { return LogicRowHandle; };
+    void                SetOwnerLogic(ULogicBase* NewOwnerLogic);
+    ULogicBase*         GetOwnerLogic();
+    void                RemoveOwnerLogic();
+    FDataTableRowHandle GetLogicRowHandle();
+
+protected:
+    virtual void OwnerLogicChanged();
 
 protected:
     virtual void LoadingDataTable();
     virtual void CheckField();
     virtual void BeginPlay();
+    virtual void EndPlay();
 
 public:
     virtual void Tick(float DeltaTime);
@@ -41,7 +44,6 @@ protected:
     virtual void RepresentationChanged();
     void         SetRepresentationActor(AActor* Actor);
 
-    //
 protected:
     UPROPERTY(Transient)
     AActor*             RepresentationActor;
@@ -50,7 +52,7 @@ protected:
 public:
     void                HardSetRepresentationActor(AActor* Actor);
     AActor*             GetRepresentationActor() const;
-    TSubclassOf<AActor> GetRepresentationActorClass() const { return RepresentationActorClass; };
+    TSubclassOf<AActor> GetRepresentationActorClass() const ;
     void                DestroyRepresentationActor();
     AActor*             SpawnRepresentationActor(FVector SpawnLocation, FRotator SpawRotator);
 };

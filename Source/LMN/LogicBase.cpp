@@ -16,6 +16,36 @@ void ULogicBase::Initialization(FDataTableRowHandle RowHandle)
     BeginPlay();
 }
 
+void ULogicBase::SetOwnerLogic(ULogicBase* NewOwnerLogic)
+{
+    if (NewOwnerLogic)
+        if (OwnerLogic != NewOwnerLogic)
+        {
+            OwnerLogic = NewOwnerLogic;
+            OwnerLogicChanged();
+        }
+}
+
+ULogicBase* ULogicBase::GetOwnerLogic()
+{
+    return OwnerLogic;
+}
+
+void ULogicBase::RemoveOwnerLogic()
+{
+    OwnerLogic = nullptr;
+    OwnerLogicChanged();
+}
+
+FDataTableRowHandle ULogicBase::GetLogicRowHandle()
+{
+    return LogicRowHandle;
+}
+
+void ULogicBase::OwnerLogicChanged()
+{
+}
+
 void ULogicBase::LoadingDataTable()
 {
     if (LogicRowHandle.IsNull())
@@ -33,6 +63,10 @@ void ULogicBase::CheckField()
 }
 
 void ULogicBase::BeginPlay()
+{
+}
+
+void ULogicBase::EndPlay()
 {
 }
 
@@ -76,6 +110,11 @@ void ULogicBase::HardSetRepresentationActor(AActor* Actor)
 AActor* ULogicBase::GetRepresentationActor() const
 {
     return RepresentationActor;
+}
+
+TSubclassOf<AActor> ULogicBase::GetRepresentationActorClass() const
+{
+    return RepresentationActorClass;
 }
 
 void ULogicBase::DestroyRepresentationActor()

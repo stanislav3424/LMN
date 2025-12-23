@@ -11,6 +11,7 @@
 #include "Blueprint/WidgetTree.h"
 #include "Components/ContentWidget.h"
 #include "Kismet/GameplayStatics.h"
+#include "CharacterLogic.h"
 
 DEFINE_LOG_CATEGORY(LMN)
 
@@ -125,9 +126,28 @@ void UBFL::GetIcon(UObject* Object, UMaterialInstanceDynamic* MID)
                     IconRendering->RenderObjectToMID(Object, MID);
 }
 
+AActor* UBFL::SpawnTemplateCharacter_WorldContext(UObject* WorldContextObject, FDataTableRowHandle const& RowHandle,
+    FVector SpawnLocation, FRotator SpawRotator, ETeam Team)
+{
+    if (GEngine)
+        if (auto World = GEngine->GetWorldFromContextObject(WorldContextObject, EGetWorldErrorMode::LogAndReturnNull))
+            return SpawnTemplateCharacter(World, RowHandle, SpawnLocation, SpawRotator, Team);
+    return nullptr;
+}
+
 AActor* UBFL::SpawnTemplateCharacter(
     UWorld* World, FDataTableRowHandle const& RowHandle, FVector SpawnLocation, FRotator SpawRotator, ETeam Team)
 {
+    if (auto const* Row = RowHandle.DataTable->FindRow<FTemplateCharacterRow>(RowHandle.RowName, TEXT("")))
+    {
+        auto Character =
+            UBFL::SpawnActorTeamByRowHandle(World, Row->CharacterRowHandle, SpawnLocation, SpawRotator, Team);
+        auto Weapon = UBFL::SpawnActorTeamByRowHandle(World, Row->WeaponRowHandle, SpawnLocation, SpawRotator, Team);
+
+        if (auto Logic = UBFL::GetLogic<UCharacterLogic>(Character))
+            Logic->EquipItem(Weapon, EEquipmentSlot::Hands);
+    }
+
     return nullptr;
 }
 

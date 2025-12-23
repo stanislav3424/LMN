@@ -13,7 +13,8 @@ public class LMN : ModuleRules
             "InputCore",
             "UMG",
             "AIModule",
-            "EnhancedInput"
+            "EnhancedInput",
+            "Niagara"
         });
 
         PrivateDependencyModuleNames.AddRange(new string[] {

@@ -25,6 +25,18 @@ concept LogicDerived = std::derived_from<TypeLogic, ULogicBase>;
 
 class UWidget;
 
+USTRUCT(BlueprintType)
+struct FTemplateCharacterRow : public FTableRowBase
+{
+    GENERATED_BODY()
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite)
+    FDataTableRowHandle CharacterRowHandle;
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite)
+    FDataTableRowHandle WeaponRowHandle;
+};
+
 UCLASS()
 class LMN_API UBFL : public UBlueprintFunctionLibrary
 {
@@ -104,6 +116,12 @@ public:
         return nullptr;
     }
 
+    UFUNCTION(BlueprintCallable, Category = "Spawn", meta = (WorldContext = "WorldContextObject"),
+        DisplayName = "Spawn Template Character")
+    static AActor* SpawnTemplateCharacter_WorldContext(UObject* WorldContextObject,
+        FDataTableRowHandle const& RowHandle,
+        FVector SpawnLocation, FRotator SpawRotator, ETeam Team);
+
     static AActor* SpawnTemplateCharacter(
         UWorld* World, FDataTableRowHandle const& RowHandle, FVector SpawnLocation, FRotator SpawRotator, ETeam Team);
 
@@ -122,4 +140,20 @@ public:
 
     static AActor* SpawnActorTeamByClass(
         UWorld* World, TSubclassOf<AActor> Class, FVector SpawnLocation, FRotator SpawRotator, ETeam Team);
+
+
+    template <typename TEnum> static FName GetSocketNameFromEnum(TEnum SocketType)
+    {
+        return FName(StaticEnum<TEnum>()->GetNameStringByValue((int64) SocketType));
+    }
+
+    template <typename TEnum>
+    static FTransform GetSocketTransformFromEnum(TEnum SocketType, USkeletalMeshComponent* MeshComponent)
+    {
+        if (!MeshComponent)
+            return FTransform::Identity;
+
+        FName SocketName = GetSocketNameFromEnum<TEnum>(SocketType);
+        return MeshComponent->GetSocketTransform(SocketName);
+    }
 };

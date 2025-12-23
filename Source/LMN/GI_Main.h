@@ -56,6 +56,36 @@ struct FCharacterLogicRow : public FLogicRow
     float MaxRunSpeed = 25.f;
 };
 
+USTRUCT(BlueprintType)
+struct FEquipmentRow : public FLogicRow
+{
+    GENERATED_BODY()
+
+};
+
+enum class EEquipmentSlot : uint8;
+
+USTRUCT(BlueprintType)
+struct FWeaponRow : public FEquipmentRow
+{
+    GENERATED_BODY()
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite)
+    EEquipmentSlot EquipmentSlot;
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite)
+    int32 MaxAmmo = 10;
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite)
+    float RateFire = 100.f;
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite)
+    float Damage = 10.f;
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite)
+    float MOARadians = 10.f;
+};
+
 UCLASS(Blueprintable, Abstract)
 class LMN_API UGI_Main : public UGameInstance
 {

@@ -44,6 +44,15 @@ void UCharacterLogic::RepresentationChanged()
     SetCanRan(false);
 }
 
+void UCharacterLogic::UpdateTypeMovementState()
+{
+    if (EquipmentMap.Contains(EEquipmentSlot::Hands))
+        TypeMovementState = ETypeMovementState::Rifle;
+    else
+        TypeMovementState = ETypeMovementState::Unarmed;
+    OnTypeMovementStateChanged.Broadcast(TypeMovementState);
+}
+
 void UCharacterLogic::SetMovementState(EMovementState NewMovementState)
 {
     if (!IsValid(RepresentationActor))
@@ -171,6 +180,7 @@ bool UCharacterLogic::EquipItem(ULogicBase* Logic, EEquipmentSlot TargetEquipmen
                 {
                     EquipmentMap.Add(TargetEquipmentSlot, EquipmentLogic);
                     EquipmentLogic->SetOwnerLogic(this);
+                    UpdateTypeMovementState();
                     OnEquipmentChanged.Broadcast();
                 }
             }
@@ -188,6 +198,7 @@ ULogicBase* UCharacterLogic::TakeOff(EEquipmentSlot TargetEquipmentSlot)
     if (EquipmentMap.RemoveAndCopyValue(TargetEquipmentSlot, Logic))
     {
         Logic->RemoveOwnerLogic();
+        UpdateTypeMovementState();
         OnEquipmentChanged.Broadcast();
         return Logic;
     }

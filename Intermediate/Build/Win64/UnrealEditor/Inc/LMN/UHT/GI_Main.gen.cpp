@@ -22,9 +22,12 @@ ENGINE_API UScriptStruct* Z_Construct_UScriptStruct_FTableRowBase();
 LMN_API UClass* Z_Construct_UClass_UGI_Main();
 LMN_API UClass* Z_Construct_UClass_UGI_Main_NoRegister();
 LMN_API UClass* Z_Construct_UClass_ULogicBase_NoRegister();
+LMN_API UEnum* Z_Construct_UEnum_LMN_EEquipmentSlot();
 LMN_API UScriptStruct* Z_Construct_UScriptStruct_FCharacterLogicRow();
+LMN_API UScriptStruct* Z_Construct_UScriptStruct_FEquipmentRow();
 LMN_API UScriptStruct* Z_Construct_UScriptStruct_FLogicBaseRow();
 LMN_API UScriptStruct* Z_Construct_UScriptStruct_FLogicRow();
+LMN_API UScriptStruct* Z_Construct_UScriptStruct_FWeaponRow();
 UPackage* Z_Construct_UPackage__Script_LMN();
 // ********** End Cross Module References **********************************************************
 
@@ -283,6 +286,157 @@ UScriptStruct* Z_Construct_UScriptStruct_FCharacterLogicRow()
 }
 // ********** End ScriptStruct FCharacterLogicRow **************************************************
 
+// ********** Begin ScriptStruct FEquipmentRow *****************************************************
+struct Z_Construct_UScriptStruct_FEquipmentRow_Statics
+{
+	static inline consteval int32 GetStructSize() { return sizeof(FEquipmentRow); }
+	static inline consteval int16 GetStructAlignment() { return alignof(FEquipmentRow); }
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Struct_MetaDataParams[] = {
+		{ "BlueprintType", "true" },
+		{ "ModuleRelativePath", "GI_Main.h" },
+	};
+#endif // WITH_METADATA
+
+// ********** Begin ScriptStruct FEquipmentRow constinit property declarations *********************
+// ********** End ScriptStruct FEquipmentRow constinit property declarations ***********************
+	static void* NewStructOps()
+	{
+		return (UScriptStruct::ICppStructOps*)new UScriptStruct::TCppStructOps<FEquipmentRow>();
+	}
+	static const UECodeGen_Private::FStructParams StructParams;
+}; // struct Z_Construct_UScriptStruct_FEquipmentRow_Statics
+static_assert(std::is_polymorphic<FEquipmentRow>() == std::is_polymorphic<FLogicRow>(), "USTRUCT FEquipmentRow cannot be polymorphic unless super FLogicRow is polymorphic");
+static FStructRegistrationInfo Z_Registration_Info_UScriptStruct_FEquipmentRow;
+class UScriptStruct* FEquipmentRow::StaticStruct()
+{
+	if (!Z_Registration_Info_UScriptStruct_FEquipmentRow.OuterSingleton)
+	{
+		Z_Registration_Info_UScriptStruct_FEquipmentRow.OuterSingleton = GetStaticStruct(Z_Construct_UScriptStruct_FEquipmentRow, (UObject*)Z_Construct_UPackage__Script_LMN(), TEXT("EquipmentRow"));
+	}
+	return Z_Registration_Info_UScriptStruct_FEquipmentRow.OuterSingleton;
+	}
+const UECodeGen_Private::FStructParams Z_Construct_UScriptStruct_FEquipmentRow_Statics::StructParams = {
+	(UObject* (*)())Z_Construct_UPackage__Script_LMN,
+	Z_Construct_UScriptStruct_FLogicRow,
+	&NewStructOps,
+	"EquipmentRow",
+	nullptr,
+	0,
+	sizeof(FEquipmentRow),
+	alignof(FEquipmentRow),
+	RF_Public|RF_Transient|RF_MarkAsNative,
+	EStructFlags(0x00000001),
+	METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FEquipmentRow_Statics::Struct_MetaDataParams), Z_Construct_UScriptStruct_FEquipmentRow_Statics::Struct_MetaDataParams)
+};
+UScriptStruct* Z_Construct_UScriptStruct_FEquipmentRow()
+{
+	if (!Z_Registration_Info_UScriptStruct_FEquipmentRow.InnerSingleton)
+	{
+		UECodeGen_Private::ConstructUScriptStruct(Z_Registration_Info_UScriptStruct_FEquipmentRow.InnerSingleton, Z_Construct_UScriptStruct_FEquipmentRow_Statics::StructParams);
+	}
+	return CastChecked<UScriptStruct>(Z_Registration_Info_UScriptStruct_FEquipmentRow.InnerSingleton);
+}
+// ********** End ScriptStruct FEquipmentRow *******************************************************
+
+// ********** Begin ScriptStruct FWeaponRow ********************************************************
+struct Z_Construct_UScriptStruct_FWeaponRow_Statics
+{
+	static inline consteval int32 GetStructSize() { return sizeof(FWeaponRow); }
+	static inline consteval int16 GetStructAlignment() { return alignof(FWeaponRow); }
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Struct_MetaDataParams[] = {
+		{ "BlueprintType", "true" },
+		{ "ModuleRelativePath", "GI_Main.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_EquipmentSlot_MetaData[] = {
+		{ "Category", "WeaponRow" },
+		{ "ModuleRelativePath", "GI_Main.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_MaxAmmo_MetaData[] = {
+		{ "Category", "WeaponRow" },
+		{ "ModuleRelativePath", "GI_Main.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_RateFire_MetaData[] = {
+		{ "Category", "WeaponRow" },
+		{ "ModuleRelativePath", "GI_Main.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_Damage_MetaData[] = {
+		{ "Category", "WeaponRow" },
+		{ "ModuleRelativePath", "GI_Main.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_MOARadians_MetaData[] = {
+		{ "Category", "WeaponRow" },
+		{ "ModuleRelativePath", "GI_Main.h" },
+	};
+#endif // WITH_METADATA
+
+// ********** Begin ScriptStruct FWeaponRow constinit property declarations ************************
+	static const UECodeGen_Private::FBytePropertyParams NewProp_EquipmentSlot_Underlying;
+	static const UECodeGen_Private::FEnumPropertyParams NewProp_EquipmentSlot;
+	static const UECodeGen_Private::FIntPropertyParams NewProp_MaxAmmo;
+	static const UECodeGen_Private::FFloatPropertyParams NewProp_RateFire;
+	static const UECodeGen_Private::FFloatPropertyParams NewProp_Damage;
+	static const UECodeGen_Private::FFloatPropertyParams NewProp_MOARadians;
+	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+// ********** End ScriptStruct FWeaponRow constinit property declarations **************************
+	static void* NewStructOps()
+	{
+		return (UScriptStruct::ICppStructOps*)new UScriptStruct::TCppStructOps<FWeaponRow>();
+	}
+	static const UECodeGen_Private::FStructParams StructParams;
+}; // struct Z_Construct_UScriptStruct_FWeaponRow_Statics
+static_assert(std::is_polymorphic<FWeaponRow>() == std::is_polymorphic<FEquipmentRow>(), "USTRUCT FWeaponRow cannot be polymorphic unless super FEquipmentRow is polymorphic");
+static FStructRegistrationInfo Z_Registration_Info_UScriptStruct_FWeaponRow;
+class UScriptStruct* FWeaponRow::StaticStruct()
+{
+	if (!Z_Registration_Info_UScriptStruct_FWeaponRow.OuterSingleton)
+	{
+		Z_Registration_Info_UScriptStruct_FWeaponRow.OuterSingleton = GetStaticStruct(Z_Construct_UScriptStruct_FWeaponRow, (UObject*)Z_Construct_UPackage__Script_LMN(), TEXT("WeaponRow"));
+	}
+	return Z_Registration_Info_UScriptStruct_FWeaponRow.OuterSingleton;
+	}
+
+// ********** Begin ScriptStruct FWeaponRow Property Definitions ***********************************
+const UECodeGen_Private::FBytePropertyParams Z_Construct_UScriptStruct_FWeaponRow_Statics::NewProp_EquipmentSlot_Underlying = { "UnderlyingType", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Byte, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, nullptr, METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FEnumPropertyParams Z_Construct_UScriptStruct_FWeaponRow_Statics::NewProp_EquipmentSlot = { "EquipmentSlot", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Enum, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FWeaponRow, EquipmentSlot), Z_Construct_UEnum_LMN_EEquipmentSlot, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_EquipmentSlot_MetaData), NewProp_EquipmentSlot_MetaData) }; // 3011498289
+const UECodeGen_Private::FIntPropertyParams Z_Construct_UScriptStruct_FWeaponRow_Statics::NewProp_MaxAmmo = { "MaxAmmo", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FWeaponRow, MaxAmmo), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_MaxAmmo_MetaData), NewProp_MaxAmmo_MetaData) };
+const UECodeGen_Private::FFloatPropertyParams Z_Construct_UScriptStruct_FWeaponRow_Statics::NewProp_RateFire = { "RateFire", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FWeaponRow, RateFire), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_RateFire_MetaData), NewProp_RateFire_MetaData) };
+const UECodeGen_Private::FFloatPropertyParams Z_Construct_UScriptStruct_FWeaponRow_Statics::NewProp_Damage = { "Damage", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FWeaponRow, Damage), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Damage_MetaData), NewProp_Damage_MetaData) };
+const UECodeGen_Private::FFloatPropertyParams Z_Construct_UScriptStruct_FWeaponRow_Statics::NewProp_MOARadians = { "MOARadians", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FWeaponRow, MOARadians), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_MOARadians_MetaData), NewProp_MOARadians_MetaData) };
+const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UScriptStruct_FWeaponRow_Statics::PropPointers[] = {
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FWeaponRow_Statics::NewProp_EquipmentSlot_Underlying,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FWeaponRow_Statics::NewProp_EquipmentSlot,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FWeaponRow_Statics::NewProp_MaxAmmo,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FWeaponRow_Statics::NewProp_RateFire,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FWeaponRow_Statics::NewProp_Damage,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FWeaponRow_Statics::NewProp_MOARadians,
+};
+static_assert(UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FWeaponRow_Statics::PropPointers) < 2048);
+// ********** End ScriptStruct FWeaponRow Property Definitions *************************************
+const UECodeGen_Private::FStructParams Z_Construct_UScriptStruct_FWeaponRow_Statics::StructParams = {
+	(UObject* (*)())Z_Construct_UPackage__Script_LMN,
+	Z_Construct_UScriptStruct_FEquipmentRow,
+	&NewStructOps,
+	"WeaponRow",
+	Z_Construct_UScriptStruct_FWeaponRow_Statics::PropPointers,
+	UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FWeaponRow_Statics::PropPointers),
+	sizeof(FWeaponRow),
+	alignof(FWeaponRow),
+	RF_Public|RF_Transient|RF_MarkAsNative,
+	EStructFlags(0x00000001),
+	METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FWeaponRow_Statics::Struct_MetaDataParams), Z_Construct_UScriptStruct_FWeaponRow_Statics::Struct_MetaDataParams)
+};
+UScriptStruct* Z_Construct_UScriptStruct_FWeaponRow()
+{
+	if (!Z_Registration_Info_UScriptStruct_FWeaponRow.InnerSingleton)
+	{
+		UECodeGen_Private::ConstructUScriptStruct(Z_Registration_Info_UScriptStruct_FWeaponRow.InnerSingleton, Z_Construct_UScriptStruct_FWeaponRow_Statics::StructParams);
+	}
+	return CastChecked<UScriptStruct>(Z_Registration_Info_UScriptStruct_FWeaponRow.InnerSingleton);
+}
+// ********** End ScriptStruct FWeaponRow **********************************************************
+
 // ********** Begin Class UGI_Main *****************************************************************
 FClassRegistrationInfo Z_Registration_Info_UClass_UGI_Main;
 UClass* UGI_Main::GetPrivateStaticClass()
@@ -416,12 +570,14 @@ struct Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_S
 		{ FLogicBaseRow::StaticStruct, Z_Construct_UScriptStruct_FLogicBaseRow_Statics::NewStructOps, TEXT("LogicBaseRow"),&Z_Registration_Info_UScriptStruct_FLogicBaseRow, CONSTRUCT_RELOAD_VERSION_INFO(FStructReloadVersionInfo, sizeof(FLogicBaseRow), 1746537740U) },
 		{ FLogicRow::StaticStruct, Z_Construct_UScriptStruct_FLogicRow_Statics::NewStructOps, TEXT("LogicRow"),&Z_Registration_Info_UScriptStruct_FLogicRow, CONSTRUCT_RELOAD_VERSION_INFO(FStructReloadVersionInfo, sizeof(FLogicRow), 2001996462U) },
 		{ FCharacterLogicRow::StaticStruct, Z_Construct_UScriptStruct_FCharacterLogicRow_Statics::NewStructOps, TEXT("CharacterLogicRow"),&Z_Registration_Info_UScriptStruct_FCharacterLogicRow, CONSTRUCT_RELOAD_VERSION_INFO(FStructReloadVersionInfo, sizeof(FCharacterLogicRow), 1225468095U) },
+		{ FEquipmentRow::StaticStruct, Z_Construct_UScriptStruct_FEquipmentRow_Statics::NewStructOps, TEXT("EquipmentRow"),&Z_Registration_Info_UScriptStruct_FEquipmentRow, CONSTRUCT_RELOAD_VERSION_INFO(FStructReloadVersionInfo, sizeof(FEquipmentRow), 4164129779U) },
+		{ FWeaponRow::StaticStruct, Z_Construct_UScriptStruct_FWeaponRow_Statics::NewStructOps, TEXT("WeaponRow"),&Z_Registration_Info_UScriptStruct_FWeaponRow, CONSTRUCT_RELOAD_VERSION_INFO(FStructReloadVersionInfo, sizeof(FWeaponRow), 174078664U) },
 	};
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
 		{ Z_Construct_UClass_UGI_Main, UGI_Main::StaticClass, TEXT("UGI_Main"), &Z_Registration_Info_UClass_UGI_Main, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UGI_Main), 1311615001U) },
 	};
 }; // Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_GI_Main_h__Script_LMN_Statics 
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_GI_Main_h__Script_LMN_3959587749{
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_GI_Main_h__Script_LMN_2967566852{
 	TEXT("/Script/LMN"),
 	Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_GI_Main_h__Script_LMN_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_GI_Main_h__Script_LMN_Statics::ClassInfo),
 	Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_GI_Main_h__Script_LMN_Statics::ScriptStructInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_GI_Main_h__Script_LMN_Statics::ScriptStructInfo),

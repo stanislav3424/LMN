@@ -67,11 +67,11 @@ protected:
     ETypeMovementState TypeMovementState = ETypeMovementState::Unarmed;
     ETypeAction        TypeAction        = ETypeAction::Idle;
 
-
     void SetMovementState(EMovementState NewMovementState);
     void SetTypeAction(ETypeAction NewTypeAction);
 
 public:
+    void UpdateTypeMovementState();
     void CommandShootStarted();
     void CommandShootCompleted();
     void CommandReloadWeapon();

@@ -16,11 +16,25 @@
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
+// ********** Begin Delegate FOnAmmoChanged ********************************************************
+#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_WeaponLogic_h_9_DELEGATE \
+LMN_API void FOnAmmoChanged_DelegateWrapper(const FMulticastScriptDelegate& OnAmmoChanged, int32 CurrentAmmo, int32 MaxAmmo);
+
+
+// ********** End Delegate FOnAmmoChanged **********************************************************
+
+// ********** Begin Delegate FOnAmmoEmpty **********************************************************
+#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_WeaponLogic_h_10_DELEGATE \
+LMN_API void FOnAmmoEmpty_DelegateWrapper(const FMulticastScriptDelegate& OnAmmoEmpty);
+
+
+// ********** End Delegate FOnAmmoEmpty ************************************************************
+
 // ********** Begin Class UWeaponLogic *************************************************************
 struct Z_Construct_UClass_UWeaponLogic_Statics;
 LMN_API UClass* Z_Construct_UClass_UWeaponLogic_NoRegister();
 
-#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_WeaponLogic_h_12_INCLASS_NO_PURE_DECLS \
+#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_WeaponLogic_h_35_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesUWeaponLogic(); \
 	friend struct ::Z_Construct_UClass_UWeaponLogic_Statics; \
@@ -31,7 +45,7 @@ public: \
 	DECLARE_SERIALIZER(UWeaponLogic)
 
 
-#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_WeaponLogic_h_12_ENHANCED_CONSTRUCTORS \
+#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_WeaponLogic_h_35_ENHANCED_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API UWeaponLogic(); \
 	/** Deleted move- and copy-constructors, should never be used */ \
@@ -43,12 +57,12 @@ public: \
 	NO_API virtual ~UWeaponLogic();
 
 
-#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_WeaponLogic_h_9_PROLOG
-#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_WeaponLogic_h_12_GENERATED_BODY \
+#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_WeaponLogic_h_32_PROLOG
+#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_WeaponLogic_h_35_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_WeaponLogic_h_12_INCLASS_NO_PURE_DECLS \
-	FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_WeaponLogic_h_12_ENHANCED_CONSTRUCTORS \
+	FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_WeaponLogic_h_35_INCLASS_NO_PURE_DECLS \
+	FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_WeaponLogic_h_35_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
@@ -59,5 +73,25 @@ class UWeaponLogic;
 
 #undef CURRENT_FILE_ID
 #define CURRENT_FILE_ID FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_WeaponLogic_h
+
+// ********** Begin Enum EGanSlot ******************************************************************
+#define FOREACH_ENUM_EGANSLOT(op) \
+	op(EGanSlot::Muzzle) 
+
+enum class EGanSlot : uint8;
+template<> struct TIsUEnumClass<EGanSlot> { enum { Value = true }; };
+template<> LMN_NON_ATTRIBUTED_API UEnum* StaticEnum<EGanSlot>();
+// ********** End Enum EGanSlot ********************************************************************
+
+// ********** Begin Enum EWeaponState **************************************************************
+#define FOREACH_ENUM_EWEAPONSTATE(op) \
+	op(EWeaponState::Idle) \
+	op(EWeaponState::Shooting) \
+	op(EWeaponState::Reloading) 
+
+enum class EWeaponState : uint8;
+template<> struct TIsUEnumClass<EWeaponState> { enum { Value = true }; };
+template<> LMN_NON_ATTRIBUTED_API UEnum* StaticEnum<EWeaponState>();
+// ********** End Enum EWeaponState ****************************************************************
 
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

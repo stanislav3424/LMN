@@ -19,8 +19,9 @@ void UAnimInstanceBase::NativeUpdateAnimation(float DeltaSeconds)
         Logic = UBFL::GetLogic<UCharacterLogic>(TryGetPawnOwner());
         if (Logic)
         {
-            Logic->OnMovementStateChanged.AddUniqueDynamic(this, &UAnimInstanceBase::MovementStateChanged);
-            Logic->OnTypeMovementStateChanged.AddUniqueDynamic(this, &UAnimInstanceBase::TypeMovementStateChanged);
+            Logic->OnMovementStateChanged.AddDynamic(this, &UAnimInstanceBase::MovementStateChanged);
+            Logic->OnTypeMovementStateChanged.AddDynamic(this, &UAnimInstanceBase::TypeMovementStateChanged);
+            Logic->UpdateTypeMovementState();
         }
     }
 
