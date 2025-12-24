@@ -9,18 +9,14 @@
 UCLASS()
 class LMN_API AGlobalVisibility : public AActor
 {
-	GENERATED_BODY()
-	
-public:	
-	// Sets default values for this actor's properties
-	AGlobalVisibility();
+    GENERATED_BODY()
+
+public:
+    AGlobalVisibility();
+
+    void RegisterPrimitiveComponent(AActor* Signaler, UPrimitiveComponent* Primitive);
+    void UnregisterPrimitiveComponent(AActor* Signaler, UPrimitiveComponent* Primitive);
 
 protected:
-	// Called when the game starts or when spawned
-	virtual void BeginPlay() override;
-
-public:	
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
-
+    TMap<UPrimitiveComponent*, TArray<AActor*>> VisibilityMap;
 };

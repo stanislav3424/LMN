@@ -1,34 +1,81 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-
 #include "VisibilitySceneComponent.h"
+#include "Components/SphereComponent.h"
+#include "GM_Main.h"
+#include "GlobalVisibility.h"
+#include "BFL.h"
 
-// Sets default values for this component's properties
 UVisibilitySceneComponent::UVisibilitySceneComponent()
 {
-	// Set this component to be initialized when the game starts, and to be ticked every frame.  You can turn these features
-	// off to improve performance if you don't need them.
-	PrimaryComponentTick.bCanEverTick = true;
-
-	// ...
+	PrimaryComponentTick.bCanEverTick = false;
 }
 
-
-// Called when the game starts
 void UVisibilitySceneComponent::BeginPlay()
 {
-	Super::BeginPlay();
+    Super::BeginPlay();
 
-	// ...
-	
+    if (InteractionCollision)
+    {
+        InteractionCollision->OnComponentBeginOverlap.AddUniqueDynamic(
+            this, &UVisibilitySceneComponent::OnInteractionBeginOverlap);
+        InteractionCollision->OnComponentEndOverlap.AddUniqueDynamic(
+            this, &UVisibilitySceneComponent::OnInteractionEndOverlap);
+    }
 }
 
-
-// Called every frame
-void UVisibilitySceneComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
+void UVisibilitySceneComponent::OnRegister()
 {
-	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
+    Super::OnRegister();
 
-	// ...
+    auto Owner = GetOwner();
+    if (!Owner)
+        return;
+
+    if (!InteractionCollision)
+    {
+        InteractionCollision = NewObject<USphereComponent>(Owner, TEXT("InteractionCollision"));
+        if (InteractionCollision)
+        {
+            InteractionCollision->AttachToComponent(this, FAttachmentTransformRules::KeepRelativeTransform);
+            InteractionCollision->RegisterComponent();
+            InteractionCollision->SetMobility(EComponentMobility::Movable);
+            InteractionCollision->SetSphereRadius(1000.f);
+            InteractionCollision->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
+            InteractionCollision->SetGenerateOverlapEvents(true);
+            InteractionCollision->SetCollisionObjectType(ECC_WorldDynamic);
+            InteractionCollision->SetCollisionResponseToAllChannels(ECR_Overlap);
+        }
+    }
+}
+
+void UVisibilitySceneComponent::OnUnregister()
+{
+    if (InteractionCollision)
+    {
+        InteractionCollision->DestroyComponent();
+        InteractionCollision = nullptr;
+    }
+
+    Super::OnUnregister();
+}
+
+void UVisibilitySceneComponent::OnInteractionBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,
+    UPrimitiveComponent* OtherComponent, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
+{
+    if (!GlobalVisibility)
+        if (auto World = GetWorld())
+            if (auto GM = World->GetAuthGameMode<AGM_Main>())
+                GlobalVisibility = GM->GetGlobalVisibility();
+    CHECK_FIELD(GlobalVisibility);
+    if (GlobalVisibility)
+        GlobalVisibility->RegisterPrimitiveComponent(GetOwner(), OtherComponent);
+}
+
+void UVisibilitySceneComponent::OnInteractionEndOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,
+    UPrimitiveComponent* OtherComponent, int32 OtherBodyIndex)
+{
+    if (GlobalVisibility)
+        GlobalVisibility->UnregisterPrimitiveComponent(GetOwner(), OtherComponent);
 }
 

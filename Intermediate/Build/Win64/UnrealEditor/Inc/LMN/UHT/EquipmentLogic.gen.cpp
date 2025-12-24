@@ -96,6 +96,7 @@ UClass* Z_Construct_UClass_UEquipmentLogic()
 	}
 	return Z_Registration_Info_UClass_UEquipmentLogic.OuterSingleton;
 }
+UEquipmentLogic::UEquipmentLogic(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {}
 DEFINE_VTABLE_PTR_HELPER_CTOR_NS(, UEquipmentLogic);
 UEquipmentLogic::~UEquipmentLogic() {}
 // ********** End Class UEquipmentLogic ************************************************************

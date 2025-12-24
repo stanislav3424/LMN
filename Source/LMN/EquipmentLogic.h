@@ -13,11 +13,9 @@ class LMN_API UEquipmentLogic : public ULogic
 {
     GENERATED_BODY()
 
-public:
-    UEquipmentLogic();
-
 protected:
     EEquipmentSlot EquipmentSlot;
+    virtual void   LoadingDataTable() override;
 
 public:
     EEquipmentSlot GetEquipmentSlot() const { return EquipmentSlot; };

@@ -56,22 +56,21 @@ struct FCharacterLogicRow : public FLogicRow
     float MaxRunSpeed = 25.f;
 };
 
+enum class EEquipmentSlot : uint8;
+
 USTRUCT(BlueprintType)
 struct FEquipmentRow : public FLogicRow
 {
     GENERATED_BODY()
 
+    UPROPERTY(EditAnywhere, BlueprintReadWrite)
+    EEquipmentSlot EquipmentSlot;
 };
-
-enum class EEquipmentSlot : uint8;
 
 USTRUCT(BlueprintType)
 struct FWeaponRow : public FEquipmentRow
 {
     GENERATED_BODY()
-
-    UPROPERTY(EditAnywhere, BlueprintReadWrite)
-    EEquipmentSlot EquipmentSlot;
 
     UPROPERTY(EditAnywhere, BlueprintReadWrite)
     int32 MaxAmmo = 10;
@@ -99,10 +98,10 @@ protected:
     UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "DataTable")
     TArray<UDataTable*> DataTables;
 
-    UPROPERTY()
+    UPROPERTY(Transient)
     TMap<FName, UDataTable*> DataTablesCacheByRowName;
 
-    UPROPERTY()
+    UPROPERTY(Transient)
     TMap<TSubclassOf<AActor>, FDataTableRowHandle> RowHandlesCacheByActorClass;
 
 public:

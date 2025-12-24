@@ -32,12 +32,14 @@ public: \
 
 
 #define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_EquipmentLogic_h_14_ENHANCED_CONSTRUCTORS \
+	/** Standard constructor, called after all reflected properties have been initialized */ \
+	NO_API UEquipmentLogic(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()); \
 	/** Deleted move- and copy-constructors, should never be used */ \
 	UEquipmentLogic(UEquipmentLogic&&) = delete; \
 	UEquipmentLogic(const UEquipmentLogic&) = delete; \
 	DECLARE_VTABLE_PTR_HELPER_CTOR(NO_API, UEquipmentLogic); \
 	DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(UEquipmentLogic); \
-	DEFINE_DEFAULT_CONSTRUCTOR_CALL(UEquipmentLogic) \
+	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(UEquipmentLogic) \
 	NO_API virtual ~UEquipmentLogic();
 
 

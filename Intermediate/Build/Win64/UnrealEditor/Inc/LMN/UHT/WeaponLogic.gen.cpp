@@ -338,7 +338,7 @@ UClass* Z_Construct_UClass_UWeaponLogic()
 	}
 	return Z_Registration_Info_UClass_UWeaponLogic.OuterSingleton;
 }
-UWeaponLogic::UWeaponLogic() {}
+UWeaponLogic::UWeaponLogic(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {}
 DEFINE_VTABLE_PTR_HELPER_CTOR_NS(, UWeaponLogic);
 UWeaponLogic::~UWeaponLogic() {}
 // ********** End Class UWeaponLogic ***************************************************************

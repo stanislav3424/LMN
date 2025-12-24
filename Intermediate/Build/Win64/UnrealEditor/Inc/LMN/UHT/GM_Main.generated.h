@@ -34,7 +34,7 @@ LMN_API void FOnEndGame_DelegateWrapper(const FMulticastScriptDelegate& OnEndGam
 struct Z_Construct_UClass_AGM_Main_Statics;
 LMN_API UClass* Z_Construct_UClass_AGM_Main_NoRegister();
 
-#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_GM_Main_h_17_INCLASS_NO_PURE_DECLS \
+#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_GM_Main_h_18_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesAGM_Main(); \
 	friend struct ::Z_Construct_UClass_AGM_Main_Statics; \
@@ -45,7 +45,7 @@ public: \
 	DECLARE_SERIALIZER(AGM_Main)
 
 
-#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_GM_Main_h_17_ENHANCED_CONSTRUCTORS \
+#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_GM_Main_h_18_ENHANCED_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API AGM_Main(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()); \
 	/** Deleted move- and copy-constructors, should never be used */ \
@@ -57,12 +57,12 @@ public: \
 	NO_API virtual ~AGM_Main();
 
 
-#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_GM_Main_h_14_PROLOG
-#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_GM_Main_h_17_GENERATED_BODY \
+#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_GM_Main_h_15_PROLOG
+#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_GM_Main_h_18_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_GM_Main_h_17_INCLASS_NO_PURE_DECLS \
-	FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_GM_Main_h_17_ENHANCED_CONSTRUCTORS \
+	FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_GM_Main_h_18_INCLASS_NO_PURE_DECLS \
+	FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_GM_Main_h_18_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 

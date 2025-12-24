@@ -1,27 +1,48 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-
 #include "GlobalVisibility.h"
+#include "Components/BoxComponent.h"
+#include "Components/PrimitiveComponent.h"
+#include "Engine/StaticMeshActor.h"
 
-// Sets default values
 AGlobalVisibility::AGlobalVisibility()
 {
- 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
-	PrimaryActorTick.bCanEverTick = true;
-
+    PrimaryActorTick.bCanEverTick = false;
 }
-
-// Called when the game starts or when spawned
-void AGlobalVisibility::BeginPlay()
+void AGlobalVisibility::RegisterPrimitiveComponent(AActor* Signaler, UPrimitiveComponent* Primitive)
 {
-	Super::BeginPlay();
-	
+    if (!Primitive)
+        return;
+    auto& Arr = VisibilityMap.FindOrAdd(Primitive);
+    if (Signaler)
+    {
+        bool bFound = false;
+        for (auto Actor : Arr)
+            if (IsValid(Actor) && Actor == Signaler)
+            {
+                bFound = true;
+                break;
+            }
+        if (!bFound)
+            Arr.Add(Signaler);
+    }
+    Primitive->SetCustomPrimitiveDataFloat(0, 1.f);
 }
 
-// Called every frame
-void AGlobalVisibility::Tick(float DeltaTime)
+void AGlobalVisibility::UnregisterPrimitiveComponent(AActor* Signaler, UPrimitiveComponent* Primitive)
 {
-	Super::Tick(DeltaTime);
-
+    if (!Primitive)
+        return;
+    auto& Arr = VisibilityMap.FindOrAdd(Primitive);
+    if (Signaler)
+    {
+        for (auto Actor : Arr)
+            if (IsValid(Actor) && Actor == Signaler)
+            {
+                Arr.Remove(Signaler);
+                break;
+            }
+    }
+    if (Arr.Num() == 0)
+        Primitive->SetCustomPrimitiveDataFloat(0, 0.f);
 }
-

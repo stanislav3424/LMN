@@ -47,13 +47,13 @@ public: \
 
 #define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_WeaponLogic_h_35_ENHANCED_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
-	NO_API UWeaponLogic(); \
+	NO_API UWeaponLogic(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()); \
 	/** Deleted move- and copy-constructors, should never be used */ \
 	UWeaponLogic(UWeaponLogic&&) = delete; \
 	UWeaponLogic(const UWeaponLogic&) = delete; \
 	DECLARE_VTABLE_PTR_HELPER_CTOR(NO_API, UWeaponLogic); \
 	DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(UWeaponLogic); \
-	DEFINE_DEFAULT_CONSTRUCTOR_CALL(UWeaponLogic) \
+	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(UWeaponLogic) \
 	NO_API virtual ~UWeaponLogic();
 
 

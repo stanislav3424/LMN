@@ -43,6 +43,8 @@ void UWeaponLogic::EndPlay()
 
 void UWeaponLogic::OwnerLogicChanged()
 {
+    Super::OwnerLogicChanged();
+
     AttachmentParentCharacter = nullptr;
 
     if (OwnerLogic)

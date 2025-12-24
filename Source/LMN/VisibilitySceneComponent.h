@@ -6,23 +6,33 @@
 #include "Components/SceneComponent.h"
 #include "VisibilitySceneComponent.generated.h"
 
+class AGlobalVisibility;
+class USphereComponent;
 
-UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
+UCLASS(ClassGroup = (Custom), meta = (BlueprintSpawnableComponent))
 class LMN_API UVisibilitySceneComponent : public USceneComponent
 {
-	GENERATED_BODY()
+    GENERATED_BODY()
 
-public:	
-	// Sets default values for this component's properties
-	UVisibilitySceneComponent();
+public:
+    UVisibilitySceneComponent();
 
 protected:
-	// Called when the game starts
-	virtual void BeginPlay() override;
+    virtual void BeginPlay() override;
+    virtual void OnRegister() override;
+    virtual void OnUnregister() override;
 
-public:	
-	// Called every frame
-	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
+    UPROPERTY(EditAnywhere, Category = "Collision")
+    USphereComponent* InteractionCollision;
 
-		
+    UPROPERTY(Transient)
+    AGlobalVisibility* GlobalVisibility;
+
+    UFUNCTION()
+    void OnInteractionBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,
+        UPrimitiveComponent* OtherComponent, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
+
+    UFUNCTION()
+    void OnInteractionEndOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,
+        UPrimitiveComponent* OtherComponent, int32 OtherBodyIndex);
 };

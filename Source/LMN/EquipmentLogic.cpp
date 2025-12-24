@@ -2,8 +2,14 @@
 
 #include "EquipmentLogic.h"
 #include "CharacterLogic.h"
+#include "GI_Main.h"
 
-UEquipmentLogic::UEquipmentLogic()
+void UEquipmentLogic::LoadingDataTable()
 {
-    EquipmentSlot = EEquipmentSlot::Hands;
+    Super::LoadingDataTable();
+    if (auto const* Row = LogicRowHandle.DataTable->FindRow<FEquipmentRow>(LogicRowHandle.RowName, TEXT("")))
+    {
+        EquipmentSlot = Row->EquipmentSlot;
+    }
+
 }

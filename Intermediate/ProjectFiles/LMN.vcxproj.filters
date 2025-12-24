@@ -75,6 +75,12 @@
     <ClInclude Include="..\..\Source\LMN\GI_Main.h">
       <Filter>Source\LMN</Filter>
     </ClInclude>
+    <ClCompile Include="..\..\Source\LMN\GlobalVisibility.cpp">
+      <Filter>Source\LMN</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\LMN\GlobalVisibility.h">
+      <Filter>Source\LMN</Filter>
+    </ClInclude>
     <ClCompile Include="..\..\Source\LMN\GM_Main.cpp">
       <Filter>Source\LMN</Filter>
     </ClCompile>
@@ -229,6 +235,12 @@
       <Filter>Source\LMN</Filter>
     </ClCompile>
     <ClInclude Include="..\..\Source\LMN\UW_StaminaProgressBar.h">
+      <Filter>Source\LMN</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\LMN\VisibilitySceneComponent.cpp">
+      <Filter>Source\LMN</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\LMN\VisibilitySceneComponent.h">
       <Filter>Source\LMN</Filter>
     </ClInclude>
     <ClCompile Include="..\..\Source\LMN\WeaponLogic.cpp">

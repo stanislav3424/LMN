@@ -3,6 +3,7 @@
 #include "GM_Main.h"
 #include "IconRendering.h"
 #include "BFL.h"
+#include "GlobalVisibility.h"
 
 void AGM_Main::BeginPlay()
 {
@@ -13,8 +14,18 @@ void AGM_Main::BeginPlay()
             FActorSpawnParameters ActorSpawnParameters;
             ActorSpawnParameters.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
             IconRendering                                       = World->SpawnActor<AIconRendering>(
-                IconRenderingClass, FVector(0.f, 0.f, 0.f), FRotator(), ActorSpawnParameters);
+                IconRenderingClass, FVector(), FRotator(), ActorSpawnParameters);
         }
+    CHECK_FIELD(IconRendering);
+
+    if (auto World = GetWorld())
+    {
+        FActorSpawnParameters ActorSpawnParameters;
+        ActorSpawnParameters.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
+        GlobalVisibility                                    = World->SpawnActor<AGlobalVisibility>(
+            AGlobalVisibility::StaticClass(), FVector(), FRotator(), ActorSpawnParameters);
+    }
+    CHECK_FIELD(GlobalVisibility);
 }
 
 void AGM_Main::StartGame()

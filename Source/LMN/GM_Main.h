@@ -10,6 +10,7 @@ DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnStartGame);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnEndGame);
 
 class AIconRendering;
+class AGlobalVisibility;
 
 UCLASS(Blueprintable, Abstract)
 class LMN_API AGM_Main : public AGameModeBase
@@ -34,4 +35,12 @@ public:
 protected:
     FOnStartGame OnStartGame;
     FOnEndGame   OnEndGame;
+
+    //
+protected:
+    UPROPERTY(Transient)
+    AGlobalVisibility* GlobalVisibility;
+
+public:
+    AGlobalVisibility* GetGlobalVisibility() { return GlobalVisibility; };
 };
