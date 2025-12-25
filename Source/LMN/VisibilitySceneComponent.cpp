@@ -39,6 +39,7 @@ void UVisibilitySceneComponent::OnRegister()
         {
             InteractionCollision->AttachToComponent(this, FAttachmentTransformRules::KeepRelativeTransform);
             InteractionCollision->RegisterComponent();
+            InteractionCollision->bUseAttachParentBound = true;
             InteractionCollision->SetMobility(EComponentMobility::Movable);
             InteractionCollision->SetSphereRadius(1000.f);
             InteractionCollision->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
