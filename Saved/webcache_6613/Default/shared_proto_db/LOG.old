@@ -1,3 +1,6 @@
-2025/12/24-18:41:19.547 588c Reusing MANIFEST C:\Users\Stanislav\Documents\Unreal Projects\LMN\Saved\webcache_6613\Default\shared_proto_db/MANIFEST-000001
-2025/12/24-18:41:19.548 588c Recovering log #3
-2025/12/24-18:41:19.549 588c Reusing old log C:\Users\Stanislav\Documents\Unreal Projects\LMN\Saved\webcache_6613\Default\shared_proto_db/000003.log 
+2025/12/26-16:37:58.042 4e5c Reusing MANIFEST C:\Users\Stanislav\Documents\Unreal Projects\LMN\Saved\webcache_6613\Default\shared_proto_db/MANIFEST-000001
+2025/12/26-16:37:58.042 4e5c Recovering log #3
+2025/12/26-16:37:58.044 4e5c Reusing old log C:\Users\Stanislav\Documents\Unreal Projects\LMN\Saved\webcache_6613\Default\shared_proto_db/000003.log 
+2025/12/26-16:38:00.193 4e5c Level-0 table #5: started
+2025/12/26-16:38:00.198 4e5c Level-0 table #5: 67198 bytes OK
+2025/12/26-16:38:00.199 4e5c Delete type=0 #3
