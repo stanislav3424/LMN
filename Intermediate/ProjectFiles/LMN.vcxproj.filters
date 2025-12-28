@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="18.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <None Include="..\..\$movedMarker" />
     <None Include="..\..\.clang-format" />
     <None Include="..\..\.gitattributes" />
     <None Include="..\..\.gitignore" />
@@ -81,10 +82,22 @@
     <ClInclude Include="..\..\Source\LMN\GlobalVisibility.h">
       <Filter>Source\LMN</Filter>
     </ClInclude>
+    <ClCompile Include="..\..\Source\LMN\GM_InsideComplex.cpp">
+      <Filter>Source\LMN</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\LMN\GM_InsideComplex.h">
+      <Filter>Source\LMN</Filter>
+    </ClInclude>
     <ClCompile Include="..\..\Source\LMN\GM_Main.cpp">
       <Filter>Source\LMN</Filter>
     </ClCompile>
     <ClInclude Include="..\..\Source\LMN\GM_Main.h">
+      <Filter>Source\LMN</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\LMN\GM_OutsideComplex.cpp">
+      <Filter>Source\LMN</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\LMN\GM_OutsideComplex.h">
       <Filter>Source\LMN</Filter>
     </ClInclude>
     <ClCompile Include="..\..\Source\LMN\HUD_Main.cpp">
@@ -193,6 +206,24 @@
       <Filter>Source\LMN</Filter>
     </ClCompile>
     <ClInclude Include="..\..\Source\LMN\UW_Base.h">
+      <Filter>Source\LMN</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\LMN\UW_Dialog.cpp">
+      <Filter>Source\LMN</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\LMN\UW_Dialog.h">
+      <Filter>Source\LMN</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\LMN\UW_DialogBase.cpp">
+      <Filter>Source\LMN</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\LMN\UW_DialogBase.h">
+      <Filter>Source\LMN</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\LMN\UW_DialogSelection.cpp">
+      <Filter>Source\LMN</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\LMN\UW_DialogSelection.h">
       <Filter>Source\LMN</Filter>
     </ClInclude>
     <ClCompile Include="..\..\Source\LMN\UW_HealthProgressBar.cpp">

@@ -14,7 +14,9 @@ public class LMN : ModuleRules
             "UMG",
             "AIModule",
             "EnhancedInput",
-            "Niagara"
+            "Niagara",
+            "NavigationSystem",
+            "AIModule"
         });
 
         PrivateDependencyModuleNames.AddRange(new string[] {

@@ -6,11 +6,18 @@
 #include "GameFramework/GameModeBase.h"
 #include "GM_Main.generated.h"
 
-DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnStartGame);
-DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnEndGame);
-
 class AIconRendering;
 class AGlobalVisibility;
+
+UENUM(BlueprintType)
+enum class EGameStatus : uint8
+{
+    NotStarted UMETA(DisplayName = "NotStarted"),
+    Started    UMETA(DisplayName = "Started"),
+    Ended      UMETA(DisplayName = "Ended"),
+};
+
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnGameStatusChanged, EGameStatus, GameStatus);
 
 UCLASS(Blueprintable, Abstract)
 class LMN_API AGM_Main : public AGameModeBase
@@ -31,10 +38,7 @@ public:
 
     void StartGame();
     void EndGame();
-
-protected:
-    FOnStartGame OnStartGame;
-    FOnEndGame   OnEndGame;
+    virtual void OnStartGameGroup();
 
     //
 protected:
@@ -43,4 +47,15 @@ protected:
 
 public:
     AGlobalVisibility* GetGlobalVisibility() { return GlobalVisibility; };
+
+protected:
+    UPROPERTY(EditDefaultsOnly, Category = "TypeUnits")
+    TArray<FDataTableRowHandle> TypeUnits;
+
+    EGameStatus GameStatus = EGameStatus::NotStarted;
+
+public:
+    FOnGameStatusChanged OnGameStatusChanged;
+
+    void BroadcastOnGameStatusChanged() const;
 };

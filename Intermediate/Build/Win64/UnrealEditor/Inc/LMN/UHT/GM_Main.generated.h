@@ -15,26 +15,20 @@
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
+enum class EGameStatus : uint8;
 
-// ********** Begin Delegate FOnStartGame **********************************************************
-#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_GM_Main_h_9_DELEGATE \
-LMN_API void FOnStartGame_DelegateWrapper(const FMulticastScriptDelegate& OnStartGame);
-
-
-// ********** End Delegate FOnStartGame ************************************************************
-
-// ********** Begin Delegate FOnEndGame ************************************************************
-#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_GM_Main_h_10_DELEGATE \
-LMN_API void FOnEndGame_DelegateWrapper(const FMulticastScriptDelegate& OnEndGame);
+// ********** Begin Delegate FOnGameStatusChanged **************************************************
+#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_GM_Main_h_20_DELEGATE \
+LMN_API void FOnGameStatusChanged_DelegateWrapper(const FMulticastScriptDelegate& OnGameStatusChanged, EGameStatus GameStatus);
 
 
-// ********** End Delegate FOnEndGame **************************************************************
+// ********** End Delegate FOnGameStatusChanged ****************************************************
 
 // ********** Begin Class AGM_Main *****************************************************************
 struct Z_Construct_UClass_AGM_Main_Statics;
 LMN_API UClass* Z_Construct_UClass_AGM_Main_NoRegister();
 
-#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_GM_Main_h_18_INCLASS_NO_PURE_DECLS \
+#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_GM_Main_h_25_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesAGM_Main(); \
 	friend struct ::Z_Construct_UClass_AGM_Main_Statics; \
@@ -45,7 +39,7 @@ public: \
 	DECLARE_SERIALIZER(AGM_Main)
 
 
-#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_GM_Main_h_18_ENHANCED_CONSTRUCTORS \
+#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_GM_Main_h_25_ENHANCED_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API AGM_Main(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()); \
 	/** Deleted move- and copy-constructors, should never be used */ \
@@ -57,12 +51,12 @@ public: \
 	NO_API virtual ~AGM_Main();
 
 
-#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_GM_Main_h_15_PROLOG
-#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_GM_Main_h_18_GENERATED_BODY \
+#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_GM_Main_h_22_PROLOG
+#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_GM_Main_h_25_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_GM_Main_h_18_INCLASS_NO_PURE_DECLS \
-	FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_GM_Main_h_18_ENHANCED_CONSTRUCTORS \
+	FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_GM_Main_h_25_INCLASS_NO_PURE_DECLS \
+	FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_GM_Main_h_25_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
@@ -73,5 +67,16 @@ class AGM_Main;
 
 #undef CURRENT_FILE_ID
 #define CURRENT_FILE_ID FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_GM_Main_h
+
+// ********** Begin Enum EGameStatus ***************************************************************
+#define FOREACH_ENUM_EGAMESTATUS(op) \
+	op(EGameStatus::NotStarted) \
+	op(EGameStatus::Started) \
+	op(EGameStatus::Ended) 
+
+enum class EGameStatus : uint8;
+template<> struct TIsUEnumClass<EGameStatus> { enum { Value = true }; };
+template<> LMN_NON_ATTRIBUTED_API UEnum* StaticEnum<EGameStatus>();
+// ********** End Enum EGameStatus *****************************************************************
 
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

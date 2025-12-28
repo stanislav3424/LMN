@@ -4,6 +4,7 @@
 #include "IconRendering.h"
 #include "BFL.h"
 #include "GlobalVisibility.h"
+#include "GI_Main.h"
 
 void AGM_Main::BeginPlay()
 {
@@ -30,12 +31,24 @@ void AGM_Main::BeginPlay()
 
 void AGM_Main::StartGame()
 {
+    OnStartGameGroup();
 
-    OnStartGame.Broadcast();
+    GameStatus = EGameStatus::Started;
+    BroadcastOnGameStatusChanged();
 }
 
 void AGM_Main::EndGame()
 {
 
-    OnEndGame.Broadcast();
+    GameStatus = EGameStatus::Ended;
+    BroadcastOnGameStatusChanged();
+}
+
+void AGM_Main::OnStartGameGroup()
+{
+}
+
+void AGM_Main::BroadcastOnGameStatusChanged() const
+{
+    OnGameStatusChanged.Broadcast(GameStatus);
 }

@@ -6,10 +6,7 @@
 #include "GM_Main.h"
 #include "GM_InsideComplex.generated.h"
 
-/**
- * 
- */
-UCLASS()
+UCLASS(Blueprintable, Abstract)
 class LMN_API AGM_InsideComplex : public AGM_Main
 {
 	GENERATED_BODY()

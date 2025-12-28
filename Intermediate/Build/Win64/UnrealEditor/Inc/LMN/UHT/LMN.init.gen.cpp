@@ -11,13 +11,13 @@ static_assert(!UE_WITH_CONSTINIT_UOBJECT, "This generated code can only be compi
 	LMN_API UFunction* Z_Construct_UDelegateFunction_LMN_OnAmmoChanged__DelegateSignature();
 	LMN_API UFunction* Z_Construct_UDelegateFunction_LMN_OnAmmoEmpty__DelegateSignature();
 	LMN_API UFunction* Z_Construct_UDelegateFunction_LMN_OnDied__DelegateSignature();
-	LMN_API UFunction* Z_Construct_UDelegateFunction_LMN_OnEndGame__DelegateSignature();
 	LMN_API UFunction* Z_Construct_UDelegateFunction_LMN_OnEquipmentChanged__DelegateSignature();
+	LMN_API UFunction* Z_Construct_UDelegateFunction_LMN_OnGameStatusChanged__DelegateSignature();
 	LMN_API UFunction* Z_Construct_UDelegateFunction_LMN_OnHealthChange__DelegateSignature();
 	LMN_API UFunction* Z_Construct_UDelegateFunction_LMN_OnMovementStateChanged__DelegateSignature();
+	LMN_API UFunction* Z_Construct_UDelegateFunction_LMN_OnResultClick__DelegateSignature();
 	LMN_API UFunction* Z_Construct_UDelegateFunction_LMN_OnSelectedChange__DelegateSignature();
 	LMN_API UFunction* Z_Construct_UDelegateFunction_LMN_OnStaminaChanged__DelegateSignature();
-	LMN_API UFunction* Z_Construct_UDelegateFunction_LMN_OnStartGame__DelegateSignature();
 	LMN_API UFunction* Z_Construct_UDelegateFunction_LMN_OnTeamChange__DelegateSignature();
 	LMN_API UFunction* Z_Construct_UDelegateFunction_LMN_OnTypeActionChanged__DelegateSignature();
 	LMN_API UFunction* Z_Construct_UDelegateFunction_LMN_OnTypeMovementStateChanged__DelegateSignature();
@@ -31,13 +31,13 @@ static_assert(!UE_WITH_CONSTINIT_UOBJECT, "This generated code can only be compi
 			(UObject* (*)())Z_Construct_UDelegateFunction_LMN_OnAmmoChanged__DelegateSignature,
 			(UObject* (*)())Z_Construct_UDelegateFunction_LMN_OnAmmoEmpty__DelegateSignature,
 			(UObject* (*)())Z_Construct_UDelegateFunction_LMN_OnDied__DelegateSignature,
-			(UObject* (*)())Z_Construct_UDelegateFunction_LMN_OnEndGame__DelegateSignature,
 			(UObject* (*)())Z_Construct_UDelegateFunction_LMN_OnEquipmentChanged__DelegateSignature,
+			(UObject* (*)())Z_Construct_UDelegateFunction_LMN_OnGameStatusChanged__DelegateSignature,
 			(UObject* (*)())Z_Construct_UDelegateFunction_LMN_OnHealthChange__DelegateSignature,
 			(UObject* (*)())Z_Construct_UDelegateFunction_LMN_OnMovementStateChanged__DelegateSignature,
+			(UObject* (*)())Z_Construct_UDelegateFunction_LMN_OnResultClick__DelegateSignature,
 			(UObject* (*)())Z_Construct_UDelegateFunction_LMN_OnSelectedChange__DelegateSignature,
 			(UObject* (*)())Z_Construct_UDelegateFunction_LMN_OnStaminaChanged__DelegateSignature,
-			(UObject* (*)())Z_Construct_UDelegateFunction_LMN_OnStartGame__DelegateSignature,
 			(UObject* (*)())Z_Construct_UDelegateFunction_LMN_OnTeamChange__DelegateSignature,
 			(UObject* (*)())Z_Construct_UDelegateFunction_LMN_OnTypeActionChanged__DelegateSignature,
 			(UObject* (*)())Z_Construct_UDelegateFunction_LMN_OnTypeMovementStateChanged__DelegateSignature,
@@ -47,13 +47,13 @@ static_assert(!UE_WITH_CONSTINIT_UOBJECT, "This generated code can only be compi
 			SingletonFuncArray,
 			UE_ARRAY_COUNT(SingletonFuncArray),
 			PKG_CompiledIn | 0x00000000,
-			0x7BE6A442,
-			0x875ACF1F,
+			0x20AF9EDF,
+			0x84975684,
 			METADATA_PARAMS(0, nullptr)
 		};
 		UECodeGen_Private::ConstructUPackage(Z_Registration_Info_UPackage__Script_LMN.OuterSingleton, PackageParams);
 	}
 	return Z_Registration_Info_UPackage__Script_LMN.OuterSingleton;
 }
-static FRegisterCompiledInInfo Z_CompiledInDeferPackage_UPackage__Script_LMN(Z_Construct_UPackage__Script_LMN, TEXT("/Script/LMN"), Z_Registration_Info_UPackage__Script_LMN, CONSTRUCT_RELOAD_VERSION_INFO(FPackageReloadVersionInfo, 0x7BE6A442, 0x875ACF1F));
+static FRegisterCompiledInInfo Z_CompiledInDeferPackage_UPackage__Script_LMN(Z_Construct_UPackage__Script_LMN, TEXT("/Script/LMN"), Z_Registration_Info_UPackage__Script_LMN, CONSTRUCT_RELOAD_VERSION_INFO(FPackageReloadVersionInfo, 0x20AF9EDF, 0x84975684));
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

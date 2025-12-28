@@ -6,12 +6,31 @@
 #include "UW_Base.h"
 #include "UW_DialogBase.generated.h"
 
-/**
- * 
- */
-UCLASS()
+
+class FWidgetAnimationDynamicEvent;
+
+UCLASS(NotBlueprintable, Abstract)
 class LMN_API UUW_DialogBase : public UUW_Base
 {
-	GENERATED_BODY()
-	
+    GENERATED_BODY()
+
+protected:
+    virtual void NativeConstruct() override;
+
+    virtual void OpenDialog();
+    virtual void CloseDialog();
+
+    UFUNCTION()
+    void OnAnimFinished();
+
+    void OnOpened();
+    void OnClosed();
+
+    UPROPERTY(meta = (BindWidgetAnim), Transient) 
+    UWidgetAnimation* DialogAnimation;
+
+    bool bIsAnimating        = false;
+    bool bLastPlayWasReverse = false;
+
+    FWidgetAnimationDynamicEvent FinishDelegate;
 };
