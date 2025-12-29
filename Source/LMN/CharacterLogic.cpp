@@ -162,7 +162,10 @@ void UCharacterLogic::SetCanRan(bool bNewCanRan)
     if (bNewCanRan == false)
         bCanRan = false;
     else
-        bCanRan = CurrentStamina > MinStaminaToRun ? true : false;
+    {
+        if (bCanRan != bNewCanRan)
+            bCanRan = CurrentStamina > MinStaminaToRun ? true : false;
+    }
 
     if (CharacterMovementComponentRef)
         CharacterMovementComponentRef->MaxWalkSpeed = bCanRan ? MaxRunSpeed : MaxWalkSpeed;

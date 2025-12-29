@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Engine/GameInstance.h"
+#include "CharacterLogic.h"
 #include "GI_Main.generated.h"
 
 class ULogicBase;
@@ -56,15 +57,13 @@ struct FCharacterLogicRow : public FLogicRow
     float MaxRunSpeed = 25.f;
 };
 
-enum class EEquipmentSlot : uint8;
-
 USTRUCT(BlueprintType)
 struct FEquipmentRow : public FLogicRow
 {
     GENERATED_BODY()
 
     UPROPERTY(EditAnywhere, BlueprintReadWrite)
-    EEquipmentSlot EquipmentSlot;
+    EEquipmentSlot EquipmentSlot = EEquipmentSlot::Hands;
 };
 
 USTRUCT(BlueprintType)

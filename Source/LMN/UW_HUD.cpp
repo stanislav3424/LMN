@@ -4,20 +4,27 @@
 #include "Components/ListView.h"
 #include "PC_Main.h"
 #include "BFL.h"
+#include "GM_Main.h"
+#include "Components/Button.h"
+#include "UW_DialogBase.h"
 
 void UUW_HUD::NativeOnInitialized()
 {
     Super::NativeOnInitialized();
 
-    PC_Main = GetOwningPlayer<APC_Main>();
-}
-
-void UUW_HUD::NativeConstruct()
-{
-    Super::NativeConstruct();
 
     if (PC_Main)
-        PC_Main->OnActorsSelectedChange.AddDynamic(this, &UUW_HUD::UpdateListView);
+        PC_Main->OnActorsSelectedChange.AddUniqueDynamic(this, &UUW_HUD::UpdateListView);
+
+    if (MenuButton)
+        MenuButton->OnClicked.AddUniqueDynamic(this, &UUW_HUD::OnMenuButtonClicked);
+
+    CHECK_FIELD(MenuUserWidgetClass);
+    if (MenuUserWidgetClass)
+        MenuUserWidget = CreateWidget<UUW_DialogBase>(PC_Main, MenuUserWidgetClass);
+    CHECK_FIELD(MenuUserWidget);
+    if (MenuUserWidget)
+        MenuUserWidget->AddToViewport(100);
 }
 
 void UUW_HUD::UpdateListView()
@@ -36,4 +43,16 @@ void UUW_HUD::UpdateListView()
             if (auto Logic = UBFL::GetLogic(Actor))
                 SelectedListView->RemoveItem(Logic);
     }
+}
+
+void UUW_HUD::OnMenuButtonClicked()
+{
+    if (MenuUserWidget)
+        MenuUserWidget->Switch();
+}
+
+void UUW_HUD::GameStatusChanged()
+{
+    if (GameStatus == EGameStatus::NotStarted)
+        OnMenuButtonClicked();
 }

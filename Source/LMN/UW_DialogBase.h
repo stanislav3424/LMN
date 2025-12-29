@@ -3,34 +3,32 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "UW_Base.h"
+#include "UW_Global.h"
 #include "UW_DialogBase.generated.h"
-
 
 class FWidgetAnimationDynamicEvent;
 
 UCLASS(NotBlueprintable, Abstract)
-class LMN_API UUW_DialogBase : public UUW_Base
+class LMN_API UUW_DialogBase : public UUW_Global
 {
     GENERATED_BODY()
 
 protected:
     virtual void NativeConstruct() override;
 
-    virtual void OpenDialog();
-    virtual void CloseDialog();
-
     UFUNCTION()
     void OnAnimFinished();
 
-    void OnOpened();
-    void OnClosed();
-
-    UPROPERTY(meta = (BindWidgetAnim), Transient) 
+    UPROPERTY(meta = (BindWidgetAnim), Transient)
     UWidgetAnimation* DialogAnimation;
 
-    bool bIsAnimating        = false;
-    bool bLastPlayWasReverse = false;
+    bool bIsAnimating = false;
+    bool bIsOpen      = false;
 
     FWidgetAnimationDynamicEvent FinishDelegate;
+
+public:
+    void OpenDialog();
+    void CloseDialog();
+    void Switch();
 };

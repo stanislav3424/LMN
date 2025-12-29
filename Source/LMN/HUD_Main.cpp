@@ -7,26 +7,42 @@
 #include "BFL.h"
 #include "RepresentationCharacter.h"
 #include "UW_HUD.h"
+#include "GM_Main.h"
 
 void AHUD_Main::BeginPlay()
 {
     Super::BeginPlay();
 
-    PlayerControllerRef = Cast<APC_Main>(GetOwningPlayerController());
+    PlayerController = Cast<APC_Main>(GetOwningPlayerController());
 
+    if (auto World = GetWorld())
+        GM_Main = World->GetAuthGameMode<AGM_Main>();
+
+    CHECK_FIELD(PlayerController);
+    CHECK_FIELD(GM_Main);
     CHECK_FIELD(UW_HUD_Class);
 
     if (UW_HUD_Class)
-        if (auto UW_HUD = CreateWidget(PlayerControllerRef, UW_HUD_Class))
+    {
+        UW_HUD = CreateWidget(PlayerController, UW_HUD_Class);
+        if (UW_HUD)
             UW_HUD->AddToViewport();
+    }
+
+
+    if (GM_Main)
+    {
+        GM_Main->OnGameStatusChanged.AddUniqueDynamic(this, &AHUD_Main::OnGameStatusChanged);
+        GM_Main->BroadcastOnGameStatusChanged();
+    }
 }
 
 void AHUD_Main::StartSelection()
 {
-    if (!PlayerControllerRef)
+    if (!PlayerController)
         return;
     FHitResult HitResult;
-    PlayerControllerRef->GetHitResultUnderCursorByChannel(ETraceTypeQuery::TraceTypeQuery1, true, HitResult);
+    PlayerController->GetHitResultUnderCursorByChannel(ETraceTypeQuery::TraceTypeQuery1, true, HitResult);
     if (HitResult.bBlockingHit)
     {
         SelectionStartWorld = HitResult.Location;
@@ -39,19 +55,37 @@ void AHUD_Main::EndSelection()
     bIsSelecting = false;
 }
 
+void AHUD_Main::OnGameStatusChanged(EGameStatus NewGameStatus)
+{
+    GameStatus = NewGameStatus;
+    if (NewGameStatus == EGameStatus::NotStarted)
+    {
+    }
+    else if (NewGameStatus == EGameStatus::Started)
+    {
+        
+    }
+    else if (NewGameStatus == EGameStatus::Ended)
+    {
+    }
+}
+
 void AHUD_Main::DrawHUD()
 {
     Super::DrawHUD();
 
-    if (!bIsSelecting || !Canvas || !PlayerControllerRef)
+    if (GameStatus != EGameStatus::Started)
         return;
-    
+
+    if (!bIsSelecting || !Canvas || !PlayerController)
+        return;
+
     FHitResult HitResult;
-    PlayerControllerRef->GetHitResultUnderCursorByChannel(ETraceTypeQuery::TraceTypeQuery1, true, HitResult);
+    PlayerController->GetHitResultUnderCursorByChannel(ETraceTypeQuery::TraceTypeQuery1, true, HitResult);
     if (HitResult.bBlockingHit)
     {
-        PlayerControllerRef->ProjectWorldLocationToScreen(SelectionStartWorld, ScreenStart, true);
-        PlayerControllerRef->ProjectWorldLocationToScreen(HitResult.Location, ScreenCurrent, true);
+        PlayerController->ProjectWorldLocationToScreen(SelectionStartWorld, ScreenStart, true);
+        PlayerController->ProjectWorldLocationToScreen(HitResult.Location, ScreenCurrent, true);
     }
 
     FVector2D TopLeft(FMath::Min(ScreenStart.X, ScreenCurrent.X), FMath::Min(ScreenStart.Y, ScreenCurrent.Y));
@@ -66,5 +100,5 @@ void AHUD_Main::DrawHUD()
 
     TArray<AActor*> Actors;
     GetActorsInSelectionRectangle(ARepresentationCharacter::StaticClass(), TopLeft, BottomRight, Actors, false, false);
-    PlayerControllerRef->UpdateActorsSelected(Actors);
+    PlayerController->UpdateActorsSelected(Actors);
 }

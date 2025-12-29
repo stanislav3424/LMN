@@ -18,7 +18,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 // ********** Begin ScriptStruct FLogicBaseRow *****************************************************
 struct Z_Construct_UScriptStruct_FLogicBaseRow_Statics;
-#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_GI_Main_h_14_GENERATED_BODY \
+#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_GI_Main_h_15_GENERATED_BODY \
 	friend struct ::Z_Construct_UScriptStruct_FLogicBaseRow_Statics; \
 	LMN_API static class UScriptStruct* StaticStruct(); \
 	typedef FTableRowBase Super;
@@ -29,7 +29,7 @@ struct FLogicBaseRow;
 
 // ********** Begin ScriptStruct FLogicRow *********************************************************
 struct Z_Construct_UScriptStruct_FLogicRow_Statics;
-#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_GI_Main_h_26_GENERATED_BODY \
+#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_GI_Main_h_27_GENERATED_BODY \
 	friend struct ::Z_Construct_UScriptStruct_FLogicRow_Statics; \
 	LMN_API static class UScriptStruct* StaticStruct(); \
 	typedef FLogicBaseRow Super;
@@ -40,7 +40,7 @@ struct FLogicRow;
 
 // ********** Begin ScriptStruct FCharacterLogicRow ************************************************
 struct Z_Construct_UScriptStruct_FCharacterLogicRow_Statics;
-#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_GI_Main_h_38_GENERATED_BODY \
+#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_GI_Main_h_39_GENERATED_BODY \
 	friend struct ::Z_Construct_UScriptStruct_FCharacterLogicRow_Statics; \
 	LMN_API static class UScriptStruct* StaticStruct(); \
 	typedef FLogicRow Super;
@@ -51,7 +51,7 @@ struct FCharacterLogicRow;
 
 // ********** Begin ScriptStruct FEquipmentRow *****************************************************
 struct Z_Construct_UScriptStruct_FEquipmentRow_Statics;
-#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_GI_Main_h_64_GENERATED_BODY \
+#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_GI_Main_h_63_GENERATED_BODY \
 	friend struct ::Z_Construct_UScriptStruct_FEquipmentRow_Statics; \
 	LMN_API static class UScriptStruct* StaticStruct(); \
 	typedef FLogicRow Super;
@@ -62,7 +62,7 @@ struct FEquipmentRow;
 
 // ********** Begin ScriptStruct FWeaponRow ********************************************************
 struct Z_Construct_UScriptStruct_FWeaponRow_Statics;
-#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_GI_Main_h_73_GENERATED_BODY \
+#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_GI_Main_h_72_GENERATED_BODY \
 	friend struct ::Z_Construct_UScriptStruct_FWeaponRow_Statics; \
 	LMN_API static class UScriptStruct* StaticStruct(); \
 	typedef FEquipmentRow Super;
@@ -75,7 +75,7 @@ struct FWeaponRow;
 struct Z_Construct_UClass_UGI_Main_Statics;
 LMN_API UClass* Z_Construct_UClass_UGI_Main_NoRegister();
 
-#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_GI_Main_h_91_INCLASS_NO_PURE_DECLS \
+#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_GI_Main_h_90_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesUGI_Main(); \
 	friend struct ::Z_Construct_UClass_UGI_Main_Statics; \
@@ -86,7 +86,7 @@ public: \
 	DECLARE_SERIALIZER(UGI_Main)
 
 
-#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_GI_Main_h_91_ENHANCED_CONSTRUCTORS \
+#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_GI_Main_h_90_ENHANCED_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API UGI_Main(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()); \
 	/** Deleted move- and copy-constructors, should never be used */ \
@@ -98,12 +98,12 @@ public: \
 	NO_API virtual ~UGI_Main();
 
 
-#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_GI_Main_h_88_PROLOG
-#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_GI_Main_h_91_GENERATED_BODY \
+#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_GI_Main_h_87_PROLOG
+#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_GI_Main_h_90_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_GI_Main_h_91_INCLASS_NO_PURE_DECLS \
-	FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_GI_Main_h_91_ENHANCED_CONSTRUCTORS \
+	FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_GI_Main_h_90_INCLASS_NO_PURE_DECLS \
+	FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_GI_Main_h_90_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 

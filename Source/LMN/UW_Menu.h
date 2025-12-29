@@ -3,14 +3,11 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "UW_Global.h"
+#include "UW_Dialog.h"
 #include "UW_Menu.generated.h"
 
-/**
- * 
- */
-UCLASS()
-class LMN_API UUW_Menu : public UUW_Global
+UCLASS(Blueprintable, Abstract)
+class LMN_API UUW_Menu : public UUW_Dialog
 {
 	GENERATED_BODY()
 	

@@ -20,7 +20,9 @@ void UTTask_MoveType::TickTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMem
     Super::TickTask(OwnerComp, NodeMemory, DeltaSeconds);
 
     if (bCanRun.GetValue(OwnerComp) && Logic)
+    {
         Logic->SetCanRan(true);
+    }
 
 }
 

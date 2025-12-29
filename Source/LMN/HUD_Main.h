@@ -8,6 +8,8 @@
 
 class APC_Main;
 class UUW_HUD;
+class AGM_Main;
+enum class EGameStatus : uint8;
 
 UCLASS(Blueprintable, Abstract)
 class LMN_API AHUD_Main : public AHUD
@@ -22,8 +24,19 @@ public:
     void EndSelection();
 
 protected:
-    UPROPERTY()
-    APC_Main* PlayerControllerRef;
+    UPROPERTY(Transient)
+    APC_Main* PlayerController;
+    
+    UPROPERTY(Transient)
+    AGM_Main* GM_Main;
+
+    UPROPERTY(Transient)
+    UUserWidget* UW_HUD;
+
+    UFUNCTION()
+    void OnGameStatusChanged(EGameStatus NewGameStatus);
+
+    EGameStatus GameStatus;
 
     bool      bIsSelecting        = false;
     FVector   SelectionStartWorld = FVector::ZeroVector;
