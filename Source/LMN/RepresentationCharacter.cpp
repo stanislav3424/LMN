@@ -4,14 +4,13 @@
 #include "SceneComponentBase.h"
 #include "LogicBase.h"
 #include "BFL.h"
+#include "Logic.h"
 
 void ARepresentationCharacter::BeginPlay()
 {
     Super::BeginPlay();
 
     UBFL::ActorActivation(this);
-
-    
 }
 
 void ARepresentationCharacter::Tick(float DeltaSeconds)
@@ -39,4 +38,17 @@ void ARepresentationCharacter::SetLogic_Implementation(ULogicBase* NewLogic)
             if (Component)
                 UBFL::SetLogic(Component, Logic);
     }
+}
+
+FGenericTeamId ARepresentationCharacter::GetGenericTeamId() const
+{
+    if (auto LocalLogic = Cast<ULogic>(Logic))
+        return LocalLogic->GetTeamId();
+    return FGenericTeamId::NoTeam;
+}
+
+void ARepresentationCharacter::SetGenericTeamId(const FGenericTeamId& NewTeamId)
+{
+    if (auto LocalLogic = Cast<ULogic>(Logic))
+        LocalLogic->SetTeamId(NewTeamId);
 }

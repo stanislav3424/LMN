@@ -84,6 +84,8 @@ struct FWeaponRow : public FEquipmentRow
     float MOARadians = 10.f;
 };
 
+enum class EGameStatus : uint8;
+
 UCLASS(Blueprintable, Abstract)
 class LMN_API UGI_Main : public UGameInstance
 {
@@ -113,4 +115,27 @@ public:
 public:
     void ActorActivation(AActor* Actor);
 
+protected:
+    EGameStatus GameStatus;
+
+public:
+    EGameStatus GetGameStatus() const { return GameStatus; }
+
+protected:
+    UPROPERTY(EditDefaultsOnly, Category = "OpenLevel")
+    FName UpLevelName;
+
+    UPROPERTY(EditDefaultsOnly, Category = "OpenLevel")
+    FName BottomLevelName;
+
+public:
+    void RestartGame();
+    void OpenBottomLevel();
+
+protected:
+    UPROPERTY()
+    TSet<UObject*> TransitionalPawns;
+
+public:
+    TSet<UObject*> const& GetTransitionalPawns() { return TransitionalPawns; }
 };

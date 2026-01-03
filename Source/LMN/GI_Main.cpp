@@ -2,10 +2,14 @@
 
 #include "GI_Main.h"
 #include "BFL.h"
+#include "GM_Main.h"
+#include "Kismet/GameplayStatics.h"
 
 void UGI_Main::Init()
 {
     Super::Init();
+
+    GameStatus = EGameStatus::NotStarted;
 
     DataTablesCacheByRowName.Empty();
     RowHandlesCacheByActorClass.Empty();
@@ -124,4 +128,24 @@ void UGI_Main::ActorActivation(AActor* Actor)
         if (!UBFL::GetLogic(Actor))
             if (auto LogicClass = CreateLogicByRowHandle(GetRowHandleByActor(Actor)))
                 LogicClass->HardSetRepresentationActor(Actor);
+}
+
+void UGI_Main::RestartGame()
+{
+    GameStatus = EGameStatus::Started;
+    UGameplayStatics::OpenLevel(this, UpLevelName);
+}
+
+void UGI_Main::OpenBottomLevel()
+{
+    if (auto World = GetWorld())
+        if (auto GM = World->GetAuthGameMode<AGM_Main>())
+        {
+            auto Arr = GM->GetActorsComplexTriggerBox().Array();
+            for (auto Actor : Arr)
+                TransitionalPawns.Add(UBFL::GetLogic(Actor));
+        }
+
+    GameStatus = EGameStatus::Started;
+    UGameplayStatics::OpenLevel(this, BottomLevelName);
 }

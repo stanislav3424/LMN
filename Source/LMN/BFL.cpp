@@ -86,6 +86,20 @@ bool UBFL::GetTeamActor(ETeam& TargetTeam, AActor* Actor)
     return GetTeam(TargetTeam, UBFL::GetLogic(Actor));
 }
 
+void UBFL::GetOnlyEnemies(TArray<AActor*>& TargetArr, AActor* Actor)
+{
+    if (!IsValid(Actor) || TargetArr.IsEmpty())
+        return;
+
+    TArray<AActor*> Arr;
+
+    for (auto const& LocalActor : TargetArr)
+        if (!IsTeamsEqualActor(Actor, LocalActor))
+            Arr.Add(LocalActor);
+
+    TargetArr = Arr;
+}
+
 bool UBFL::IsTeamsEqual(ULogicBase* LogicA, ULogicBase* LogicB)
 {
     ETeam TeamA;

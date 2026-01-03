@@ -11,4 +11,6 @@ class LMN_API AGM_InsideComplex : public AGM_Main
 {
 	GENERATED_BODY()
 	
+	protected:
+    virtual void BeginPlay() override;
 };

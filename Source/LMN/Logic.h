@@ -19,6 +19,8 @@ DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnDied);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnTeamChange, ETeam, Team);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnSelectedChange, bool, bIsSelected);
 
+struct FGenericTeamId;
+
 UCLASS()
 class LMN_API ULogic : public ULogicBase
 {
@@ -60,6 +62,9 @@ public:
     void  BroadcastOnTeamChange() const;
     const ETeam GetTeam() const { return Team; };
     void  SetTeam(ETeam const& NewTeam);
+
+    FGenericTeamId GetTeamId() const;
+    FORCEINLINE void SetTeamId(const FGenericTeamId& NewId);
 
     // Selected
 protected:

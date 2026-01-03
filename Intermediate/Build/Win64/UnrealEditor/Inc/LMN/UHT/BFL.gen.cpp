@@ -362,6 +362,66 @@ DEFINE_FUNCTION(UBFL::execGetLogic)
 }
 // ********** End Class UBFL Function GetLogic *****************************************************
 
+// ********** Begin Class UBFL Function GetOnlyEnemies *********************************************
+struct Z_Construct_UFunction_UBFL_GetOnlyEnemies_Statics
+{
+	struct BFL_eventGetOnlyEnemies_Parms
+	{
+		TArray<AActor*> TargetArr;
+		AActor* Actor;
+	};
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "Category", "Logic" },
+		{ "ModuleRelativePath", "BFL.h" },
+	};
+#endif // WITH_METADATA
+
+// ********** Begin Function GetOnlyEnemies constinit property declarations ************************
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_TargetArr_Inner;
+	static const UECodeGen_Private::FArrayPropertyParams NewProp_TargetArr;
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_Actor;
+	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+// ********** End Function GetOnlyEnemies constinit property declarations **************************
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+
+// ********** Begin Function GetOnlyEnemies Property Definitions ***********************************
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_UBFL_GetOnlyEnemies_Statics::NewProp_TargetArr_Inner = { "TargetArr", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, Z_Construct_UClass_AActor_NoRegister, METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FArrayPropertyParams Z_Construct_UFunction_UBFL_GetOnlyEnemies_Statics::NewProp_TargetArr = { "TargetArr", nullptr, (EPropertyFlags)0x0010000000000180, UECodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(BFL_eventGetOnlyEnemies_Parms, TargetArr), EArrayPropertyFlags::None, METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_UBFL_GetOnlyEnemies_Statics::NewProp_Actor = { "Actor", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(BFL_eventGetOnlyEnemies_Parms, Actor), Z_Construct_UClass_AActor_NoRegister, METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UBFL_GetOnlyEnemies_Statics::PropPointers[] = {
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UBFL_GetOnlyEnemies_Statics::NewProp_TargetArr_Inner,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UBFL_GetOnlyEnemies_Statics::NewProp_TargetArr,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UBFL_GetOnlyEnemies_Statics::NewProp_Actor,
+};
+static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_UBFL_GetOnlyEnemies_Statics::PropPointers) < 2048);
+// ********** End Function GetOnlyEnemies Property Definitions *************************************
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UBFL_GetOnlyEnemies_Statics::FuncParams = { { (UObject*(*)())Z_Construct_UClass_UBFL, nullptr, "GetOnlyEnemies", 	Z_Construct_UFunction_UBFL_GetOnlyEnemies_Statics::PropPointers, 
+	UE_ARRAY_COUNT(Z_Construct_UFunction_UBFL_GetOnlyEnemies_Statics::PropPointers), 
+sizeof(Z_Construct_UFunction_UBFL_GetOnlyEnemies_Statics::BFL_eventGetOnlyEnemies_Parms),
+RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04422401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UBFL_GetOnlyEnemies_Statics::Function_MetaDataParams), Z_Construct_UFunction_UBFL_GetOnlyEnemies_Statics::Function_MetaDataParams)},  };
+static_assert(sizeof(Z_Construct_UFunction_UBFL_GetOnlyEnemies_Statics::BFL_eventGetOnlyEnemies_Parms) < MAX_uint16);
+UFunction* Z_Construct_UFunction_UBFL_GetOnlyEnemies()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_UBFL_GetOnlyEnemies_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(UBFL::execGetOnlyEnemies)
+{
+	P_GET_TARRAY_REF(AActor*,Z_Param_Out_TargetArr);
+	P_GET_OBJECT(AActor,Z_Param_Actor);
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	UBFL::GetOnlyEnemies(Z_Param_Out_TargetArr,Z_Param_Actor);
+	P_NATIVE_END;
+}
+// ********** End Class UBFL Function GetOnlyEnemies ***********************************************
+
 // ********** Begin Class UBFL Function GetTeam ****************************************************
 struct Z_Construct_UFunction_UBFL_GetTeam_Statics
 {
@@ -984,6 +1044,7 @@ struct Z_Construct_UClass_UBFL_Statics
 		{ .NameUTF8 = UTF8TEXT("EqualTeamActor"), .Pointer = &UBFL::execEqualTeamActor },
 		{ .NameUTF8 = UTF8TEXT("GetIcon"), .Pointer = &UBFL::execGetIcon },
 		{ .NameUTF8 = UTF8TEXT("GetLogic"), .Pointer = &UBFL::execGetLogic },
+		{ .NameUTF8 = UTF8TEXT("GetOnlyEnemies"), .Pointer = &UBFL::execGetOnlyEnemies },
 		{ .NameUTF8 = UTF8TEXT("GetTeam"), .Pointer = &UBFL::execGetTeam },
 		{ .NameUTF8 = UTF8TEXT("GetTeamActor"), .Pointer = &UBFL::execGetTeamActor },
 		{ .NameUTF8 = UTF8TEXT("IsTeamsEqual"), .Pointer = &UBFL::execIsTeamsEqual },
@@ -999,6 +1060,7 @@ struct Z_Construct_UClass_UBFL_Statics
 		{ &Z_Construct_UFunction_UBFL_EqualTeamActor, "EqualTeamActor" }, // 4070349583
 		{ &Z_Construct_UFunction_UBFL_GetIcon, "GetIcon" }, // 3868335089
 		{ &Z_Construct_UFunction_UBFL_GetLogic, "GetLogic" }, // 1259971436
+		{ &Z_Construct_UFunction_UBFL_GetOnlyEnemies, "GetOnlyEnemies" }, // 910229403
 		{ &Z_Construct_UFunction_UBFL_GetTeam, "GetTeam" }, // 296717931
 		{ &Z_Construct_UFunction_UBFL_GetTeamActor, "GetTeamActor" }, // 995336964
 		{ &Z_Construct_UFunction_UBFL_IsTeamsEqual, "IsTeamsEqual" }, // 2548859586
@@ -1059,10 +1121,10 @@ struct Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_S
 		{ FTemplateCharacterRow::StaticStruct, Z_Construct_UScriptStruct_FTemplateCharacterRow_Statics::NewStructOps, TEXT("TemplateCharacterRow"),&Z_Registration_Info_UScriptStruct_FTemplateCharacterRow, CONSTRUCT_RELOAD_VERSION_INFO(FStructReloadVersionInfo, sizeof(FTemplateCharacterRow), 320033874U) },
 	};
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_UBFL, UBFL::StaticClass, TEXT("UBFL"), &Z_Registration_Info_UClass_UBFL, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UBFL), 2288890576U) },
+		{ Z_Construct_UClass_UBFL, UBFL::StaticClass, TEXT("UBFL"), &Z_Registration_Info_UClass_UBFL, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UBFL), 3442767080U) },
 	};
 }; // Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_BFL_h__Script_LMN_Statics 
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_BFL_h__Script_LMN_1386069164{
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_BFL_h__Script_LMN_1313988540{
 	TEXT("/Script/LMN"),
 	Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_BFL_h__Script_LMN_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_BFL_h__Script_LMN_Statics::ClassInfo),
 	Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_BFL_h__Script_LMN_Statics::ScriptStructInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_BFL_h__Script_LMN_Statics::ScriptStructInfo),

@@ -78,6 +78,9 @@ public:
     static bool GetTeamActor(ETeam& TargetTeam, AActor* Actor);
 
     UFUNCTION(BlueprintCallable, Category = "Logic")
+    static void GetOnlyEnemies(TArray<AActor*>& TargetArr, AActor* Actor);
+
+    UFUNCTION(BlueprintCallable, Category = "Logic")
     static bool IsTeamsEqual(ULogicBase* LogicA, ULogicBase* LogicB);
 
     UFUNCTION(BlueprintCallable, Category = "Logic")

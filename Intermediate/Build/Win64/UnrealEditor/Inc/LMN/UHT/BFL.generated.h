@@ -44,6 +44,7 @@ struct FTemplateCharacterRow;
 	DECLARE_FUNCTION(execEqualTeam); \
 	DECLARE_FUNCTION(execIsTeamsEqualActor); \
 	DECLARE_FUNCTION(execIsTeamsEqual); \
+	DECLARE_FUNCTION(execGetOnlyEnemies); \
 	DECLARE_FUNCTION(execGetTeamActor); \
 	DECLARE_FUNCTION(execGetTeam); \
 	DECLARE_FUNCTION(execGetLogic); \

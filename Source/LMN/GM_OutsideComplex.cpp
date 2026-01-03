@@ -7,6 +7,7 @@
 #include "NavigationSystem.h"
 #include "BFL.h"
 #include "Logic.h"
+#include "GI_Main.h"
 
 void AGM_OutsideComplex::BeginPlay()
 {
@@ -37,22 +38,34 @@ void AGM_OutsideComplex::BeginPlay()
             Collision->OnComponentEndOverlap.AddDynamic(this, &AGM_OutsideComplex::OnOverlapEnd);
         }
 
-    StartGame();
+    if (auto World = GetWorld())
+        if (auto GI = World->GetGameInstance<UGI_Main>())
+        {
+            if (EGameStatus::Started == GI->GetGameStatus())
+                StartGame();
+        }
 }
 
 void AGM_OutsideComplex::OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* OtherActor,
     UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
+    if (IsValid(OtherActor))
+        if (UBFL::EqualTeamActor(OtherActor, ETeam::Player))
+            ComplexTriggerBoxSet.Add(OtherActor);
 }
 
 void AGM_OutsideComplex::OnOverlapEnd(
     UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
 {
+    ComplexTriggerBoxSet.Remove(OtherActor);
 }
 
 void AGM_OutsideComplex::OnStartGameGroup()
 {
     Super::OnStartGameGroup();
+
+    if (PlayerSpawnTriggerBoxs.IsEmpty())
+        return;
 
     int32 Index      = FMath::RandHelper(PlayerSpawnTriggerBoxs.Num());
     auto  TriggerBox = PlayerSpawnTriggerBoxs[Index];

@@ -14,6 +14,7 @@ void EmptyLinkFunctionForGeneratedCodeGI_Main() {}
 
 // ********** Begin Cross Module References ********************************************************
 COREUOBJECT_API UClass* Z_Construct_UClass_UClass_NoRegister();
+COREUOBJECT_API UClass* Z_Construct_UClass_UObject_NoRegister();
 ENGINE_API UClass* Z_Construct_UClass_AActor_NoRegister();
 ENGINE_API UClass* Z_Construct_UClass_UDataTable_NoRegister();
 ENGINE_API UClass* Z_Construct_UClass_UGameInstance();
@@ -493,6 +494,17 @@ struct Z_Construct_UClass_UGI_Main_Statics
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_RowHandlesCacheByActorClass_MetaData[] = {
 		{ "ModuleRelativePath", "GI_Main.h" },
 	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_UpLevelName_MetaData[] = {
+		{ "Category", "OpenLevel" },
+		{ "ModuleRelativePath", "GI_Main.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_BottomLevelName_MetaData[] = {
+		{ "Category", "OpenLevel" },
+		{ "ModuleRelativePath", "GI_Main.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_TransitionalPawns_MetaData[] = {
+		{ "ModuleRelativePath", "GI_Main.h" },
+	};
 #endif // WITH_METADATA
 
 // ********** Begin Class UGI_Main constinit property declarations *********************************
@@ -504,6 +516,10 @@ struct Z_Construct_UClass_UGI_Main_Statics
 	static const UECodeGen_Private::FStructPropertyParams NewProp_RowHandlesCacheByActorClass_ValueProp;
 	static const UECodeGen_Private::FClassPropertyParams NewProp_RowHandlesCacheByActorClass_Key_KeyProp;
 	static const UECodeGen_Private::FMapPropertyParams NewProp_RowHandlesCacheByActorClass;
+	static const UECodeGen_Private::FNamePropertyParams NewProp_UpLevelName;
+	static const UECodeGen_Private::FNamePropertyParams NewProp_BottomLevelName;
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_TransitionalPawns_ElementProp;
+	static const UECodeGen_Private::FSetPropertyParams NewProp_TransitionalPawns;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 // ********** End Class UGI_Main constinit property declarations ***********************************
 	static UObject* (*const DependentSingletons[])();
@@ -522,6 +538,10 @@ const UECodeGen_Private::FMapPropertyParams Z_Construct_UClass_UGI_Main_Statics:
 const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_UGI_Main_Statics::NewProp_RowHandlesCacheByActorClass_ValueProp = { "RowHandlesCacheByActorClass", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 1, Z_Construct_UScriptStruct_FDataTableRowHandle, METADATA_PARAMS(0, nullptr) }; // 395055942
 const UECodeGen_Private::FClassPropertyParams Z_Construct_UClass_UGI_Main_Statics::NewProp_RowHandlesCacheByActorClass_Key_KeyProp = { "RowHandlesCacheByActorClass_Key", nullptr, (EPropertyFlags)0x0004000000000000, UECodeGen_Private::EPropertyGenFlags::Class, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, Z_Construct_UClass_UClass_NoRegister, Z_Construct_UClass_AActor_NoRegister, METADATA_PARAMS(0, nullptr) };
 const UECodeGen_Private::FMapPropertyParams Z_Construct_UClass_UGI_Main_Statics::NewProp_RowHandlesCacheByActorClass = { "RowHandlesCacheByActorClass", nullptr, (EPropertyFlags)0x0020080000002000, UECodeGen_Private::EPropertyGenFlags::Map, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UGI_Main, RowHandlesCacheByActorClass), EMapPropertyFlags::None, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_RowHandlesCacheByActorClass_MetaData), NewProp_RowHandlesCacheByActorClass_MetaData) }; // 395055942
+const UECodeGen_Private::FNamePropertyParams Z_Construct_UClass_UGI_Main_Statics::NewProp_UpLevelName = { "UpLevelName", nullptr, (EPropertyFlags)0x0020080000010001, UECodeGen_Private::EPropertyGenFlags::Name, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UGI_Main, UpLevelName), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_UpLevelName_MetaData), NewProp_UpLevelName_MetaData) };
+const UECodeGen_Private::FNamePropertyParams Z_Construct_UClass_UGI_Main_Statics::NewProp_BottomLevelName = { "BottomLevelName", nullptr, (EPropertyFlags)0x0020080000010001, UECodeGen_Private::EPropertyGenFlags::Name, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UGI_Main, BottomLevelName), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_BottomLevelName_MetaData), NewProp_BottomLevelName_MetaData) };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UGI_Main_Statics::NewProp_TransitionalPawns_ElementProp = { "TransitionalPawns", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, Z_Construct_UClass_UObject_NoRegister, METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FSetPropertyParams Z_Construct_UClass_UGI_Main_Statics::NewProp_TransitionalPawns = { "TransitionalPawns", nullptr, (EPropertyFlags)0x0020080000000000, UECodeGen_Private::EPropertyGenFlags::Set, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UGI_Main, TransitionalPawns), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_TransitionalPawns_MetaData), NewProp_TransitionalPawns_MetaData) };
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_UGI_Main_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UGI_Main_Statics::NewProp_DataTables_Inner,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UGI_Main_Statics::NewProp_DataTables,
@@ -531,6 +551,10 @@ const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_UGI_Main_
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UGI_Main_Statics::NewProp_RowHandlesCacheByActorClass_ValueProp,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UGI_Main_Statics::NewProp_RowHandlesCacheByActorClass_Key_KeyProp,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UGI_Main_Statics::NewProp_RowHandlesCacheByActorClass,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UGI_Main_Statics::NewProp_UpLevelName,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UGI_Main_Statics::NewProp_BottomLevelName,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UGI_Main_Statics::NewProp_TransitionalPawns_ElementProp,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UGI_Main_Statics::NewProp_TransitionalPawns,
 };
 static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_UGI_Main_Statics::PropPointers) < 2048);
 // ********** End Class UGI_Main Property Definitions **********************************************
@@ -581,10 +605,10 @@ struct Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_S
 		{ FWeaponRow::StaticStruct, Z_Construct_UScriptStruct_FWeaponRow_Statics::NewStructOps, TEXT("WeaponRow"),&Z_Registration_Info_UScriptStruct_FWeaponRow, CONSTRUCT_RELOAD_VERSION_INFO(FStructReloadVersionInfo, sizeof(FWeaponRow), 4174476711U) },
 	};
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_UGI_Main, UGI_Main::StaticClass, TEXT("UGI_Main"), &Z_Registration_Info_UClass_UGI_Main, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UGI_Main), 2437419916U) },
+		{ Z_Construct_UClass_UGI_Main, UGI_Main::StaticClass, TEXT("UGI_Main"), &Z_Registration_Info_UClass_UGI_Main, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UGI_Main), 23988619U) },
 	};
 }; // Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_GI_Main_h__Script_LMN_Statics 
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_GI_Main_h__Script_LMN_3399559362{
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_GI_Main_h__Script_LMN_2837151477{
 	TEXT("/Script/LMN"),
 	Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_GI_Main_h__Script_LMN_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_GI_Main_h__Script_LMN_Statics::ClassInfo),
 	Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_GI_Main_h__Script_LMN_Statics::ScriptStructInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_GI_Main_h__Script_LMN_Statics::ScriptStructInfo),

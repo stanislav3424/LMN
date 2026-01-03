@@ -14,6 +14,7 @@ void EmptyLinkFunctionForGeneratedCodeGM_Main() {}
 
 // ********** Begin Cross Module References ********************************************************
 COREUOBJECT_API UClass* Z_Construct_UClass_UClass_NoRegister();
+ENGINE_API UClass* Z_Construct_UClass_AActor_NoRegister();
 ENGINE_API UClass* Z_Construct_UClass_AGameModeBase();
 ENGINE_API UScriptStruct* Z_Construct_UScriptStruct_FDataTableRowHandle();
 LMN_API UClass* Z_Construct_UClass_AGlobalVisibility_NoRegister();
@@ -193,6 +194,9 @@ struct Z_Construct_UClass_AGM_Main_Statics
 		{ "Category", "TypeUnits" },
 		{ "ModuleRelativePath", "GM_Main.h" },
 	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_ComplexTriggerBoxSet_MetaData[] = {
+		{ "ModuleRelativePath", "GM_Main.h" },
+	};
 #endif // WITH_METADATA
 
 // ********** Begin Class AGM_Main constinit property declarations *********************************
@@ -201,6 +205,8 @@ struct Z_Construct_UClass_AGM_Main_Statics
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_GlobalVisibility;
 	static const UECodeGen_Private::FStructPropertyParams NewProp_TypeUnits_Inner;
 	static const UECodeGen_Private::FArrayPropertyParams NewProp_TypeUnits;
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_ComplexTriggerBoxSet_ElementProp;
+	static const UECodeGen_Private::FSetPropertyParams NewProp_ComplexTriggerBoxSet;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 // ********** End Class AGM_Main constinit property declarations ***********************************
 	static UObject* (*const DependentSingletons[])();
@@ -216,12 +222,16 @@ const UECodeGen_Private::FClassPropertyParams Z_Construct_UClass_AGM_Main_Static
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AGM_Main_Statics::NewProp_GlobalVisibility = { "GlobalVisibility", nullptr, (EPropertyFlags)0x0020080000002000, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AGM_Main, GlobalVisibility), Z_Construct_UClass_AGlobalVisibility_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_GlobalVisibility_MetaData), NewProp_GlobalVisibility_MetaData) };
 const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_AGM_Main_Statics::NewProp_TypeUnits_Inner = { "TypeUnits", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, Z_Construct_UScriptStruct_FDataTableRowHandle, METADATA_PARAMS(0, nullptr) }; // 395055942
 const UECodeGen_Private::FArrayPropertyParams Z_Construct_UClass_AGM_Main_Statics::NewProp_TypeUnits = { "TypeUnits", nullptr, (EPropertyFlags)0x0020080000010001, UECodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AGM_Main, TypeUnits), EArrayPropertyFlags::None, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_TypeUnits_MetaData), NewProp_TypeUnits_MetaData) }; // 395055942
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AGM_Main_Statics::NewProp_ComplexTriggerBoxSet_ElementProp = { "ComplexTriggerBoxSet", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, Z_Construct_UClass_AActor_NoRegister, METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FSetPropertyParams Z_Construct_UClass_AGM_Main_Statics::NewProp_ComplexTriggerBoxSet = { "ComplexTriggerBoxSet", nullptr, (EPropertyFlags)0x0020080000002000, UECodeGen_Private::EPropertyGenFlags::Set, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AGM_Main, ComplexTriggerBoxSet), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_ComplexTriggerBoxSet_MetaData), NewProp_ComplexTriggerBoxSet_MetaData) };
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_AGM_Main_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AGM_Main_Statics::NewProp_IconRendering,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AGM_Main_Statics::NewProp_IconRenderingClass,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AGM_Main_Statics::NewProp_GlobalVisibility,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AGM_Main_Statics::NewProp_TypeUnits_Inner,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AGM_Main_Statics::NewProp_TypeUnits,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AGM_Main_Statics::NewProp_ComplexTriggerBoxSet_ElementProp,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AGM_Main_Statics::NewProp_ComplexTriggerBoxSet,
 };
 static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_AGM_Main_Statics::PropPointers) < 2048);
 // ********** End Class AGM_Main Property Definitions **********************************************
@@ -268,10 +278,10 @@ struct Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_S
 		{ EGameStatus_StaticEnum, TEXT("EGameStatus"), &Z_Registration_Info_UEnum_EGameStatus, CONSTRUCT_RELOAD_VERSION_INFO(FEnumReloadVersionInfo, 1834395129U) },
 	};
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_AGM_Main, AGM_Main::StaticClass, TEXT("AGM_Main"), &Z_Registration_Info_UClass_AGM_Main, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AGM_Main), 4214359577U) },
+		{ Z_Construct_UClass_AGM_Main, AGM_Main::StaticClass, TEXT("AGM_Main"), &Z_Registration_Info_UClass_AGM_Main, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AGM_Main), 1881538849U) },
 	};
 }; // Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_GM_Main_h__Script_LMN_Statics 
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_GM_Main_h__Script_LMN_3207732689{
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_GM_Main_h__Script_LMN_87172141{
 	TEXT("/Script/LMN"),
 	Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_GM_Main_h__Script_LMN_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_GM_Main_h__Script_LMN_Statics::ClassInfo),
 	nullptr, 0,

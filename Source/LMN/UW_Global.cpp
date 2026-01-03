@@ -17,9 +17,9 @@ void UUW_Global::NativeOnInitialized()
     CHECK_FIELD(PC_Main);
     CHECK_FIELD(GM_Main);
 
-        if (GM_Main)
+    if (GM_Main)
     {
-            GM_Main->OnGameStatusChanged.AddUniqueDynamic(this, &UUW_Global::OnGameStatusChanged);
+        GM_Main->OnGameStatusChanged.AddUniqueDynamic(this, &UUW_Global::OnGameStatusChanged);
         GM_Main->BroadcastOnGameStatusChanged();
     }
 }

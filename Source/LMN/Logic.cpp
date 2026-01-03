@@ -3,6 +3,7 @@
 #include "Logic.h"
 #include "BFL.h"
 #include "GI_Main.h"
+#include "GenericTeamAgentInterface.h"
 
 void ULogic::LoadingDataTable()
 {
@@ -79,6 +80,45 @@ void ULogic::SetTeam(ETeam const& NewTeam)
         Team = NewTeam;
         BroadcastOnTeamChange();
     }
+}
+
+FGenericTeamId ULogic::GetTeamId() const
+{
+    uint8 Id = 0;
+    switch (Team)
+    {
+        case ETeam::Player:
+            Id = 1;
+            break;
+        case ETeam::Enemy:
+            Id = 2;
+            break;
+        case ETeam::Neutral:
+        default:
+            Id = 0;
+            break;
+    }
+    return FGenericTeamId(Id);
+}
+
+void ULogic::SetTeamId(const FGenericTeamId& NewId)
+{
+    const uint8 Id      = NewId.GetId();
+    ETeam       NewTeam = ETeam::Neutral;
+    switch (Id)
+    {
+        case 1:
+            NewTeam = ETeam::Player;
+            break;
+        case 2:
+            NewTeam = ETeam::Enemy;
+            break;
+        case 0:
+        default:
+            NewTeam = ETeam::Neutral;
+            break;
+    }
+    SetTeam(NewTeam);
 }
 
 void ULogic::BroadcastOnSelectedChange() const

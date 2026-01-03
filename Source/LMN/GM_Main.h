@@ -56,6 +56,12 @@ protected:
 
 public:
     FOnGameStatusChanged OnGameStatusChanged;
+    void                 BroadcastOnGameStatusChanged() const;
 
-    void BroadcastOnGameStatusChanged() const;
+protected:
+    UPROPERTY(Transient)
+    TSet<AActor*> ComplexTriggerBoxSet;
+
+    public:
+    TSet<AActor*> const& GetActorsComplexTriggerBox() { return ComplexTriggerBoxSet; }
 };
