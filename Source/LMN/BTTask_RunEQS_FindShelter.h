@@ -12,10 +12,10 @@ public:
     UBTTask_RunEQS_FindShelter();
 
     UPROPERTY(Category = EQS, EditAnywhere)
-    FEQSParametrizedQueryExecutionRequest EQSRequestPrimary;
+    FEQSParametrizedQueryExecutionRequest EQS_Locations;
 
     UPROPERTY(Category = EQS, EditAnywhere)
-    FEQSParametrizedQueryExecutionRequest EQSRequestSecondary;
+    FEQSParametrizedQueryExecutionRequest EQS_Actors;
 
     virtual void                InitializeFromAsset(UBehaviorTree& Asset) override;
     virtual EBTNodeResult::Type ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory) override;

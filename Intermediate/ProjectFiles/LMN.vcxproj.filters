@@ -70,6 +70,12 @@
     <ClInclude Include="..\..\Source\LMN\CharacterLogic.h">
       <Filter>Source\LMN</Filter>
     </ClInclude>
+    <ClCompile Include="..\..\Source\LMN\EnvQueryTest_Shelter.cpp">
+      <Filter>Source\LMN</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\LMN\EnvQueryTest_Shelter.h">
+      <Filter>Source\LMN</Filter>
+    </ClInclude>
     <ClCompile Include="..\..\Source\LMN\EquipmentLogic.cpp">
       <Filter>Source\LMN</Filter>
     </ClCompile>

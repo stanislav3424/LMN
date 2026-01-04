@@ -18,8 +18,8 @@ UBTTask_RunEQS_FindShelter::UBTTask_RunEQS_FindShelter()
 void UBTTask_RunEQS_FindShelter::InitializeFromAsset(UBehaviorTree& Asset)
 {
     Super::InitializeFromAsset(Asset);
-    EQSRequestPrimary.InitForOwnerAndBlackboard(*this, GetBlackboardAsset());
-    EQSRequestSecondary.InitForOwnerAndBlackboard(*this, GetBlackboardAsset());
+    EQS_Locations.InitForOwnerAndBlackboard(*this, GetBlackboardAsset());
+    EQS_Actors.InitForOwnerAndBlackboard(*this, GetBlackboardAsset());
 }
 
 EBTNodeResult::Type UBTTask_RunEQS_FindShelter::ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory)
@@ -30,11 +30,11 @@ EBTNodeResult::Type UBTTask_RunEQS_FindShelter::ExecuteTask(UBehaviorTreeCompone
     if (!World || !QueryOwner)
         return EBTNodeResult::Failed;
 
-    if (UEnvQuery* PrimaryTemplate = EQSRequestPrimary.QueryTemplate)
+    if (UEnvQuery* PrimaryTemplate = EQS_Locations.QueryTemplate)
         if (auto PrimaryInstance = UEnvQueryManager::RunEQSQuery(
                 World, PrimaryTemplate, QueryOwner, EEnvQueryRunMode::AllMatching, nullptr))
             PrimaryInstance->GetOnQueryFinishedEvent().AddDynamic(this, &UBTTask_RunEQS_FindShelter::OnPrimaryFinished);
-    if (UEnvQuery* SecondaryTemplate = EQSRequestSecondary.QueryTemplate)
+    if (UEnvQuery* SecondaryTemplate = EQS_Actors.QueryTemplate)
         if (auto SecondaryInstance = UEnvQueryManager::RunEQSQuery(
                 World, SecondaryTemplate, QueryOwner, EEnvQueryRunMode::AllMatching, nullptr))
             SecondaryInstance->GetOnQueryFinishedEvent().AddDynamic(
@@ -76,20 +76,21 @@ void UBTTask_RunEQS_FindShelter::OnBothQueriesFinished()
     auto    QueryOwner = BehaviorTreeComponent->GetOwner();
     UBFL::GetOnlyEnemies(SecondaryActors, QueryOwner);
 
-    TArray<FVector> SecondaryALocations;
-    SecondaryALocations.Reserve(SecondaryActors.Num());
+    TArray<FVector> SecondaryLocations;
+    SecondaryLocations.Reserve(SecondaryActors.Num());
     for (auto const& Actor : SecondaryActors)
         if (IsValid(Actor))
-            SecondaryALocations.Add(Actor->GetActorLocation());
+            SecondaryLocations.Add(Actor->GetActorLocation());
 
-    UTracingLibrary::TraceComplexArr(GetWorld(), SecondaryALocations, PrimaryLocations);
+    //UTracingLibrary::TraceComplexArr(GetWorld(), SecondaryLocations, PrimaryLocations);
 
-    if (!SecondaryALocations.IsEmpty())
-        Result = SecondaryALocations[0];
+    if (!PrimaryLocations.IsEmpty())
+        Result = PrimaryLocations[0];
 
     if (auto BlackboardComponent = BehaviorTreeComponent->GetBlackboardComponent())
         BlackboardComponent->SetValueAsVector(GetSelectedBlackboardKey(), Result);
 
-    FAIMessage::Send(BehaviorTreeComponent,
-        FAIMessage(UBrainComponent::AIMessage_QueryFinished, this, 0, Result == FVector::ZeroVector ? true : false));
+    const EBTNodeResult::Type FinishResult =
+        (Result != FVector::ZeroVector) ? EBTNodeResult::Succeeded : EBTNodeResult::Failed;
+    FinishLatentTask(*BehaviorTreeComponent, FinishResult);
 }

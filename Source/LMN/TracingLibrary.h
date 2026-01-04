@@ -20,10 +20,10 @@ class LMN_API UTracingLibrary : public UBlueprintFunctionLibrary
     GENERATED_BODY()
 
 public:
-    static bool Trace(UWorld* World, FVector const& Start, FVector const& End);
+    static bool Trace(UWorld* World, FVector const& Start, FVector const& End, TArray<AActor*> const& IgnoredActors,
+        bool bDrawDebug = false);
     static bool LevelTrace(UWorld* World, FVector const& Start, FVector const& End, ELevelTrace const& StartLevelTrace,
-        ELevelTrace const& EndLevelTrace);
+        ELevelTrace const& EndLevelTrace, TArray<AActor*> const& IgnoredActors, bool bDrawDebug = false);
     static FVector GetShiftLocation(FVector const& Location, ELevelTrace const& LevelTrace);
     static FVector GetShiftLevelTrace(ELevelTrace const& LevelTrace);
-    static void    TraceComplexArr(UWorld* World, TArray<FVector> const& Start, TArray<FVector>& Target);
 };
