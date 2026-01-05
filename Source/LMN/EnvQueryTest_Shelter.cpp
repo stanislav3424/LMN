@@ -13,27 +13,26 @@ UEnvQueryTest_Shelter::UEnvQueryTest_Shelter(const FObjectInitializer& ObjectIni
     ValidItemType = UEnvQueryItemType_Point::StaticClass();
     TestPurpose   = EEnvTestPurpose::Score;
     FilterType    = EEnvTestFilterType::Match;
-    bDrawDebug    = true;
 }
 
 void UEnvQueryTest_Shelter::RunTest(FEnvQueryInstance& QueryInstance) const
 {
+    if (!ActorClass)
+        return;
     UWorld* World = QueryInstance.World;
     if (!World)
         return;
-    AActor* Querier = Cast<AActor>(QueryInstance.Owner.Get());
+    auto Querier = Cast<AActor>(QueryInstance.Owner.Get());
     if (!Querier)
         return;
 
-    const float                           SearchRadius = 1500.f;
-    TSubclassOf<AActor>                   EnemyClass   = AActor::StaticClass();
     TArray<TEnumAsByte<EObjectTypeQuery>> ObjectTypes;
     ObjectTypes.Add(UEngineTypes::ConvertToObjectType(ECC_Pawn));
     TArray<AActor*> Enemies;
     TArray<AActor*> ActorsToIgnore;
     ActorsToIgnore.Add(Querier);
     UKismetSystemLibrary::SphereOverlapActors(
-        Querier, Querier->GetActorLocation(), SearchRadius, ObjectTypes, EnemyClass, ActorsToIgnore, Enemies);
+        Querier, Querier->GetActorLocation(), SearchRadius, ObjectTypes, ActorClass, ActorsToIgnore, Enemies);
 
     UBFL::GetOnlyEnemies(Enemies, Querier);
 
@@ -42,7 +41,7 @@ void UEnvQueryTest_Shelter::RunTest(FEnvQueryInstance& QueryInstance) const
         const FVector ItemLocation = GetItemLocation(QueryInstance, It);
         float         TotalScore   = 0.f;
         float         Score        = 0.f;
-        for (AActor* Enemy : Enemies)
+        for (auto Enemy : Enemies)
         {
             if (!IsValid(Enemy))
                 continue;
@@ -52,11 +51,11 @@ void UEnvQueryTest_Shelter::RunTest(FEnvQueryInstance& QueryInstance) const
             Arr.Add(Enemy);
             Arr.Add(Querier);
             bool bResultLower = UTracingLibrary::LevelTrace(
-                World, EnemyLocation, ItemLocation, ELevelTrace::Top, ELevelTrace::Lower, Arr, true);
+                World, EnemyLocation, ItemLocation, ELevelTrace::Top, ELevelTrace::Lower, Arr, bDebag);
             bool bResultCentral = UTracingLibrary::LevelTrace(
-                World, EnemyLocation, ItemLocation, ELevelTrace::Top, ELevelTrace::Central, Arr, true);
+                World, EnemyLocation, ItemLocation, ELevelTrace::Top, ELevelTrace::Central, Arr, bDebag);
             bool bResultTop = UTracingLibrary::LevelTrace(
-                World, EnemyLocation, ItemLocation, ELevelTrace::Top, ELevelTrace::Top, Arr, true);
+                World, EnemyLocation, ItemLocation, ELevelTrace::Top, ELevelTrace::Top, Arr, bDebag);
 
             if (!bResultLower)
                 Score += 2;

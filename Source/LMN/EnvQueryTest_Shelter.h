@@ -15,5 +15,12 @@ class LMN_API UEnvQueryTest_Shelter : public UEnvQueryTest
 
     virtual void RunTest(FEnvQueryInstance& QueryInstance) const override;
 
-	bool bDrawDebug = false;
+    UPROPERTY(EditAnywhere, Category = "Find")
+    float SearchRadius = 1500.f;
+
+    UPROPERTY(EditAnywhere, Category = "Find")
+    TSubclassOf<AActor> ActorClass;
+
+    UPROPERTY(EditAnywhere, Category = "Find")
+    bool bDebag = false;
 };
