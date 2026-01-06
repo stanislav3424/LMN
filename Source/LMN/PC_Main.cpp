@@ -14,6 +14,7 @@
 APC_Main::APC_Main()
 {
     PrimaryActorTick.bCanEverTick = true;
+    TypeAIAction                  = ETypeAIAction::MoveTo;
 }
 
 void APC_Main::BeginPlay()
@@ -27,11 +28,14 @@ void APC_Main::SetupInputComponent()
 {
     Super::SetupInputComponent();
 
-    if (auto LocalPlayer = GetLocalPlayer())
-        if (auto EnhancedInputLocalPlayerSubsystem =
-                ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(LocalPlayer))
-            if (DefaultInputMappingContext)
-                EnhancedInputLocalPlayerSubsystem->AddMappingContext(DefaultInputMappingContext, 0);
+    if (auto EnhancedInputLocalPlayerSubsystem =
+            ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(GetLocalPlayer()))
+    {
+        if (DefaultInputMappingContext)
+            EnhancedInputLocalPlayerSubsystem->AddMappingContext(DefaultInputMappingContext, 0);
+        if (AIActionInputMappingContext)
+            EnhancedInputLocalPlayerSubsystem->AddMappingContext(AIActionInputMappingContext, 0);
+    }
 
     if (auto EnhancedInputComponent = Cast<UEnhancedInputComponent>(InputComponent))
     {
@@ -40,7 +44,6 @@ void APC_Main::SetupInputComponent()
             EnhancedInputComponent->BindAction(LeftClickInputAction, ETriggerEvent::Started, this, &APC_Main::OnLeftPressed);
             EnhancedInputComponent->BindAction(LeftClickInputAction, ETriggerEvent::Completed, this, &APC_Main::OnLeftReleased);
         }
-
         if (RightClickInputAction)
         {
             EnhancedInputComponent->BindAction(
@@ -48,6 +51,15 @@ void APC_Main::SetupInputComponent()
             EnhancedInputComponent->BindAction(
                 RightClickInputAction, ETriggerEvent::Completed, this, &APC_Main::OnRightReleased);
         }
+        if (AIMoveToInputAction)
+            EnhancedInputComponent->BindAction(
+                AIMoveToInputAction, ETriggerEvent::Started, this, &APC_Main::OnAIMoveToPressed);
+        if (AIAssaultInputAction)
+            EnhancedInputComponent->BindAction(
+                AIAssaultInputAction, ETriggerEvent::Started, this, &APC_Main::OnAIAssaultPressed);
+        if (AIFootholdPositionInputAction)
+            EnhancedInputComponent->BindAction(
+                AIFootholdPositionInputAction, ETriggerEvent::Started, this, &APC_Main::OnAIFootholdPositionPressed);
     }
 }
 
@@ -71,14 +83,14 @@ void APC_Main::Tick(float DeltaSeconds)
     }
 }
 
-void APC_Main::OnLeftPressed(const FInputActionValue& Value)
+void APC_Main::OnLeftPressed(FInputActionValue const& Value)
 {
     bLeftDown = true;
     if (GetMousePosition(MouseDownPosition.X, MouseDownPosition.Y))
         bIsDraggingSelection = false;
 }
 
-void APC_Main::OnLeftReleased(const FInputActionValue& Value)
+void APC_Main::OnLeftReleased(FInputActionValue const& Value)
 {
     bLeftDown = false;
     if (bIsDraggingSelection)
@@ -98,24 +110,68 @@ void APC_Main::OnLeftReleased(const FInputActionValue& Value)
     }
 }
 
-void APC_Main::OnRightPressed(const FInputActionValue& Value)
+void APC_Main::OnRightPressed(FInputActionValue const& Value)
+{
+    CommandAllLocation(TypeAIAction);
+}
+
+void APC_Main::CommandAllLocation(ETypeAIAction const& CommandTypeAIAction)
 {
     FHitResult HitResult;
     GetHitResultUnderCursor(ECollisionChannel::ECC_Visibility, false, HitResult);
     if (HitResult.bBlockingHit)
-        for (auto Actor : ActorsSelected)
-            if (UBFL::EqualTeamActor(Actor, ETeam::Player))
-                if (auto LocalPawn = Cast<APawn>(Actor))
-                    if (auto AIController = LocalPawn->GetController<AAIControllerBase>())
-                        AIController->Command(ETypeAIAction::MoveTo, HitResult.Location);
-                
+        CommandAll(CommandTypeAIAction, HitResult.Location);
 }
 
-void APC_Main::OnRightReleased(const FInputActionValue& Value)
+void APC_Main::CommandAll(ETypeAIAction const& CommandTypeAIAction, FVector const& Location)
+{
+    for (auto Actor : ActorsSelected)
+        if (UBFL::EqualTeamActor(Actor, ETeam::Player))
+            if (auto LocalPawn = Cast<APawn>(Actor))
+                if (auto AIController = LocalPawn->GetController<AAIControllerBase>())
+                    AIController->Command(CommandTypeAIAction, Location);
+}
+
+void APC_Main::OnRightReleased(FInputActionValue const& Value)
 {
 }
 
-void APC_Main::UpdateActorsSelected(const TArray<AActor*>& NewActorsSelected)
+void APC_Main::OnAIMoveToPressed(FInputActionValue const& Value)
+{
+    SetTypeAIAction(ETypeAIAction::MoveTo);
+}
+
+void APC_Main::OnAIAssaultPressed(FInputActionValue const& Value)
+{
+    SetTypeAIAction(ETypeAIAction::Assault);
+}
+
+void APC_Main::OnAIFootholdPositionPressed(FInputActionValue const& Value)
+{
+    SetTypeAIAction(ETypeAIAction::FootholdPosition);
+}
+
+void APC_Main::SetTypeAIAction(ETypeAIAction const& NewTypeAIAction)
+{
+    if (NewTypeAIAction == ETypeAIAction::AI)
+    {
+        CommandAll(ETypeAIAction::AI, FVector::ZeroVector);
+        return;
+    }
+
+    if (TypeAIAction == NewTypeAIAction)
+        return;
+
+    TypeAIAction = NewTypeAIAction;
+    BroadcastOnTypeAIActionChange();
+}
+
+void APC_Main::BroadcastOnTypeAIActionChange() const
+{
+    OnTypeAIActionChange.Broadcast(TypeAIAction);
+}
+
+void APC_Main::UpdateActorsSelected(TArray<AActor*> const& NewActorsSelected)
 {
     TSet<AActor*> NewSet(NewActorsSelected);
     if (UBFL::AreSetsEqual(NewSet, ActorsSelected))

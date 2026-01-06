@@ -20,6 +20,7 @@ static_assert(!UE_WITH_CONSTINIT_UOBJECT, "This generated code can only be compi
 	LMN_API UFunction* Z_Construct_UDelegateFunction_LMN_OnStaminaChanged__DelegateSignature();
 	LMN_API UFunction* Z_Construct_UDelegateFunction_LMN_OnTeamChange__DelegateSignature();
 	LMN_API UFunction* Z_Construct_UDelegateFunction_LMN_OnTypeActionChanged__DelegateSignature();
+	LMN_API UFunction* Z_Construct_UDelegateFunction_LMN_OnTypeAIActionChange__DelegateSignature();
 	LMN_API UFunction* Z_Construct_UDelegateFunction_LMN_OnTypeMovementStateChanged__DelegateSignature();
 	static FPackageRegistrationInfo Z_Registration_Info_UPackage__Script_LMN;
 	FORCENOINLINE UPackage* Z_Construct_UPackage__Script_LMN()
@@ -40,6 +41,7 @@ static_assert(!UE_WITH_CONSTINIT_UOBJECT, "This generated code can only be compi
 			(UObject* (*)())Z_Construct_UDelegateFunction_LMN_OnStaminaChanged__DelegateSignature,
 			(UObject* (*)())Z_Construct_UDelegateFunction_LMN_OnTeamChange__DelegateSignature,
 			(UObject* (*)())Z_Construct_UDelegateFunction_LMN_OnTypeActionChanged__DelegateSignature,
+			(UObject* (*)())Z_Construct_UDelegateFunction_LMN_OnTypeAIActionChange__DelegateSignature,
 			(UObject* (*)())Z_Construct_UDelegateFunction_LMN_OnTypeMovementStateChanged__DelegateSignature,
 		};
 		static const UECodeGen_Private::FPackageParams PackageParams = {
@@ -47,13 +49,13 @@ static_assert(!UE_WITH_CONSTINIT_UOBJECT, "This generated code can only be compi
 			SingletonFuncArray,
 			UE_ARRAY_COUNT(SingletonFuncArray),
 			PKG_CompiledIn | 0x00000000,
-			0x2B4C624A,
-			0xB9B70AA9,
+			0x0C75786F,
+			0xEA55D71E,
 			METADATA_PARAMS(0, nullptr)
 		};
 		UECodeGen_Private::ConstructUPackage(Z_Registration_Info_UPackage__Script_LMN.OuterSingleton, PackageParams);
 	}
 	return Z_Registration_Info_UPackage__Script_LMN.OuterSingleton;
 }
-static FRegisterCompiledInInfo Z_CompiledInDeferPackage_UPackage__Script_LMN(Z_Construct_UPackage__Script_LMN, TEXT("/Script/LMN"), Z_Registration_Info_UPackage__Script_LMN, CONSTRUCT_RELOAD_VERSION_INFO(FPackageReloadVersionInfo, 0x2B4C624A, 0xB9B70AA9));
+static FRegisterCompiledInInfo Z_CompiledInDeferPackage_UPackage__Script_LMN(Z_Construct_UPackage__Script_LMN, TEXT("/Script/LMN"), Z_Registration_Info_UPackage__Script_LMN, CONSTRUCT_RELOAD_VERSION_INFO(FPackageReloadVersionInfo, 0x0C75786F, 0xEA55D71E));
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

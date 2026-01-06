@@ -9,6 +9,7 @@
 UENUM(BlueprintType)
 enum class ETypeAIAction : uint8
 {
+    AI               UMETA(DisplayName = "AI"),
     MoveTo           UMETA(DisplayName = "MoveTo"),
     Assault          UMETA(DisplayName = "Assault"),
     FootholdPosition UMETA(DisplayName = "FootholdPosition"),

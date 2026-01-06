@@ -15,6 +15,7 @@
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
+enum class ETypeAIAction : uint8;
 
 // ********** Begin Delegate FOnActorsSelectedChange ***********************************************
 #define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_PC_Main_h_9_DELEGATE \
@@ -23,11 +24,18 @@ LMN_API void FOnActorsSelectedChange_DelegateWrapper(const FMulticastScriptDeleg
 
 // ********** End Delegate FOnActorsSelectedChange *************************************************
 
+// ********** Begin Delegate FOnTypeAIActionChange *************************************************
+#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_PC_Main_h_10_DELEGATE \
+LMN_API void FOnTypeAIActionChange_DelegateWrapper(const FMulticastScriptDelegate& OnTypeAIActionChange, ETypeAIAction const& TypeAIAction);
+
+
+// ********** End Delegate FOnTypeAIActionChange ***************************************************
+
 // ********** Begin Class APC_Main *****************************************************************
 struct Z_Construct_UClass_APC_Main_Statics;
 LMN_API UClass* Z_Construct_UClass_APC_Main_NoRegister();
 
-#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_PC_Main_h_20_INCLASS_NO_PURE_DECLS \
+#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_PC_Main_h_23_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesAPC_Main(); \
 	friend struct ::Z_Construct_UClass_APC_Main_Statics; \
@@ -38,7 +46,7 @@ public: \
 	DECLARE_SERIALIZER(APC_Main)
 
 
-#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_PC_Main_h_20_ENHANCED_CONSTRUCTORS \
+#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_PC_Main_h_23_ENHANCED_CONSTRUCTORS \
 	/** Deleted move- and copy-constructors, should never be used */ \
 	APC_Main(APC_Main&&) = delete; \
 	APC_Main(const APC_Main&) = delete; \
@@ -48,12 +56,12 @@ public: \
 	NO_API virtual ~APC_Main();
 
 
-#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_PC_Main_h_17_PROLOG
-#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_PC_Main_h_20_GENERATED_BODY \
+#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_PC_Main_h_20_PROLOG
+#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_PC_Main_h_23_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_PC_Main_h_20_INCLASS_NO_PURE_DECLS \
-	FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_PC_Main_h_20_ENHANCED_CONSTRUCTORS \
+	FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_PC_Main_h_23_INCLASS_NO_PURE_DECLS \
+	FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_PC_Main_h_23_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 

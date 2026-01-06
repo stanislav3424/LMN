@@ -7,12 +7,15 @@
 #include "PC_Main.generated.h"
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnActorsSelectedChange);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnTypeAIActionChange, ETypeAIAction const&, TypeAIAction);
 
 class UInputMappingContext;
 class UInputAction;
 class AHUD_Main;
 
 struct FInputActionValue;
+
+enum class ETypeAIAction : uint8;
 
 UCLASS(Blueprintable, Abstract)
 class LMN_API APC_Main : public APlayerController
@@ -45,11 +48,11 @@ protected:
 public:
     FOnActorsSelectedChange OnActorsSelectedChange;
 
-    void UpdateActorsSelected(const TArray<AActor*>& NewActorsSelected);
+    void UpdateActorsSelected(TArray<AActor*> const& NewActorsSelected);
 
-    const TSet<AActor*>& GetActorsSelected() const { return ActorsSelected; }
-    const TSet<AActor*>& GetAddActorsSelected() const { return AddActorsSelected; }
-    const TSet<AActor*>& GetRemoveActorsSelected() const { return RemoveActorsSelected; }
+    TSet<AActor*> const& GetActorsSelected() const { return ActorsSelected; }
+    TSet<AActor*> const& GetAddActorsSelected() const { return AddActorsSelected; }
+    TSet<AActor*> const& GetRemoveActorsSelected() const { return RemoveActorsSelected; }
 
 protected:
     UPROPERTY(EditDefaultsOnly, Category = "Input")
@@ -61,15 +64,40 @@ protected:
     UPROPERTY(EditDefaultsOnly, Category = "Input")
     UInputAction* RightClickInputAction;
 
-private:
-    void OnLeftPressed(const FInputActionValue& Value);
-    void OnLeftReleased(const FInputActionValue& Value);
-    void OnRightPressed(const FInputActionValue& Value);
-    void OnRightReleased(const FInputActionValue& Value);
+    UPROPERTY(EditDefaultsOnly, Category = "Input")
+    UInputMappingContext* AIActionInputMappingContext;
+
+    UPROPERTY(EditDefaultsOnly, Category = "Input")
+    UInputAction* AIMoveToInputAction;
+
+    UPROPERTY(EditDefaultsOnly, Category = "Input")
+    UInputAction* AIAssaultInputAction;
+
+    UPROPERTY(EditDefaultsOnly, Category = "Input")
+    UInputAction* AIFootholdPositionInputAction;
+
+protected:
+    void OnLeftPressed(FInputActionValue const& Value);
+    void OnLeftReleased(FInputActionValue const& Value);
+    void OnRightPressed(FInputActionValue const& Value);
+    void CommandAllLocation(ETypeAIAction const& CommandTypeAIAction);
+    void CommandAll(ETypeAIAction const& CommandTypeAIAction, FVector const& Location);
+    void OnRightReleased(FInputActionValue const& Value);
+    void OnAIMoveToPressed(FInputActionValue const& Value);
+    void OnAIAssaultPressed(FInputActionValue const& Value);
+    void OnAIFootholdPositionPressed(FInputActionValue const& Value);
 
     bool      bLeftDown            = false;
     bool      bRightDown           = false;
     bool      bIsDraggingSelection = false;
     FVector2D MouseDownPosition    = FVector2D::ZeroVector;
     float     DragThreshold        = 3.0f;
+
+protected:
+    ETypeAIAction TypeAIAction;
+
+public:
+    void                  SetTypeAIAction(ETypeAIAction const& NewTypeAIAction);
+    FOnTypeAIActionChange OnTypeAIActionChange;
+    void                  BroadcastOnTypeAIActionChange() const;
 };

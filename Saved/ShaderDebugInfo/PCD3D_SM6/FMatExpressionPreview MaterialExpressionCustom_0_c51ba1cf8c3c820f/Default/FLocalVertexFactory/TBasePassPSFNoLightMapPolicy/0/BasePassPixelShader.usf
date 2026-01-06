@@ -2354,9 +2354,9 @@ StructuredBuffer<float4>  Scene_GPUScene_GPUScenePrimitiveSceneData;
 
 #line 2 "/Engine/Generated/UniformBuffers/Material.ush"
 cbuffer Material {
-	 float4    Material_PreshaderBuffer[2] ;
+	 float4    Material_PreshaderBuffer[1] ;
 	 uint    BindlessSampler_Material_Wrap_WorldGroupSettings ;
-	 uint    Material_Padding36 ;
+	 uint    Material_Padding20 ;
 	 uint    BindlessSampler_Material_Clamp_WorldGroupSettings ;
  }
 
@@ -4380,40 +4380,52 @@ _Pragma("dxc diagnostic push")
 _Pragma("dxc diagnostic ignored \"-Wall\"") 					_Pragma("dxc diagnostic ignored \"-Wconversion\"") 				_Pragma("dxc diagnostic ignored \"-Wfor-redefinition\"") 		_Pragma("dxc diagnostic ignored \"-Winline-asm\"")				_Pragma("dxc diagnostic ignored \"-Wunsequenced\"")
 
 #line 3678 "/Engine/Generated/Material.ush"
-float4 CustomExpression0(FMaterialPixelParameters Parameters,float4 RT,float2 UV,float3 TexSize)
+float3 CustomExpression0(FMaterialPixelParameters Parameters,float2 UV,float2 SizePercent,float RadiusPercent,float Smoothness)
 {
 
 
+float2 uv = UV;
 
 
+float2 center = float2(0.5, 0.5);
 
-float eps = 1e-6;
-float texAspect = TexSize.x / max(TexSize.y, eps);
-float2 centered = UV - 0.5;
 
-if (texAspect > 1.0)
-{
-    centered.x *= texAspect;
+float2 Half = SizePercent * 0.5;
+
+
+Half = saturate(float);
+
+
+float maxPossibleRadius = min(Half.x, Half.y);
+float radius = saturate(RadiusPercent) * maxPossibleRadius;
+
+
+float2 p = uv - center;
+
+
+float2 b = Half - radius;                 
+float2 q = abs(p) - b;
+float outsideDist = length(max(q, 0.0));
+float insideDist = min(max(q.x, q.y), 0.0);
+float sd = outsideDist + insideDist - radius; 
+
+
+float edge = max(Smoothness, 1e-6);
+float mask = saturate(1.0 - smoothstep(0.0, edge, sd));
+
+return mask;
 }
-else
-{
-    centered.y /= texAspect;
-}
 
-float2 adjUV = centered + 0.5;
-return clamp(adjUV, 0.0, 1.0);
-}
-
-#line 3707 "/Engine/Generated/Material.ush"
+#line 3719 "/Engine/Generated/Material.ush"
 _Pragma("dxc diagnostic pop")
 
-#line 3777 "/Engine/Generated/Material.ush"
+#line 3789 "/Engine/Generated/Material.ush"
 float3 GetMaterialNormalRaw(FPixelMaterialInputs PixelMaterialInputs)
 {
 	return PixelMaterialInputs.Normal;
 }
 
-#line 3782 "/Engine/Generated/Material.ush"
+#line 3794 "/Engine/Generated/Material.ush"
 float3 GetMaterialNormal(FMaterialPixelParameters Parameters, FPixelMaterialInputs PixelMaterialInputs)
 {
 	float3 RetNormal;
@@ -4436,25 +4448,25 @@ float3 GetMaterialNormal(FMaterialPixelParameters Parameters, FPixelMaterialInpu
 	return RetNormal;
 }
 
-#line 3804 "/Engine/Generated/Material.ush"
+#line 3816 "/Engine/Generated/Material.ush"
 float3 GetMaterialTangentRaw(FPixelMaterialInputs PixelMaterialInputs)
 {
 	return PixelMaterialInputs.Tangent;
 }
 
-#line 3809 "/Engine/Generated/Material.ush"
+#line 3821 "/Engine/Generated/Material.ush"
 float3 GetMaterialTangent(FPixelMaterialInputs PixelMaterialInputs)
 {
 	return GetMaterialTangentRaw(PixelMaterialInputs);
 }
 
-#line 3814 "/Engine/Generated/Material.ush"
+#line 3826 "/Engine/Generated/Material.ush"
 float3 GetMaterialEmissiveRaw(FPixelMaterialInputs PixelMaterialInputs)
 {
 	return PixelMaterialInputs.EmissiveColor;
 }
 
-#line 3819 "/Engine/Generated/Material.ush"
+#line 3831 "/Engine/Generated/Material.ush"
 float3 GetMaterialEmissive(FPixelMaterialInputs PixelMaterialInputs)
 {
 	float3 EmissiveColor = GetMaterialEmissiveRaw(PixelMaterialInputs);
@@ -4464,55 +4476,55 @@ float3 GetMaterialEmissive(FPixelMaterialInputs PixelMaterialInputs)
 	return EmissiveColor;
 }
 
-#line 3837 "/Engine/Generated/Material.ush"
+#line 3849 "/Engine/Generated/Material.ush"
 uint GetMaterialShadingModel(FPixelMaterialInputs PixelMaterialInputs)
 {
 	return PixelMaterialInputs.ShadingModel;
 }
 
-#line 3842 "/Engine/Generated/Material.ush"
+#line 3854 "/Engine/Generated/Material.ush"
 float3 GetMaterialBaseColorRaw(FPixelMaterialInputs PixelMaterialInputs)
 {
 	return PixelMaterialInputs.BaseColor;
 }
 
-#line 3847 "/Engine/Generated/Material.ush"
+#line 3859 "/Engine/Generated/Material.ush"
 float3 GetMaterialBaseColor(FPixelMaterialInputs PixelMaterialInputs)
 {
 	return saturate(GetMaterialBaseColorRaw(PixelMaterialInputs));
 }
 
-#line 3852 "/Engine/Generated/Material.ush"
+#line 3864 "/Engine/Generated/Material.ush"
 float GetMaterialMetallicRaw(FPixelMaterialInputs PixelMaterialInputs)
 {
 	return PixelMaterialInputs.Metallic;
 }
 
-#line 3857 "/Engine/Generated/Material.ush"
+#line 3869 "/Engine/Generated/Material.ush"
 float GetMaterialMetallic(FPixelMaterialInputs PixelMaterialInputs)
 {
 	return saturate(GetMaterialMetallicRaw(PixelMaterialInputs));
 }
 
-#line 3862 "/Engine/Generated/Material.ush"
+#line 3874 "/Engine/Generated/Material.ush"
 float GetMaterialSpecularRaw(FPixelMaterialInputs PixelMaterialInputs)
 {
 	return PixelMaterialInputs.Specular;
 }
 
-#line 3867 "/Engine/Generated/Material.ush"
+#line 3879 "/Engine/Generated/Material.ush"
 float GetMaterialSpecular(FPixelMaterialInputs PixelMaterialInputs)
 {
 	return saturate(GetMaterialSpecularRaw(PixelMaterialInputs));
 }
 
-#line 3872 "/Engine/Generated/Material.ush"
+#line 3884 "/Engine/Generated/Material.ush"
 float GetMaterialRoughnessRaw(FPixelMaterialInputs PixelMaterialInputs)
 {
 	return PixelMaterialInputs.Roughness;
 }
 
-#line 3877 "/Engine/Generated/Material.ush"
+#line 3889 "/Engine/Generated/Material.ush"
 float GetMaterialRoughness(FPixelMaterialInputs PixelMaterialInputs)
 {
 
@@ -4530,52 +4542,52 @@ float GetMaterialRoughness(FPixelMaterialInputs PixelMaterialInputs)
 	return Roughness;
 }
 
-#line 3894 "/Engine/Generated/Material.ush"
+#line 3906 "/Engine/Generated/Material.ush"
 float GetMaterialAnisotropyRaw(FPixelMaterialInputs PixelMaterialInputs)
 {
 	return PixelMaterialInputs.Anisotropy;
 }
 
-#line 3899 "/Engine/Generated/Material.ush"
+#line 3911 "/Engine/Generated/Material.ush"
 float GetMaterialAnisotropy(FPixelMaterialInputs PixelMaterialInputs)
 {
 	return clamp(GetMaterialAnisotropyRaw(PixelMaterialInputs), -1.0f, 1.0f);
 }
 
-#line 3904 "/Engine/Generated/Material.ush"
+#line 3916 "/Engine/Generated/Material.ush"
 _Pragma("dxc diagnostic push")
 _Pragma("dxc diagnostic ignored \"-Wall\"") 					_Pragma("dxc diagnostic ignored \"-Wconversion\"") 				_Pragma("dxc diagnostic ignored \"-Wfor-redefinition\"") 		_Pragma("dxc diagnostic ignored \"-Winline-asm\"")				_Pragma("dxc diagnostic ignored \"-Wunsequenced\"")
 
-#line 3944 "/Engine/Generated/Material.ush"
+#line 3956 "/Engine/Generated/Material.ush"
 float GetMaterialOpacityMaskClipValue()
 {
 return 0.50000;
 }
 
-#line 3949 "/Engine/Generated/Material.ush"
+#line 3961 "/Engine/Generated/Material.ush"
 _Pragma("dxc diagnostic pop")
 
-#line 3963 "/Engine/Generated/Material.ush"
+#line 3975 "/Engine/Generated/Material.ush"
 float GetMaterialOpacityRaw(FPixelMaterialInputs PixelMaterialInputs)
 {
 	return PixelMaterialInputs.Opacity;
 }
 
-#line 3985 "/Engine/Generated/Material.ush"
+#line 3997 "/Engine/Generated/Material.ush"
 float GetMaterialOpacity(FPixelMaterialInputs PixelMaterialInputs)
 {
 
 	return saturate(GetMaterialOpacityRaw(PixelMaterialInputs));
 }
 
-#line 4179 "/Engine/Generated/Material.ush"
+#line 4191 "/Engine/Generated/Material.ush"
 _Pragma("dxc diagnostic push")
 _Pragma("dxc diagnostic ignored \"-Wall\"") 					_Pragma("dxc diagnostic ignored \"-Wconversion\"") 				_Pragma("dxc diagnostic ignored \"-Wfor-redefinition\"") 		_Pragma("dxc diagnostic ignored \"-Winline-asm\"")				_Pragma("dxc diagnostic ignored \"-Wunsequenced\"")
 
-#line 4192 "/Engine/Generated/Material.ush"
+#line 4204 "/Engine/Generated/Material.ush"
 _Pragma("dxc diagnostic pop")
 
-#line 4194 "/Engine/Generated/Material.ush"
+#line 4206 "/Engine/Generated/Material.ush"
 float GetMaterialAmbientOcclusionRaw(FPixelMaterialInputs PixelMaterialInputs)
 {
 	float AmbientOcclusion = PixelMaterialInputs.AmbientOcclusion;
@@ -4590,20 +4602,20 @@ float GetMaterialAmbientOcclusionRaw(FPixelMaterialInputs PixelMaterialInputs)
 	return AmbientOcclusion;
 }
 
-#line 4208 "/Engine/Generated/Material.ush"
+#line 4220 "/Engine/Generated/Material.ush"
 float GetMaterialAmbientOcclusion(FPixelMaterialInputs PixelMaterialInputs)
 {
 	return saturate(GetMaterialAmbientOcclusionRaw(PixelMaterialInputs));
 }
 
-#line 4261 "/Engine/Generated/Material.ush"
+#line 4273 "/Engine/Generated/Material.ush"
 _Pragma("dxc diagnostic push")
 _Pragma("dxc diagnostic ignored \"-Wall\"") 					_Pragma("dxc diagnostic ignored \"-Wconversion\"") 				_Pragma("dxc diagnostic ignored \"-Wfor-redefinition\"") 		_Pragma("dxc diagnostic ignored \"-Winline-asm\"")				_Pragma("dxc diagnostic ignored \"-Wunsequenced\"")
 
-#line 4281 "/Engine/Generated/Material.ush"
+#line 4293 "/Engine/Generated/Material.ush"
 _Pragma("dxc diagnostic pop")
 
-#line 4314 "/Engine/Generated/Material.ush"
+#line 4326 "/Engine/Generated/Material.ush"
 float3 CalculateAnisotropyTangent(in out FMaterialPixelParameters Parameters, FPixelMaterialInputs PixelMaterialInputs)
 {
 	float3 Normal = Parameters.WorldNormal;
@@ -4627,14 +4639,14 @@ float3 CalculateAnisotropyTangent(in out FMaterialPixelParameters Parameters, FP
 	return Tangent;
 }
 
-#line 4373 "/Engine/Generated/Material.ush"
+#line 4385 "/Engine/Generated/Material.ush"
 _Pragma("dxc diagnostic push")
 _Pragma("dxc diagnostic ignored \"-Wall\"") 					_Pragma("dxc diagnostic ignored \"-Wconversion\"") 				_Pragma("dxc diagnostic ignored \"-Wfor-redefinition\"") 		_Pragma("dxc diagnostic ignored \"-Winline-asm\"")				_Pragma("dxc diagnostic ignored \"-Wunsequenced\"")
 
-#line 4379 "/Engine/Generated/Material.ush"
+#line 4391 "/Engine/Generated/Material.ush"
 _Pragma("dxc diagnostic pop")
 
-#line 4387 "/Engine/Generated/Material.ush"
+#line 4399 "/Engine/Generated/Material.ush"
 void CalcPixelMaterialInputs(in out FMaterialPixelParameters Parameters, in out FPixelMaterialInputs PixelMaterialInputs)
 {
 _Pragma("dxc diagnostic push")
@@ -4691,11 +4703,11 @@ _Pragma("dxc diagnostic push")
 _Pragma("dxc diagnostic ignored \"-Wall\"") 					_Pragma("dxc diagnostic ignored \"-Wconversion\"") 				_Pragma("dxc diagnostic ignored \"-Wfor-redefinition\"") 		_Pragma("dxc diagnostic ignored \"-Winline-asm\"")				_Pragma("dxc diagnostic ignored \"-Wunsequenced\"")
 
 	float2 Local0 = Parameters.TexCoords[0].xy;
-	float4 Local1 = CustomExpression0(Parameters,Material_PreshaderBuffer[0],  Local0 ,Material_PreshaderBuffer[1].xyz);
-	float4 Local2 = max(Local1,((float4)0.00000000f));
-	float4 Local3 = PositiveClampedPow(Local2,((float4)0.45454544f));
+	float3 Local1 = CustomExpression0(Parameters,  Local0 ,float2(0.00000000f,0.00000000f).rg,0.00000000f,0.00000000f);
+	float3 Local2 = max(Local1,((float3)0.00000000f));
+	float3 Local3 = PositiveClampedPow(Local2,((float3)0.45454544f));
 
-	PixelMaterialInputs.EmissiveColor = Local3.xyz;
+	PixelMaterialInputs.EmissiveColor = Local3;
 	PixelMaterialInputs.Opacity = 1.00000000f;
 	PixelMaterialInputs.OpacityMask = 1.00000000f;
 	PixelMaterialInputs.BaseColor = float3(1.00000000f,0.0f,0.0f);
@@ -4709,7 +4721,7 @@ _Pragma("dxc diagnostic ignored \"-Wall\"") 					_Pragma("dxc diagnostic ignored
 	PixelMaterialInputs.CustomData0 = 1.00000000f;
 	PixelMaterialInputs.CustomData1 = 1.00000000f;
 	PixelMaterialInputs.AmbientOcclusion = 1.00000000f;
-	PixelMaterialInputs.Refraction = float3(float3(1.00000000f,0.0f,0.0f).xy,Material_PreshaderBuffer[1].w);
+	PixelMaterialInputs.Refraction = float3(float3(1.00000000f,0.0f,0.0f).xy,Material_PreshaderBuffer[0].x);
 	PixelMaterialInputs.PixelDepthOffset = 1.00000000f;
 	PixelMaterialInputs.ShadingModel = 0;
 	PixelMaterialInputs.FrontMaterial = GetInitialisedSubstrateData();
@@ -4724,8 +4736,6 @@ _Pragma("dxc diagnostic pop")
 
 
 }
-
-#line 4396 "/Engine/Generated/Material.ush"
 void ClipLODTransition(float2 SvPosition, float DitherFactor)
 {
 	if (abs(DitherFactor) > .001)
