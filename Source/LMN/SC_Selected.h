@@ -6,6 +6,8 @@
 #include "SceneComponentBase.h"
 #include "SC_Selected.generated.h"
 
+enum class ETeam : uint8;
+
 UCLASS(Blueprintable, ClassGroup = (Custom), meta = (BlueprintSpawnableComponent))
 class LMN_API USC_Selected : public USceneComponentBase
 {
@@ -18,7 +20,16 @@ protected:
     virtual void LogicUpdated() override;
 
     UFUNCTION()
-    void SelectedChange(bool Selected);
+    void SelectedChange(bool bNewSelected);
+
+    UFUNCTION()
+    void TeamChange(ETeam NewTeam);
+
+    void SetMID();
+
+    bool bIsSelected = false;
+
+    ETeam Team;
 
     UPROPERTY()
     UStaticMeshComponent* SelectionMesh;
@@ -31,4 +42,7 @@ protected:
 
     UPROPERTY(EditDefaultsOnly, Category = "Visual")
     FName SelectedParameter = FName(TEXT("IsSelected"));
+
+    UPROPERTY(EditDefaultsOnly, Category = "Visual")
+    FName ColorParameter = FName(TEXT("Color"));
 };
