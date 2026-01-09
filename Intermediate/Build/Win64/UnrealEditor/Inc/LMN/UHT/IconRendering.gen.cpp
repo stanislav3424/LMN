@@ -12,13 +12,72 @@ static_assert(!UE_WITH_CONSTINIT_UOBJECT, "This generated code can only be compi
 void EmptyLinkFunctionForGeneratedCodeIconRendering() {}
 
 // ********** Begin Cross Module References ********************************************************
+COREUOBJECT_API UClass* Z_Construct_UClass_UObject_NoRegister();
 ENGINE_API UClass* Z_Construct_UClass_AActor();
 ENGINE_API UClass* Z_Construct_UClass_AActor_NoRegister();
+ENGINE_API UClass* Z_Construct_UClass_UMaterialInstanceDynamic_NoRegister();
 ENGINE_API UClass* Z_Construct_UClass_USceneCaptureComponent2D_NoRegister();
 LMN_API UClass* Z_Construct_UClass_AIconRendering();
 LMN_API UClass* Z_Construct_UClass_AIconRendering_NoRegister();
 UPackage* Z_Construct_UPackage__Script_LMN();
 // ********** End Cross Module References **********************************************************
+
+// ********** Begin Class AIconRendering Function GetIcon ******************************************
+struct Z_Construct_UFunction_AIconRendering_GetIcon_Statics
+{
+	struct IconRendering_eventGetIcon_Parms
+	{
+		UObject* Object;
+		UMaterialInstanceDynamic* MID;
+	};
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "Category", "Icon" },
+		{ "ModuleRelativePath", "IconRendering.h" },
+	};
+#endif // WITH_METADATA
+
+// ********** Begin Function GetIcon constinit property declarations *******************************
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_Object;
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_MID;
+	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+// ********** End Function GetIcon constinit property declarations *********************************
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+
+// ********** Begin Function GetIcon Property Definitions ******************************************
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_AIconRendering_GetIcon_Statics::NewProp_Object = { "Object", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(IconRendering_eventGetIcon_Parms, Object), Z_Construct_UClass_UObject_NoRegister, METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_AIconRendering_GetIcon_Statics::NewProp_MID = { "MID", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(IconRendering_eventGetIcon_Parms, MID), Z_Construct_UClass_UMaterialInstanceDynamic_NoRegister, METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_AIconRendering_GetIcon_Statics::PropPointers[] = {
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AIconRendering_GetIcon_Statics::NewProp_Object,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AIconRendering_GetIcon_Statics::NewProp_MID,
+};
+static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_AIconRendering_GetIcon_Statics::PropPointers) < 2048);
+// ********** End Function GetIcon Property Definitions ********************************************
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_AIconRendering_GetIcon_Statics::FuncParams = { { (UObject*(*)())Z_Construct_UClass_AIconRendering, nullptr, "GetIcon", 	Z_Construct_UFunction_AIconRendering_GetIcon_Statics::PropPointers, 
+	UE_ARRAY_COUNT(Z_Construct_UFunction_AIconRendering_GetIcon_Statics::PropPointers), 
+sizeof(Z_Construct_UFunction_AIconRendering_GetIcon_Statics::IconRendering_eventGetIcon_Parms),
+RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04022401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_AIconRendering_GetIcon_Statics::Function_MetaDataParams), Z_Construct_UFunction_AIconRendering_GetIcon_Statics::Function_MetaDataParams)},  };
+static_assert(sizeof(Z_Construct_UFunction_AIconRendering_GetIcon_Statics::IconRendering_eventGetIcon_Parms) < MAX_uint16);
+UFunction* Z_Construct_UFunction_AIconRendering_GetIcon()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_AIconRendering_GetIcon_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(AIconRendering::execGetIcon)
+{
+	P_GET_OBJECT(UObject,Z_Param_Object);
+	P_GET_OBJECT(UMaterialInstanceDynamic,Z_Param_MID);
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	AIconRendering::GetIcon(Z_Param_Object,Z_Param_MID);
+	P_NATIVE_END;
+}
+// ********** End Class AIconRendering Function GetIcon ********************************************
 
 // ********** Begin Class AIconRendering ***********************************************************
 FClassRegistrationInfo Z_Registration_Info_UClass_AIconRendering;
@@ -84,7 +143,14 @@ struct Z_Construct_UClass_AIconRendering_Statics
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_SpawnedRepresentationActor;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 // ********** End Class AIconRendering constinit property declarations *****************************
+	static constexpr UE::CodeGen::FClassNativeFunction Funcs[] = {
+		{ .NameUTF8 = UTF8TEXT("GetIcon"), .Pointer = &AIconRendering::execGetIcon },
+	};
 	static UObject* (*const DependentSingletons[])();
+	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
+		{ &Z_Construct_UFunction_AIconRendering_GetIcon, "GetIcon" }, // 1331471458
+	};
+	static_assert(UE_ARRAY_COUNT(FuncInfo) < 2048);
 	static constexpr FCppClassTypeInfoStatic StaticCppClassTypeInfo = {
 		TCppClassTypeTraits<AIconRendering>::IsAbstract,
 	};
@@ -114,11 +180,11 @@ const UECodeGen_Private::FClassParams Z_Construct_UClass_AIconRendering_Statics:
 	"Engine",
 	&StaticCppClassTypeInfo,
 	DependentSingletons,
-	nullptr,
+	FuncInfo,
 	Z_Construct_UClass_AIconRendering_Statics::PropPointers,
 	nullptr,
 	UE_ARRAY_COUNT(DependentSingletons),
-	0,
+	UE_ARRAY_COUNT(FuncInfo),
 	UE_ARRAY_COUNT(Z_Construct_UClass_AIconRendering_Statics::PropPointers),
 	0,
 	0x009000A5u,
@@ -126,6 +192,8 @@ const UECodeGen_Private::FClassParams Z_Construct_UClass_AIconRendering_Statics:
 };
 void AIconRendering::StaticRegisterNativesAIconRendering()
 {
+	UClass* Class = AIconRendering::StaticClass();
+	FNativeFunctionRegistrar::RegisterFunctions(Class, MakeConstArrayView(Z_Construct_UClass_AIconRendering_Statics::Funcs));
 }
 UClass* Z_Construct_UClass_AIconRendering()
 {
@@ -143,10 +211,10 @@ AIconRendering::~AIconRendering() {}
 struct Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_IconRendering_h__Script_LMN_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_AIconRendering, AIconRendering::StaticClass, TEXT("AIconRendering"), &Z_Registration_Info_UClass_AIconRendering, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AIconRendering), 2415844180U) },
+		{ Z_Construct_UClass_AIconRendering, AIconRendering::StaticClass, TEXT("AIconRendering"), &Z_Registration_Info_UClass_AIconRendering, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AIconRendering), 2858114450U) },
 	};
 }; // Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_IconRendering_h__Script_LMN_Statics 
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_IconRendering_h__Script_LMN_883770886{
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_IconRendering_h__Script_LMN_766347185{
 	TEXT("/Script/LMN"),
 	Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_IconRendering_h__Script_LMN_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_IconRendering_h__Script_LMN_Statics::ClassInfo),
 	nullptr, 0,

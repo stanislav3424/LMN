@@ -9,7 +9,7 @@ void ARepresentationPawn::BeginPlay()
 {
     Super::BeginPlay();
 
-    UBFL::ActorActivation(this);
+    UBFL::ActorActivationLogic(this);
 
     if (Logic)
     {

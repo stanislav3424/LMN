@@ -43,4 +43,9 @@ protected:
 
 public:
     void RenderObjectToMID(UObject* Object, UMaterialInstanceDynamic* MID);
+
+    UFUNCTION(BlueprintCallable, Category = "Icon")
+    static void GetIcon(UObject* Object, UMaterialInstanceDynamic* MID);
+
+    static AIconRendering* Get(UWorld* World);
 };

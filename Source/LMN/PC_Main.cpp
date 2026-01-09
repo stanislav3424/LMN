@@ -10,6 +10,7 @@
 #include "Logic.h"
 #include "AIControllerBase.h"
 #include "GameFramework/Pawn.h"
+#include "TeamLibrary.h"
 
 APC_Main::APC_Main()
 {
@@ -126,7 +127,7 @@ void APC_Main::CommandAllLocation(ETypeAIAction const& CommandTypeAIAction)
 void APC_Main::CommandAll(ETypeAIAction const& CommandTypeAIAction, FVector const& Location)
 {
     for (auto Actor : ActorsSelected)
-        if (UBFL::EqualTeamActor(Actor, ETeam::Player))
+        if (UTeamLibrary::EqualTeamActor(Actor, ETeam::Player))
             if (auto LocalPawn = Cast<APawn>(Actor))
                 if (auto AIController = LocalPawn->GetController<AAIControllerBase>())
                     AIController->Command(CommandTypeAIAction, Location);

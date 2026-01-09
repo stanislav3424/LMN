@@ -18,7 +18,6 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 class AActor;
 class UClass;
 class ULogicBase;
-class UMaterialInstanceDynamic;
 class UObject;
 enum class ETeam : uint8;
 struct FDataTableRowHandle;
@@ -39,14 +38,6 @@ struct FTemplateCharacterRow;
 	DECLARE_FUNCTION(execSpawnActorTeamByClass_WorldContext); \
 	DECLARE_FUNCTION(execSpawnActorTeamByRowHandle_WorldContext); \
 	DECLARE_FUNCTION(execSpawnTemplateCharacter_WorldContext); \
-	DECLARE_FUNCTION(execGetIcon); \
-	DECLARE_FUNCTION(execEqualTeamActor); \
-	DECLARE_FUNCTION(execEqualTeam); \
-	DECLARE_FUNCTION(execIsTeamsEqualActor); \
-	DECLARE_FUNCTION(execIsTeamsEqual); \
-	DECLARE_FUNCTION(execGetOnlyEnemies); \
-	DECLARE_FUNCTION(execGetTeamActor); \
-	DECLARE_FUNCTION(execGetTeam); \
 	DECLARE_FUNCTION(execGetLogic); \
 	DECLARE_FUNCTION(execSetLogic);
 

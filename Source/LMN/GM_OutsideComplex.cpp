@@ -8,6 +8,7 @@
 #include "BFL.h"
 #include "Logic.h"
 #include "GI_Main.h"
+#include "TeamLibrary.h"
 
 void AGM_OutsideComplex::BeginPlay()
 {
@@ -50,7 +51,7 @@ void AGM_OutsideComplex::OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AAc
     UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
     if (IsValid(OtherActor))
-        if (UBFL::EqualTeamActor(OtherActor, ETeam::Player))
+        if (UTeamLibrary::EqualTeamActor(OtherActor, ETeam::Player))
             ComplexTriggerBoxSet.Add(OtherActor);
 }
 

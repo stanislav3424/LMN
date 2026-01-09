@@ -9,6 +9,7 @@
 #include "AISystem.h"
 #include "BFL.h"
 #include "TracingLibrary.h"
+#include "TeamLibrary.h"
 
 UBTTask_RunEQS_FindShelter::UBTTask_RunEQS_FindShelter()
 {
@@ -74,7 +75,7 @@ void UBTTask_RunEQS_FindShelter::OnBothQueriesFinished()
 
     FVector Result     = FVector::ZeroVector;
     auto    QueryOwner = BehaviorTreeComponent->GetOwner();
-    UBFL::GetOnlyEnemies(SecondaryActors, QueryOwner);
+    UTeamLibrary::GetOnlyEnemies(SecondaryActors, QueryOwner);
 
     TArray<FVector> SecondaryLocations;
     SecondaryLocations.Reserve(SecondaryActors.Num());

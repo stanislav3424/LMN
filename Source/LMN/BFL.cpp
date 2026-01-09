@@ -5,13 +5,13 @@
 #include "GI_Main.h"
 #include "Logic.h"
 #include "GM_Main.h"
-#include "IconRendering.h"
 #include "Blueprint/UserWidget.h"
 #include "Components/PanelWidget.h"
 #include "Blueprint/WidgetTree.h"
 #include "Components/ContentWidget.h"
 #include "Kismet/GameplayStatics.h"
 #include "CharacterLogic.h"
+#include "TeamLibrary.h"
 
 DEFINE_LOG_CATEGORY(LMN)
 
@@ -37,7 +37,7 @@ ULogicBase* UBFL::HandleGetLogic(AActor* Actor)
     return nullptr;
 }
 
-void UBFL::ActorActivation(AActor* Actor)
+void UBFL::ActorActivationLogic(AActor* Actor)
 {
     if (IsValid(Actor))
         if (auto GameInstance = Actor->GetGameInstance<UGI_Main>())
@@ -68,76 +68,6 @@ ULogicBase* UBFL::HandleCreateLogicByRowHandle(UWorld* World, FDataTableRowHandl
             if (auto Logic = GameInstance->CreateLogicByRowHandle(RowHandle))
                 return Logic;
     return nullptr;
-}
-
-bool UBFL::GetTeam(ETeam& TargetTeam, ULogicBase* LogicBase)
-{
-    if (LogicBase)
-        if (auto Logic = Cast<ULogic>(LogicBase))
-        {
-            TargetTeam = Logic->GetTeam();
-            return true;
-        }
-    return false;
-}
-
-bool UBFL::GetTeamActor(ETeam& TargetTeam, AActor* Actor)
-{
-    return GetTeam(TargetTeam, UBFL::GetLogic(Actor));
-}
-
-void UBFL::GetOnlyEnemies(TArray<AActor*>& TargetArr, AActor* Actor)
-{
-    if (!IsValid(Actor) || TargetArr.IsEmpty())
-        return;
-
-    TArray<AActor*> Arr;
-
-    for (auto const& LocalActor : TargetArr)
-        if (!IsTeamsEqualActor(Actor, LocalActor))
-            Arr.Add(LocalActor);
-
-    TargetArr = Arr;
-}
-
-bool UBFL::IsTeamsEqual(ULogicBase* LogicA, ULogicBase* LogicB)
-{
-    ETeam TeamA;
-    ETeam TeamB;
-    if (GetTeam(TeamA, LogicA) && GetTeam(TeamB, LogicB))
-        if (TeamA == TeamB)
-            return true;
-    return false;
-}
-
-bool UBFL::IsTeamsEqualActor(AActor* ActorA, AActor* ActorB)
-{
-    return IsTeamsEqual(UBFL::GetLogic(ActorA), UBFL::GetLogic(ActorB));
-}
-
-bool UBFL::EqualTeam(ULogicBase* Logic, ETeam const& Team)
-{
-    if (Logic)
-    {
-        ETeam LoaclTeam;
-        if (UBFL::GetTeam(LoaclTeam, Logic))
-            return LoaclTeam == Team ? true : false;
-    }
-    return false;
-}
-
-bool UBFL::EqualTeamActor(AActor* Actoc, ETeam const& Team)
-{
-    return EqualTeam(UBFL::GetLogic(Actoc), Team);
-}
-
-void UBFL::GetIcon(UObject* Object, UMaterialInstanceDynamic* MID)
-{
-    if (Object && MID)
-        if (auto World = Object->GetWorld())
-            if (auto GM = World->GetAuthGameMode<AGM_Main>())
-                if (auto IconRendering = GM->GetIconRendering())
-                    IconRendering->RenderObjectToMID(Object, MID);
 }
 
 AActor* UBFL::SpawnTemplateCharacter_WorldContext(UObject* WorldContextObject, FDataTableRowHandle const& RowHandle,

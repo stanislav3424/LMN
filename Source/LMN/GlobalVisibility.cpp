@@ -4,11 +4,15 @@
 #include "Components/BoxComponent.h"
 #include "Components/PrimitiveComponent.h"
 #include "Engine/StaticMeshActor.h"
+#include "Engine/World.h"
+#include "EngineUtils.h"
+#include "GM_Main.h"
 
 AGlobalVisibility::AGlobalVisibility()
 {
     PrimaryActorTick.bCanEverTick = false;
 }
+
 void AGlobalVisibility::RegisterPrimitiveComponent(AActor* Signaler, UPrimitiveComponent* Primitive)
 {
     if (!Primitive)
@@ -45,4 +49,12 @@ void AGlobalVisibility::UnregisterPrimitiveComponent(AActor* Signaler, UPrimitiv
     }
     if (Arr.Num() == 0)
         Primitive->SetCustomPrimitiveDataFloat(0, 0.f);
+}
+
+AGlobalVisibility* AGlobalVisibility::Get(UWorld* World)
+{
+    if (World)
+        if (auto GM = World->GetAuthGameMode<AGM_Main>())
+            return GM->GetGlobalVisibility();
+    return nullptr;
 }

@@ -5,7 +5,10 @@
 #include "Engine/TextureRenderTarget2D.h"
 #include "LogicBase.h"
 #include "GI_Main.h"
+#include "GM_Main.h"
 #include "BFL.h"
+#include "Engine/World.h"
+#include "EngineUtils.h"
 
 AIconRendering::AIconRendering()
 {
@@ -19,8 +22,6 @@ AIconRendering::AIconRendering()
     SceneCapture->SetupAttachment(Root);
     SceneCapture->bCaptureEveryFrame = false;
     SceneCapture->bCaptureOnMovement = false;
-
-    
 }
 
 void AIconRendering::BeginPlay()
@@ -128,11 +129,8 @@ void AIconRendering::RenderObjectToMID(UObject* Object, UMaterialInstanceDynamic
             return;
         }
 
-
-
         if (auto NewRenderTarget = NewObject<UTextureRenderTarget2D>(this))
         {
-
             const int32 RTSize = 256;
             NewRenderTarget->InitAutoFormat(RTSize, RTSize);
             NewRenderTarget->ClearColor = FLinearColor(0, 0, 0, 0);
@@ -147,7 +145,21 @@ void AIconRendering::RenderObjectToMID(UObject* Object, UMaterialInstanceDynamic
     }
 }
 
-// RenderTarget = NewObject<UTextureRenderTarget2D>(this);
-// RenderTarget->InitAutoFormat(256, 256);
-// SceneCapture->TextureTarget = RenderTarget;
-// auto Class = Logic->GetRepresentationActorClass();
+void AIconRendering::GetIcon(UObject* Object, UMaterialInstanceDynamic* MID)
+{
+    if (!Object || !MID)
+        return;
+
+    if (auto World = Object->GetWorld())
+        if (auto GM = World->GetAuthGameMode<AGM_Main>())
+            if (auto IconRendering = GM->GetIconRendering())
+                IconRendering->RenderObjectToMID(Object, MID);
+}
+
+AIconRendering* AIconRendering::Get(UWorld* World)
+{
+    if (World)
+        if (auto GM = World->GetAuthGameMode<AGM_Main>())
+            return GM->GetIconRendering();
+    return nullptr;
+}

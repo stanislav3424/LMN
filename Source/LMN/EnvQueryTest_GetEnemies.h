@@ -6,9 +6,6 @@
 #include "EnvironmentQuery/EnvQueryTest.h"
 #include "EnvQueryTest_GetEnemies.generated.h"
 
-/**
- * 
- */
 UCLASS()
 class LMN_API UEnvQueryTest_GetEnemies : public UEnvQueryTest
 {

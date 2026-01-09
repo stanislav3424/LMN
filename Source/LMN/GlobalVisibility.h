@@ -17,6 +17,8 @@ public:
     void RegisterPrimitiveComponent(AActor* Signaler, UPrimitiveComponent* Primitive);
     void UnregisterPrimitiveComponent(AActor* Signaler, UPrimitiveComponent* Primitive);
 
+    static AGlobalVisibility* Get(UWorld* World);
+
 protected:
     TMap<UPrimitiveComponent*, TArray<AActor*>> VisibilityMap;
 };

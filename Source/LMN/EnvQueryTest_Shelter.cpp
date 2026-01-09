@@ -2,7 +2,7 @@
 
 #include "EnvQueryTest_Shelter.h"
 #include "Kismet/KismetSystemLibrary.h"
-#include "BFL.h"
+#include "TeamLibrary.h"
 #include "TracingLibrary.h"
 #include "EnvironmentQuery/EnvQueryTest.h"
 #include "Engine/EngineTypes.h"
@@ -34,7 +34,7 @@ void UEnvQueryTest_Shelter::RunTest(FEnvQueryInstance& QueryInstance) const
     UKismetSystemLibrary::SphereOverlapActors(
         Querier, Querier->GetActorLocation(), SearchRadius, ObjectTypes, ActorClass, ActorsToIgnore, Enemies);
 
-    UBFL::GetOnlyEnemies(Enemies, Querier);
+    UTeamLibrary::GetOnlyEnemies(Enemies, Querier);
 
     for (FEnvQueryInstance::ItemIterator It(this, QueryInstance); It; ++It)
     {

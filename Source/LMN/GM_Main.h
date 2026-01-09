@@ -19,7 +19,7 @@ enum class EGameStatus : uint8
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnGameStatusChanged, EGameStatus, GameStatus);
 
-UCLASS(Blueprintable, Abstract)
+UCLASS(NotBlueprintable, Abstract)
 class LMN_API AGM_Main : public AGameModeBase
 {
     GENERATED_BODY()
@@ -40,7 +40,6 @@ public:
     void EndGame();
     virtual void OnStartGameGroup();
 
-    //
 protected:
     UPROPERTY(Transient)
     AGlobalVisibility* GlobalVisibility;
@@ -51,6 +50,9 @@ public:
 protected:
     UPROPERTY(EditDefaultsOnly, Category = "TypeUnits")
     TArray<FDataTableRowHandle> TypeUnits;
+
+    UPROPERTY(EditDefaultsOnly, Category = "Visibility")
+    TSubclassOf<AGlobalVisibility> GlobalVisibilityClass;
 
     EGameStatus GameStatus = EGameStatus::NotStarted;
 

@@ -15,8 +15,14 @@
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
+class UMaterialInstanceDynamic;
+class UObject;
 
 // ********** Begin Class AIconRendering ***********************************************************
+#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_IconRendering_h_14_RPC_WRAPPERS_NO_PURE_DECLS \
+	DECLARE_FUNCTION(execGetIcon);
+
+
 struct Z_Construct_UClass_AIconRendering_Statics;
 LMN_API UClass* Z_Construct_UClass_AIconRendering_NoRegister();
 
@@ -45,6 +51,7 @@ public: \
 #define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_IconRendering_h_14_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
+	FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_IconRendering_h_14_RPC_WRAPPERS_NO_PURE_DECLS \
 	FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_IconRendering_h_14_INCLASS_NO_PURE_DECLS \
 	FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_IconRendering_h_14_ENHANCED_CONSTRUCTORS \
 private: \

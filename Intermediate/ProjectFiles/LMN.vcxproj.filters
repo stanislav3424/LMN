@@ -70,6 +70,12 @@
     <ClInclude Include="..\..\Source\LMN\CharacterLogic.h">
       <Filter>Source\LMN</Filter>
     </ClInclude>
+    <ClCompile Include="..\..\Source\LMN\EnvQueryTest_GetEnemies.cpp">
+      <Filter>Source\LMN</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\LMN\EnvQueryTest_GetEnemies.h">
+      <Filter>Source\LMN</Filter>
+    </ClInclude>
     <ClCompile Include="..\..\Source\LMN\EnvQueryTest_RemoveNotValidPoint.cpp">
       <Filter>Source\LMN</Filter>
     </ClCompile>
@@ -184,6 +190,12 @@
     <ClInclude Include="..\..\Source\LMN\PC_Main.h">
       <Filter>Source\LMN</Filter>
     </ClInclude>
+    <ClCompile Include="..\..\Source\LMN\PointsLibrary.cpp">
+      <Filter>Source\LMN</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\LMN\PointsLibrary.h">
+      <Filter>Source\LMN</Filter>
+    </ClInclude>
     <ClCompile Include="..\..\Source\LMN\RepresentationActor.cpp">
       <Filter>Source\LMN</Filter>
     </ClCompile>
@@ -212,6 +224,12 @@
       <Filter>Source\LMN</Filter>
     </ClCompile>
     <ClInclude Include="..\..\Source\LMN\SC_Selected.h">
+      <Filter>Source\LMN</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\LMN\TeamLibrary.cpp">
+      <Filter>Source\LMN</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\LMN\TeamLibrary.h">
       <Filter>Source\LMN</Filter>
     </ClInclude>
     <ClCompile Include="..\..\Source\LMN\TracingLibrary.cpp">

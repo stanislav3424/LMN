@@ -57,7 +57,7 @@ public:
 
     static ULogicBase* HandleGetLogic(AActor* Actor);
 
-    static void ActorActivation(AActor* Actor);
+    static void ActorActivationLogic(AActor* Actor);
 
     static ULogicBase* CreateLogicByRowName(UWorld* World, FName const& RowName);
 
@@ -71,26 +71,6 @@ public:
 
     static ULogicBase* HandleCreateLogicByRowHandle(UWorld* World, FDataTableRowHandle const& RowHandle);
 
-    UFUNCTION(BlueprintCallable, Category = "Logic")
-    static bool GetTeam(ETeam& TargetTeam, ULogicBase* LogicBase);
-
-    UFUNCTION(BlueprintCallable, Category = "Logic")
-    static bool GetTeamActor(ETeam& TargetTeam, AActor* Actor);
-
-    UFUNCTION(BlueprintCallable, Category = "Logic")
-    static void GetOnlyEnemies(TArray<AActor*>& TargetArr, AActor* Actor);
-
-    UFUNCTION(BlueprintCallable, Category = "Logic")
-    static bool IsTeamsEqual(ULogicBase* LogicA, ULogicBase* LogicB);
-
-    UFUNCTION(BlueprintCallable, Category = "Logic")
-    static bool IsTeamsEqualActor(AActor* ActorA, AActor* ActorB);
-
-    UFUNCTION(BlueprintCallable, Category = "Logic")
-    static bool EqualTeam(ULogicBase* Logic, ETeam const& Team);
-
-    UFUNCTION(BlueprintCallable, Category = "Logic")
-    static bool EqualTeamActor(AActor* Actoc, ETeam const& Team);
 
     template <typename ElementType>
     static bool AreSetsEqual(TSet<ElementType> const& SetA, TSet<ElementType> const& SetB)
@@ -102,9 +82,6 @@ public:
                 return false;
         return true;
     }
-
-    UFUNCTION(BlueprintCallable, Category = "Icon")
-    static void GetIcon(UObject* Object, UMaterialInstanceDynamic* MID);
 
     template <typename TypeComponent>
     static TypeComponent* GetActorComponentByName(AActor* Actor, const FName& ComponentName)

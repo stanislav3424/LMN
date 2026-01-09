@@ -2,7 +2,8 @@
 
 #include "UW_Icon.h"
 #include "Components/Image.h"
-#include "BFL.h"
+#include "IconRendering.h"
+#include "LogicBase.h"
 
 void UUW_Icon::NativeConstruct()
 {
@@ -32,7 +33,7 @@ void UUW_Icon::ObjectUpdated()
     if (IconImage && !IconMID)
         IconMID = IconImage->GetDynamicMaterial();
     if (LogicBase && IconMID)
-        UBFL::GetIcon(LogicBase, IconMID);
+        AIconRendering::GetIcon(LogicBase, IconMID);
 }
 
 void UUW_Icon::WidgetSizeChanged(const FVector2D& NewSize)

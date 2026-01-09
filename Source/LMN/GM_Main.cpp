@@ -27,8 +27,6 @@ void AGM_Main::BeginPlay()
             AGlobalVisibility::StaticClass(), FVector(), FRotator(), ActorSpawnParameters);
     }
     CHECK_FIELD(GlobalVisibility);
-
-    
 }
 
 void AGM_Main::StartGame()

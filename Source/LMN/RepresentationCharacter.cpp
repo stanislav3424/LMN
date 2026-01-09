@@ -10,7 +10,7 @@ void ARepresentationCharacter::BeginPlay()
 {
     Super::BeginPlay();
 
-    UBFL::ActorActivation(this);
+    UBFL::ActorActivationLogic(this);
 }
 
 void ARepresentationCharacter::Tick(float DeltaSeconds)
