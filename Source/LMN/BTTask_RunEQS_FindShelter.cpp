@@ -75,7 +75,7 @@ void UBTTask_RunEQS_FindShelter::OnBothQueriesFinished()
 
     FVector Result     = FVector::ZeroVector;
     auto    QueryOwner = BehaviorTreeComponent->GetOwner();
-    UTeamLibrary::GetOnlyEnemies(SecondaryActors, QueryOwner);
+    UTeamLibrary::GetOnlyEnemiesActor(SecondaryActors, QueryOwner);
 
     TArray<FVector> SecondaryLocations;
     SecondaryLocations.Reserve(SecondaryActors.Num());

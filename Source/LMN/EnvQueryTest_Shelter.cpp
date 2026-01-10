@@ -34,7 +34,7 @@ void UEnvQueryTest_Shelter::RunTest(FEnvQueryInstance& QueryInstance) const
     UKismetSystemLibrary::SphereOverlapActors(
         Querier, Querier->GetActorLocation(), SearchRadius, ObjectTypes, ActorClass, ActorsToIgnore, Enemies);
 
-    UTeamLibrary::GetOnlyEnemies(Enemies, Querier);
+    UTeamLibrary::GetOnlyEnemiesActor(Enemies, Querier);
 
     for (FEnvQueryInstance::ItemIterator It(this, QueryInstance); It; ++It)
     {

@@ -51,7 +51,7 @@ FVector UTracingLibrary::GetShiftLevelTrace(ELevelTrace const& LevelTrace)
         case (ELevelTrace::Central):
             return FVector(0.f, 0.f, 100.f);
         case (ELevelTrace::Top):
-            return FVector(0.f, 0.f, 150.f);
+            return FVector(0.f, 0.f, 145.f);
     }
     return FVector::ZeroVector;
 }

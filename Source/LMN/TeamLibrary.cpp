@@ -21,7 +21,7 @@ bool UTeamLibrary::GetTeamActor(ETeam& TargetTeam, AActor* Actor)
     return GetTeam(TargetTeam, (Actor && Actor->Implements<ULogicInterface>()) ? ILogicInterface::Execute_GetLogic(Actor) : nullptr);
 }
 
-void UTeamLibrary::GetOnlyEnemies(TArray<AActor*>& TargetArr, AActor* Actor)
+void UTeamLibrary::GetOnlyEnemiesActor(TArray<AActor*>& TargetArr, AActor* Actor)
 {
     if (!IsValid(Actor) || TargetArr.IsEmpty())
         return;
@@ -29,10 +29,18 @@ void UTeamLibrary::GetOnlyEnemies(TArray<AActor*>& TargetArr, AActor* Actor)
     TArray<AActor*> Arr;
 
     for (auto const& LocalActor : TargetArr)
-        if (!IsTeamsEqualActor(Actor, LocalActor))
+        if (UTeamLibrary::AreEnemiesActor(Actor, LocalActor))
             Arr.Add(LocalActor);
 
     TargetArr = Arr;
+}
+
+bool UTeamLibrary::AreEnemiesActor(AActor* ActorA, AActor* ActorB)
+{
+    //
+    //
+    //
+    return !IsTeamsEqualActor(ActorA, ActorB);
 }
 
 bool UTeamLibrary::IsTeamsEqual(ULogicBase* LogicA, ULogicBase* LogicB)

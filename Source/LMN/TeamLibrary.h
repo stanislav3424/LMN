@@ -22,7 +22,10 @@ public:
     static bool GetTeamActor(ETeam& TargetTeam, AActor* Actor);
 
     UFUNCTION(BlueprintCallable, Category = "Team")
-    static void GetOnlyEnemies(TArray<AActor*>& TargetArr, AActor* Actor);
+    static void GetOnlyEnemiesActor(TArray<AActor*>& TargetArr, AActor* Actor);
+
+    UFUNCTION(BlueprintCallable, Category = "Team")
+    static bool AreEnemiesActor(AActor* ActorA, AActor* ActorB);
 
     UFUNCTION(BlueprintCallable, Category = "Team")
     static bool IsTeamsEqual(ULogicBase* LogicA, ULogicBase* LogicB);

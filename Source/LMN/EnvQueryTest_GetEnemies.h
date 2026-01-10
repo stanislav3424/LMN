@@ -9,6 +9,8 @@
 UCLASS()
 class LMN_API UEnvQueryTest_GetEnemies : public UEnvQueryTest
 {
-	GENERATED_BODY()
-	
+    GENERATED_BODY()
+
+    UEnvQueryTest_GetEnemies(const FObjectInitializer& ObjectInitializer);
+    virtual void RunTest(FEnvQueryInstance& QueryInstance) const override;
 };
