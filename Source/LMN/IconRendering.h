@@ -22,6 +22,10 @@ protected:
 public:
     virtual void Tick(float DeltaSeconds) override;
 
+private:
+    void WarmupCapture();
+    void CheckWorldReadiness();
+
 protected:
     UPROPERTY(VisibleAnywhere)
     USceneCaptureComponent2D* SceneCapture;
@@ -32,12 +36,22 @@ protected:
     UPROPERTY(EditDefaultsOnly, Category = "IconRendering")
     FName MIDTextureReadyParameterName = TEXT("IsTextureReady");
 
+    UPROPERTY(EditDefaultsOnly, Category = "IconRendering|Warmup")
+    float WarmupDuration = 3.0f;
+
+    UPROPERTY(EditDefaultsOnly, Category = "IconRendering|Warmup")
+    float ReadinessCheckInterval = 0.1f;
+
     UPROPERTY()
     AActor* SpawnedRepresentationActor;
 
     TMap<FName, TPair<UTextureRenderTarget2D*, bool>> Textures;
     TMap<UTextureRenderTarget2D*, TArray<UMaterialInstanceDynamic*>> MIDs;
     TQueue<TPair<FDataTableRowHandle, UTextureRenderTarget2D*>> Queue;
+
+    float WarmupElapsedTime = 0.0f;
+    float ReadinessCheckTimer = 0.0f;
+    bool bIsWarmedUp = false;
 
     void Render(TPair<FDataTableRowHandle, UTextureRenderTarget2D*>& Pair);
 

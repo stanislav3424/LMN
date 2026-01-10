@@ -131,6 +131,14 @@ struct Z_Construct_UClass_AIconRendering_Statics
 		{ "Category", "IconRendering" },
 		{ "ModuleRelativePath", "IconRendering.h" },
 	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_WarmupDuration_MetaData[] = {
+		{ "Category", "IconRendering|Warmup" },
+		{ "ModuleRelativePath", "IconRendering.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_ReadinessCheckInterval_MetaData[] = {
+		{ "Category", "IconRendering|Warmup" },
+		{ "ModuleRelativePath", "IconRendering.h" },
+	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_SpawnedRepresentationActor_MetaData[] = {
 		{ "ModuleRelativePath", "IconRendering.h" },
 	};
@@ -140,6 +148,8 @@ struct Z_Construct_UClass_AIconRendering_Statics
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_SceneCapture;
 	static const UECodeGen_Private::FNamePropertyParams NewProp_MIDTextureParameterName;
 	static const UECodeGen_Private::FNamePropertyParams NewProp_MIDTextureReadyParameterName;
+	static const UECodeGen_Private::FFloatPropertyParams NewProp_WarmupDuration;
+	static const UECodeGen_Private::FFloatPropertyParams NewProp_ReadinessCheckInterval;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_SpawnedRepresentationActor;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 // ********** End Class AIconRendering constinit property declarations *****************************
@@ -161,11 +171,15 @@ struct Z_Construct_UClass_AIconRendering_Statics
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AIconRendering_Statics::NewProp_SceneCapture = { "SceneCapture", nullptr, (EPropertyFlags)0x00200800000a0009, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AIconRendering, SceneCapture), Z_Construct_UClass_USceneCaptureComponent2D_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_SceneCapture_MetaData), NewProp_SceneCapture_MetaData) };
 const UECodeGen_Private::FNamePropertyParams Z_Construct_UClass_AIconRendering_Statics::NewProp_MIDTextureParameterName = { "MIDTextureParameterName", nullptr, (EPropertyFlags)0x0020080000010001, UECodeGen_Private::EPropertyGenFlags::Name, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AIconRendering, MIDTextureParameterName), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_MIDTextureParameterName_MetaData), NewProp_MIDTextureParameterName_MetaData) };
 const UECodeGen_Private::FNamePropertyParams Z_Construct_UClass_AIconRendering_Statics::NewProp_MIDTextureReadyParameterName = { "MIDTextureReadyParameterName", nullptr, (EPropertyFlags)0x0020080000010001, UECodeGen_Private::EPropertyGenFlags::Name, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AIconRendering, MIDTextureReadyParameterName), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_MIDTextureReadyParameterName_MetaData), NewProp_MIDTextureReadyParameterName_MetaData) };
+const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AIconRendering_Statics::NewProp_WarmupDuration = { "WarmupDuration", nullptr, (EPropertyFlags)0x0020080000010001, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AIconRendering, WarmupDuration), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_WarmupDuration_MetaData), NewProp_WarmupDuration_MetaData) };
+const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AIconRendering_Statics::NewProp_ReadinessCheckInterval = { "ReadinessCheckInterval", nullptr, (EPropertyFlags)0x0020080000010001, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AIconRendering, ReadinessCheckInterval), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_ReadinessCheckInterval_MetaData), NewProp_ReadinessCheckInterval_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AIconRendering_Statics::NewProp_SpawnedRepresentationActor = { "SpawnedRepresentationActor", nullptr, (EPropertyFlags)0x0020080000000000, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AIconRendering, SpawnedRepresentationActor), Z_Construct_UClass_AActor_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_SpawnedRepresentationActor_MetaData), NewProp_SpawnedRepresentationActor_MetaData) };
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_AIconRendering_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AIconRendering_Statics::NewProp_SceneCapture,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AIconRendering_Statics::NewProp_MIDTextureParameterName,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AIconRendering_Statics::NewProp_MIDTextureReadyParameterName,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AIconRendering_Statics::NewProp_WarmupDuration,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AIconRendering_Statics::NewProp_ReadinessCheckInterval,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AIconRendering_Statics::NewProp_SpawnedRepresentationActor,
 };
 static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_AIconRendering_Statics::PropPointers) < 2048);
@@ -211,10 +225,10 @@ AIconRendering::~AIconRendering() {}
 struct Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_IconRendering_h__Script_LMN_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_AIconRendering, AIconRendering::StaticClass, TEXT("AIconRendering"), &Z_Registration_Info_UClass_AIconRendering, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AIconRendering), 2858114450U) },
+		{ Z_Construct_UClass_AIconRendering, AIconRendering::StaticClass, TEXT("AIconRendering"), &Z_Registration_Info_UClass_AIconRendering, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AIconRendering), 1684260394U) },
 	};
 }; // Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_IconRendering_h__Script_LMN_Statics 
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_IconRendering_h__Script_LMN_766347185{
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_IconRendering_h__Script_LMN_3123496806{
 	TEXT("/Script/LMN"),
 	Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_IconRendering_h__Script_LMN_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_IconRendering_h__Script_LMN_Statics::ClassInfo),
 	nullptr, 0,

@@ -27,18 +27,76 @@ AIconRendering::AIconRendering()
 void AIconRendering::BeginPlay()
 {
     Super::BeginPlay();
+    WarmupCapture();
+}
+
+void AIconRendering::WarmupCapture()
+{
+    if (!SceneCapture)
+        return;
+
+    SceneCapture->bCaptureEveryFrame = true;
+    SceneCapture->bCaptureOnMovement = false;
+    WarmupElapsedTime = 0.0f;
+    bIsWarmedUp = false;
+}
+
+void AIconRendering::CheckWorldReadiness()
+{
+    if (bIsWarmedUp)
+        return;
+
+    auto World = GetWorld();
+    if (!World)
+        return;
+
+    bool bHasBegunPlay = World->HasBegunPlay();
+    bool bActorsInitialized = World->AreActorsInitialized();
+    bool bAsyncLoading = IsAsyncLoading();
+
+    if (bHasBegunPlay && bActorsInitialized && !bAsyncLoading)
+    {
+        if (SceneCapture)
+        {
+            SceneCapture->CaptureScene();
+            SceneCapture->bCaptureEveryFrame = false;
+        }
+        bIsWarmedUp = true;
+        ReadinessCheckTimer = 0.0f;
+    }
 }
 
 void AIconRendering::Tick(float DeltaSeconds)
 {
     Super::Tick(DeltaSeconds);
 
+    if (!bIsWarmedUp)
+    {
+        WarmupElapsedTime += DeltaSeconds;
+
+        ReadinessCheckTimer += DeltaSeconds;
+        if (ReadinessCheckTimer >= ReadinessCheckInterval)
+        {
+            CheckWorldReadiness();
+            ReadinessCheckTimer = 0.0f;
+        }
+
+        if (WarmupElapsedTime >= WarmupDuration && SceneCapture)
+        {
+            SceneCapture->CaptureScene();
+            SceneCapture->bCaptureEveryFrame = false;
+            bIsWarmedUp = true;
+        }
+
+        return;
+    }
+
     TPair<FDataTableRowHandle, UTextureRenderTarget2D*> Pair;
     if (Queue.Dequeue(Pair))
     {
         Render(Pair);
-        const FDataTableRowHandle& RowHandle    = Pair.Key;
-        UTextureRenderTarget2D*    RenderTarget = Pair.Value;
+        const FDataTableRowHandle& RowHandle = Pair.Key;
+        UTextureRenderTarget2D* RenderTarget = Pair.Value;
 
         if (RenderTarget)
         {
@@ -62,9 +120,9 @@ void AIconRendering::Render(TPair<FDataTableRowHandle, UTextureRenderTarget2D*>&
     if (!SceneCapture)
         return;
 
-    const FDataTableRowHandle& RowHandle    = Pair.Key;
-    UTextureRenderTarget2D*    RenderTarget = Pair.Value;
-    TSubclassOf<AActor>        Class;
+    const FDataTableRowHandle& RowHandle = Pair.Key;
+    UTextureRenderTarget2D* RenderTarget = Pair.Value;
+    TSubclassOf<AActor> Class;
 
     SceneCapture->TextureTarget = RenderTarget;
 
@@ -110,11 +168,11 @@ void AIconRendering::RenderObjectToMID(UObject* Object, UMaterialInstanceDynamic
     if (auto Logic = Cast<ULogicBase>(Object))
     {
         auto RowHandle = Logic->GetLogicRowHandle();
-        auto Find      = Textures.Find(RowHandle.RowName);
+        auto Find = Textures.Find(RowHandle.RowName);
         if (auto* Found = Textures.Find(RowHandle.RowName))
         {
             auto RenderTarget = (*Found).Key;
-            bool bReady       = (*Found).Value;
+            bool bReady = (*Found).Value;
 
             if (RenderTarget)
             {
