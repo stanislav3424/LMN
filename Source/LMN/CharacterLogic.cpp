@@ -171,6 +171,13 @@ void UCharacterLogic::SetCanRan(bool bNewCanRan)
         CharacterMovementComponentRef->MaxWalkSpeed = bCanRan ? MaxRunSpeed : MaxWalkSpeed;
 }
 
+ULogicBase* UCharacterLogic::GetItemInSlot(EEquipmentSlot TargetEquipmentSlot) const
+{
+    if (auto Find = EquipmentMap.Find(TargetEquipmentSlot))
+        return *Find;
+    return nullptr;
+}
+
 bool UCharacterLogic::EquipItem(ULogicBase* Logic, EEquipmentSlot TargetEquipmentSlot)
 {
     if (!EquipmentMap.Contains(TargetEquipmentSlot))

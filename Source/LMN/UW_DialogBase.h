@@ -19,7 +19,7 @@ protected:
     UFUNCTION()
     void OnAnimFinished();
 
-    UPROPERTY(meta = (BindWidgetAnim), Transient)
+    UPROPERTY(meta = (BindWidgetAnimOptional), Transient)
     UWidgetAnimation* DialogAnimation;
 
     bool bIsAnimating = false;
@@ -30,5 +30,4 @@ protected:
 public:
     void OpenDialog();
     void CloseDialog();
-    void Switch();
 };

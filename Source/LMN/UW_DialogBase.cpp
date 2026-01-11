@@ -13,6 +13,7 @@ void UUW_DialogBase::NativeConstruct()
     FinishDelegate.BindUFunction(this, FName(TEXT("OnAnimFinished")));
     UUserWidget::BindToAnimationFinished(DialogAnimation, FinishDelegate);
 
+    OpenDialog();
 }
 
 void UUW_DialogBase::OnAnimFinished()
@@ -47,12 +48,6 @@ void UUW_DialogBase::CloseDialog()
     }
     else
         bIsOpen = !bIsOpen;
-}
 
-void UUW_DialogBase::Switch()
-{
-    if (bIsOpen)
-        CloseDialog();
-    else
-        OpenDialog();
+    this->RemoveFromParent();
 }

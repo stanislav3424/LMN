@@ -9,6 +9,7 @@
 #include "Components/TextBlock.h"
 #include "UW_DialogBase.h"
 #include "AIControllerBase.h"
+#include "Components/CanvasPanel.h"
 
 void UUW_HUD::NativeOnInitialized()
 {
@@ -62,8 +63,8 @@ void UUW_HUD::UpdateListView()
 
 void UUW_HUD::OnMenuButtonClicked()
 {
-    if (MenuUserWidget)
-        MenuUserWidget->Switch();
+    /*if (MenuUserWidget)
+        MenuUserWidget->Switch();*/
 }
 
 void UUW_HUD::OnAIMoveToButtonClicked()

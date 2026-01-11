@@ -10,7 +10,7 @@ class APC_Main;
 class AGM_Main;
 enum class EGameStatus : uint8;
 
-UCLASS()
+UCLASS(NotBlueprintable, Abstract)
 class LMN_API UUW_Global : public UUW_Base
 {
     GENERATED_BODY()

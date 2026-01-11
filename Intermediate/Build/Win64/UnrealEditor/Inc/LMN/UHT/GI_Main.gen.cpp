@@ -327,7 +327,7 @@ class UScriptStruct* FEquipmentRow::StaticStruct()
 
 // ********** Begin ScriptStruct FEquipmentRow Property Definitions ********************************
 const UECodeGen_Private::FBytePropertyParams Z_Construct_UScriptStruct_FEquipmentRow_Statics::NewProp_EquipmentSlot_Underlying = { "UnderlyingType", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Byte, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, nullptr, METADATA_PARAMS(0, nullptr) };
-const UECodeGen_Private::FEnumPropertyParams Z_Construct_UScriptStruct_FEquipmentRow_Statics::NewProp_EquipmentSlot = { "EquipmentSlot", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Enum, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FEquipmentRow, EquipmentSlot), Z_Construct_UEnum_LMN_EEquipmentSlot, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_EquipmentSlot_MetaData), NewProp_EquipmentSlot_MetaData) }; // 3011498289
+const UECodeGen_Private::FEnumPropertyParams Z_Construct_UScriptStruct_FEquipmentRow_Statics::NewProp_EquipmentSlot = { "EquipmentSlot", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Enum, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FEquipmentRow, EquipmentSlot), Z_Construct_UEnum_LMN_EEquipmentSlot, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_EquipmentSlot_MetaData), NewProp_EquipmentSlot_MetaData) }; // 3727086310
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UScriptStruct_FEquipmentRow_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FEquipmentRow_Statics::NewProp_EquipmentSlot_Underlying,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FEquipmentRow_Statics::NewProp_EquipmentSlot,
@@ -601,14 +601,14 @@ struct Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_S
 		{ FLogicBaseRow::StaticStruct, Z_Construct_UScriptStruct_FLogicBaseRow_Statics::NewStructOps, TEXT("LogicBaseRow"),&Z_Registration_Info_UScriptStruct_FLogicBaseRow, CONSTRUCT_RELOAD_VERSION_INFO(FStructReloadVersionInfo, sizeof(FLogicBaseRow), 1746537740U) },
 		{ FLogicRow::StaticStruct, Z_Construct_UScriptStruct_FLogicRow_Statics::NewStructOps, TEXT("LogicRow"),&Z_Registration_Info_UScriptStruct_FLogicRow, CONSTRUCT_RELOAD_VERSION_INFO(FStructReloadVersionInfo, sizeof(FLogicRow), 2001996462U) },
 		{ FCharacterLogicRow::StaticStruct, Z_Construct_UScriptStruct_FCharacterLogicRow_Statics::NewStructOps, TEXT("CharacterLogicRow"),&Z_Registration_Info_UScriptStruct_FCharacterLogicRow, CONSTRUCT_RELOAD_VERSION_INFO(FStructReloadVersionInfo, sizeof(FCharacterLogicRow), 1225468095U) },
-		{ FEquipmentRow::StaticStruct, Z_Construct_UScriptStruct_FEquipmentRow_Statics::NewStructOps, TEXT("EquipmentRow"),&Z_Registration_Info_UScriptStruct_FEquipmentRow, CONSTRUCT_RELOAD_VERSION_INFO(FStructReloadVersionInfo, sizeof(FEquipmentRow), 2498350643U) },
+		{ FEquipmentRow::StaticStruct, Z_Construct_UScriptStruct_FEquipmentRow_Statics::NewStructOps, TEXT("EquipmentRow"),&Z_Registration_Info_UScriptStruct_FEquipmentRow, CONSTRUCT_RELOAD_VERSION_INFO(FStructReloadVersionInfo, sizeof(FEquipmentRow), 3229537508U) },
 		{ FWeaponRow::StaticStruct, Z_Construct_UScriptStruct_FWeaponRow_Statics::NewStructOps, TEXT("WeaponRow"),&Z_Registration_Info_UScriptStruct_FWeaponRow, CONSTRUCT_RELOAD_VERSION_INFO(FStructReloadVersionInfo, sizeof(FWeaponRow), 4174476711U) },
 	};
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
 		{ Z_Construct_UClass_UGI_Main, UGI_Main::StaticClass, TEXT("UGI_Main"), &Z_Registration_Info_UClass_UGI_Main, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UGI_Main), 23988619U) },
 	};
 }; // Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_GI_Main_h__Script_LMN_Statics 
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_GI_Main_h__Script_LMN_2837151477{
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_GI_Main_h__Script_LMN_1086401289{
 	TEXT("/Script/LMN"),
 	Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_GI_Main_h__Script_LMN_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_GI_Main_h__Script_LMN_Statics::ClassInfo),
 	Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_GI_Main_h__Script_LMN_Statics::ScriptStructInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_GI_Main_h__Script_LMN_Statics::ScriptStructInfo),

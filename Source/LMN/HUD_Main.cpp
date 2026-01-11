@@ -24,7 +24,7 @@ void AHUD_Main::BeginPlay()
 
     if (UW_HUD_Class)
     {
-        UW_HUD = CreateWidget(PlayerController, UW_HUD_Class);
+        UW_HUD = CreateWidget<UUW_HUD>(PlayerController, UW_HUD_Class);
         if (UW_HUD)
             UW_HUD->AddToViewport();
     }

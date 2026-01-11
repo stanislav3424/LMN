@@ -35,6 +35,7 @@ enum class ETypeAction : uint8
 UENUM(BlueprintType)
 enum class EEquipmentSlot : uint8
 {
+    None     UMETA(DisplayName = "None"),
     Hands    UMETA(DisplayName = "Hands"),
     Backpack UMETA(DisplayName = "Backpack"),
 };
@@ -118,6 +119,7 @@ protected:
     TMap<EEquipmentSlot, UEquipmentLogic*> EquipmentMap;
 
 public:
+    ULogicBase* GetItemInSlot(EEquipmentSlot TargetEquipmentSlot) const;
     bool        EquipItem(ULogicBase* Logic, EEquipmentSlot TargetEquipmentSlot);
     bool        EquipItem(AActor* Actor, EEquipmentSlot TargetEquipmentSlot);
     ULogicBase* TakeOff(EEquipmentSlot TargetEquipmentSlot);

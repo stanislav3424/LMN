@@ -19,6 +19,7 @@ LMN_API UClass* Z_Construct_UClass_UUW_HUD();
 LMN_API UClass* Z_Construct_UClass_UUW_HUD_NoRegister();
 LMN_API UEnum* Z_Construct_UEnum_LMN_ETypeAIAction();
 UMG_API UClass* Z_Construct_UClass_UButton_NoRegister();
+UMG_API UClass* Z_Construct_UClass_UCanvasPanel_NoRegister();
 UMG_API UClass* Z_Construct_UClass_UListView_NoRegister();
 UMG_API UClass* Z_Construct_UClass_UTextBlock_NoRegister();
 UMG_API UClass* Z_Construct_UClass_UUserWidget_NoRegister();
@@ -331,6 +332,11 @@ struct Z_Construct_UClass_UUW_HUD_Statics
 		{ "IsBlueprintBase", "true" },
 		{ "ModuleRelativePath", "UW_HUD.h" },
 	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_RootCanvas_MetaData[] = {
+		{ "BindWidget", "" },
+		{ "EditInline", "true" },
+		{ "ModuleRelativePath", "UW_HUD.h" },
+	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_SelectedListView_MetaData[] = {
 		{ "BindWidget", "" },
 		{ "EditInline", "true" },
@@ -377,6 +383,7 @@ struct Z_Construct_UClass_UUW_HUD_Statics
 #endif // WITH_METADATA
 
 // ********** Begin Class UUW_HUD constinit property declarations **********************************
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_RootCanvas;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_SelectedListView;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_MenuButton;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_AIMoveToButton;
@@ -415,6 +422,7 @@ struct Z_Construct_UClass_UUW_HUD_Statics
 }; // struct Z_Construct_UClass_UUW_HUD_Statics
 
 // ********** Begin Class UUW_HUD Property Definitions *********************************************
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UUW_HUD_Statics::NewProp_RootCanvas = { "RootCanvas", nullptr, (EPropertyFlags)0x0020080000080008, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UUW_HUD, RootCanvas), Z_Construct_UClass_UCanvasPanel_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_RootCanvas_MetaData), NewProp_RootCanvas_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UUW_HUD_Statics::NewProp_SelectedListView = { "SelectedListView", nullptr, (EPropertyFlags)0x0020080000080008, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UUW_HUD, SelectedListView), Z_Construct_UClass_UListView_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_SelectedListView_MetaData), NewProp_SelectedListView_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UUW_HUD_Statics::NewProp_MenuButton = { "MenuButton", nullptr, (EPropertyFlags)0x0020080000080008, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UUW_HUD, MenuButton), Z_Construct_UClass_UButton_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_MenuButton_MetaData), NewProp_MenuButton_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UUW_HUD_Statics::NewProp_AIMoveToButton = { "AIMoveToButton", nullptr, (EPropertyFlags)0x0020080000080008, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UUW_HUD, AIMoveToButton), Z_Construct_UClass_UButton_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_AIMoveToButton_MetaData), NewProp_AIMoveToButton_MetaData) };
@@ -425,6 +433,7 @@ const UECodeGen_Private::FClassPropertyParams Z_Construct_UClass_UUW_HUD_Statics
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UUW_HUD_Statics::NewProp_MenuUserWidget = { "MenuUserWidget", nullptr, (EPropertyFlags)0x0020080000082008, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UUW_HUD, MenuUserWidget), Z_Construct_UClass_UUW_DialogBase_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_MenuUserWidget_MetaData), NewProp_MenuUserWidget_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UUW_HUD_Statics::NewProp_TypeAIActionTextBlock = { "TypeAIActionTextBlock", nullptr, (EPropertyFlags)0x0020080000080008, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UUW_HUD, TypeAIActionTextBlock), Z_Construct_UClass_UTextBlock_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_TypeAIActionTextBlock_MetaData), NewProp_TypeAIActionTextBlock_MetaData) };
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_UUW_HUD_Statics::PropPointers[] = {
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UUW_HUD_Statics::NewProp_RootCanvas,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UUW_HUD_Statics::NewProp_SelectedListView,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UUW_HUD_Statics::NewProp_MenuButton,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UUW_HUD_Statics::NewProp_AIMoveToButton,
@@ -479,10 +488,10 @@ UUW_HUD::~UUW_HUD() {}
 struct Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_UW_HUD_h__Script_LMN_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_UUW_HUD, UUW_HUD::StaticClass, TEXT("UUW_HUD"), &Z_Registration_Info_UClass_UUW_HUD, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UUW_HUD), 1382334440U) },
+		{ Z_Construct_UClass_UUW_HUD, UUW_HUD::StaticClass, TEXT("UUW_HUD"), &Z_Registration_Info_UClass_UUW_HUD, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UUW_HUD), 674326895U) },
 	};
 }; // Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_UW_HUD_h__Script_LMN_Statics 
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_UW_HUD_h__Script_LMN_2008924783{
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_UW_HUD_h__Script_LMN_3026555535{
 	TEXT("/Script/LMN"),
 	Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_UW_HUD_h__Script_LMN_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_UW_HUD_h__Script_LMN_Statics::ClassInfo),
 	nullptr, 0,

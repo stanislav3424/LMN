@@ -3,15 +3,14 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "UW_Base.h"
+#include "UW_Dialog.h"
 #include "UW_PawnInfo.generated.h"
 
-/**
- * 
- */
-UCLASS()
-class LMN_API UUW_PawnInfo : public UUW_Base
+UCLASS(Blueprintable, Abstract)
+class LMN_API UUW_PawnInfo : public UUW_Dialog
 {
-	GENERATED_BODY()
-	
+    GENERATED_BODY()
+
+protected:
+    virtual void ObjectUpdated();
 };

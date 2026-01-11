@@ -13,6 +13,7 @@ class UButton;
 class UTextBlock;
 class UUserWidget;
 class UUW_DialogBase;
+class UCanvasPanel;
 
 enum class ETypeAIAction : uint8;
 
@@ -27,6 +28,13 @@ protected:
 public:
     UFUNCTION()
     void UpdateListView();
+
+protected:
+    UPROPERTY(meta = (BindWidget)) 
+    UCanvasPanel* RootCanvas;
+
+public:
+    UCanvasPanel* GetRootCanvas() const { return RootCanvas; }
 
 protected:
     UPROPERTY(meta = (BindWidget))

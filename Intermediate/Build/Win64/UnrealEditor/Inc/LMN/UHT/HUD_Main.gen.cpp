@@ -21,7 +21,6 @@ LMN_API UClass* Z_Construct_UClass_AHUD_Main_NoRegister();
 LMN_API UClass* Z_Construct_UClass_APC_Main_NoRegister();
 LMN_API UClass* Z_Construct_UClass_UUW_HUD_NoRegister();
 LMN_API UEnum* Z_Construct_UEnum_LMN_EGameStatus();
-UMG_API UClass* Z_Construct_UClass_UUserWidget_NoRegister();
 UPackage* Z_Construct_UPackage__Script_LMN();
 // ********** End Cross Module References **********************************************************
 
@@ -175,7 +174,7 @@ struct Z_Construct_UClass_AHUD_Main_Statics
 // ********** Begin Class AHUD_Main Property Definitions *******************************************
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AHUD_Main_Statics::NewProp_PlayerController = { "PlayerController", nullptr, (EPropertyFlags)0x0020080000002000, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AHUD_Main, PlayerController), Z_Construct_UClass_APC_Main_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_PlayerController_MetaData), NewProp_PlayerController_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AHUD_Main_Statics::NewProp_GM_Main = { "GM_Main", nullptr, (EPropertyFlags)0x0020080000002000, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AHUD_Main, GM_Main), Z_Construct_UClass_AGM_Main_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_GM_Main_MetaData), NewProp_GM_Main_MetaData) };
-const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AHUD_Main_Statics::NewProp_UW_HUD = { "UW_HUD", nullptr, (EPropertyFlags)0x0020080000082008, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AHUD_Main, UW_HUD), Z_Construct_UClass_UUserWidget_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_UW_HUD_MetaData), NewProp_UW_HUD_MetaData) };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AHUD_Main_Statics::NewProp_UW_HUD = { "UW_HUD", nullptr, (EPropertyFlags)0x0020080000082008, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AHUD_Main, UW_HUD), Z_Construct_UClass_UUW_HUD_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_UW_HUD_MetaData), NewProp_UW_HUD_MetaData) };
 const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_AHUD_Main_Statics::NewProp_FillColor = { "FillColor", nullptr, (EPropertyFlags)0x0020080000000001, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AHUD_Main, FillColor), Z_Construct_UScriptStruct_FLinearColor, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_FillColor_MetaData), NewProp_FillColor_MetaData) };
 const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_AHUD_Main_Statics::NewProp_BorderColor = { "BorderColor", nullptr, (EPropertyFlags)0x0020080000000001, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AHUD_Main, BorderColor), Z_Construct_UScriptStruct_FLinearColor, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_BorderColor_MetaData), NewProp_BorderColor_MetaData) };
 const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AHUD_Main_Statics::NewProp_LineThickness = { "LineThickness", nullptr, (EPropertyFlags)0x0020080000000001, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AHUD_Main, LineThickness), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_LineThickness_MetaData), NewProp_LineThickness_MetaData) };
@@ -233,10 +232,10 @@ AHUD_Main::~AHUD_Main() {}
 struct Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_HUD_Main_h__Script_LMN_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_AHUD_Main, AHUD_Main::StaticClass, TEXT("AHUD_Main"), &Z_Registration_Info_UClass_AHUD_Main, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AHUD_Main), 96365933U) },
+		{ Z_Construct_UClass_AHUD_Main, AHUD_Main::StaticClass, TEXT("AHUD_Main"), &Z_Registration_Info_UClass_AHUD_Main, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AHUD_Main), 1643585582U) },
 	};
 }; // Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_HUD_Main_h__Script_LMN_Statics 
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_HUD_Main_h__Script_LMN_712949246{
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_HUD_Main_h__Script_LMN_1150204384{
 	TEXT("/Script/LMN"),
 	Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_HUD_Main_h__Script_LMN_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_HUD_Main_h__Script_LMN_Statics::ClassInfo),
 	nullptr, 0,

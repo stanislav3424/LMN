@@ -42,7 +42,7 @@ class LMN_API UUW_Base : public UUserWidget, public ILogicInterface
     // virtual void   NativeOnFocusLost(const FFocusEvent& InFocusEvent) override;
 
     protected:
-        UPROPERTY()
+        UPROPERTY(Transient)
         ULogicBase* LogicBase;
 
         virtual void ObjectUpdated() ;
@@ -52,6 +52,8 @@ class LMN_API UUW_Base : public UUserWidget, public ILogicInterface
         virtual ULogicBase* GetLogic_Implementation() override;
         virtual void        SetLogic_Implementation(ULogicBase* NewLogic) override;
 
-        void ObjectUpdatedAllWidgets();
+        void UpdatedChildWidgets();
+
+        void ObjectUpdatedChildWidgets(ULogicBase* NewLogic);
 
 };

@@ -230,9 +230,12 @@ struct Z_Construct_UEnum_LMN_EEquipmentSlot_Statics
 		{ "Hands.DisplayName", "Hands" },
 		{ "Hands.Name", "EEquipmentSlot::Hands" },
 		{ "ModuleRelativePath", "CharacterLogic.h" },
+		{ "None.DisplayName", "None" },
+		{ "None.Name", "EEquipmentSlot::None" },
 	};
 #endif // WITH_METADATA
 	static constexpr UECodeGen_Private::FEnumeratorParam Enumerators[] = {
+		{ "EEquipmentSlot::None", (int64)EEquipmentSlot::None },
 		{ "EEquipmentSlot::Hands", (int64)EEquipmentSlot::Hands },
 		{ "EEquipmentSlot::Backpack", (int64)EEquipmentSlot::Backpack },
 	};
@@ -584,8 +587,8 @@ struct Z_Construct_UClass_UCharacterLogic_Statics
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UCharacterLogic_Statics::NewProp_CharacterMovementComponentRef = { "CharacterMovementComponentRef", nullptr, (EPropertyFlags)0x0020080000082008, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UCharacterLogic, CharacterMovementComponentRef), Z_Construct_UClass_UCharacterMovementComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_CharacterMovementComponentRef_MetaData), NewProp_CharacterMovementComponentRef_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UCharacterLogic_Statics::NewProp_EquipmentMap_ValueProp = { "EquipmentMap", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 1, Z_Construct_UClass_UEquipmentLogic_NoRegister, METADATA_PARAMS(0, nullptr) };
 const UECodeGen_Private::FBytePropertyParams Z_Construct_UClass_UCharacterLogic_Statics::NewProp_EquipmentMap_Key_KeyProp_Underlying = { "UnderlyingType", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Byte, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, nullptr, METADATA_PARAMS(0, nullptr) };
-const UECodeGen_Private::FEnumPropertyParams Z_Construct_UClass_UCharacterLogic_Statics::NewProp_EquipmentMap_Key_KeyProp = { "EquipmentMap_Key", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Enum, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, Z_Construct_UEnum_LMN_EEquipmentSlot, METADATA_PARAMS(0, nullptr) }; // 3011498289
-const UECodeGen_Private::FMapPropertyParams Z_Construct_UClass_UCharacterLogic_Statics::NewProp_EquipmentMap = { "EquipmentMap", nullptr, (EPropertyFlags)0x0020080000000000, UECodeGen_Private::EPropertyGenFlags::Map, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UCharacterLogic, EquipmentMap), EMapPropertyFlags::None, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_EquipmentMap_MetaData), NewProp_EquipmentMap_MetaData) }; // 3011498289
+const UECodeGen_Private::FEnumPropertyParams Z_Construct_UClass_UCharacterLogic_Statics::NewProp_EquipmentMap_Key_KeyProp = { "EquipmentMap_Key", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Enum, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, Z_Construct_UEnum_LMN_EEquipmentSlot, METADATA_PARAMS(0, nullptr) }; // 3727086310
+const UECodeGen_Private::FMapPropertyParams Z_Construct_UClass_UCharacterLogic_Statics::NewProp_EquipmentMap = { "EquipmentMap", nullptr, (EPropertyFlags)0x0020080000000000, UECodeGen_Private::EPropertyGenFlags::Map, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UCharacterLogic, EquipmentMap), EMapPropertyFlags::None, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_EquipmentMap_MetaData), NewProp_EquipmentMap_MetaData) }; // 3727086310
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_UCharacterLogic_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UCharacterLogic_Statics::NewProp_CharacterMovementComponentRef,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UCharacterLogic_Statics::NewProp_EquipmentMap_ValueProp,
@@ -638,13 +641,13 @@ struct Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_S
 		{ EMovementState_StaticEnum, TEXT("EMovementState"), &Z_Registration_Info_UEnum_EMovementState, CONSTRUCT_RELOAD_VERSION_INFO(FEnumReloadVersionInfo, 842955467U) },
 		{ ETypeMovementState_StaticEnum, TEXT("ETypeMovementState"), &Z_Registration_Info_UEnum_ETypeMovementState, CONSTRUCT_RELOAD_VERSION_INFO(FEnumReloadVersionInfo, 2486633701U) },
 		{ ETypeAction_StaticEnum, TEXT("ETypeAction"), &Z_Registration_Info_UEnum_ETypeAction, CONSTRUCT_RELOAD_VERSION_INFO(FEnumReloadVersionInfo, 349906673U) },
-		{ EEquipmentSlot_StaticEnum, TEXT("EEquipmentSlot"), &Z_Registration_Info_UEnum_EEquipmentSlot, CONSTRUCT_RELOAD_VERSION_INFO(FEnumReloadVersionInfo, 3011498289U) },
+		{ EEquipmentSlot_StaticEnum, TEXT("EEquipmentSlot"), &Z_Registration_Info_UEnum_EEquipmentSlot, CONSTRUCT_RELOAD_VERSION_INFO(FEnumReloadVersionInfo, 3727086310U) },
 	};
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_UCharacterLogic, UCharacterLogic::StaticClass, TEXT("UCharacterLogic"), &Z_Registration_Info_UClass_UCharacterLogic, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UCharacterLogic), 78685163U) },
+		{ Z_Construct_UClass_UCharacterLogic, UCharacterLogic::StaticClass, TEXT("UCharacterLogic"), &Z_Registration_Info_UClass_UCharacterLogic, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UCharacterLogic), 2584294758U) },
 	};
 }; // Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_CharacterLogic_h__Script_LMN_Statics 
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_CharacterLogic_h__Script_LMN_78899634{
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_CharacterLogic_h__Script_LMN_143100201{
 	TEXT("/Script/LMN"),
 	Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_CharacterLogic_h__Script_LMN_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_CharacterLogic_h__Script_LMN_Statics::ClassInfo),
 	nullptr, 0,

@@ -16,21 +16,31 @@ ULogicBase* UUW_Base::GetLogic_Implementation()
 
 void UUW_Base::SetLogic_Implementation(ULogicBase* NewLogic)
 {
+    if (LogicBase == NewLogic)
+        return;
+
     if (NewLogic)
         LogicBase = NewLogic;
-    CHECK_FIELD(LogicBase);
+    else
+        LogicBase = nullptr; 
 
     ObjectUpdated();
 }
 
-void UUW_Base::ObjectUpdatedAllWidgets()
+void UUW_Base::UpdatedChildWidgets()
+{
+    ObjectUpdatedChildWidgets(LogicBase);
+}
+
+void UUW_Base::ObjectUpdatedChildWidgets(ULogicBase* NewLogic)
 {
     if (!WidgetTree)
         return;
     TArray<UWidget*> DirectChildren;
-    WidgetTree->GetAllWidgets(DirectChildren);
+    // WidgetTree->GetAllWidgets(DirectChildren);
+    WidgetTree->GetChildWidgets(this->GetRootWidget(), DirectChildren);
 
     for (auto Children : DirectChildren)
         if (Children)
-            UBFL::SetLogic(Children, LogicBase);
+            UBFL::SetLogic(Children, NewLogic);
 }

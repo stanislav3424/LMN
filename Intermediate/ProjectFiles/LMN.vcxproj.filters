@@ -244,6 +244,12 @@
     <ClInclude Include="..\..\Source\LMN\TTask_MoveType.h">
       <Filter>Source\LMN</Filter>
     </ClInclude>
+    <ClCompile Include="..\..\Source\LMN\UMG_Library.cpp">
+      <Filter>Source\LMN</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\LMN\UMG_Library.h">
+      <Filter>Source\LMN</Filter>
+    </ClInclude>
     <ClCompile Include="..\..\Source\LMN\UW_Base.cpp">
       <Filter>Source\LMN</Filter>
     </ClCompile>
@@ -266,6 +272,12 @@
       <Filter>Source\LMN</Filter>
     </ClCompile>
     <ClInclude Include="..\..\Source\LMN\UW_DialogSelection.h">
+      <Filter>Source\LMN</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\LMN\UW_EquipmentSlot.cpp">
+      <Filter>Source\LMN</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\LMN\UW_EquipmentSlot.h">
       <Filter>Source\LMN</Filter>
     </ClInclude>
     <ClCompile Include="..\..\Source\LMN\UW_Global.cpp">
@@ -292,6 +304,12 @@
     <ClInclude Include="..\..\Source\LMN\UW_Icon.h">
       <Filter>Source\LMN</Filter>
     </ClInclude>
+    <ClCompile Include="..\..\Source\LMN\UW_Item.cpp">
+      <Filter>Source\LMN</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\LMN\UW_Item.h">
+      <Filter>Source\LMN</Filter>
+    </ClInclude>
     <ClCompile Include="..\..\Source\LMN\UW_Menu.cpp">
       <Filter>Source\LMN</Filter>
     </ClCompile>
@@ -308,6 +326,12 @@
       <Filter>Source\LMN</Filter>
     </ClCompile>
     <ClInclude Include="..\..\Source\LMN\UW_Overhead.h">
+      <Filter>Source\LMN</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\LMN\UW_PawnInfo.cpp">
+      <Filter>Source\LMN</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\LMN\UW_PawnInfo.h">
       <Filter>Source\LMN</Filter>
     </ClInclude>
     <ClCompile Include="..\..\Source\LMN\UW_ProgressBar.cpp">

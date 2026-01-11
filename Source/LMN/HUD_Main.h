@@ -31,8 +31,12 @@ protected:
     AGM_Main* GM_Main;
 
     UPROPERTY(Transient)
-    UUserWidget* UW_HUD;
+    UUW_HUD* UW_HUD;
 
+public:
+    UUW_HUD* GetUW_HUD() const { return UW_HUD; }
+
+protected:
     UFUNCTION()
     void OnGameStatusChanged(EGameStatus NewGameStatus);
 

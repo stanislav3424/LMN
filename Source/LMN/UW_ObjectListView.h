@@ -17,8 +17,12 @@ class LMN_API UUW_ObjectListView : public UUW_Base, public IUserObjectListEntry
 {
     GENERATED_BODY()
 
+protected:
+    virtual void NativeOnInitialized() override;
+
 public:
     virtual void NativeOnListItemObjectSet(UObject* ListItemObject) override;
+    virtual FReply NativeOnMouseButtonDown(const FGeometry& InGeometry, const FPointerEvent& InMouseEvent) override;
 
 protected:
     virtual void ObjectUpdated() override;
@@ -32,5 +36,8 @@ protected:
 
     UPROPERTY(meta = (BindWidget))
     UUW_Icon* UW_Icon;
+
+    UPROPERTY(EditDefaultsOnly, Category = "UMG")
+    TSubclassOf<UUserWidget> UserWidgetClass;
 };
 
