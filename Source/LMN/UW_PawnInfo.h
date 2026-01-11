@@ -3,11 +3,11 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "UW_Dialog.h"
+#include "UW_DialogDrag.h"
 #include "UW_PawnInfo.generated.h"
 
 UCLASS(Blueprintable, Abstract)
-class LMN_API UUW_PawnInfo : public UUW_Dialog
+class LMN_API UUW_PawnInfo : public UUW_DialogDrag
 {
     GENERATED_BODY()
 

@@ -1,3 +1,6 @@
-2026/01/11-10:28:36.594 15fc Reusing MANIFEST C:\Users\Stanislav\Documents\Unreal Projects\LMN\Saved\webcache_6613\Default\shared_proto_db/MANIFEST-000001
-2026/01/11-10:28:36.594 15fc Recovering log #4
-2026/01/11-10:28:36.596 15fc Reusing old log C:\Users\Stanislav\Documents\Unreal Projects\LMN\Saved\webcache_6613\Default\shared_proto_db/000004.log 
+2026/01/11-11:14:48.322 6dd8 Reusing MANIFEST C:\Users\Stanislav\Documents\Unreal Projects\LMN\Saved\webcache_6613\Default\shared_proto_db/MANIFEST-000001
+2026/01/11-11:14:48.323 6dd8 Recovering log #4
+2026/01/11-11:14:48.324 6dd8 Reusing old log C:\Users\Stanislav\Documents\Unreal Projects\LMN\Saved\webcache_6613\Default\shared_proto_db/000004.log 
+2026/01/11-11:14:49.749 342c Level-0 table #8: started
+2026/01/11-11:14:49.752 342c Level-0 table #8: 70079 bytes OK
+2026/01/11-11:14:49.753 342c Delete type=0 #4

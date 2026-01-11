@@ -10,6 +10,8 @@
 #include "UW_DialogBase.h"
 #include "AIControllerBase.h"
 #include "Components/CanvasPanel.h"
+#include "Components/CanvasPanelSlot.h"
+#include "DragDropOperation_UW.h"
 
 void UUW_HUD::NativeOnInitialized()
 {
@@ -40,7 +42,6 @@ void UUW_HUD::NativeOnInitialized()
     if (MenuUserWidget)
         MenuUserWidget->AddToViewport(100);
 
-    
 }
 
 void UUW_HUD::UpdateListView()
@@ -104,4 +105,25 @@ void UUW_HUD::TypeAIActionChange(ETypeAIAction const& NewTypeAIAction)
 
     auto Enum = StaticEnum<ETypeAIAction>();
     TypeAIActionTextBlock->SetText(FText::FromString(Enum->GetNameStringByValue((int64) NewTypeAIAction)));
+}
+
+bool UUW_HUD::NativeOnDrop(
+    const FGeometry& InGeometry, const FDragDropEvent& InDragDropEvent, UDragDropOperation* InDragDropOperation)
+{
+    auto DragDropOperation = Cast<UDragDropOperation_UW>(InDragDropOperation);
+    if (!DragDropOperation)
+        return false;
+
+    UWidget* DraggedWidget = DragDropOperation->DefaultDragVisual;
+    if (!DraggedWidget)
+        return false;
+
+    auto CanvasPanelSlot = RootCanvas->AddChildToCanvas(DraggedWidget);
+    if (!CanvasPanelSlot)
+        return false;
+    const FVector2D ScreenPos = InDragDropEvent.GetScreenSpacePosition();
+    const FVector2D LocalPos  = RootCanvas->GetCachedGeometry().AbsoluteToLocal(ScreenPos);
+    CanvasPanelSlot->SetAutoSize(true);
+    CanvasPanelSlot->SetPosition(LocalPos - DragDropOperation->CursorOffset);
+    return true;
 }

@@ -19,20 +19,19 @@ void UUMG_Library::AddToMainCanvas(UWorld* World, UUserWidget* Widget)
     auto UW_HUD = HUD->GetUW_HUD();
     if (!UW_HUD)
         return;
-    auto Canvas = UW_HUD->GetRootCanvas();
-    if (!Canvas)
+    auto CanvasPanel = UW_HUD->GetRootCanvas();
+    if (!CanvasPanel)
         return;
     Widget->RemoveFromParent();
-    auto Slot = Canvas->AddChildToCanvas(Widget);
-    if (!Slot)
+    auto CanvasPanelSlot = CanvasPanel->AddChildToCanvas(Widget);
+    if (!CanvasPanelSlot)
         return;
     int32 MaxZ = 0;
-    for (int32 Index = 0; Index < Canvas->GetChildrenCount(); ++Index)
-        if (auto Child = Canvas->GetChildAt(Index))
-            if (auto CanvasPanelSlot = Cast<UCanvasPanelSlot>(Child->Slot))
-                MaxZ = FMath::Max(MaxZ, CanvasPanelSlot->GetZOrder());
+    for (int32 Index = 0; Index < CanvasPanel->GetChildrenCount(); ++Index)
+        if (auto Child = CanvasPanel->GetChildAt(Index))
+            if (auto LocalCanvasPanelSlot = Cast<UCanvasPanelSlot>(Child->Slot))
+                MaxZ = FMath::Max(MaxZ, LocalCanvasPanelSlot->GetZOrder());
 
-    Slot->SetZOrder(MaxZ + 1);
-    Slot->SetAutoSize(true);
-    Slot->SetPosition(FVector2D::ZeroVector);
+    CanvasPanelSlot->SetAutoSize(true);
+    CanvasPanelSlot->SetPosition(FVector2D::ZeroVector);
 }

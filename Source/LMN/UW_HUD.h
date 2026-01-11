@@ -83,4 +83,7 @@ protected:
 
     UFUNCTION()
     void TypeAIActionChange(ETypeAIAction const& NewTypeAIAction);
+
+    virtual bool NativeOnDrop(const FGeometry& InGeometry, const FDragDropEvent& InDragDropEvent,
+        UDragDropOperation* InDragDropOperation) override;
 };

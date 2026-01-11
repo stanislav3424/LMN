@@ -6,9 +6,6 @@
 #include "Blueprint/DragDropOperation.h"
 #include "DragDropOperation_Item.generated.h"
 
-/**
- * 
- */
 UCLASS()
 class LMN_API UDragDropOperation_Item : public UDragDropOperation
 {
