@@ -7,6 +7,7 @@
 #include "IconRendering.generated.h"
 
 class USceneCaptureComponent2D;
+class USpringArmComponent;
 
 UCLASS(Blueprintable, Abstract)
 class LMN_API AIconRendering : public AActor
@@ -27,6 +28,9 @@ private:
     void CheckWorldReadiness();
 
 protected:
+    UPROPERTY(VisibleAnywhere) 
+    USpringArmComponent* SpringArm;
+
     UPROPERTY(VisibleAnywhere)
     USceneCaptureComponent2D* SceneCapture;
 
@@ -42,7 +46,7 @@ protected:
     UPROPERTY(EditDefaultsOnly, Category = "IconRendering|Warmup")
     float ReadinessCheckInterval = 0.1f;
 
-    UPROPERTY()
+    UPROPERTY(Transient)
     AActor* SpawnedRepresentationActor;
 
     TMap<FName, TPair<UTextureRenderTarget2D*, bool>> Textures;
@@ -54,6 +58,10 @@ protected:
     bool bIsWarmedUp = false;
 
     void Render(TPair<FDataTableRowHandle, UTextureRenderTarget2D*>& Pair);
+
+    void SettingCamera(AActor* Actor);
+
+    void SetLightingChannels(AActor* Actor);
 
 public:
     void RenderObjectToMID(UObject* Object, UMaterialInstanceDynamic* MID);

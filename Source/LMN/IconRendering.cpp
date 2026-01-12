@@ -2,6 +2,7 @@
 
 #include "IconRendering.h"
 #include "Components/SceneCaptureComponent2D.h"
+#include "GameFramework/SpringArmComponent.h"
 #include "Engine/TextureRenderTarget2D.h"
 #include "LogicBase.h"
 #include "GI_Main.h"
@@ -18,8 +19,13 @@ AIconRendering::AIconRendering()
     auto Root = CreateDefaultSubobject<USceneComponent>(TEXT("Root"));
     SetRootComponent(Root);
 
+    SpringArm = CreateDefaultSubobject<USpringArmComponent>(TEXT("SpringArm"));
+    SpringArm->SetupAttachment(Root);
+    SpringArm->bDoCollisionTest = false;
+    SpringArm->bEnableCameraLag = false;
+
     SceneCapture = CreateDefaultSubobject<USceneCaptureComponent2D>(TEXT("SceneCapture"));
-    SceneCapture->SetupAttachment(Root);
+    SceneCapture->SetupAttachment(SpringArm);
     SceneCapture->bCaptureEveryFrame = false;
     SceneCapture->bCaptureOnMovement = false;
 }
@@ -95,22 +101,21 @@ void AIconRendering::Tick(float DeltaSeconds)
     if (Queue.Dequeue(Pair))
     {
         Render(Pair);
-        const FDataTableRowHandle& RowHandle = Pair.Key;
-        UTextureRenderTarget2D* RenderTarget = Pair.Value;
+        const FDataTableRowHandle& RowHandle    = Pair.Key;
+        UTextureRenderTarget2D*    RenderTarget = Pair.Value;
 
-        if (RenderTarget)
+        if (!RenderTarget)
+            return;
+        if (auto Found = Textures.Find(RowHandle.RowName))
+            Found->Value = true;
+
+        if (auto WaitingMIDs = MIDs.Find(RenderTarget))
         {
-            if (auto Found = Textures.Find(RowHandle.RowName))
-                Found->Value = true;
+            for (auto WaitingMID : *WaitingMIDs)
+                if (WaitingMID)
+                    WaitingMID->SetScalarParameterValue(MIDTextureReadyParameterName, 1.f);
 
-            if (auto WaitingMIDs = MIDs.Find(RenderTarget))
-            {
-                for (auto WaitingMID : *WaitingMIDs)
-                    if (WaitingMID)
-                        WaitingMID->SetScalarParameterValue(MIDTextureReadyParameterName, 1.f);
-
-                MIDs.Remove(RenderTarget);
-            }
+            MIDs.Remove(RenderTarget);
         }
     }
 }
@@ -120,86 +125,108 @@ void AIconRendering::Render(TPair<FDataTableRowHandle, UTextureRenderTarget2D*>&
     if (!SceneCapture)
         return;
 
-    const FDataTableRowHandle& RowHandle = Pair.Key;
-    UTextureRenderTarget2D* RenderTarget = Pair.Value;
-    TSubclassOf<AActor> Class;
+    const FDataTableRowHandle& RowHandle    = Pair.Key;
+    UTextureRenderTarget2D*    RenderTarget = Pair.Value;
+    TSubclassOf<AActor>        Class;
 
     SceneCapture->TextureTarget = RenderTarget;
 
-    if (auto World = GetWorld())
-    {
-        if (auto GameInstance = World->GetGameInstance<UGI_Main>())
-        {
-            Class = GameInstance->GetRepresentationActorClassByRowHandle(RowHandle);
-            if (!Class)
-                return;
+    auto World = GetWorld();
+    if (!World)
+        return;
+    auto GameInstance = World->GetGameInstance<UGI_Main>();
+    if (!GameInstance)
+        return;
+    Class = GameInstance->GetRepresentationActorClassByRowHandle(RowHandle);
+    if (!Class)
+        return;
 
-            FActorSpawnParameters ActorSpawnParameters;
-            ActorSpawnParameters.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
+    FActorSpawnParameters ActorSpawnParameters;
+    ActorSpawnParameters.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
 
-            auto Actor = World->SpawnActor<AActor>(Class, GetActorTransform(), ActorSpawnParameters);
-            if (!Actor)
-                return;
+    auto Actor = World->SpawnActor<AActor>(Class, GetActorTransform(), ActorSpawnParameters);
+    if (!Actor)
+        return;
+    SettingCamera(Actor);
 
-            SceneCapture->ShowOnlyActors.Empty();
-            SceneCapture->ShowOnlyComponents.Empty();
-            SceneCapture->ShowOnlyActorComponents(Actor, true);
 
-            const bool bChannel0 = false;
-            const bool bChannel1 = true;
-            const bool bChannel2 = false;
+    SceneCapture->CaptureScene();
+    Actor->Destroy();
+}
 
-            auto Components = Actor->GetComponents().Array();
-            for (auto Component : Components)
-                if (auto Prim = Cast<UPrimitiveComponent>(Component))
-                    Prim->SetLightingChannels(bChannel0, bChannel1, bChannel2);
+void AIconRendering::SettingCamera(AActor* Actor)
+{
+    if (!Actor || !SceneCapture)
+        return;
 
-            SceneCapture->CaptureScene();
-            Actor->Destroy();
-        }
-    }
+    SceneCapture->ShowOnlyActors.Empty();
+    SceneCapture->ShowOnlyComponents.Empty();
+    SceneCapture->ShowOnlyActorComponents(Actor, true);
+    SetLightingChannels(Actor);
+
+    FVector Origin;
+    FVector Extent;
+    Actor->GetActorBounds(true, Origin, Extent);
+    float RequiredOrthoWidth     = FMath::Max(Extent.X, Extent.Y, Extent.Z) * 2.2f;
+    SceneCapture->ProjectionType = ECameraProjectionMode::Orthographic;
+    SceneCapture->OrthoWidth     = RequiredOrthoWidth;
+
+    FVector Location = this->GetActorLocation();
+    FVector Delta    = Location - Origin;
+    Actor->SetActorLocation(Location + Delta);
+}
+
+void AIconRendering::SetLightingChannels(AActor* Actor)
+{
+    const bool bChannel0 = false;
+    const bool bChannel1 = true;
+    const bool bChannel2 = false;
+
+    auto Components = Actor->GetComponents().Array();
+    for (auto Component : Components)
+        if (auto PrimitiveComponent = Cast<UPrimitiveComponent>(Component))
+            PrimitiveComponent->SetLightingChannels(bChannel0, bChannel1, bChannel2);
 }
 
 void AIconRendering::RenderObjectToMID(UObject* Object, UMaterialInstanceDynamic* MID)
 {
     if (!Object || !MID)
         return;
+    auto Logic = Cast<ULogicBase>(Object);
+    if (!Logic)
+        return;
 
-    if (auto Logic = Cast<ULogicBase>(Object))
+    auto RowHandle = Logic->GetLogicRowHandle();
+    if (auto* Found = Textures.Find(RowHandle.RowName))
     {
-        auto RowHandle = Logic->GetLogicRowHandle();
-        auto Find = Textures.Find(RowHandle.RowName);
-        if (auto* Found = Textures.Find(RowHandle.RowName))
+        auto RenderTarget = (*Found).Key;
+        bool bReady       = (*Found).Value;
+
+        if (RenderTarget)
         {
-            auto RenderTarget = (*Found).Key;
-            bool bReady = (*Found).Value;
+            MID->SetTextureParameterValue(MIDTextureParameterName, RenderTarget);
 
-            if (RenderTarget)
-            {
-                MID->SetTextureParameterValue(MIDTextureParameterName, RenderTarget);
-
-                if (bReady)
-                    MID->SetScalarParameterValue(MIDTextureReadyParameterName, 1.f);
-                else
-                    MIDs.FindOrAdd(RenderTarget).Add(MID);
-            }
-
-            return;
+            if (bReady)
+                MID->SetScalarParameterValue(MIDTextureReadyParameterName, 1.f);
+            else
+                MIDs.FindOrAdd(RenderTarget).Add(MID);
         }
 
-        if (auto NewRenderTarget = NewObject<UTextureRenderTarget2D>(this))
-        {
-            const int32 RTSize = 256;
-            NewRenderTarget->InitAutoFormat(RTSize, RTSize);
-            NewRenderTarget->ClearColor = FLinearColor(0, 0, 0, 0);
-            NewRenderTarget->UpdateResourceImmediate(true);
+        return;
+    }
 
-            Textures.Add(RowHandle.RowName, TPair<UTextureRenderTarget2D*, bool>(NewRenderTarget, false));
-            Queue.Enqueue(TPair<FDataTableRowHandle, UTextureRenderTarget2D*>(RowHandle, NewRenderTarget));
+    if (auto NewRenderTarget = NewObject<UTextureRenderTarget2D>(this))
+    {
+        const int32 RTSize = 256;
+        NewRenderTarget->InitAutoFormat(RTSize, RTSize);
+        NewRenderTarget->ClearColor = FLinearColor(0, 0, 0, 0);
+        NewRenderTarget->UpdateResourceImmediate(true);
 
-            MID->SetTextureParameterValue(MIDTextureParameterName, NewRenderTarget);
-            MIDs.FindOrAdd(NewRenderTarget).Add(MID);
-        }
+        Textures.Add(RowHandle.RowName, TPair<UTextureRenderTarget2D*, bool>(NewRenderTarget, false));
+        Queue.Enqueue(TPair<FDataTableRowHandle, UTextureRenderTarget2D*>(RowHandle, NewRenderTarget));
+
+        MID->SetTextureParameterValue(MIDTextureParameterName, NewRenderTarget);
+        MIDs.FindOrAdd(NewRenderTarget).Add(MID);
     }
 }
 

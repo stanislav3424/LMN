@@ -7,6 +7,7 @@
 #include "UW_EquipmentSlot.generated.h"
 
 enum class EEquipmentSlot : uint8;
+class ULogicBase;
 
 UCLASS(Blueprintable, Abstract)
 class LMN_API UUW_EquipmentSlot : public UUW_Item
@@ -21,12 +22,15 @@ protected:
     UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "EquipmentSlot")
     EEquipmentSlot EquipmentSlot;
 
+    UPROPERTY(Transient)
+    ULogicBase* ItemInSlot;
+
 public:
     UFUNCTION(BlueprintCallable, Category = "EquipmentSlot")
     void SetEquipmentSlot(EEquipmentSlot NewEquipmentSlot);
 
     UFUNCTION()
-    void           OnEquipmentChanged();
+    void OnEquipmentChanged();
 
     EEquipmentSlot GetEquipmentSlot() const { return EquipmentSlot; }
 };

@@ -36,5 +36,8 @@ void UUW_EquipmentSlot::OnEquipmentChanged()
     if (!CharacterLogic)
         return;
     auto Item = CharacterLogic->GetItemInSlot(EquipmentSlot);
-    ObjectUpdatedChildWidgets(Item);
+    if (ItemInSlot == Item)
+        return;
+    ItemInSlot = Item; 
+    ObjectUpdatedChildWidgets(ItemInSlot);
 }

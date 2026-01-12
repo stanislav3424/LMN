@@ -27,6 +27,7 @@ void USC_Selected::OnRegister()
             SelectionMesh->RegisterComponent();
             SelectionMesh->SetMobility(EComponentMobility::Movable);
             SelectionMesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+            SelectionMesh->bHiddenInSceneCapture = true;
             if (DefaultMesh)
                 SelectionMesh->SetStaticMesh(DefaultMesh);
         }
