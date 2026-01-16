@@ -3,14 +3,14 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "UW_Item.h"
+#include "UW_Base.h"
 #include "UW_EquipmentSlot.generated.h"
 
 enum class EEquipmentSlot : uint8;
 class ULogicBase;
 
 UCLASS(Blueprintable, Abstract)
-class LMN_API UUW_EquipmentSlot : public UUW_Item
+class LMN_API UUW_EquipmentSlot : public UUW_Base
 {
     GENERATED_BODY()
 

@@ -33,5 +33,8 @@ void UUMG_Library::AddToMainCanvas(UWorld* World, UUserWidget* Widget)
                 MaxZ = FMath::Max(MaxZ, LocalCanvasPanelSlot->GetZOrder());
 
     CanvasPanelSlot->SetAutoSize(true);
+    CanvasPanelSlot->SetZOrder(MaxZ + 1);
+    CanvasPanelSlot->SetAnchors(FAnchors(0.5f, 0.5f, 0.5f, 0.5f));
+    CanvasPanelSlot->SetAlignment(FVector2D(0.5f, 0.5f));
     CanvasPanelSlot->SetPosition(FVector2D::ZeroVector);
 }

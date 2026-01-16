@@ -6,4 +6,5 @@ void UUW_Item::ObjectUpdated()
 {
     Super::ObjectUpdated();
 
+    UpdatedChildWidgets();
 }
