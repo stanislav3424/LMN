@@ -2,6 +2,7 @@
 
 #include "UW_EquipmentSlot.h"
 #include "CharacterLogic.h"
+#include "UW_Item.h"
 
 UUW_EquipmentSlot::UUW_EquipmentSlot()
 {
@@ -36,8 +37,14 @@ void UUW_EquipmentSlot::OnEquipmentChanged()
     if (!CharacterLogic)
         return;
     auto Item = CharacterLogic->GetItemInSlot(EquipmentSlot);
+
+    if (UW_Item && Item)
+        UW_Item->SetVisibility(ESlateVisibility::Visible);
+    else
+        UW_Item->SetVisibility(ESlateVisibility::Hidden);
+
     if (ItemInSlot == Item)
         return;
-    ItemInSlot = Item; 
+    ItemInSlot = Item;
     ObjectUpdatedChildWidgets(ItemInSlot);
 }

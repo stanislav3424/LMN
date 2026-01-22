@@ -31,6 +31,9 @@ struct FLogicRow : public FLogicBaseRow
 
     UPROPERTY(EditAnywhere, BlueprintReadWrite)
     float MaxHealth = 100.f;
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite)
+    FIntVector2 ItemSize = FIntVector2(0, 0);
 };
 
 USTRUCT(BlueprintType)
@@ -82,6 +85,15 @@ struct FWeaponRow : public FEquipmentRow
 
     UPROPERTY(EditAnywhere, BlueprintReadWrite)
     float MOARadians = 10.f;
+};
+
+USTRUCT(BlueprintType)
+struct FInventoryRow : public FEquipmentRow
+{
+    GENERATED_BODY()
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite)
+    FIntVector2 InventorySize = FIntVector2(0, 0);
 };
 
 enum class EGameStatus : uint8;

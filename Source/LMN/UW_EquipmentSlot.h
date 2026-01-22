@@ -8,6 +8,7 @@
 
 enum class EEquipmentSlot : uint8;
 class ULogicBase;
+class UUW_Item;
 
 UCLASS(Blueprintable, Abstract)
 class LMN_API UUW_EquipmentSlot : public UUW_Base
@@ -25,6 +26,9 @@ protected:
     UPROPERTY(Transient)
     ULogicBase* ItemInSlot;
 
+    UPROPERTY(meta = (BindWidget))
+    UUW_Item* UW_Item;
+
 public:
     UFUNCTION(BlueprintCallable, Category = "EquipmentSlot")
     void SetEquipmentSlot(EEquipmentSlot NewEquipmentSlot);
@@ -33,4 +37,5 @@ public:
     void OnEquipmentChanged();
 
     EEquipmentSlot GetEquipmentSlot() const { return EquipmentSlot; }
+
 };

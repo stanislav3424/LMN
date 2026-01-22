@@ -18,12 +18,9 @@ void ULogicBase::Initialization(FDataTableRowHandle RowHandle)
 
 void ULogicBase::SetOwnerLogic(ULogicBase* NewOwnerLogic)
 {
-    if (NewOwnerLogic)
-        if (OwnerLogic != NewOwnerLogic)
-        {
-            OwnerLogic = NewOwnerLogic;
-            OwnerLogicChanged();
-        }
+    auto LocalOwnerLogic = OwnerLogic;
+    OwnerLogic           = NewOwnerLogic;
+    OwnerLogicChanged(LocalOwnerLogic, NewOwnerLogic);
 }
 
 ULogicBase* ULogicBase::GetOwnerLogic()
@@ -33,8 +30,11 @@ ULogicBase* ULogicBase::GetOwnerLogic()
 
 void ULogicBase::RemoveOwnerLogic()
 {
+    if (OwnerLogic == nullptr)
+        return;
+    auto LocalOwnerLogic = OwnerLogic;
     OwnerLogic = nullptr;
-    OwnerLogicChanged();
+    OwnerLogicChanged(LocalOwnerLogic, nullptr);
 }
 
 FDataTableRowHandle ULogicBase::GetLogicRowHandle()
@@ -42,7 +42,13 @@ FDataTableRowHandle ULogicBase::GetLogicRowHandle()
     return LogicRowHandle;
 }
 
-void ULogicBase::OwnerLogicChanged()
+void ULogicBase::OwnerLogicChanged(ULogicBase* OldOwnerLogic, ULogicBase* NewOwnerLogic)
+{
+    if (OldOwnerLogic)
+        OldOwnerLogic->RemoveChildLogic(this);
+}
+
+void ULogicBase::RemoveChildLogic(ULogicBase* Logic)
 {
 }
 

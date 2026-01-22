@@ -12,8 +12,9 @@ void ULogic::LoadingDataTable()
     if (auto const* Row = LogicRowHandle.DataTable->FindRow<FLogicRow>(LogicRowHandle.RowName, TEXT("")))
     {
         bCanTakeDamage = Row->bCanTakeDamage;
-        MaxHealth = Row->MaxHealth;
-        CurrentHealth = MaxHealth;
+        MaxHealth      = Row->MaxHealth;
+        CurrentHealth  = MaxHealth;
+        ItemSize       = Row->ItemSize;
     }
 }
 
@@ -22,9 +23,7 @@ void ULogic::BindEvents()
     Super::BindEvents();
 
     if (IsValid(RepresentationActor))
-    {
-            RepresentationActor->OnTakeAnyDamage.AddUniqueDynamic(this, &ULogic::HandleOwnerDamage);
-    }
+        RepresentationActor->OnTakeAnyDamage.AddUniqueDynamic(this, &ULogic::HandleOwnerDamage);
 }
 
 void ULogic::UnbindEvents()

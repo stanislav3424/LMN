@@ -39,7 +39,7 @@ protected:
         AController* InstigatedBy, AActor* DamageCauser);
 
 protected:
-    bool  bCanTakeDamage;
+    bool  bCanTakeDamage = false;
     float MaxHealth = INDEX_NONE;
     float CurrentHealth = INDEX_NONE;
 
@@ -64,7 +64,7 @@ public:
     void  SetTeam(ETeam const& NewTeam);
 
     FGenericTeamId GetTeamId() const;
-    FORCEINLINE void SetTeamId(const FGenericTeamId& NewId);
+    void SetTeamId(const FGenericTeamId& NewId);
 
     // Selected
 protected:
@@ -76,4 +76,11 @@ public:
     void BroadcastOnSelectedChange() const;
     bool IsSelected() const { return bIsSelected; };
     void SetSelected(bool bNewSelected);
+
+    // Item
+protected:
+    FIntVector2 ItemSize = FIntVector2(0, 0);
+
+public:
+    FIntVector2 GetItemSize() const { return ItemSize; };
 };

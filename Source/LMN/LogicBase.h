@@ -27,7 +27,8 @@ public:
     FDataTableRowHandle GetLogicRowHandle();
 
 protected:
-    virtual void OwnerLogicChanged();
+    virtual void OwnerLogicChanged(ULogicBase* OldOwnerLogic, ULogicBase* NewOwnerLogic);
+    virtual void RemoveChildLogic(ULogicBase* Logic);
 
 protected:
     virtual void LoadingDataTable();
