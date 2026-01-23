@@ -14,12 +14,9 @@ class LMN_API UUW_ProgressBar : public UUW_Base
     GENERATED_BODY()
 
 protected:
-    virtual void NativeConstruct() override;
-
     UPROPERTY(meta = (BindWidget))
     UProgressBar* ProgressBar;
 
     UFUNCTION()
     void SetPercent(float Current, float Max);
-
 };

@@ -2,9 +2,7 @@
 
 #include "UW_PawnInfo.h"
 
-void UUW_PawnInfo::ObjectUpdated()
+void UUW_PawnInfo::ObjectUpdated(UObject* OldLogic, UObject* NewLogic)
 {
-    Super::ObjectUpdated();
-
-    UpdatedChildWidgets();
+    Super::ObjectUpdated(OldLogic, NewLogic);
 }

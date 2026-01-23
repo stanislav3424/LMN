@@ -4,16 +4,22 @@
 #include "Logic.h"
 #include "BFL.h"
 
-void UUW_HealthProgressBar::ObjectUpdated()
+void UUW_HealthProgressBar::ObjectUpdated(UObject* OldLogic, UObject* NewLogic)
 {
-    Super::ObjectUpdated();
+    Super::ObjectUpdated(OldLogic, NewLogic);
 
-    if (LogicBase)
-        if (auto Logic = Cast<ULogic>(LogicBase))
+    if (OldLogic)
+        if (auto CharacterLogic = Cast<ULogic>(OldLogic))
+            CharacterLogic->OnHealthChange.RemoveDynamic(this, &UUW_HealthProgressBar::SetPercent);
+        else
+            CHECK_FIELD(CharacterLogic);
+
+    if (NewLogic)
+        if (auto LocalLogic = Cast<ULogic>(NewLogic))
         {
-            Logic->OnHealthChange.AddUniqueDynamic(this, &UUW_HealthProgressBar::SetPercent);
-            Logic->BroadcastOnHealthChange();
+            LocalLogic->OnHealthChange.AddUniqueDynamic(this, &UUW_HealthProgressBar::SetPercent);
+            LocalLogic->BroadcastOnHealthChange();
         }
         else
-            CHECK_FIELD(Logic);
+            CHECK_FIELD(LocalLogic);
 }

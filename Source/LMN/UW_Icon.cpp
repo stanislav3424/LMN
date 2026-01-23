@@ -26,14 +26,14 @@ void UUW_Icon::NativeTick(const FGeometry& MyGeometry, float InDeltaTime)
     }
 }
 
-void UUW_Icon::ObjectUpdated()
+void UUW_Icon::ObjectUpdated(UObject* OldLogic, UObject* NewLogic)
 {
-    Super::ObjectUpdated();
+    Super::ObjectUpdated(OldLogic, NewLogic);
 
     if (IconImage && !IconMID)
         IconMID = IconImage->GetDynamicMaterial();
-    if (LogicBase && IconMID)
-        AIconRendering::GetIcon(LogicBase, IconMID);
+    if (NewLogic && IconMID)
+        AIconRendering::GetIcon(NewLogic, IconMID);
 }
 
 void UUW_Icon::WidgetSizeChanged(const FVector2D& NewSize)

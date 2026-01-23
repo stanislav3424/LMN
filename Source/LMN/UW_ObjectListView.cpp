@@ -1,11 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "UW_ObjectListView.h"
-#include "CharacterLogic.h"
-#include "UW_StaminaProgressBar.h"
-#include "UW_HealthProgressBar.h"
 #include "BFL.h"
-#include "UW_Icon.h"
 #include "UMG_Library.h"
 
 void UUW_ObjectListView::NativeOnInitialized()
@@ -25,7 +21,7 @@ FReply UUW_ObjectListView::NativeOnMouseButtonDown(const FGeometry& InGeometry, 
     if (InMouseEvent.IsMouseButtonDown(EKeys::RightMouseButton))
     {
         auto UserWidget = CreateWidget(GetWorld(), UserWidgetClass);
-        UBFL::SetLogic(UserWidget, LogicBase);
+        UBFL::SetLogic(UserWidget, UBFL::GetLogic(this));
         UUMG_Library::AddToMainCanvas(GetWorld(), UserWidget);
 
         return FReply::Handled();
@@ -34,9 +30,7 @@ FReply UUW_ObjectListView::NativeOnMouseButtonDown(const FGeometry& InGeometry, 
     return Super::NativeOnMouseButtonDown(InGeometry, InMouseEvent);
 }
 
-void UUW_ObjectListView::ObjectUpdated()
+void UUW_ObjectListView::ObjectUpdated(UObject* OldLogic, UObject* NewLogic)
 {
-    Super::ObjectUpdated();
-
-    UpdatedChildWidgets();
+    Super::ObjectUpdated(OldLogic, NewLogic);
 }

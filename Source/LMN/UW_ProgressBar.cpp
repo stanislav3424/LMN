@@ -4,12 +4,6 @@
 #include "Components/ProgressBar.h"
 #include "BFL.h"
 
-
-void UUW_ProgressBar::NativeConstruct()
-{
-    Super::NativeConstruct();
-}
-
 void UUW_ProgressBar::SetPercent(float Current, float Max)
 {
     if (ProgressBar)

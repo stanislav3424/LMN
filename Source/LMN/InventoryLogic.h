@@ -10,7 +10,7 @@ DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnInventoryChanged);
 
 class ULogic;
 
-UCLASS()
+UCLASS(Blueprintable)
 class LMN_API UInventoryLogic : public UEquipmentLogic
 {
     GENERATED_BODY()

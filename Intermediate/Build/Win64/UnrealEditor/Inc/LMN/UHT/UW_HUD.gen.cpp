@@ -479,7 +479,6 @@ UClass* Z_Construct_UClass_UUW_HUD()
 	}
 	return Z_Registration_Info_UClass_UUW_HUD.OuterSingleton;
 }
-UUW_HUD::UUW_HUD(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {}
 DEFINE_VTABLE_PTR_HELPER_CTOR_NS(, UUW_HUD);
 UUW_HUD::~UUW_HUD() {}
 // ********** End Class UUW_HUD ********************************************************************
@@ -488,10 +487,10 @@ UUW_HUD::~UUW_HUD() {}
 struct Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_UW_HUD_h__Script_LMN_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_UUW_HUD, UUW_HUD::StaticClass, TEXT("UUW_HUD"), &Z_Registration_Info_UClass_UUW_HUD, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UUW_HUD), 674326895U) },
+		{ Z_Construct_UClass_UUW_HUD, UUW_HUD::StaticClass, TEXT("UUW_HUD"), &Z_Registration_Info_UClass_UUW_HUD, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UUW_HUD), 4222927832U) },
 	};
 }; // Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_UW_HUD_h__Script_LMN_Statics 
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_UW_HUD_h__Script_LMN_3026555535{
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_UW_HUD_h__Script_LMN_3069392610{
 	TEXT("/Script/LMN"),
 	Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_UW_HUD_h__Script_LMN_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_UW_HUD_h__Script_LMN_Statics::ClassInfo),
 	nullptr, 0,

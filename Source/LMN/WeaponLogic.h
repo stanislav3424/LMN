@@ -38,7 +38,7 @@ protected:
     virtual void LoadingDataTable() override;
     virtual void Tick(float DeltaTime) override;
     virtual void EndPlay() override;
-    virtual void OwnerLogicChanged() override;
+    virtual void OwnerLogicChanged(ULogicBase* OldOwnerLogic, ULogicBase* NewOwnerLogic) override;
 
     UPROPERTY(Transient)
     ACharacter* AttachmentParentCharacter;

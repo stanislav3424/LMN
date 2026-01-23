@@ -12,5 +12,5 @@ class LMN_API UUW_StaminaProgressBar : public UUW_ProgressBar
     GENERATED_BODY()
 
 protected:
-    virtual void ObjectUpdated() override;
+    virtual void ObjectUpdated(UObject* OldLogic, UObject* NewLogic) override;
 };

@@ -13,6 +13,11 @@
 #include "Components/CanvasPanelSlot.h"
 #include "DragDropOperation_UW.h"
 
+UUW_HUD::UUW_HUD()
+{
+    bAutoUpdatedChildWidgets = false;
+}
+
 void UUW_HUD::NativeOnInitialized()
 {
     Super::NativeOnInitialized();
@@ -51,14 +56,14 @@ void UUW_HUD::UpdateListView()
     {
         auto const& Actors = PC_Main->GetAddActorsSelected();
         for (auto const& Actor : Actors)
-            if (auto Logic = UBFL::GetLogic(Actor))
-                SelectedListView->AddItem(Logic);
+            if (auto LocalLogic = UBFL::GetLogic(Actor))
+                SelectedListView->AddItem(LocalLogic);
     }
     {
         auto const& Actors = PC_Main->GetRemoveActorsSelected();
         for (auto const& Actor : Actors)
-            if (auto Logic = UBFL::GetLogic(Actor))
-                SelectedListView->RemoveItem(Logic);
+            if (auto LocalLogic = UBFL::GetLogic(Actor))
+                SelectedListView->RemoveItem(LocalLogic);
     }
 }
 

@@ -12,5 +12,5 @@ class LMN_API UUW_Item : public UUW_Base
     GENERATED_BODY()
 
 protected:
-    virtual void ObjectUpdated();
+    virtual void ObjectUpdated(UObject* OldLogic, UObject* NewLogic);
 };

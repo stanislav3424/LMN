@@ -22,6 +22,8 @@ class LMN_API UUW_HUD : public UUW_Global
 {
     GENERATED_BODY()
 
+    UUW_HUD();
+
 protected:
     virtual void NativeOnInitialized() override;
 
@@ -86,4 +88,5 @@ protected:
 
     virtual bool NativeOnDrop(const FGeometry& InGeometry, const FDragDropEvent& InDragDropEvent,
         UDragDropOperation* InDragDropOperation) override;
+
 };

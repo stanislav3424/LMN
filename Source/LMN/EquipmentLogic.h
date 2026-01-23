@@ -8,7 +8,7 @@
 
 enum class EEquipmentSlot : uint8;
 
-UCLASS()
+UCLASS(Blueprintable)
 class LMN_API UEquipmentLogic : public ULogic
 {
     GENERATED_BODY()

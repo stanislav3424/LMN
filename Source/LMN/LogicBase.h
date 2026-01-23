@@ -6,7 +6,7 @@
 #include "UObject/Object.h"
 #include "LogicBase.generated.h"
 
-UCLASS()
+UCLASS(NotBlueprintable)
 class LMN_API ULogicBase : public UObject
 {
     GENERATED_BODY()
@@ -17,6 +17,7 @@ public:
 protected:
     FDataTableRowHandle LogicRowHandle;
 
+private:
     UPROPERTY(Transient)
     ULogicBase* OwnerLogic;
 

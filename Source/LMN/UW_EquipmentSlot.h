@@ -18,7 +18,7 @@ class LMN_API UUW_EquipmentSlot : public UUW_Base
     UUW_EquipmentSlot();
 
 protected:
-    virtual void ObjectUpdated();
+    virtual void ObjectUpdated(UObject* OldLogic, UObject* NewLogic);
 
     UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "EquipmentSlot")
     EEquipmentSlot EquipmentSlot;
@@ -30,9 +30,6 @@ protected:
     UUW_Item* UW_Item;
 
 public:
-    UFUNCTION(BlueprintCallable, Category = "EquipmentSlot")
-    void SetEquipmentSlot(EEquipmentSlot NewEquipmentSlot);
-
     UFUNCTION()
     void OnEquipmentChanged();
 

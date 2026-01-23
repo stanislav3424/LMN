@@ -2,9 +2,7 @@
 
 #include "UW_Item.h"
 
-void UUW_Item::ObjectUpdated()
+void UUW_Item::ObjectUpdated(UObject* OldLogic, UObject* NewLogic)
 {
-    Super::ObjectUpdated();
-
-    UpdatedChildWidgets();
+    Super::ObjectUpdated(OldLogic, NewLogic);
 }

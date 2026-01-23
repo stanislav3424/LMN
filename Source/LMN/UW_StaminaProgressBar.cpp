@@ -4,16 +4,22 @@
 #include "CharacterLogic.h"
 #include "BFL.h"
 
-void UUW_StaminaProgressBar::ObjectUpdated()
+void UUW_StaminaProgressBar::ObjectUpdated(UObject* OldLogic, UObject* NewLogic)
 {
-    Super::ObjectUpdated();
+    Super::ObjectUpdated(OldLogic, NewLogic);
 
-    if (LogicBase)
-        if (auto Logic = Cast<UCharacterLogic>(LogicBase))
+    if (OldLogic)
+        if (auto CharacterLogic = Cast<UCharacterLogic>(OldLogic))
+            CharacterLogic->OnStaminaChanged.RemoveDynamic(this, &UUW_StaminaProgressBar::SetPercent);
+        else
+            CHECK_FIELD(CharacterLogic);
+
+    if (NewLogic)
+        if (auto CharacterLogic = Cast<UCharacterLogic>(NewLogic))
         {
-            Logic->OnStaminaChanged.AddUniqueDynamic(this, &UUW_StaminaProgressBar::SetPercent);
-            Logic->BroadcastOnStaminaChanged();
+            CharacterLogic->OnStaminaChanged.AddUniqueDynamic(this, &UUW_StaminaProgressBar::SetPercent);
+            CharacterLogic->BroadcastOnStaminaChanged();
         }
         else
-            CHECK_FIELD(Logic);
+            CHECK_FIELD(CharacterLogic);
 }

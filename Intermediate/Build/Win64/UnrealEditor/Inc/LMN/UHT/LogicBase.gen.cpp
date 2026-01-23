@@ -54,6 +54,7 @@ struct Z_Construct_UClass_ULogicBase_Statics
 #if WITH_METADATA
 	static constexpr UECodeGen_Private::FMetaDataPairParam Class_MetaDataParams[] = {
 		{ "IncludePath", "LogicBase.h" },
+		{ "IsBlueprintBase", "false" },
 		{ "ModuleRelativePath", "LogicBase.h" },
 	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_OwnerLogic_MetaData[] = {
@@ -77,7 +78,7 @@ struct Z_Construct_UClass_ULogicBase_Statics
 }; // struct Z_Construct_UClass_ULogicBase_Statics
 
 // ********** Begin Class ULogicBase Property Definitions ******************************************
-const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ULogicBase_Statics::NewProp_OwnerLogic = { "OwnerLogic", nullptr, (EPropertyFlags)0x0020080000002000, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ULogicBase, OwnerLogic), Z_Construct_UClass_ULogicBase_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_OwnerLogic_MetaData), NewProp_OwnerLogic_MetaData) };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ULogicBase_Statics::NewProp_OwnerLogic = { "OwnerLogic", nullptr, (EPropertyFlags)0x0040000000002000, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ULogicBase, OwnerLogic), Z_Construct_UClass_ULogicBase_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_OwnerLogic_MetaData), NewProp_OwnerLogic_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ULogicBase_Statics::NewProp_RepresentationActor = { "RepresentationActor", nullptr, (EPropertyFlags)0x0020080000002000, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ULogicBase, RepresentationActor), Z_Construct_UClass_AActor_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_RepresentationActor_MetaData), NewProp_RepresentationActor_MetaData) };
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_ULogicBase_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ULogicBase_Statics::NewProp_OwnerLogic,
@@ -125,10 +126,10 @@ ULogicBase::~ULogicBase() {}
 struct Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_LogicBase_h__Script_LMN_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_ULogicBase, ULogicBase::StaticClass, TEXT("ULogicBase"), &Z_Registration_Info_UClass_ULogicBase, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ULogicBase), 2619874245U) },
+		{ Z_Construct_UClass_ULogicBase, ULogicBase::StaticClass, TEXT("ULogicBase"), &Z_Registration_Info_UClass_ULogicBase, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ULogicBase), 2121659408U) },
 	};
 }; // Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_LogicBase_h__Script_LMN_Statics 
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_LogicBase_h__Script_LMN_2915503826{
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_LogicBase_h__Script_LMN_240484254{
 	TEXT("/Script/LMN"),
 	Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_LogicBase_h__Script_LMN_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_LogicBase_h__Script_LMN_Statics::ClassInfo),
 	nullptr, 0,

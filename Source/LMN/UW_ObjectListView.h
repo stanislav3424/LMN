@@ -7,11 +7,6 @@
 #include "Blueprint/IUserObjectListEntry.h"
 #include "UW_ObjectListView.generated.h"
 
-class UCharacterLogic;
-class UUW_StaminaProgressBar;
-class UUW_HealthProgressBar;
-class UUW_Icon;
-
 UCLASS(Blueprintable, Abstract)
 class LMN_API UUW_ObjectListView : public UUW_Base, public IUserObjectListEntry
 {
@@ -25,17 +20,7 @@ public:
     virtual FReply NativeOnMouseButtonDown(const FGeometry& InGeometry, const FPointerEvent& InMouseEvent) override;
 
 protected:
-    virtual void ObjectUpdated() override;
-
-protected:
-    UPROPERTY(meta = (BindWidget))
-    UUW_StaminaProgressBar* StaminaProgressBar;
-
-    UPROPERTY(meta = (BindWidget))
-    UUW_HealthProgressBar* HealthProgressBar;
-
-    UPROPERTY(meta = (BindWidget))
-    UUW_Icon* UW_Icon;
+    virtual void ObjectUpdated(UObject* OldLogic, UObject* NewLogic) override;
 
     UPROPERTY(EditDefaultsOnly, Category = "UMG")
     TSubclassOf<UUserWidget> UserWidgetClass;

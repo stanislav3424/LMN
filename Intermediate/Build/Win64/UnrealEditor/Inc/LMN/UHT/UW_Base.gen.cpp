@@ -12,7 +12,7 @@ static_assert(!UE_WITH_CONSTINIT_UOBJECT, "This generated code can only be compi
 void EmptyLinkFunctionForGeneratedCodeUW_Base() {}
 
 // ********** Begin Cross Module References ********************************************************
-LMN_API UClass* Z_Construct_UClass_ULogicBase_NoRegister();
+COREUOBJECT_API UClass* Z_Construct_UClass_UObject_NoRegister();
 LMN_API UClass* Z_Construct_UClass_ULogicInterface_NoRegister();
 LMN_API UClass* Z_Construct_UClass_UUW_Base();
 LMN_API UClass* Z_Construct_UClass_UUW_Base_NoRegister();
@@ -58,13 +58,19 @@ struct Z_Construct_UClass_UUW_Base_Statics
 		{ "IsBlueprintBase", "false" },
 		{ "ModuleRelativePath", "UW_Base.h" },
 	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_LogicBase_MetaData[] = {
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_Logic_MetaData[] = {
+		{ "ModuleRelativePath", "UW_Base.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_bAutoUpdatedChildWidgets_MetaData[] = {
+		{ "Category", "ChildWidgets" },
 		{ "ModuleRelativePath", "UW_Base.h" },
 	};
 #endif // WITH_METADATA
 
 // ********** Begin Class UUW_Base constinit property declarations *********************************
-	static const UECodeGen_Private::FObjectPropertyParams NewProp_LogicBase;
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_Logic;
+	static void NewProp_bAutoUpdatedChildWidgets_SetBit(void* Obj);
+	static const UECodeGen_Private::FBoolPropertyParams NewProp_bAutoUpdatedChildWidgets;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 // ********** End Class UUW_Base constinit property declarations ***********************************
 	static UObject* (*const DependentSingletons[])();
@@ -76,9 +82,15 @@ struct Z_Construct_UClass_UUW_Base_Statics
 }; // struct Z_Construct_UClass_UUW_Base_Statics
 
 // ********** Begin Class UUW_Base Property Definitions ********************************************
-const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UUW_Base_Statics::NewProp_LogicBase = { "LogicBase", nullptr, (EPropertyFlags)0x0020080000002000, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UUW_Base, LogicBase), Z_Construct_UClass_ULogicBase_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_LogicBase_MetaData), NewProp_LogicBase_MetaData) };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UUW_Base_Statics::NewProp_Logic = { "Logic", nullptr, (EPropertyFlags)0x0040000000002000, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UUW_Base, Logic), Z_Construct_UClass_UObject_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Logic_MetaData), NewProp_Logic_MetaData) };
+void Z_Construct_UClass_UUW_Base_Statics::NewProp_bAutoUpdatedChildWidgets_SetBit(void* Obj)
+{
+	((UUW_Base*)Obj)->bAutoUpdatedChildWidgets = 1;
+}
+const UECodeGen_Private::FBoolPropertyParams Z_Construct_UClass_UUW_Base_Statics::NewProp_bAutoUpdatedChildWidgets = { "bAutoUpdatedChildWidgets", nullptr, (EPropertyFlags)0x0020080000010001, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, sizeof(bool), sizeof(UUW_Base), &Z_Construct_UClass_UUW_Base_Statics::NewProp_bAutoUpdatedChildWidgets_SetBit, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_bAutoUpdatedChildWidgets_MetaData), NewProp_bAutoUpdatedChildWidgets_MetaData) };
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_UUW_Base_Statics::PropPointers[] = {
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UUW_Base_Statics::NewProp_LogicBase,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UUW_Base_Statics::NewProp_Logic,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UUW_Base_Statics::NewProp_bAutoUpdatedChildWidgets,
 };
 static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_UUW_Base_Statics::PropPointers) < 2048);
 // ********** End Class UUW_Base Property Definitions **********************************************
@@ -125,10 +137,10 @@ UUW_Base::~UUW_Base() {}
 struct Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_UW_Base_h__Script_LMN_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_UUW_Base, UUW_Base::StaticClass, TEXT("UUW_Base"), &Z_Registration_Info_UClass_UUW_Base, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UUW_Base), 2419553640U) },
+		{ Z_Construct_UClass_UUW_Base, UUW_Base::StaticClass, TEXT("UUW_Base"), &Z_Registration_Info_UClass_UUW_Base, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UUW_Base), 2270031380U) },
 	};
 }; // Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_UW_Base_h__Script_LMN_Statics 
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_UW_Base_h__Script_LMN_926677534{
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_UW_Base_h__Script_LMN_3164900714{
 	TEXT("/Script/LMN"),
 	Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_UW_Base_h__Script_LMN_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_UW_Base_h__Script_LMN_Statics::ClassInfo),
 	nullptr, 0,

@@ -43,14 +43,12 @@ public: \
 
 
 #define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_UW_HUD_h_23_ENHANCED_CONSTRUCTORS \
-	/** Standard constructor, called after all reflected properties have been initialized */ \
-	NO_API UUW_HUD(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()); \
 	/** Deleted move- and copy-constructors, should never be used */ \
 	UUW_HUD(UUW_HUD&&) = delete; \
 	UUW_HUD(const UUW_HUD&) = delete; \
 	DECLARE_VTABLE_PTR_HELPER_CTOR(NO_API, UUW_HUD); \
 	DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(UUW_HUD); \
-	DEFINE_ABSTRACT_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(UUW_HUD) \
+	DEFINE_ABSTRACT_DEFAULT_CONSTRUCTOR_CALL(UUW_HUD) \
 	NO_API virtual ~UUW_HUD();
 
 

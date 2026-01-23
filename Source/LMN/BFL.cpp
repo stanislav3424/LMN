@@ -28,11 +28,25 @@ ULogicBase* UBFL::GetLogic(AActor* Actor)
     return HandleGetLogic(Actor);
 }
 
+ULogicBase* UBFL::GetLogic(UObject* Object)
+{
+    return HandleGetLogic(Object);
+}
+
 ULogicBase* UBFL::HandleGetLogic(AActor* Actor)
 {
     if (Actor)
         if (Actor->Implements<ULogicInterface>())
             if (auto Logic = ILogicInterface::Execute_GetLogic(Actor))
+                return Logic;
+    return nullptr;
+}
+
+ULogicBase* UBFL::HandleGetLogic(UObject* Object)
+{
+    if (Object)
+        if (Object->Implements<ULogicInterface>())
+            if (auto Logic = ILogicInterface::Execute_GetLogic(Object))
                 return Logic;
     return nullptr;
 }

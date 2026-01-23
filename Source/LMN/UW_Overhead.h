@@ -12,5 +12,5 @@ class LMN_API UUW_Overhead : public UUW_Base
     GENERATED_BODY()
 
 protected:
-    virtual void ObjectUpdated() override;
+    virtual void ObjectUpdated(UObject* OldLogic, UObject* NewLogic) override;
 };

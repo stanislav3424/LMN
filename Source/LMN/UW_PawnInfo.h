@@ -12,5 +12,5 @@ class LMN_API UUW_PawnInfo : public UUW_DialogDrag
     GENERATED_BODY()
 
 protected:
-    virtual void ObjectUpdated();
+    virtual void ObjectUpdated(UObject* OldLogic, UObject* NewLogic);
 };

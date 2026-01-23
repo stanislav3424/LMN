@@ -49,7 +49,7 @@ DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnEquipmentChanged);
 class UCharacterMovementComponent;
 class UEquipmentLogic;
 
-UCLASS()
+UCLASS(Blueprintable)
 class LMN_API UCharacterLogic : public ULogic
 {
     GENERATED_BODY()

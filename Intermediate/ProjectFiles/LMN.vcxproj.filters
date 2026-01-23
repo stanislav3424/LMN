@@ -322,6 +322,18 @@
     <ClInclude Include="..\..\Source\LMN\UW_Icon.h">
       <Filter>Source\LMN</Filter>
     </ClInclude>
+    <ClCompile Include="..\..\Source\LMN\UW_Inventory.cpp">
+      <Filter>Source\LMN</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\LMN\UW_Inventory.h">
+      <Filter>Source\LMN</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\LMN\UW_InventoryGrid.cpp">
+      <Filter>Source\LMN</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\LMN\UW_InventoryGrid.h">
+      <Filter>Source\LMN</Filter>
+    </ClInclude>
     <ClCompile Include="..\..\Source\LMN\UW_Item.cpp">
       <Filter>Source\LMN</Filter>
     </ClCompile>

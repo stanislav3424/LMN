@@ -21,7 +21,7 @@ DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnSelectedChange, bool, bIsSelected
 
 struct FGenericTeamId;
 
-UCLASS()
+UCLASS(NotBlueprintable)
 class LMN_API ULogic : public ULogicBase
 {
 	GENERATED_BODY()

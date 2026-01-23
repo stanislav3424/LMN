@@ -4,42 +4,40 @@
 #include "BFL.h"
 #include "Blueprint/WidgetTree.h"
 
-void UUW_Base::ObjectUpdated()
+void UUW_Base::ObjectUpdated(UObject* OldLogic, UObject* NewLogic)
 {
-    
 }
 
 ULogicBase* UUW_Base::GetLogic_Implementation()
 {
-    return LogicBase;
+    return Cast<ULogicBase>(Logic);
 }
 
 void UUW_Base::SetLogic_Implementation(ULogicBase* NewLogic)
 {
-    if (LogicBase == NewLogic)
+    if (Logic == NewLogic)
         return;
 
-    if (NewLogic)
-        LogicBase = NewLogic;
-    else
-        LogicBase = nullptr; 
+    auto OldLogic = Logic;
+    Logic = NewLogic;
+    ObjectUpdated(OldLogic, NewLogic);
 
-    ObjectUpdated();
+    if (bAutoUpdatedChildWidgets)
+        UpdatedChildWidgets();
 }
 
 void UUW_Base::UpdatedChildWidgets()
 {
-    ObjectUpdatedChildWidgets(LogicBase);
+    ObjectUpdatedChildWidgets(Logic);
 }
 
-void UUW_Base::ObjectUpdatedChildWidgets(ULogicBase* NewLogic)
+void UUW_Base::ObjectUpdatedChildWidgets(UObject* NewLogic)
 {
     if (!WidgetTree)
         return;
-    TArray<UWidget*> DirectChildren;
-    // WidgetTree->GetAllWidgets(DirectChildren);
-    WidgetTree->GetChildWidgets(this->GetRootWidget(), DirectChildren);
 
+    TArray<UWidget*> DirectChildren;
+    WidgetTree->GetChildWidgets(this->GetRootWidget(), DirectChildren);
     for (auto Children : DirectChildren)
         if (Children)
             UBFL::SetLogic(Children, NewLogic);

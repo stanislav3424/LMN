@@ -3,9 +3,7 @@
 
 #include "UW_Overhead.h"
 
-void UUW_Overhead::ObjectUpdated()
+void UUW_Overhead::ObjectUpdated(UObject* OldLogic, UObject* NewLogic)
 {
-    Super::ObjectUpdated();
-
-    UpdatedChildWidgets();
+    Super::ObjectUpdated(OldLogic, NewLogic);
 }

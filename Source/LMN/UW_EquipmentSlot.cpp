@@ -7,16 +7,17 @@
 UUW_EquipmentSlot::UUW_EquipmentSlot()
 {
     EquipmentSlot = EEquipmentSlot::None;   
+    bAutoUpdatedChildWidgets = false;
 }
 
-void UUW_EquipmentSlot::ObjectUpdated()
+void UUW_EquipmentSlot::ObjectUpdated(UObject* OldLogic, UObject* NewLogic)
 {
-    Super::ObjectUpdated();
+    Super::ObjectUpdated(OldLogic, NewLogic);
 
-    if (EquipmentSlot == EEquipmentSlot::None || !LogicBase)
+    if (EquipmentSlot == EEquipmentSlot::None)
         return;
 
-    auto CharacterLogic = Cast<UCharacterLogic>(LogicBase);
+    auto CharacterLogic = Cast<UCharacterLogic>(NewLogic);
     if (!CharacterLogic)
         return;
 
@@ -24,24 +25,15 @@ void UUW_EquipmentSlot::ObjectUpdated()
     CharacterLogic->OnEquipmentChanged.Broadcast();
 }
 
-void UUW_EquipmentSlot::SetEquipmentSlot(EEquipmentSlot NewEquipmentSlot)
-{
-    EquipmentSlot = NewEquipmentSlot;
-
-    ObjectUpdated();
-}
-
 void UUW_EquipmentSlot::OnEquipmentChanged()
 {
-    auto CharacterLogic = Cast<UCharacterLogic>(LogicBase);
+    auto CharacterLogic = Cast<UCharacterLogic>(GetLogic_Implementation());
     if (!CharacterLogic)
         return;
     auto Item = CharacterLogic->GetItemInSlot(EquipmentSlot);
 
-    if (UW_Item && Item)
-        UW_Item->SetVisibility(ESlateVisibility::Visible);
-    else
-        UW_Item->SetVisibility(ESlateVisibility::Hidden);
+    if (UW_Item)
+        UW_Item->SetVisibility(Item ? ESlateVisibility::Visible : ESlateVisibility::Hidden);
 
     if (ItemInSlot == Item)
         return;

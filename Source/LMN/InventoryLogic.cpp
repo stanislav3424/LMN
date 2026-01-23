@@ -24,8 +24,8 @@ void UInventoryLogic::SetItemPosition(UObject* Item, FIntVector2 const& Position
     {
         Logic->SetOwnerLogic(this);
 
-        auto ItemSize = GetSizeRotation(Logic->GetItemSize(), bRotation);
-        auto Slots = GetSlots(ItemSize, Position);
+        auto LocalItemSize = GetSizeRotation(Logic->GetItemSize(), bRotation);
+        auto Slots         = GetSlots(LocalItemSize, Position);
         for (auto Slot : Slots)
             if (Items.IsValidIndex(Slot))
                 Items[Slot] = Logic;
@@ -128,12 +128,12 @@ bool UInventoryLogic::IfCanAddItemPosition(UObject* Item, FIntVector2 const& Pos
 
     if (auto Logic = Cast<ULogic>(Item))
     {
-        auto ItemSize      = GetSizeRotation(Logic->GetItemSize(), bRotation);
+        auto LocalItemSize      = GetSizeRotation(Logic->GetItemSize(), bRotation);
 
-        if (!IsValidSizeInPosition(ItemSize, Position))
+        if (!IsValidSizeInPosition(LocalItemSize, Position))
             return false;
 
-        auto Slots         = GetSlots(ItemSize, Position);
+        auto Slots         = GetSlots(LocalItemSize, Position);
         bool bIsEmptySlots = true;
         for (auto Slot : Slots)
             if (Items.IsValidIndex(Slot))

@@ -50,12 +50,16 @@ public:
     UFUNCTION(BlueprintCallable, Category = "Logic")
     static ULogicBase* GetLogic(AActor* Actor);
 
+    static ULogicBase* GetLogic(UObject* Object);
+
     template <LogicDerived TypeLogic> static TypeLogic* GetLogic(AActor* Actor)
     {
         return Cast<TypeLogic>(HandleGetLogic(Actor));
     };
 
     static ULogicBase* HandleGetLogic(AActor* Actor);
+
+    static ULogicBase* HandleGetLogic(UObject* Object);
 
     static void ActorActivationLogic(AActor* Actor);
 

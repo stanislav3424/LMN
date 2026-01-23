@@ -41,15 +41,15 @@ void UWeaponLogic::EndPlay()
     Super::EndPlay();
 }
 
-void UWeaponLogic::OwnerLogicChanged()
+void UWeaponLogic::OwnerLogicChanged(ULogicBase* OldOwnerLogic, ULogicBase* NewOwnerLogic)
 {
-    Super::OwnerLogicChanged();
+    Super::OwnerLogicChanged(OldOwnerLogic, NewOwnerLogic);
 
     AttachmentParentCharacter = nullptr;
 
-    if (OwnerLogic)
+    if (NewOwnerLogic)
     {
-        if (auto Character = Cast<ACharacter>(OwnerLogic->GetRepresentationActor()))
+        if (auto Character = Cast<ACharacter>(NewOwnerLogic->GetRepresentationActor()))
             AttachmentParentCharacter = Character;
     }
     if (IsValid(RepresentationActor))
