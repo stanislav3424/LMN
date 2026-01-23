@@ -36,6 +36,7 @@ public:
     bool AddItem(UObject* Item);
     bool AddItemPosition(UObject* Item, FIntVector2 const& Position, bool bRotation);
     bool IfCanAddItemPosition(UObject* Item, FIntVector2 const& Position, bool bRotation);
+    FIntVector2 GetInventorySize() const { return InventorySize; };
 
     FOnInventoryChanged OnInventoryChanged;
 

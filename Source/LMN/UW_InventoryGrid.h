@@ -11,6 +11,8 @@ class LMN_API UUW_InventoryGrid : public UUW_Base
 {
     GENERATED_BODY()
 
+    UUW_InventoryGrid();
+
 protected:
     virtual void ObjectUpdated(UObject* OldLogic, UObject* NewLogic);
 };

@@ -2,6 +2,11 @@
 
 #include "UW_InventoryGrid.h"
 
+UUW_InventoryGrid::UUW_InventoryGrid()
+{
+    bAutoUpdatedChildWidgets = false;
+}
+
 void UUW_InventoryGrid::ObjectUpdated(UObject* OldLogic, UObject* NewLogic)
 {
     Super::ObjectUpdated(OldLogic, NewLogic);

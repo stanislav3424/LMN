@@ -3,28 +3,14 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "UW_Base.h"
+#include "UW_IconBase.h"
 #include "UW_Icon.generated.h"
 
-class UImage;
-
 UCLASS(Blueprintable, Abstract)
-class LMN_API UUW_Icon : public UUW_Base
+class LMN_API UUW_Icon : public UUW_IconBase
 {
     GENERATED_BODY()
 
 protected:
-    virtual void NativeConstruct() override;
-    virtual void NativeTick(const FGeometry& MyGeometry, float InDeltaTime) override;
     virtual void ObjectUpdated(UObject* OldLogic, UObject* NewLogic) override;
-
-    UPROPERTY(meta = (BindWidget))
-    UImage* IconImage;
-
-    FVector2D LastWidgetSize = FVector2D::ZeroVector;
-
-    UPROPERTY(Transient)
-    UMaterialInstanceDynamic* IconMID;
-
-    void WidgetSizeChanged(const FVector2D& NewSize);
 };
