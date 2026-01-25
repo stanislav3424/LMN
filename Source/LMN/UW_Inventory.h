@@ -18,7 +18,9 @@ class LMN_API UUW_Inventory : public UUW_Base
 
 protected:
     virtual void ObjectUpdated(UObject* OldLogic, UObject* NewLogic);
-    void         OnEquipmentChanged();
+
+    UFUNCTION()
+    void OnEquipmentChanged();
 
     UPROPERTY(Transient)
     ULogicBase* Backpack;

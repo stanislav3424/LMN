@@ -40,8 +40,6 @@ protected:
     virtual void EndPlay() override;
     virtual void OwnerLogicChanged(ULogicBase* OldOwnerLogic, ULogicBase* NewOwnerLogic) override;
 
-    UPROPERTY(Transient)
-    ACharacter* AttachmentParentCharacter;
 
     UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Animation")
     UAnimMontage* ShootAnimMontage;

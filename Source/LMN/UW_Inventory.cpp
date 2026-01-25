@@ -3,6 +3,7 @@
 #include "UW_Inventory.h"
 #include "CharacterLogic.h"
 #include "UW_InventoryGrid.h"
+#include "BFL.h"
 
 UUW_Inventory::UUW_Inventory()
 {

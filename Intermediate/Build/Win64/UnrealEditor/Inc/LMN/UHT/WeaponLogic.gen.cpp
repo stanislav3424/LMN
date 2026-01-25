@@ -12,7 +12,6 @@ static_assert(!UE_WITH_CONSTINIT_UOBJECT, "This generated code can only be compi
 void EmptyLinkFunctionForGeneratedCodeWeaponLogic() {}
 
 // ********** Begin Cross Module References ********************************************************
-ENGINE_API UClass* Z_Construct_UClass_ACharacter_NoRegister();
 ENGINE_API UClass* Z_Construct_UClass_UAnimMontage_NoRegister();
 LMN_API UClass* Z_Construct_UClass_UEquipmentLogic();
 LMN_API UClass* Z_Construct_UClass_UWeaponLogic();
@@ -263,9 +262,6 @@ struct Z_Construct_UClass_UWeaponLogic_Statics
 		{ "IsBlueprintBase", "true" },
 		{ "ModuleRelativePath", "WeaponLogic.h" },
 	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_AttachmentParentCharacter_MetaData[] = {
-		{ "ModuleRelativePath", "WeaponLogic.h" },
-	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_ShootAnimMontage_MetaData[] = {
 		{ "Category", "Animation" },
 		{ "ModuleRelativePath", "WeaponLogic.h" },
@@ -281,7 +277,6 @@ struct Z_Construct_UClass_UWeaponLogic_Statics
 #endif // WITH_METADATA
 
 // ********** Begin Class UWeaponLogic constinit property declarations *****************************
-	static const UECodeGen_Private::FObjectPropertyParams NewProp_AttachmentParentCharacter;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_ShootAnimMontage;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_ReloadAnimMontage;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_BulletEffect;
@@ -295,12 +290,10 @@ struct Z_Construct_UClass_UWeaponLogic_Statics
 }; // struct Z_Construct_UClass_UWeaponLogic_Statics
 
 // ********** Begin Class UWeaponLogic Property Definitions ****************************************
-const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UWeaponLogic_Statics::NewProp_AttachmentParentCharacter = { "AttachmentParentCharacter", nullptr, (EPropertyFlags)0x0020080000002000, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UWeaponLogic, AttachmentParentCharacter), Z_Construct_UClass_ACharacter_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_AttachmentParentCharacter_MetaData), NewProp_AttachmentParentCharacter_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UWeaponLogic_Statics::NewProp_ShootAnimMontage = { "ShootAnimMontage", nullptr, (EPropertyFlags)0x0020080000010015, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UWeaponLogic, ShootAnimMontage), Z_Construct_UClass_UAnimMontage_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_ShootAnimMontage_MetaData), NewProp_ShootAnimMontage_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UWeaponLogic_Statics::NewProp_ReloadAnimMontage = { "ReloadAnimMontage", nullptr, (EPropertyFlags)0x0020080000010015, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UWeaponLogic, ReloadAnimMontage), Z_Construct_UClass_UAnimMontage_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_ReloadAnimMontage_MetaData), NewProp_ReloadAnimMontage_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UWeaponLogic_Statics::NewProp_BulletEffect = { "BulletEffect", nullptr, (EPropertyFlags)0x0020080000000014, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UWeaponLogic, BulletEffect), Z_Construct_UClass_UNiagaraSystem_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_BulletEffect_MetaData), NewProp_BulletEffect_MetaData) };
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_UWeaponLogic_Statics::PropPointers[] = {
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UWeaponLogic_Statics::NewProp_AttachmentParentCharacter,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UWeaponLogic_Statics::NewProp_ShootAnimMontage,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UWeaponLogic_Statics::NewProp_ReloadAnimMontage,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UWeaponLogic_Statics::NewProp_BulletEffect,
@@ -351,10 +344,10 @@ struct Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_S
 		{ EWeaponState_StaticEnum, TEXT("EWeaponState"), &Z_Registration_Info_UEnum_EWeaponState, CONSTRUCT_RELOAD_VERSION_INFO(FEnumReloadVersionInfo, 1124166449U) },
 	};
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_UWeaponLogic, UWeaponLogic::StaticClass, TEXT("UWeaponLogic"), &Z_Registration_Info_UClass_UWeaponLogic, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UWeaponLogic), 813749126U) },
+		{ Z_Construct_UClass_UWeaponLogic, UWeaponLogic::StaticClass, TEXT("UWeaponLogic"), &Z_Registration_Info_UClass_UWeaponLogic, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UWeaponLogic), 3226721651U) },
 	};
 }; // Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_WeaponLogic_h__Script_LMN_Statics 
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_WeaponLogic_h__Script_LMN_2010335660{
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_WeaponLogic_h__Script_LMN_1596193985{
 	TEXT("/Script/LMN"),
 	Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_WeaponLogic_h__Script_LMN_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_WeaponLogic_h__Script_LMN_Statics::ClassInfo),
 	nullptr, 0,

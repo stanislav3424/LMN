@@ -14,9 +14,16 @@ class LMN_API UEquipmentLogic : public ULogic
     GENERATED_BODY()
 
 protected:
-    EEquipmentSlot EquipmentSlot;
     virtual void   LoadingDataTable() override;
+    virtual void   OwnerLogicChanged(ULogicBase* OldOwnerLogic, ULogicBase* NewOwnerLogic) override;
+
+private:
+    EEquipmentSlot EquipmentSlot;
+
+    UPROPERTY(Transient)
+    ACharacter* AttachmentParentCharacter;
 
 public:
+    ACharacter* GetAttachmentParentCharacter() const;
     EEquipmentSlot GetEquipmentSlot() const { return EquipmentSlot; };
 };

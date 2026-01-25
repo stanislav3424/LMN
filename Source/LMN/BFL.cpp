@@ -101,9 +101,13 @@ AActor* UBFL::SpawnTemplateCharacter(
         auto Character =
             UBFL::SpawnActorTeamByRowHandle(World, Row->CharacterRowHandle, SpawnLocation, SpawRotator, Team);
         auto Weapon = UBFL::SpawnActorTeamByRowHandle(World, Row->WeaponRowHandle, SpawnLocation, SpawRotator, Team);
+        auto Inventory = UBFL::SpawnActorTeamByRowHandle(World, Row->InventoryRowHandle, SpawnLocation, SpawRotator, Team);
 
         if (auto Logic = UBFL::GetLogic<UCharacterLogic>(Character))
+        {
             Logic->EquipItem(Weapon, EEquipmentSlot::Hands);
+            Logic->EquipItem(Inventory, EEquipmentSlot::Backpack);
+        }
     }
 
     return nullptr;

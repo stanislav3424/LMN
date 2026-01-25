@@ -13,4 +13,6 @@ class LMN_API UUW_Icon : public UUW_IconBase
 
 protected:
     virtual void ObjectUpdated(UObject* OldLogic, UObject* NewLogic) override;
+    virtual void NativeTick(const FGeometry& MyGeometry, float InDeltaTime) override;
+    void         WidgetSizeChanged(const FVector2D& NewSize);
 };

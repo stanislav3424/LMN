@@ -2,6 +2,7 @@
 
 #include "UW_IconGrid.h"
 #include "InventoryLogic.h"
+#include "BFL.h"
 
 void UUW_IconGrid::ObjectUpdated(UObject* OldLogic, UObject* NewLogic)
 {

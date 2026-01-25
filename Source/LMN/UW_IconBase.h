@@ -16,7 +16,7 @@ class LMN_API UUW_IconBase : public UUW_Base
 protected:
     virtual void ObjectUpdated(UObject* OldLogic, UObject* NewLogic) override;
     virtual void NativeConstruct() override;
-    virtual void NativeTick(const FGeometry& MyGeometry, float InDeltaTime) override;
+
 
     UPROPERTY(meta = (BindWidget))
     UImage* IconImage;
@@ -26,5 +26,5 @@ protected:
     UPROPERTY(Transient)
     UMaterialInstanceDynamic* IconMID;
 
-    void WidgetSizeChanged(const FVector2D& NewSize);
+
 };

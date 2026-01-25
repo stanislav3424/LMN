@@ -48,11 +48,16 @@ struct Z_Construct_UScriptStruct_FTemplateCharacterRow_Statics
 		{ "Category", "TemplateCharacterRow" },
 		{ "ModuleRelativePath", "BFL.h" },
 	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_InventoryRowHandle_MetaData[] = {
+		{ "Category", "TemplateCharacterRow" },
+		{ "ModuleRelativePath", "BFL.h" },
+	};
 #endif // WITH_METADATA
 
 // ********** Begin ScriptStruct FTemplateCharacterRow constinit property declarations *************
 	static const UECodeGen_Private::FStructPropertyParams NewProp_CharacterRowHandle;
 	static const UECodeGen_Private::FStructPropertyParams NewProp_WeaponRowHandle;
+	static const UECodeGen_Private::FStructPropertyParams NewProp_InventoryRowHandle;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 // ********** End ScriptStruct FTemplateCharacterRow constinit property declarations ***************
 	static void* NewStructOps()
@@ -75,9 +80,11 @@ class UScriptStruct* FTemplateCharacterRow::StaticStruct()
 // ********** Begin ScriptStruct FTemplateCharacterRow Property Definitions ************************
 const UECodeGen_Private::FStructPropertyParams Z_Construct_UScriptStruct_FTemplateCharacterRow_Statics::NewProp_CharacterRowHandle = { "CharacterRowHandle", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FTemplateCharacterRow, CharacterRowHandle), Z_Construct_UScriptStruct_FDataTableRowHandle, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_CharacterRowHandle_MetaData), NewProp_CharacterRowHandle_MetaData) }; // 395055942
 const UECodeGen_Private::FStructPropertyParams Z_Construct_UScriptStruct_FTemplateCharacterRow_Statics::NewProp_WeaponRowHandle = { "WeaponRowHandle", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FTemplateCharacterRow, WeaponRowHandle), Z_Construct_UScriptStruct_FDataTableRowHandle, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_WeaponRowHandle_MetaData), NewProp_WeaponRowHandle_MetaData) }; // 395055942
+const UECodeGen_Private::FStructPropertyParams Z_Construct_UScriptStruct_FTemplateCharacterRow_Statics::NewProp_InventoryRowHandle = { "InventoryRowHandle", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FTemplateCharacterRow, InventoryRowHandle), Z_Construct_UScriptStruct_FDataTableRowHandle, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_InventoryRowHandle_MetaData), NewProp_InventoryRowHandle_MetaData) }; // 395055942
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UScriptStruct_FTemplateCharacterRow_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FTemplateCharacterRow_Statics::NewProp_CharacterRowHandle,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FTemplateCharacterRow_Statics::NewProp_WeaponRowHandle,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FTemplateCharacterRow_Statics::NewProp_InventoryRowHandle,
 };
 static_assert(UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FTemplateCharacterRow_Statics::PropPointers) < 2048);
 // ********** End ScriptStruct FTemplateCharacterRow Property Definitions **************************
@@ -570,13 +577,13 @@ UBFL::~UBFL() {}
 struct Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_BFL_h__Script_LMN_Statics
 {
 	static constexpr FStructRegisterCompiledInInfo ScriptStructInfo[] = {
-		{ FTemplateCharacterRow::StaticStruct, Z_Construct_UScriptStruct_FTemplateCharacterRow_Statics::NewStructOps, TEXT("TemplateCharacterRow"),&Z_Registration_Info_UScriptStruct_FTemplateCharacterRow, CONSTRUCT_RELOAD_VERSION_INFO(FStructReloadVersionInfo, sizeof(FTemplateCharacterRow), 320033874U) },
+		{ FTemplateCharacterRow::StaticStruct, Z_Construct_UScriptStruct_FTemplateCharacterRow_Statics::NewStructOps, TEXT("TemplateCharacterRow"),&Z_Registration_Info_UScriptStruct_FTemplateCharacterRow, CONSTRUCT_RELOAD_VERSION_INFO(FStructReloadVersionInfo, sizeof(FTemplateCharacterRow), 1941880419U) },
 	};
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
 		{ Z_Construct_UClass_UBFL, UBFL::StaticClass, TEXT("UBFL"), &Z_Registration_Info_UClass_UBFL, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UBFL), 2806756522U) },
 	};
 }; // Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_BFL_h__Script_LMN_Statics 
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_BFL_h__Script_LMN_2700814878{
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_BFL_h__Script_LMN_3401164752{
 	TEXT("/Script/LMN"),
 	Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_BFL_h__Script_LMN_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_BFL_h__Script_LMN_Statics::ClassInfo),
 	Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_BFL_h__Script_LMN_Statics::ScriptStructInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_BFL_h__Script_LMN_Statics::ScriptStructInfo),

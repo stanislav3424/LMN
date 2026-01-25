@@ -35,6 +35,9 @@ struct FTemplateCharacterRow : public FTableRowBase
 
     UPROPERTY(EditAnywhere, BlueprintReadWrite)
     FDataTableRowHandle WeaponRowHandle;
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite)
+    FDataTableRowHandle InventoryRowHandle;
 };
 
 UCLASS()

@@ -17,7 +17,6 @@ void UWeaponLogic::LoadingDataTable()
     Super::LoadingDataTable();
     if (auto const* Row = LogicRowHandle.DataTable->FindRow<FWeaponRow>(LogicRowHandle.RowName, TEXT("")))
     {
-        EquipmentSlot = Row->EquipmentSlot;
         MaxAmmo       = Row->MaxAmmo;
         RateFire      = Row->RateFire;
         Damage        = Row->Damage;
@@ -44,24 +43,6 @@ void UWeaponLogic::EndPlay()
 void UWeaponLogic::OwnerLogicChanged(ULogicBase* OldOwnerLogic, ULogicBase* NewOwnerLogic)
 {
     Super::OwnerLogicChanged(OldOwnerLogic, NewOwnerLogic);
-
-    AttachmentParentCharacter = nullptr;
-
-    if (NewOwnerLogic)
-    {
-        if (auto Character = Cast<ACharacter>(NewOwnerLogic->GetRepresentationActor()))
-            AttachmentParentCharacter = Character;
-    }
-    if (IsValid(RepresentationActor))
-        if (AttachmentParentCharacter)
-            if (auto Mesh = AttachmentParentCharacter->GetMesh())
-            {
-                //RepresentationActor->SetActorTransform(UBFL::GetSocketTransformFromEnum(EquipmentSlot, Mesh));
-                RepresentationActor->SetActorLocation(FVector(0.f, 0.f, 0.f));
-                /*RepresentationActor->AttachToComponent(Mesh, FAttachmentTransformRules::SnapToTargetNotIncludingScale,
-                    UBFL::GetSocketNameFromEnum(EquipmentSlot));*/
-                RepresentationActor->AttachToComponent(Mesh, FAttachmentTransformRules::SnapToTargetNotIncludingScale, "123");
-            }
 }
 
 void UWeaponLogic::BroadcastOnAmmoChanged()
@@ -134,16 +115,16 @@ void UWeaponLogic::PerformShoot()
 
 void UWeaponLogic::PlayShootAnimation()
 {
-    if (IsValid(AttachmentParentCharacter) && ShootAnimMontage)
-        if (auto MeshComponent = AttachmentParentCharacter->GetMesh())
+    if (auto Character = GetAttachmentParentCharacter())
+        if (auto MeshComponent = Character->GetMesh())
             if (auto AnimInstance = MeshComponent->GetAnimInstance())
                 AnimInstance->Montage_Play(ShootAnimMontage);
 }
 
 void UWeaponLogic::SpawnBulletEffect(FVector const& StartLocation, FVector const& EndLocation)
 {
-    if (IsValid(AttachmentParentCharacter))
-        if (auto MeshComponent = AttachmentParentCharacter->GetMesh())
+    if (auto Character = GetAttachmentParentCharacter())
+        if (auto MeshComponent = Character->GetMesh())
         {
             auto     Transform = MeshComponent->GetSocketTransform(TEXT("weapon_r_muzzle"));
             FRotator Rotator   = (EndLocation - StartLocation).Rotation();
@@ -158,14 +139,14 @@ void UWeaponLogic::SpawnBulletEffect(FVector const& StartLocation, FVector const
 
 void UWeaponLogic::CalculateShotDirection(FVector& StartLocation, FVector& EndLocation)
 {
-    if (IsValid(AttachmentParentCharacter))
-        if (auto MeshComponent = AttachmentParentCharacter->GetMesh())
+    if (auto Character = GetAttachmentParentCharacter())
+        if (auto MeshComponent = Character->GetMesh())
         {
             auto Transform = MeshComponent->GetSocketTransform(TEXT("weapon_r_muzzle"));
             StartLocation  = Transform.GetLocation();
 
-            FVector Forward               = AttachmentParentCharacter->GetActorRotation().Vector();
-            FVector StartAttachmentParent = AttachmentParentCharacter->GetActorLocation();
+            FVector Forward               = Character->GetActorRotation().Vector();
+            FVector StartAttachmentParent = Character->GetActorLocation();
 
             FVector RandomSpread = FMath::VRandCone(Forward, MOARadians);
 
@@ -193,11 +174,12 @@ bool UWeaponLogic::PerformLineTrace(FVector const& StartLocation, FVector const&
 void UWeaponLogic::ApplyDamage(FHitResult const& Hit, FVector const& Start, FVector const& End)
 {
     auto HitActor = Hit.GetActor();
-    if (HitActor && HitActor != AttachmentParentCharacter)
+    auto Character = GetAttachmentParentCharacter();
+    if (HitActor && HitActor != Character)
     {
         const FVector ShotDirection = (End - Start).GetSafeNormal();
         UGameplayStatics::ApplyPointDamage(
-            HitActor, Damage, ShotDirection, Hit, nullptr, AttachmentParentCharacter, UDamageType::StaticClass());
+            HitActor, Damage, ShotDirection, Hit, nullptr, Character, UDamageType::StaticClass());
     }
 }
 
@@ -252,10 +234,11 @@ void UWeaponLogic::StartReload()
     bIsInputBlocked    = true;
 
     float ReloadDuration = 2.0f;
-    if (IsValid(AttachmentParentCharacter) && ReloadAnimMontage)
-        if (auto MeshComponent = AttachmentParentCharacter->GetMesh())
-            if (auto AnimInstance = MeshComponent->GetAnimInstance())
-                ReloadDuration = AnimInstance->Montage_Play(ReloadAnimMontage);
+    if (ReloadAnimMontage)
+        if (auto Character = GetAttachmentParentCharacter())
+            if (auto MeshComponent = Character->GetMesh())
+                if (auto AnimInstance = MeshComponent->GetAnimInstance())
+                    ReloadDuration = AnimInstance->Montage_Play(ReloadAnimMontage);
 
     if (auto World = GetWorld())
         World->GetTimerManager().SetTimer(ReloadTimerHandle, this, &UWeaponLogic::FinishReload, ReloadDuration, false);
@@ -280,10 +263,11 @@ void UWeaponLogic::CancelReload()
         CurrentWeaponState = EWeaponState::Idle;
         bIsInputBlocked    = false;
 
-        if (IsValid(AttachmentParentCharacter) && ReloadAnimMontage)
-            if (auto MeshComponent = AttachmentParentCharacter->GetMesh())
-                if (auto AnimInstance = MeshComponent->GetAnimInstance())
-                    AnimInstance->Montage_Stop(0.2f, ReloadAnimMontage);
+        if (ReloadAnimMontage)
+            if (auto Character = GetAttachmentParentCharacter())
+                if (auto MeshComponent = Character->GetMesh())
+                    if (auto AnimInstance = MeshComponent->GetAnimInstance())
+                        AnimInstance->Montage_Stop(0.2f, ReloadAnimMontage);
 
         if (auto World = GetWorld())
             World->GetTimerManager().ClearTimer(ReloadTimerHandle);

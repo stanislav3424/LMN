@@ -2,7 +2,11 @@
 
 #include "UW_EquipmentSlot.h"
 #include "CharacterLogic.h"
+#include "Blueprint/DragDropOperation.h"
+#include "Blueprint/WidgetBlueprintLibrary.h"
+#include "DragDropOperation_Item.h"
 #include "UW_Item.h"
+#include "BFL.h"
 
 UUW_EquipmentSlot::UUW_EquipmentSlot()
 {
@@ -39,4 +43,30 @@ void UUW_EquipmentSlot::OnEquipmentChanged()
         return;
     ItemInSlot = Item;
     ObjectUpdatedChildWidgets(ItemInSlot);
+}
+
+FReply UUW_EquipmentSlot::NativeOnMouseButtonDown(const FGeometry& InGeometry, const FPointerEvent& InMouseEvent)
+{
+    if (InMouseEvent.IsMouseButtonDown(EKeys::LeftMouseButton))
+    {
+        FEventReply EventReply =
+            UWidgetBlueprintLibrary::DetectDragIfPressed(InMouseEvent, this, EKeys::LeftMouseButton);
+        return EventReply.NativeReply;
+    }
+    return Super::NativeOnMouseButtonDown(InGeometry, InMouseEvent);
+}
+
+void UUW_EquipmentSlot::NativeOnDragDetected(
+    const FGeometry& InGeometry, const FPointerEvent& InMouseEvent, UDragDropOperation*& OutOperation)
+{
+    auto DragDropOperation = Cast<UDragDropOperation_Item>(
+        UWidgetBlueprintLibrary::CreateDragDropOperation(UDragDropOperation_Item::StaticClass()));
+    if (!DragDropOperation)
+        return;
+
+    auto DragVisual                      = CreateWidget(GetOwningPlayer(), UUW_Item::StaticClass());
+    UBFL::SetLogic(DragVisual, GetLogic());
+    DragDropOperation->DefaultDragVisual = DragVisual;
+    DragDropOperation->Pivot             = EDragPivot::CenterCenter;
+    OutOperation                         = DragDropOperation;
 }
