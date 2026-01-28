@@ -123,4 +123,7 @@ public:
     bool        EquipItem(ULogicBase* Logic, EEquipmentSlot TargetEquipmentSlot);
     bool        EquipItem(AActor* Actor, EEquipmentSlot TargetEquipmentSlot);
     ULogicBase* TakeOff(EEquipmentSlot TargetEquipmentSlot);
+
+protected:
+    virtual void RemoveChildLogic(ULogicBase* Logic) override;
 };

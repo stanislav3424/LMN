@@ -18,6 +18,7 @@ void UEquipmentLogic::LoadingDataTable()
 
 void UEquipmentLogic::OwnerLogicChanged(ULogicBase* OldOwnerLogic, ULogicBase* NewOwnerLogic)
 {
+    Super::OwnerLogicChanged(OldOwnerLogic, NewOwnerLogic);
 
     AttachmentParentCharacter = nullptr;
 

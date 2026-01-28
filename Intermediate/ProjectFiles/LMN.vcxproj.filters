@@ -352,6 +352,12 @@
     <ClInclude Include="..\..\Source\LMN\UW_Item.h">
       <Filter>Source\LMN</Filter>
     </ClInclude>
+    <ClCompile Include="..\..\Source\LMN\UW_ItemAutoSize.cpp">
+      <Filter>Source\LMN</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\LMN\UW_ItemAutoSize.h">
+      <Filter>Source\LMN</Filter>
+    </ClInclude>
     <ClCompile Include="..\..\Source\LMN\UW_Menu.cpp">
       <Filter>Source\LMN</Filter>
     </ClCompile>

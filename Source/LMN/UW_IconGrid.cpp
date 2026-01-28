@@ -15,6 +15,6 @@ void UUW_IconGrid::ObjectUpdated(UObject* OldLogic, UObject* NewLogic)
     {
         auto Size = Inventory->GetInventorySize();
         IconMID->SetScalarParameterValue(TEXT("SizeX"), Size.X);
-        IconMID->SetScalarParameterValue(TEXT("SizeZ"), Size.Y);
+        IconMID->SetScalarParameterValue(TEXT("SizeY"), Size.Y);
     }
 }

@@ -214,3 +214,12 @@ ULogicBase* UCharacterLogic::TakeOff(EEquipmentSlot TargetEquipmentSlot)
     }
     return nullptr;
 }
+
+void UCharacterLogic::RemoveChildLogic(ULogicBase* Logic)
+{
+    Super::RemoveChildLogic(Logic);
+
+    for (auto& Pair : EquipmentMap.Array())
+        if (Pair.Value == Logic)
+            TakeOff(Pair.Key);
+}

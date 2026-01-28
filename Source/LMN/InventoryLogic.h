@@ -10,6 +10,18 @@ DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnInventoryChanged);
 
 class ULogic;
 
+USTRUCT()
+struct FInventoryItemInfo
+{
+    GENERATED_BODY()
+
+public:
+    UPROPERTY(Transient)
+    ULogic* Item = nullptr;
+    FIntVector2 Position = FIntVector2::ZeroValue;
+    bool bRotated = false;
+};
+
 UCLASS(Blueprintable)
 class LMN_API UInventoryLogic : public UEquipmentLogic
 {
@@ -20,9 +32,10 @@ protected:
 
     FIntVector2 InventorySize;
 
+    UPROPERTY(Transient)
     TArray<ULogic*> Items;
 
-    TSet<TPair<ULogic*, TPair<FIntVector2, bool>>> ItemsPositions;
+    TArray<FInventoryItemInfo> ItemsPosition;
 
     void          SetItemPosition(UObject* Item, FIntVector2 const& Position, bool bRotation);
     FIntVector2   GetSizeRotation(FIntVector2 const& Size, bool bRotation);
@@ -41,6 +54,8 @@ public:
     FOnInventoryChanged OnInventoryChanged;
 
     void RemoveItem(UObject* Item);
+
+    TArray<FInventoryItemInfo> const& GetItemsPosition() const;
 
 protected:
     virtual void RemoveChildLogic(ULogicBase* Logic) override;

@@ -38,3 +38,9 @@ void UUMG_Library::AddToMainCanvas(UWorld* World, UUserWidget* Widget)
     CanvasPanelSlot->SetAlignment(FVector2D(0.5f, 0.5f));
     CanvasPanelSlot->SetPosition(FVector2D::ZeroVector);
 }
+
+FVector2D UUMG_Library::GetInViewport(FIntVector2 const& ItemSize)
+{
+    float Size = 50.f;
+    return FVector2D(ItemSize.X * Size, ItemSize.Y * Size);
+}

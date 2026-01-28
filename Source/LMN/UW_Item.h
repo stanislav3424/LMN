@@ -6,6 +6,8 @@
 #include "UW_Base.h"
 #include "UW_Item.generated.h"
 
+class USizeBox;
+
 UCLASS(Blueprintable, Abstract)
 class LMN_API UUW_Item : public UUW_Base
 {
@@ -13,4 +15,13 @@ class LMN_API UUW_Item : public UUW_Base
 
 protected:
     virtual void ObjectUpdated(UObject* OldLogic, UObject* NewLogic);
+
+    UPROPERTY(meta = (BindWidget)) 
+    USizeBox* SizeBox;
+
+public:
+    void SetRotation(bool bRotated);
+    void SetAutoSize();
+    void SetSizeBoxSize(float Width, float Height);
+    void ClearSizeBoxSize();
 };

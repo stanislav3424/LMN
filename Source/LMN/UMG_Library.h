@@ -13,4 +13,5 @@ class LMN_API UUMG_Library : public UBlueprintFunctionLibrary
 
 public:
     static void AddToMainCanvas(UWorld* World, UUserWidget* Widget);
+    static FVector2D GetInViewport(FIntVector2 const& ItemSize);
 };
