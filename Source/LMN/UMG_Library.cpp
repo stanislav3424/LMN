@@ -41,6 +41,11 @@ void UUMG_Library::AddToMainCanvas(UWorld* World, UUserWidget* Widget)
 
 FVector2D UUMG_Library::GetInViewport(FIntVector2 const& ItemSize)
 {
-    float Size = 50.f;
+    float Size = GetCellSize();
     return FVector2D(ItemSize.X * Size, ItemSize.Y * Size);
+}
+
+float UUMG_Library::GetCellSize()
+{
+    return 50.0f;
 }

@@ -8,6 +8,9 @@
 
 class USizeBox;
 class UCanvasPanel;
+class UImage;
+class UMaterialInterface;
+class ULogic;
 
 UCLASS(Blueprintable, Abstract)
 class LMN_API UUW_InventoryGrid : public UUW_Base
@@ -24,6 +27,8 @@ protected:
         const FGeometry& InGeometry, const FDragDropEvent& InDragDropEvent, UDragDropOperation* InOperation) override;
     virtual void NativeOnDragEnter(
         const FGeometry& InGeometry, const FDragDropEvent& InDragDropEvent, UDragDropOperation* InOperation) override;
+    virtual bool NativeOnDragOver(
+        const FGeometry& InGeometry, const FDragDropEvent& InDragDropEvent, UDragDropOperation* InOperation) override;
     virtual void NativeOnDragLeave(const FDragDropEvent& InDragDropEvent, UDragDropOperation* InOperation) override;
 
     UFUNCTION()
@@ -37,4 +42,19 @@ protected:
 
     UPROPERTY(EditDefaultsOnly, Category = "ItemWidget")
     TSubclassOf<UUserWidget> ItemWidgetClass;
+
+private:
+    FIntVector2 GetAdjustedPositionForItem(const FGeometry& InGeometry, const FVector2D& MousePosition, ULogic* Item) const;
+    void UpdateGridPreview(const FGeometry& InGeometry, const FVector2D& MousePosition, ULogic* Item);
+    void ShowGridPreview(ULogic* Item, FIntVector2 Position, bool bCanPlace);
+    void HideGridPreview();
+
+    UPROPERTY()
+    UImage* GridPreviewImage;
+
+    UPROPERTY(EditDefaultsOnly, Category = "GridPreview")
+    UMaterialInterface* GridPreviewMaterial;
+
+    UPROPERTY(EditDefaultsOnly, Category = "GridPreview")
+    FName PreviewOverlayParameterName = FName(TEXT("CanPlace"));
 };
