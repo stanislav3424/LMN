@@ -19,10 +19,17 @@ protected:
     virtual void   NativeOnDragDetected(
           const FGeometry& InGeometry, const FPointerEvent& InMouseEvent, UDragDropOperation*& OutOperation) override;
 
-    UPROPERTY(meta = (BindWidget)) 
+    UPROPERTY(meta = (BindWidget))
     USizeBox* SizeBox;
 
+private:
+    bool bIsRotated = false;
+
 public:
+    void SetDragSettings();
+
+    UFUNCTION()
+    void SwitchRotation();
     void SetRotation(bool bRotated);
     void SetAutoSize();
     void SetSizeBoxSize(float Width, float Height);

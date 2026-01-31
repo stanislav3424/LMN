@@ -7,6 +7,8 @@
 #include "Blueprint/WidgetBlueprintLibrary.h"
 #include "DragDropOperation_Item.h"
 #include "BFL.h"
+#include "PC_Main.h"
+#include "InventoryLogic.h"
 
 void UUW_Item::ObjectUpdated(UObject* OldLogic, UObject* NewLogic)
 {
@@ -43,15 +45,28 @@ void UUW_Item::NativeOnDragDetected(
     OutOperation                         = DragDropOperation;
 }
 
+void UUW_Item::SetDragSettings()
+{
+    SetAutoSize();
+    auto PC = GetOwningPlayer<APC_Main>();
+    PC->OnInventoryItemRotate.AddUniqueDynamic(this, &UUW_Item::SwitchRotation);
+}
+
+void UUW_Item::SwitchRotation()
+{
+    SetRotation(!bIsRotated);
+}
+
 void UUW_Item::SetRotation(bool bRotated)
 {
+    bIsRotated = bRotated;
 }
 
 void UUW_Item::SetAutoSize()
 {
     if (auto LocalLogic = Cast<ULogic>(GetLogic_Implementation()))
     {
-        auto ItemSize       = LocalLogic->GetItemSize();
+        auto ItemSize       = UInventoryLogic::GetSizeRotation(LocalLogic->GetItemSize(), bIsRotated);
         auto SizeInViewport = UUMG_Library::GetInViewport(ItemSize);
         SetSizeBoxSize(SizeInViewport.X, SizeInViewport.Y);
     }

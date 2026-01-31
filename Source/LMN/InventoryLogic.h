@@ -43,7 +43,6 @@ protected:
 
     void          SetItemPosition(UObject* Item, FIntVector2 const& Position, bool bRotation);
     void          ClearItemSlots(ULogic* Logic);
-    FIntVector2   GetSizeRotation(FIntVector2 const& Size, bool bRotation);
     TArray<int32> GetSlots(FIntVector2 const& Size, FIntVector2 const& Position);
     bool          IsValidSizeInPosition(FIntVector2 const& Size, FIntVector2 const& Position) const;
     bool          IsValidInventorySize() const;
@@ -51,10 +50,11 @@ protected:
     bool          IsValidPosition(FIntVector2 const& Position) const;
 
 public:
-    bool AddItem(UObject* Item);
-    bool AddItemPosition(UObject* Item, FIntVector2 const& Position, bool bRotation);
-    bool IfCanAddItemPosition(UObject* Item, FIntVector2 const& Position, bool bRotation);
-    FIntVector2 GetInventorySize() const { return InventorySize; };
+    static FIntVector2 GetSizeRotation(FIntVector2 const& Size, bool bRotation);
+    bool               AddItem(UObject* Item);
+    bool               AddItemPosition(UObject* Item, FIntVector2 const& Position, bool bRotation);
+    bool               IfCanAddItemPosition(UObject* Item, FIntVector2 const& Position, bool bRotation);
+    FIntVector2        GetInventorySize() const { return InventorySize; };
 
     FOnInventoryChanged OnInventoryChanged;
 
@@ -62,7 +62,7 @@ public:
 
     TArray<FInventoryItemInfo> GetItemsPosition() const;
 
-    ULogic*    GetItemInPosition(FIntVector2 const& Position);
+    ULogic*     GetItemInPosition(FIntVector2 const& Position);
     ULogic*     GetItemInIndex(int32 Position);
     int32       PositionToIndex(FIntVector2 const& Position) const;
     FIntVector2 IndexToPosition(int32 Index) const;

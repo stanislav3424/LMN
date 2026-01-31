@@ -23,6 +23,16 @@ void APC_Main::BeginPlay()
     Super::BeginPlay();
 
     bShowMouseCursor = true;
+
+    CHECK_FIELD(DefaultInputMappingContext)
+    CHECK_FIELD(LeftClickInputAction)
+    CHECK_FIELD(RightClickInputAction)
+    CHECK_FIELD(AIActionInputMappingContext)
+    CHECK_FIELD(AIMoveToInputAction)
+    CHECK_FIELD(AIAssaultInputAction)
+    CHECK_FIELD(AIFootholdPositionInputAction)
+    CHECK_FIELD(InventoryInputMappingContext)
+    CHECK_FIELD(InventoryItemRotateInputAction)
 }
 
 void APC_Main::SetupInputComponent()
@@ -36,6 +46,8 @@ void APC_Main::SetupInputComponent()
             EnhancedInputLocalPlayerSubsystem->AddMappingContext(DefaultInputMappingContext, 0);
         if (AIActionInputMappingContext)
             EnhancedInputLocalPlayerSubsystem->AddMappingContext(AIActionInputMappingContext, 0);
+        if (InventoryInputMappingContext)
+            EnhancedInputLocalPlayerSubsystem->AddMappingContext(InventoryInputMappingContext, 0);
     }
 
     if (auto EnhancedInputComponent = Cast<UEnhancedInputComponent>(InputComponent))
@@ -61,6 +73,9 @@ void APC_Main::SetupInputComponent()
         if (AIFootholdPositionInputAction)
             EnhancedInputComponent->BindAction(
                 AIFootholdPositionInputAction, ETriggerEvent::Started, this, &APC_Main::OnAIFootholdPositionPressed);
+        if (InventoryItemRotateInputAction)
+            EnhancedInputComponent->BindAction(
+                InventoryItemRotateInputAction, ETriggerEvent::Started, this, &APC_Main::OnInventoryItemRotatePressed);
     }
 }
 
@@ -150,6 +165,11 @@ void APC_Main::OnAIAssaultPressed(FInputActionValue const& Value)
 void APC_Main::OnAIFootholdPositionPressed(FInputActionValue const& Value)
 {
     SetTypeAIAction(ETypeAIAction::FootholdPosition);
+}
+
+void APC_Main::OnInventoryItemRotatePressed(FInputActionValue const& Value)
+{
+    OnInventoryItemRotate.Broadcast();
 }
 
 void APC_Main::SetTypeAIAction(ETypeAIAction const& NewTypeAIAction)

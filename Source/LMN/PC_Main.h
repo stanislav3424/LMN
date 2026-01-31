@@ -8,6 +8,7 @@
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnActorsSelectedChange);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnTypeAIActionChange, ETypeAIAction const&, TypeAIAction);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnInventoryItemRotate);
 
 class UInputMappingContext;
 class UInputAction;
@@ -76,6 +77,12 @@ protected:
     UPROPERTY(EditDefaultsOnly, Category = "Input")
     UInputAction* AIFootholdPositionInputAction;
 
+    UPROPERTY(EditDefaultsOnly, Category = "Input")
+    UInputMappingContext* InventoryInputMappingContext;
+
+    UPROPERTY(EditDefaultsOnly, Category = "Input")
+    UInputAction* InventoryItemRotateInputAction;
+
 protected:
     void OnLeftPressed(FInputActionValue const& Value);
     void OnLeftReleased(FInputActionValue const& Value);
@@ -86,6 +93,7 @@ protected:
     void OnAIMoveToPressed(FInputActionValue const& Value);
     void OnAIAssaultPressed(FInputActionValue const& Value);
     void OnAIFootholdPositionPressed(FInputActionValue const& Value);
+    void OnInventoryItemRotatePressed(FInputActionValue const& Value);
 
     bool      bLeftDown            = false;
     bool      bRightDown           = false;
@@ -97,7 +105,8 @@ protected:
     ETypeAIAction TypeAIAction;
 
 public:
-    void                  SetTypeAIAction(ETypeAIAction const& NewTypeAIAction);
-    FOnTypeAIActionChange OnTypeAIActionChange;
-    void                  BroadcastOnTypeAIActionChange() const;
+    void                   SetTypeAIAction(ETypeAIAction const& NewTypeAIAction);
+    FOnTypeAIActionChange  OnTypeAIActionChange;
+    void                   BroadcastOnTypeAIActionChange() const;
+    FOnInventoryItemRotate OnInventoryItemRotate;
 };
