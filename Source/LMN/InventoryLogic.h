@@ -42,7 +42,7 @@ protected:
     TArray<FInventoryItemInfo> ItemsPosition;
 
     void          SetItemPosition(UObject* Item, FIntVector2 const& Position, bool bRotation);
-    void          ClearItemSlots(ULogic* Logic, bool bBroadcast = true);
+    void          ClearItemSlots(ULogic* Logic);
     FIntVector2   GetSizeRotation(FIntVector2 const& Size, bool bRotation);
     TArray<int32> GetSlots(FIntVector2 const& Size, FIntVector2 const& Position);
     bool          IsValidSizeInPosition(FIntVector2 const& Size, FIntVector2 const& Position) const;

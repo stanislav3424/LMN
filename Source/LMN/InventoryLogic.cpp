@@ -15,19 +15,14 @@ void UInventoryLogic::LoadingDataTable()
     }
 }
 
-void UInventoryLogic::ClearItemSlots(ULogic* Logic, bool bBroadcast)
+void UInventoryLogic::ClearItemSlots(ULogic* Logic)
 {
     if (!Logic)
         return;
 
-    for (int32 Index = 0; Index < Items.Num(); ++Index)
-    {
-        if (Items[Index] == Logic)
-            Items[Index] = nullptr;
-    }
-
-    if (bBroadcast)
-        OnInventoryChanged.Broadcast();
+    for (auto& Item : Items)
+        if (Item == Logic)
+            Item = nullptr;
 }
 
 void UInventoryLogic::SetItemPosition(UObject* Item, FIntVector2 const& Position, bool bRotation)
@@ -39,7 +34,7 @@ void UInventoryLogic::SetItemPosition(UObject* Item, FIntVector2 const& Position
     {
         Logic->SetOwnerLogic(this);
 
-        ClearItemSlots(Logic, false);
+        ClearItemSlots(Logic);
 
         auto LocalItemSize = GetSizeRotation(Logic->GetItemSize(), bRotation);
         auto Slots         = GetSlots(LocalItemSize, Position);
