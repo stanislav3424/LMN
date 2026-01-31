@@ -44,39 +44,3 @@ void UUW_EquipmentSlot::OnEquipmentChanged()
     ItemInSlot = Item;
     ObjectUpdatedChildWidgets(ItemInSlot);
 }
-
-FReply UUW_EquipmentSlot::NativeOnMouseButtonDown(const FGeometry& InGeometry, const FPointerEvent& InMouseEvent)
-{
-    if (InMouseEvent.IsMouseButtonDown(EKeys::LeftMouseButton))
-    {
-        FEventReply EventReply =
-            UWidgetBlueprintLibrary::DetectDragIfPressed(InMouseEvent, this, EKeys::LeftMouseButton);
-        return EventReply.NativeReply;
-    }
-    return Super::NativeOnMouseButtonDown(InGeometry, InMouseEvent);
-}
-
-void UUW_EquipmentSlot::NativeOnDragDetected(
-    const FGeometry& InGeometry, const FPointerEvent& InMouseEvent, UDragDropOperation*& OutOperation)
-{
-    if (!UW_Item)
-        return;
-
-    if (!ItemInSlot)
-        return;
-
-    auto DragDropOperation = Cast<UDragDropOperation_Item>(
-        UWidgetBlueprintLibrary::CreateDragDropOperation(UDragDropOperation_Item::StaticClass()));
-    if (!DragDropOperation)
-        return;
-
-    auto DragVisual = CreateWidget<UUW_Item>(GetOwningPlayer(), UW_Item->GetClass());
-    if (!DragVisual)
-        return;
-    UBFL::SetLogic(DragVisual, ItemInSlot);
-    DragVisual->SetAutoSize();
-    DragDropOperation->DefaultDragVisual = DragVisual;
-    DragDropOperation->Pivot             = EDragPivot::CenterCenter;
-    DragDropOperation->Payload           = ItemInSlot;
-    OutOperation                         = DragDropOperation;
-}

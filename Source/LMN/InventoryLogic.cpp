@@ -15,6 +15,21 @@ void UInventoryLogic::LoadingDataTable()
     }
 }
 
+void UInventoryLogic::ClearItemSlots(ULogic* Logic, bool bBroadcast)
+{
+    if (!Logic)
+        return;
+
+    for (int32 Index = 0; Index < Items.Num(); ++Index)
+    {
+        if (Items[Index] == Logic)
+            Items[Index] = nullptr;
+    }
+
+    if (bBroadcast)
+        OnInventoryChanged.Broadcast();
+}
+
 void UInventoryLogic::SetItemPosition(UObject* Item, FIntVector2 const& Position, bool bRotation)
 {
     if (!Item || !IsValidPosition(Position))
@@ -23,6 +38,8 @@ void UInventoryLogic::SetItemPosition(UObject* Item, FIntVector2 const& Position
     if (auto Logic = Cast<ULogic>(Item))
     {
         Logic->SetOwnerLogic(this);
+
+        ClearItemSlots(Logic, false);
 
         auto LocalItemSize = GetSizeRotation(Logic->GetItemSize(), bRotation);
         auto Slots         = GetSlots(LocalItemSize, Position);
@@ -34,7 +51,18 @@ void UInventoryLogic::SetItemPosition(UObject* Item, FIntVector2 const& Position
         ItemInfo.Item = Logic;
         ItemInfo.Position = Position;
         ItemInfo.bRotated = bRotation;
-        ItemsPosition.Add(ItemInfo);
+
+        for (auto& Existing : ItemsPosition)
+        {
+            if (Existing.Item == Logic)
+            {
+                Existing = ItemInfo;
+                OnInventoryChanged.Broadcast();
+                return;
+            }
+        }
+
+        ItemsPosition.AddUnique(ItemInfo);
 
         OnInventoryChanged.Broadcast();
     }
@@ -100,9 +128,8 @@ bool UInventoryLogic::IsValidInventorySize() const
 
 bool UInventoryLogic::IsValidItemSize(FIntVector2 const& Size) const
 {
-    return (Size.X > 1 && Size.Y > 1) ? true : false;
+    return (Size.X > 0 && Size.Y > 0) ? true : false;
 }
-
 
 bool UInventoryLogic::AddItem(UObject* Item)
 {
@@ -129,7 +156,7 @@ bool UInventoryLogic::AddItem(UObject* Item)
 
                 if (IfCanAddItemPosition(Item, Position, true))
                 {
-                    SetItemPosition(Item, Position, false);
+                    SetItemPosition(Item, Position, true);
                     return true;
                 }
             }
@@ -155,21 +182,17 @@ bool UInventoryLogic::IfCanAddItemPosition(UObject* Item, FIntVector2 const& Pos
 
     if (auto Logic = Cast<ULogic>(Item))
     {
-        auto LocalItemSize      = GetSizeRotation(Logic->GetItemSize(), bRotation);
+        auto LocalItemSize = GetSizeRotation(Logic->GetItemSize(), bRotation);
 
         if (!IsValidSizeInPosition(LocalItemSize, Position))
             return false;
 
-        auto Slots         = GetSlots(LocalItemSize, Position);
-        bool bIsEmptySlots = true;
+        auto Slots = GetSlots(LocalItemSize, Position);
         for (auto Slot : Slots)
             if (Items.IsValidIndex(Slot))
-                if (Items[Slot] != nullptr)
-                {
-                    bIsEmptySlots = false;
-                    break;
-                }
-        return bIsEmptySlots;
+                if (Items[Slot] != nullptr && Items[Slot] != Logic)
+                    return false;
+        return true;
     }
     return false;
 }
@@ -178,44 +201,53 @@ void UInventoryLogic::RemoveItem(UObject* Item)
 {
     if (auto Logic = Cast<ULogic>(Item))
     {
-        FInventoryItemInfo FoundEntry;
-        bool bFound = false;
-        
-        for (const auto& Entry : ItemsPosition)
+        for (auto It = ItemsPosition.CreateIterator(); It; ++It)
         {
-            if (Entry.Item == Logic)
+            if (It->Item == Logic)
             {
-                FoundEntry = Entry;
-                bFound = true;
-                break;
+                const FIntVector2   Position = It->Position;
+                const bool          Rotation = It->bRotated;
+                const FIntVector2   Size     = GetSizeRotation(Logic->GetItemSize(), Rotation);
+                const TArray<int32> Slots    = GetSlots(Size, Position);
+                for (int32 Slot : Slots)
+                    if (Items.IsValidIndex(Slot) && Items[Slot] == Logic)
+                        Items[Slot] = nullptr;
+                It.RemoveCurrent();
+                OnInventoryChanged.Broadcast();
+                return;
             }
         }
-        
-        if (!bFound)
-            return;
-
-        const FIntVector2 Position = FoundEntry.Position;
-        const bool          Rotation = FoundEntry.bRotated;
-        const FIntVector2   Size     = GetSizeRotation(Logic->GetItemSize(), Rotation);
-        const TArray<int32> Slots    = GetSlots(Size, Position);
-
-        for (auto Slot : Slots)
-            if (Items.IsValidIndex(Slot) && Items[Slot] == Logic)
-                Items[Slot] = nullptr;
-
-        ItemsPosition.RemoveAll([&](const FInventoryItemInfo& Elem) { return Elem.Item == Logic; });
-        OnInventoryChanged.Broadcast();
     }
 }
 
 void UInventoryLogic::RemoveChildLogic(ULogicBase* Logic)
 {
-    Super::RemoveChildLogic(Logic);
-
     RemoveItem(Logic);
 }
 
-TArray<FInventoryItemInfo> const& UInventoryLogic::GetItemsPosition() const
+TArray<FInventoryItemInfo> UInventoryLogic::GetItemsPosition() const
 {
     return ItemsPosition;
+}
+
+ULogic* UInventoryLogic::GetItemInPosition(FIntVector2 const& Position)
+{
+    return GetItemInIndex(PositionToIndex(Position));
+}
+
+ULogic* UInventoryLogic::GetItemInIndex(int32 Position)
+{
+    if (Items.IsValidIndex(Position))
+        return Items[Position];
+    return nullptr;
+}
+
+int32 UInventoryLogic::PositionToIndex(FIntVector2 const& Position) const
+{
+    return Position.X + Position.Y * InventorySize.X;
+}
+
+FIntVector2 UInventoryLogic::IndexToPosition(int32 Index) const
+{
+    return FIntVector2(Index % InventorySize.X, Index / InventorySize.X);
 }

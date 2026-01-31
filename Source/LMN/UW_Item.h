@@ -15,6 +15,9 @@ class LMN_API UUW_Item : public UUW_Base
 
 protected:
     virtual void ObjectUpdated(UObject* OldLogic, UObject* NewLogic);
+    virtual FReply NativeOnMouseButtonDown(const FGeometry& InGeometry, const FPointerEvent& InMouseEvent) override;
+    virtual void   NativeOnDragDetected(
+          const FGeometry& InGeometry, const FPointerEvent& InMouseEvent, UDragDropOperation*& OutOperation) override;
 
     UPROPERTY(meta = (BindWidget)) 
     USizeBox* SizeBox;

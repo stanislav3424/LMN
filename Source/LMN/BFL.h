@@ -17,6 +17,20 @@ DECLARE_LOG_CATEGORY_EXTERN(LMN, Log, All);
         UE_LOG(LMN, Error, TEXT("%s LINE %d Field '%s' is not set!"), *GetName(), __LINE__, TEXT(#FieldName));       \
     }
 
+#define CHECK_FIELD_RETURN(FieldName)                                                                \
+    if (!(FieldName))                                                                                                  \
+    {                                                                                                                  \
+        UE_LOG(LMN, Error, TEXT("%s LINE %d Field '%s' is not set!"), *GetName(), __LINE__, TEXT(#FieldName));       \
+        return;                                                                                            \
+    }
+
+#define CHECK_FIELD_RETURN_VALUE(FieldName, ReturnValue)                                                                                  \
+    if (!(FieldName))                                                                                                  \
+    {                                                                                                                  \
+        UE_LOG(LMN, Error, TEXT("%s LINE %d Field '%s' is not set!"), *GetName(), __LINE__, TEXT(#FieldName));         \
+        return ReturnValue;                                                                                                        \
+    }
+
 class ULogicBase;
 enum class ETeam : uint8;
 

@@ -24,7 +24,7 @@ struct FDataTableRowHandle;
 
 // ********** Begin ScriptStruct FTemplateCharacterRow *********************************************
 struct Z_Construct_UScriptStruct_FTemplateCharacterRow_Statics;
-#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_BFL_h_31_GENERATED_BODY \
+#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_BFL_h_45_GENERATED_BODY \
 	friend struct ::Z_Construct_UScriptStruct_FTemplateCharacterRow_Statics; \
 	LMN_API static class UScriptStruct* StaticStruct(); \
 	typedef FTableRowBase Super;
@@ -34,7 +34,7 @@ struct FTemplateCharacterRow;
 // ********** End ScriptStruct FTemplateCharacterRow ***********************************************
 
 // ********** Begin Class UBFL *********************************************************************
-#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_BFL_h_46_RPC_WRAPPERS_NO_PURE_DECLS \
+#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_BFL_h_60_RPC_WRAPPERS_NO_PURE_DECLS \
 	DECLARE_FUNCTION(execSpawnActorTeamByClass_WorldContext); \
 	DECLARE_FUNCTION(execSpawnActorTeamByRowHandle_WorldContext); \
 	DECLARE_FUNCTION(execSpawnTemplateCharacter_WorldContext); \
@@ -45,7 +45,7 @@ struct FTemplateCharacterRow;
 struct Z_Construct_UClass_UBFL_Statics;
 LMN_API UClass* Z_Construct_UClass_UBFL_NoRegister();
 
-#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_BFL_h_46_INCLASS_NO_PURE_DECLS \
+#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_BFL_h_60_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesUBFL(); \
 	friend struct ::Z_Construct_UClass_UBFL_Statics; \
@@ -56,7 +56,7 @@ public: \
 	DECLARE_SERIALIZER(UBFL)
 
 
-#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_BFL_h_46_ENHANCED_CONSTRUCTORS \
+#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_BFL_h_60_ENHANCED_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API UBFL(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()); \
 	/** Deleted move- and copy-constructors, should never be used */ \
@@ -68,13 +68,13 @@ public: \
 	NO_API virtual ~UBFL();
 
 
-#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_BFL_h_43_PROLOG
-#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_BFL_h_46_GENERATED_BODY \
+#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_BFL_h_57_PROLOG
+#define FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_BFL_h_60_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_BFL_h_46_RPC_WRAPPERS_NO_PURE_DECLS \
-	FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_BFL_h_46_INCLASS_NO_PURE_DECLS \
-	FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_BFL_h_46_ENHANCED_CONSTRUCTORS \
+	FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_BFL_h_60_RPC_WRAPPERS_NO_PURE_DECLS \
+	FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_BFL_h_60_INCLASS_NO_PURE_DECLS \
+	FID_Users_Stanislav_Documents_Unreal_Projects_LMN_Source_LMN_BFL_h_60_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 

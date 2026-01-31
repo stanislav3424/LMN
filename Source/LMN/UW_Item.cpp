@@ -4,11 +4,43 @@
 #include "Logic.h"
 #include "UMG_Library.h"
 #include "Components/SizeBox.h"
+#include "Blueprint/WidgetBlueprintLibrary.h"
+#include "DragDropOperation_Item.h"
 #include "BFL.h"
 
 void UUW_Item::ObjectUpdated(UObject* OldLogic, UObject* NewLogic)
 {
     Super::ObjectUpdated(OldLogic, NewLogic);
+}
+
+FReply UUW_Item::NativeOnMouseButtonDown(const FGeometry& InGeometry, const FPointerEvent& InMouseEvent)
+{
+    if (InMouseEvent.IsMouseButtonDown(EKeys::LeftMouseButton))
+    {
+        FEventReply EventReply =
+            UWidgetBlueprintLibrary::DetectDragIfPressed(InMouseEvent, this, EKeys::LeftMouseButton);
+        return EventReply.NativeReply;
+    }
+    return Super::NativeOnMouseButtonDown(InGeometry, InMouseEvent);
+}
+
+void UUW_Item::NativeOnDragDetected(
+    const FGeometry& InGeometry, const FPointerEvent& InMouseEvent, UDragDropOperation*& OutOperation)
+{
+    auto DragDropOperation = Cast<UDragDropOperation_Item>(
+        UWidgetBlueprintLibrary::CreateDragDropOperation(UDragDropOperation_Item::StaticClass()));
+    if (!DragDropOperation)
+        return;
+
+    auto DragVisual = CreateWidget<UUW_Item>(GetOwningPlayer(), this->GetClass());
+    if (!DragVisual)
+        return;
+    UBFL::SetLogic(DragVisual, GetLogic_Implementation());
+    DragVisual->SetAutoSize();
+    DragDropOperation->DefaultDragVisual = DragVisual;
+    DragDropOperation->Pivot             = EDragPivot::CenterCenter;
+    DragDropOperation->Payload           = GetLogic_Implementation();
+    OutOperation                         = DragDropOperation;
 }
 
 void UUW_Item::SetRotation(bool bRotated)

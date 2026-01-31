@@ -21,8 +21,6 @@ class LMN_API UUW_InventoryGrid : public UUW_Base
 
 protected:
     virtual void ObjectUpdated(UObject* OldLogic, UObject* NewLogic);
-    virtual void NativeOnDragDetected(
-        const FGeometry& InGeometry, const FPointerEvent& InMouseEvent, UDragDropOperation*& OutOperation) override;
     virtual bool NativeOnDrop(
         const FGeometry& InGeometry, const FDragDropEvent& InDragDropEvent, UDragDropOperation* InOperation) override;
     virtual void NativeOnDragEnter(
@@ -43,11 +41,11 @@ protected:
     UPROPERTY(EditDefaultsOnly, Category = "ItemWidget")
     TSubclassOf<UUserWidget> ItemWidgetClass;
 
-private:
     FIntVector2 GetAdjustedPositionForItem(const FGeometry& InGeometry, const FVector2D& MousePosition, ULogic* Item) const;
-    void UpdateGridPreview(const FGeometry& InGeometry, const FVector2D& MousePosition, ULogic* Item);
-    void ShowGridPreview(ULogic* Item, FIntVector2 Position, bool bCanPlace);
-    void HideGridPreview();
+    ULogic* GetItemInPosition(const FGeometry& InGeometry, const FVector2D& MousePosition);
+    
+    void SetGridPreviewEnabled(bool bEnabled);
+    void UpdateGridPreviewPosition(const FGeometry& InGeometry, const FVector2D& MousePosition, ULogic* Item);
 
     UPROPERTY()
     UImage* GridPreviewImage;
